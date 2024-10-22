@@ -1,7 +1,6 @@
 package com.example.athena.Roles;
 import android.content.Context;
 import android.media.Image;
-
 import com.example.athena.Event.Event;
 import com.example.athena.WaitList.WaitList;
 
@@ -28,6 +27,7 @@ public class Entrant extends User {
 
     //Stores the current waitlists that the user is waiting in
     private ArrayList<WaitList> CurrentWaitlists;
+
 
     //User Information
     private String name;
