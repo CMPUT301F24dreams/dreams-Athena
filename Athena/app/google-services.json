@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642024070747",
+    "project_id": "dreams-lottery",
+    "storage_bucket": "dreams-lottery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642024070747:android:7dbc404e8bc01b998b297e",
+        "android_client_info": {
+          "package_name": "com.example.athena"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYLcE0vrvtA5XEiUa08uDunZkSablxaH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
