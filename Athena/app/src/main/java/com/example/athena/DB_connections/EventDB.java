@@ -1,4 +1,3 @@
-package com.example.athena.DBs;
-
+package com.example.athena.DB_connections;
 public class EventDB {
 }

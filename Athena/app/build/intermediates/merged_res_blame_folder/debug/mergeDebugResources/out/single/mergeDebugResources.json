@@ -16,20 +16,20 @@
         "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
-    },
-    {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\xml\\backup_rules.xml"
     },
     {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\xml_data_extraction_rules.xml.flat",
@@ -38,6 +38,10 @@
     {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\drawable_updatesbuttonimage.png.flat",
         "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\drawable\\updatesbuttonimage.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-34:/layout_waitlistspage.xml.flat",
+        "source": "com.example.athena.app-main-36:/layout/waitlistspage.xml"
     },
     {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\drawable_addeventsbutton.png.flat",
@@ -102,9 +106,5 @@
     {
         "merged": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-34:\\drawable_checkeventsbutton.png.flat",
         "source": "C:\\Users\\ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-36:\\drawable\\checkeventsbutton.png"
-    },
-    {
-        "merged": "com.example.athena.app-debug-34:/layout_initial_screen.xml.flat",
-        "source": "com.example.athena.app-main-36:/layout/initial_screen.xml"
     }
 ]
