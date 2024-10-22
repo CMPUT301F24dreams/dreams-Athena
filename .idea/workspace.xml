@@ -36,12 +36,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Facility/Facility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/observers/ScanQRObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Entrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Entrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Organizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Organizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Facility/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Facility/Facility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
