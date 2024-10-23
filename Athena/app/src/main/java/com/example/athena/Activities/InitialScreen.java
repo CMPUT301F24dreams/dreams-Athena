@@ -54,28 +54,28 @@ public class InitialScreen extends AppCompatActivity {
        ProfilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 
         ScanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 
         CreateEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 
         NotificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 

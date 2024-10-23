@@ -1,7 +1,6 @@
 package com.example.athena.Roles;
 import android.content.Context;
 import android.media.Image;
-
 import com.example.athena.Event.Event;
 import com.example.athena.WaitList.WaitList;
 
@@ -13,23 +12,8 @@ import java.util.ArrayList;
  * it contains all of the variables which directly pertain to the user
  */
 public class Entrant extends User {
-
-
-
-    //Stores the UserID so that the specific device can be remembered for future logins
-    private String EntrantDeviceID;
-
-    //Stores the current waitlists that the user is waiting in
-    private ArrayList<WaitList> CurrentWaitlists;
-
-    //User Information
-    private String name;
-    private String Email;
-    private Integer EntrantPhoneNumber;
-    private Image ProfilePicture;
-
-    Entrant(Context context, String name, String role, ArrayList <String> privileges) {
+    Entrant(Context context, String name, String role, ArrayList<String> privileges) {
         super(context, name, role, privileges );
     }
 
-}
+    }
