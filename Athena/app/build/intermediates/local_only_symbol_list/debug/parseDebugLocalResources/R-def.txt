@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable addeventsbutton
+drawable bottombarcoloring
+drawable checkeventsbutton
+drawable createeventtext
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable moreoptionsbutton
+drawable profilepicturebutton
+drawable scanqrcodebutton
+drawable updatesbuttonimage
+id app_name
+id check_events_button
+id check_updates_button
+id create_event_button
+id imageView
+id imageView2
+id initial_screen
+id main
+id more_options_button
+id profile_picture_button
+id scan_qr_code_button
+layout activity_main
+layout initial_screen
+layout waitlistspage
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Athena
+style Theme.Athena
+xml backup_rules
+xml data_extraction_rules
