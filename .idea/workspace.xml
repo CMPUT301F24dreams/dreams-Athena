@@ -26,48 +26,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/AdminDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/EntrantDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/EventDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/OrganizerDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/UserDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/DBs/WaitlistDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Organizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/EntrantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/OrganizerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/controllers/WaitlistController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/addeventsbutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/bottombarcoloring.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/checkeventsbutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/createeventtext.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/moreoptionsbutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/profilepicturebutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/scanqrcodebutton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/updatesbuttonimage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/initial_screen.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/InitialScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/User/Entrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/Entrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/InitialScreen$1.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/InitialScreen$2.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/compileTransaction/stash-dir/InitialScreen.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/InitialScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/InitialScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +114,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "git-widget-placeholder": "Ahmed's-Branch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/LABS/asshittuLab7",
