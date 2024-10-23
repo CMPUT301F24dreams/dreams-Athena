@@ -33,7 +33,7 @@ public class InitialScreen extends AppCompatActivity {
         ///Assigns button used for checking notifications
         final ImageButton CreateEventButton = findViewById(R.id.create_event_button);
 
-        ///Assigns button used using additional features
+        ///Assigns button for using additional features
         final ImageButton MoreOptionsButton = findViewById(R.id.more_options_button);
 
         ///Click listener for the check current events button
