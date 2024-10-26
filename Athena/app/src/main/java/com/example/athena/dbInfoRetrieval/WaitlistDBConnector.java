@@ -1,10 +1,9 @@
-package com.example.athena.dbConnector;
+package com.example.athena.dbInfoRetrieval;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.athena.Roles.Entrant;
 import com.example.athena.Roles.OrganizerViewEntrant;
 import com.example.athena.WaitList.WaitList;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,8 +12,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 
 /**
  * Connects to the data base and retrieves info pertaining to Waitlists

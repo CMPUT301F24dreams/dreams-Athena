@@ -61,7 +61,7 @@ public class signinScreenActivity extends AppCompatActivity {
             Toast admin = Toast.makeText(this, "This user is an Admin, he will get special privileges", Toast.LENGTH_SHORT);
             admin.show();
         }
-        
+
         Intent entrantsAndOrganizersHome = new Intent(this, entrantAndOrganizerHomeActivity.class);
         entrantsAndOrganizersHome.putExtras(deviceID);
         startActivity(entrantsAndOrganizersHome);
