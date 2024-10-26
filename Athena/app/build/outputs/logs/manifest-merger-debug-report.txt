@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:2:1-52:12
 MERGED from [com.google.firebase:firebase-firestore:24.10.1] C:\Users\Ahmed\.gradle\caches\8.9\transforms\b7582f563ea419be1cdedd65317dc490\transformed\firebase-firestore-24.10.1\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Ahmed\.gradle\caches\8.9\transforms\aec446d7322a41a8a4c17fabfe3d2624\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Ahmed\.gradle\caches\8.9\transforms\57e17b87d9b4e9ecb260b733c15657d8\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -173,21 +173,33 @@ ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\And
 	android:name
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:38:13-66
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:44:5-81
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:45:5-81
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:44:22-78
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:45:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:45:5-80
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:46:5-80
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:45:22-77
-uses-permission#android.hardware.CAMERA
-ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:46:5-62
-	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:46:22-60
-uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:47:5-74
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:46:22-77
+uses-permission#android.permission.READ_MEDIA_AUDIO
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:47:5-75
 	android:name
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:47:22-72
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:48:5-76
+	android:name
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:48:22-73
+uses-permission#android.permission.READ_MEDIA_VIDEO
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:49:5-75
+	android:name
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:49:22-72
+uses-permission#android.hardware.CAMERA
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:50:5-62
+	android:name
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:50:22-60
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:51:5-74
+	android:name
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:51:22-72
 uses-sdk
 INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml

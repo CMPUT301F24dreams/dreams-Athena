@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-
+import com.example.athena.dbInfoRetrieval.DBConnector;
 /**
  * This will be the home screen for people that are entrants or organizers
  * Using this screen, users and organizer will be able to navigate through all of their responsibilities and privileges by navigating to the respective button or drawer
@@ -40,7 +40,8 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         setContentView(R.layout.entrants_and_organizer_home);
 
         // Initialize Firebase Firestore
-        db = FirebaseFirestore.getInstance();
+        db = DBConnector.getInstance().getDb();
+
 
         /// Assigns Button used for checking currently registered events
         ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);
