@@ -1,20 +1,14 @@
 package com.example.athena.Roles;
 
-import android.content.Context;
-
 import java.util.ArrayList;
 
 public class User {
-    Context context;
     String name;
-    String role;
-    ArrayList<String> privileges;
+    ArrayList<String> roles;
 
 
-    User(Context context, String name, String role, ArrayList<String> privileges){
-        this.context = context;
+    User( String name, ArrayList<String> roles){
         this.name = name;
-        this.role = role;
-        this.privileges = privileges;
+        this.roles = roles;
     }
 }
