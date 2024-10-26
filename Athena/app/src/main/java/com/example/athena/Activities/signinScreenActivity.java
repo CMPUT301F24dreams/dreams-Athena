@@ -25,7 +25,7 @@ public class signinScreenActivity extends AppCompatActivity {
         //Line derived from copilot: https://copilot.microsoft.com/?msockid=1ce35a3ee9c767ff0e974f22e87366e5, 2024-10-25
         String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
-
+        //This is just a place holder for now represent a sign in since the db isn't working
         // Put Device ID in Bundle
         Bundle bundle = new Bundle();
         bundle.putString("device_id", deviceId);
