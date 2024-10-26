@@ -42,7 +42,6 @@ id check_events_button
 id check_updates_button
 id chosen_notif
 id create_event_button
-id databaseOutput
 id geolocation_warn
 id imageView
 id imageView2

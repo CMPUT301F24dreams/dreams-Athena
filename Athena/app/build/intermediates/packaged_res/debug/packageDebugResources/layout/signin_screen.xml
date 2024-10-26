@@ -24,8 +24,8 @@
 
     <ImageButton
         android:id="@+id/register_button"
-        android:layout_width="159dp"
-        android:layout_height="47dp"
+        android:layout_width="153dp"
+        android:layout_height="43dp"
         android:backgroundTint="#A47070"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -21,6 +21,7 @@ public class WaitlistDBConnector {
     private FirebaseFirestore Db;
 
     public WaitlistDBConnector(FirebaseFirestore DBConnection){
+
         this.Db = DBConnection;
     }
 

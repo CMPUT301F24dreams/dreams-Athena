@@ -39,23 +39,8 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entrants_and_organizer_home);
 
-        databaseOutput = findViewById(R.id.databaseOutput);
-
         // Initialize Firebase Firestore
         db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Users").document("user_1");
-
-        // Add a listener to read data
-        docRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String value = documentSnapshot.getString("name");  // Adjust based on expected data type
-                databaseOutput.setText("Database Value: " + value);  // Display data on screen
-            } else {
-                databaseOutput.setText("Document not found");
-            }
-        }).addOnFailureListener(e -> {
-            databaseOutput.setText("Error: " + e.getMessage());
-        });
 
         /// Assigns Button used for checking currently registered events
         ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);
