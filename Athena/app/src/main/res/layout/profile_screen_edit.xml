@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/EditNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="456dp"
+        android:background="@null"
+        android:elevation="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@color/black" />
+
+    <ImageButton
+        android:id="@+id/EditEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="392dp"
+        android:background="@null"
+        android:elevation="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@color/black" />
+
+    <ImageButton
+        android:id="@+id/EditName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="520dp"
+        android:background="@null"
+        android:elevation="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/bar4"
+        android:layout_width="414dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="25dp"
+        android:background="#93BDB6"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image4"
+        android:layout_width="217dp"
+        android:layout_height="198dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="116dp"
+        android:elevation="2dp"
+        android:src="@tools:sample/avatars[0]"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileNumber2"
+        android:layout_width="369dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/border"
+        android:elevation="20dp"
+        android:paddingLeft="18dp"
+        android:paddingTop="14dp"
+        android:text="Number:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileName3" />
+
+    <TextView
+        android:id="@+id/app_name5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:fontFamily="serif"
+        android:text="Profile"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <TextView
+        android:id="@+id/profileName3"
+        android:layout_width="369dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/border"
+        android:elevation="20dp"
+        android:paddingLeft="18dp"
+        android:paddingTop="14dp"
+        android:text="Name:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image4" />
+
+    <ImageButton
+        android:id="@+id/backButton3"
+        android:layout_width="58dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:background="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/profileEmail2"
+        android:layout_width="369dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/border"
+        android:elevation="20dp"
+        android:paddingLeft="18dp"
+        android:paddingTop="14dp"
+        android:text="Email:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileNumber2" />
+
+    <ImageButton
+        android:id="@+id/saveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="333dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
