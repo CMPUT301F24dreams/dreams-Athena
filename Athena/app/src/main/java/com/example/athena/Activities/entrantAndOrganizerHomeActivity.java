@@ -3,13 +3,19 @@ package com.example.athena.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.athena.R;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 /**
  * This will be the home screen for people that are entrants or organizers
@@ -19,7 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
 
-    private FirebaseFirestore Db;
+    private FirebaseFirestore db;
+    private TextView databaseOutput;
     ImageButton CheckCurrentEventsButton;
     ImageButton NotificationsButton;
     ImageButton ProfilePictureButton;
@@ -29,9 +36,26 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entrants_and_organizer_home);
+
+        databaseOutput = findViewById(R.id.databaseOutput);
+
+        // Initialize Firebase Firestore
+        db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("Users").document("user_1");
+
+        // Add a listener to read data
+        docRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                String value = documentSnapshot.getString("name");  // Adjust based on expected data type
+                databaseOutput.setText("Database Value: " + value);  // Display data on screen
+            } else {
+                databaseOutput.setText("Document not found");
+            }
+        }).addOnFailureListener(e -> {
+            databaseOutput.setText("Error: " + e.getMessage());
+        });
 
         /// Assigns Button used for checking currently registered events
         ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-36:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-37:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\aec446d7322a41a8a4c17fabfe3d2624\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\bgfis\\.gradle\\caches\\8.9\\transforms\\aec446d7322a41a8a4c17fabfe3d2624\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
