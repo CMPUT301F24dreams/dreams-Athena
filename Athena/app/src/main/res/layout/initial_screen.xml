@@ -51,7 +51,7 @@
         app:srcCompat="@drawable/scanqrcodebutton" />
 
     <ImageButton
-        android:id="@+id/check_updates_button"
+        android:id="@+id/check_invited_button"
         android:layout_width="125dp"
         android:layout_height="79dp"
         android:backgroundTint="#93BDB6"
@@ -126,6 +126,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.066"
         app:srcCompat="@drawable/moreoptionsbutton" />
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="565dp"
+        android:id="@+id/content_display_frame"
+        app:layout_constraintBottom_toTopOf="@+id/create_event_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_options_button">
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

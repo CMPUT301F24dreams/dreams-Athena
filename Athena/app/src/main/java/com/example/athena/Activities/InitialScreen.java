@@ -22,7 +22,7 @@ public class InitialScreen extends AppCompatActivity {
         final ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);
 
         /// Assigns button used for checking notifications
-        final ImageButton NotificationsButton = findViewById(R.id.check_updates_button);
+        final ImageButton NotificationsButton = findViewById(R.id.check_invited_button);
 
         ///Assigns button used for checking notifications
         final ImageButton ProfilePictureButton =  findViewById(R.id.profile_picture_button);
