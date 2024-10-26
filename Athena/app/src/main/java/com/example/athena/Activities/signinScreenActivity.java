@@ -56,17 +56,18 @@ public class signinScreenActivity extends AppCompatActivity {
     public void switchToCorrespondingActivity(Bundle deviceID) {
 
         boolean is_admin = false;
-        //Place holder until the database is working, to test
-        if (!is_admin) {
-            Intent entrantsAndOrganizersHome = new Intent(this, entrantAndOrganizerHomeActivity.class);
-            entrantsAndOrganizersHome.putExtras(deviceID);
-            startActivity(entrantsAndOrganizersHome);
-        } else {
-            ////Just to represent what will happen when this is working
+        //Place holder until the database is working, to represent the idea that having admin privileges will allow you to access the correct screen
+        if (is_admin) {
             Toast admin = Toast.makeText(this, "This user is an Admin, he will get special privileges", Toast.LENGTH_SHORT);
             admin.show();
         }
+        
+        Intent entrantsAndOrganizersHome = new Intent(this, entrantAndOrganizerHomeActivity.class);
+        entrantsAndOrganizersHome.putExtras(deviceID);
+        startActivity(entrantsAndOrganizersHome);
     }
+
+
 }
 
 
