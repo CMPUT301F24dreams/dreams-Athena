@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Athena"
         tools:targetApi="31">
+
         <activity
-            android:name=".Activities.InitialScreen"
+            android:name=".Activities.signinScreenActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +24,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Activities.entrantAndOrganizerHomeActivity">
+        </activity>
+        <activity
+            android:name=".Activities.viewProfileActivity">
+        </activity>
+        <activity
+            android:name=".Activities.editNotificationSettingsActivity">
+        </activity>
+        <activity
+            android:name=".Activities.editProfileDetailsActivity">
+        </activity>
+
+
+
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.hardware.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 </manifest>

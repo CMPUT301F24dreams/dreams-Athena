@@ -8,10 +8,15 @@
         android:minSdkVersion="24"
         android:targetSdkVersion="34" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.hardware.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
     <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
 
     <permission
         android:name="com.example.athena.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -33,13 +38,21 @@
         android:testOnly="true"
         android:theme="@style/Theme.Athena" >
         <activity
-            android:name="com.example.athena.Activities.InitialScreen"
+            android:name="com.example.athena.Activities.signinScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.example.athena.Activities.entrantAndOrganizerHomeActivity" >
+        </activity>
+        <activity android:name="com.example.athena.Activities.viewProfileActivity" >
+        </activity>
+        <activity android:name="com.example.athena.Activities.editNotificationSettingsActivity" >
+        </activity>
+        <activity android:name="com.example.athena.Activities.editProfileDetailsActivity" >
         </activity>
 
         <service
@@ -71,6 +84,32 @@
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
+
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:exported="true"
+            android:theme="@style/WhiteBackgroundTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:exported="true"
+            android:theme="@style/WhiteBackgroundTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+            android:exported="true"
+            android:theme="@style/WhiteBackgroundDialogTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.athena.androidx-startup"

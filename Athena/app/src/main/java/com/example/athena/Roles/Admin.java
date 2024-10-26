@@ -1,7 +1,5 @@
 package com.example.athena.Roles;
 
-import android.content.Context;
-
 import java.util.ArrayList;
 
 /**
@@ -9,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Admin extends User{
 
-    Admin(Context context, String name, String role, ArrayList<String> privileges) {
-        super(context, name, role, privileges );
+    Admin(String name, ArrayList<String> roles) {
+        super(name, roles);
     }
 
 
