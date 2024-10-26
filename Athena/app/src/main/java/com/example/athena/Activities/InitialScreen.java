@@ -25,12 +25,13 @@ public class InitialScreen extends AppCompatActivity {
     ImageButton CreateEventButton;
     ImageButton MoreOptionsButton;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_screen);
 
+        Db = FirebaseFirestore.getInstance();
         /// Assigns Button used for checking currently registered events
         ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);
 
