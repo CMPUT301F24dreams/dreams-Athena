@@ -19,10 +19,9 @@ public class Event implements Model { // TO-DO Java-doc
     private Boolean geoRequire;
     private Integer maxParticipants;
     private String poster;
-    private SimpleDateFormat regStart;
-    private SimpleDateFormat regEnd;
-    private SimpleDateFormat eventDate;
-
+    private String regStart;
+    private String regEnd;
+    private String eventDate;
     private List<Interfaces.Observer> observers = new ArrayList<>();
 
     public Event(String eventID) {
@@ -46,16 +45,16 @@ public class Event implements Model { // TO-DO Java-doc
             });
         }
 
-    public Event(SimpleDateFormat eventDate, SimpleDateFormat regEnd, SimpleDateFormat regStart, String poster, Integer maxParticipants, Boolean geoRequire, String facilityID, String description, String eventName) {
-        this.eventDate = eventDate;
-        this.regEnd = regEnd;
-        this.regStart = regStart;
-        this.poster = poster;
-        this.maxParticipants = maxParticipants;
-        this.geoRequire = geoRequire;
-        this.facilityID = facilityID;
-        this.description = description;
+    public Event(String eventName, String description, String facilityID, Boolean geoRequire, Integer maxParticipants, String poster, String regStart, String regEnd, String eventDate) {
         this.eventName = eventName;
+        this.description = description;
+        this.facilityID = facilityID;
+        this.geoRequire = geoRequire;
+        this.maxParticipants = maxParticipants;
+        this.poster = poster;
+        this.regStart = regStart;
+        this.regEnd = regEnd;
+        this.eventDate = eventDate;
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(this);
@@ -124,27 +123,27 @@ public class Event implements Model { // TO-DO Java-doc
         this.poster = poster;
     }
 
-    public SimpleDateFormat getRegStart() {
+    public String getRegStart() {
         return regStart;
     }
 
-    public void setRegStart(SimpleDateFormat regStart) {
+    public void setRegStart(String regStart) {
         this.regStart = regStart;
     }
 
-    public SimpleDateFormat getRegEnd() {
+    public String getRegEnd() {
         return regEnd;
     }
 
-    public void setRegEnd(SimpleDateFormat regEnd) {
+    public void setRegEnd(String regEnd) {
         this.regEnd = regEnd;
     }
 
-    public SimpleDateFormat getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(SimpleDateFormat eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 }
