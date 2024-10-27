@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878"
+        app:layout_constraintVertical_bias="0.891"
         app:srcCompat="@drawable/createeventtext" />
 
     <ImageButton
@@ -87,18 +87,19 @@
         app:layout_constraintVertical_bias="0.995"
         app:srcCompat="@drawable/checkeventsbutton" />
 
+
     <ImageButton
         android:id="@+id/create_event_button"
-        android:layout_width="51dp"
+        android:layout_width="50dp"
         android:layout_height="38dp"
         android:backgroundTint="#D7F2EE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836"
+        app:layout_constraintVertical_bias="0.869"
         app:srcCompat="@drawable/addeventsbutton" />
-
 
     <ImageButton
         android:id="@+id/profile_picture_button"
@@ -125,6 +126,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.066"
         app:srcCompat="@drawable/moreoptionsbutton" />
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="400dp"
+        android:layout_height="622dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_event_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_options_button"
+        app:layout_constraintVertical_bias="1.0">
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
