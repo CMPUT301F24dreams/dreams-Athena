@@ -6,12 +6,19 @@ import com.example.athena.Roles.User;
 
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for storing information about waitlists for corresponding events
+ * It has methods which are used to retrieve lists, as well as handle changes made to the waitlists
+ */
 public class WaitList{
     private ArrayList<User> waiting;
     private ArrayList<User> invited;
     private ArrayList<User> declined;
     private Event attachedEvent;
 
+    ///This is a constructor for the waitlist class, it initializes it waitlist with 3 categories:
+    ///entrants who have been sent notifications, entrants who are waiting to be notified,
+    ///and entrants who have denied invitations
     public WaitList(Event event){
         waiting = new ArrayList<User>();
         invited = new ArrayList<User>();
