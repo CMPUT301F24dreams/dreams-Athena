@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/thing1"
+        android:title="thing1" />
+    <item
+        android:id="@+id/thing2"
+        android:title="thing2" />
+    <item
+        android:id="@+id/thing3"
+        android:title="thing3" />
+</menu>
