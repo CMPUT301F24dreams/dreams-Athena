@@ -12,16 +12,16 @@
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-41:\\xml\\data_extraction_rules.xml"
     },
     {
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\layout_waitlistview.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-41:\\layout\\waitlistview.xml"
+    },
+    {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-41:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\drawable_profilepicturebutton.png.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-41:\\drawable\\profilepicturebutton.png"
-    },
-    {
-        "merged": "com.example.athena.app-debug-39:/layout_entrants_and_organizer_home.xml.flat",
-        "source": "com.example.athena.app-main-41:/layout/entrants_and_organizer_home.xml"
     },
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\drawable_bottombarcoloring.png.flat",
@@ -102,6 +102,10 @@
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\drawable_addeventsbutton.png.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-41:\\drawable\\addeventsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-39:/layout_profile_screen_edit.xml.flat",
+        "source": "com.example.athena.app-main-41:/layout/profile_screen_edit.xml"
     },
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-39:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",

@@ -3,20 +3,24 @@ package com.example.athena.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.athena.R;
-import com.google.firebase.FirebaseApp;
+import com.example.athena.Roles.User;
+import com.example.athena.WaitList.WaitList;
+import com.example.athena.WaitList.WaitListArrayAdapter;
+import com.example.athena.controllers.EventController;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.example.athena.dbInfoRetrieval.DBConnector;
+
+import java.util.ArrayList;
+
 /**
  * This will be the home screen for people that are entrants or organizers
  * Using this screen, users and organizer will be able to navigate through all of their responsibilities and privileges by navigating to the respective button or drawer
@@ -39,8 +43,6 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entrants_and_organizer_home);
 
-        // Initialize Firebase Firestore
-        db = DBConnector.getInstance().getDb();
 
 
         /// Assigns Button used for checking currently registered events
@@ -60,6 +62,8 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
         ///Assigns button used using additional features
         ImageButton MoreOptionsButton = findViewById(R.id.more_options_button);
+
+
 
         ///Click listener for the check current events button
         CheckCurrentEventsButton.setOnClickListener(new View.OnClickListener() {

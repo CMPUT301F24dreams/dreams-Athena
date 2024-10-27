@@ -3695,6 +3695,8 @@ int id view_tree_saved_state_registry_owner 0x7f08021e
 int id view_tree_view_model_store_owner 0x7f08021f
 int id visible 0x7f080220
 int id visible_removing_fragment_view_tag 0x7f080221
+int id waitlistText 0x7f08022d
+int id waitlist_text_style 0x7f08022e
 int id west 0x7f080222
 int id wide 0x7f080223
 int id withText 0x7f080224
@@ -3906,6 +3908,7 @@ int layout select_dialog_multichoice_material 0x7f0b006e
 int layout select_dialog_singlechoice_material 0x7f0b006f
 int layout signin_screen 0x7f0b0070
 int layout support_simple_spinner_dropdown_item 0x7f0b0071
+int layout waitlistview 0x7f0b0072
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000

@@ -65,6 +65,8 @@ id scan_qr_code_button
 id signin_button
 id textView
 id textView4
+id waitlistText
+id waitlist_text_style
 layout activity_main
 layout entrants_and_organizer_home
 layout profile_screen
@@ -72,6 +74,7 @@ layout profile_screen_edit
 layout profile_screen_notif_edit
 layout registeredeventspage
 layout signin_screen
+layout waitlistview
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
