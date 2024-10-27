@@ -1,8 +1,16 @@
 package com.example.athena.Event;
 
-import java.text.SimpleDateFormat;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Event {
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import Interfaces.Observer;
+import Interfaces.Model;
+
+public class Event implements Model {
+    private String eventID;
     private String eventName;
     private String description;
     private String facilityID;
@@ -13,29 +21,34 @@ public class Event {
     private SimpleDateFormat regEnd;
     private SimpleDateFormat eventDate;
 
-    public Event(
-        String eventName,
-        String description,
-        String facilityID,
-        Boolean geoRequire,
-        Integer maxParticipants,
-        String poster,
-        SimpleDateFormat regStart,
-        SimpleDateFormat regEnd,
-        SimpleDateFormat eventDate
-        )
-        {
-            this.eventName = eventName;
-            this.description = description;
-            this.facilityID = facilityID;
-            this.geoRequire = geoRequire;
-            this.maxParticipants = maxParticipants;
-            this.poster = poster;
-            this. regStart = regStart;
-            this.regEnd = regEnd;
-            this.eventDate = eventDate;
-        }
+    private List<Interfaces.Observer> observers = new ArrayList<>();
 
+    public Event(String eventID)
+        {
+            this.eventID = eventID;
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("Events").add(this);
+        }
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
+    }
+
+    public String getEventID() {
+        return eventID;
+    }
     public String getEventName() {
         return eventName;
     }
