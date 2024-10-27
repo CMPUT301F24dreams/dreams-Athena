@@ -1,20 +1,21 @@
 package com.example.athena.Roles;
 
-import android.content.Context;
+import android.media.Image;
 
 import java.util.ArrayList;
 
-public class User {
-    Context context;
+/**
+ *This class represents users who have no events or
+ */
+public class User implements AdminOperations, EntrantOperations, OrganizerOperations {
     String name;
-    String role;
-    ArrayList<String> privileges;
+    ArrayList<String> roles;
+    String email;
+    Integer phoneNumber;
+    Image profilePicture;
 
-
-    User(Context context, String name, String role, ArrayList<String> privileges){
-        this.context = context;
+    public User(String name, ArrayList<String> roles){
         this.name = name;
-        this.role = role;
-        this.privileges = privileges;
+        this.roles = roles;
     }
 }
