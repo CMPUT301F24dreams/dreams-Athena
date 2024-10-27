@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/event_card_layout"
         android:layout_width="411dp"
-        android:layout_height="295dp"
+        android:layout_height="351dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="1dp">
 
         <ImageView
@@ -32,7 +32,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_title"
+                android:id="@+id/event_title_textview"
                 android:layout_width="337dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -49,11 +49,11 @@
                 android:id="@+id/event_desc_non_edit"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
-                android:text="Event Description"
+                android:text="Event Description:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_description"
+                android:id="@+id/event_description_textview"
                 android:layout_width="289dp"
                 android:layout_height="match_parent"
                 android:text="Description" />
@@ -62,7 +62,7 @@
         <LinearLayout
             android:id="@+id/registration_start_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:orientation="horizontal">
 
             <TextView
@@ -73,7 +73,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/registration_start_date"
+                android:id="@+id/registration_start_date_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,7 +84,7 @@
         <LinearLayout
             android:id="@+id/regisration"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
             android:orientation="horizontal">
 
             <TextView
@@ -100,6 +100,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="registration deadline" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Position In Queue:"
+                android:textAllCaps="true"
+                android:textColor="#BC1212"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/position_in_waitlist_view"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:text="Position Number "
+                android:textAllCaps="true"
+                android:textColor="#BC1212"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
         </LinearLayout>
 
     </LinearLayout>

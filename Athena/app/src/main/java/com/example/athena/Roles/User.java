@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  *This class represents users who have no events or
  */
-public class User {
+public class User implements AdminOperations, EntrantOperations, OrganizerOperations {
     String name;
     ArrayList<String> roles;
     String email;

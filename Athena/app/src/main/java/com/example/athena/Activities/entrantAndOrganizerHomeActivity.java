@@ -84,7 +84,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         ProfilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
                 switchToCorrespondingActivity(getApplicationContext(), viewProfileActivity.class);
             }
         });
@@ -92,7 +92,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         ScanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 
@@ -114,7 +114,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         MoreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
             }
         });
 
