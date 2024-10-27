@@ -60,6 +60,7 @@ public class Event implements Model { // TO-DO Java-doc
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(this);
     }
+    //TODO make complete implementations
     /*
     @Override
     public void addObserver(Observer observer) {
