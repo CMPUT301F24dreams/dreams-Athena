@@ -21,7 +21,8 @@ public class LoadingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.loading_screen);
 
         //15 second timer and then go to the main activity
-        new CountDownTimer(15000, 60000) {
+        //loading screen can later be adjusted so that it switches acivities once all info is retrieved from the database
+        new CountDownTimer(15000, 15000) {
 
             public void onTick(long millisUntilFinished) {
             }

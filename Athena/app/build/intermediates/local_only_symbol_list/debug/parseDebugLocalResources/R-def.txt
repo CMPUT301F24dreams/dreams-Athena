@@ -106,7 +106,6 @@ layout entrants_and_organizer_home
 layout event_clicked_by_user
 layout event_list_item_layout
 layout event_registered_entrants_view
-layout leave_event_layout
 layout loading_screen
 layout organizer_drawer
 layout profile_screen

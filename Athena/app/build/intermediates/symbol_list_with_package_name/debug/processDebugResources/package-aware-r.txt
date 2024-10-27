@@ -3911,7 +3911,6 @@ layout event_list_item_layout
 layout event_registered_entrants_view
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
-layout leave_event_layout
 layout loading_screen
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
