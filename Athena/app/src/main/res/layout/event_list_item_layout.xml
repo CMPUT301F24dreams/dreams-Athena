@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="295dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <ImageView
+            android:id="@+id/event_poster"
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
+            app:srcCompat="@drawable/image_place_holder" />
+
+        <LinearLayout
+            android:id="@+id/Event_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/event_name_non_edit"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:text="Event Name:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_title"
+                android:layout_width="337dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Title" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/event_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/event_desc_non_edit"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:text="Event Description"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_description"
+                android:layout_width="289dp"
+                android:layout_height="match_parent"
+                android:text="Description" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/registration_start_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/reg_start_non_edit"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:text="Registrations Start:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/registration_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="registration start" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/regisration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/reg_deadline_non_edit"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:text="Registration Deadline:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="252dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="registration deadline" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
