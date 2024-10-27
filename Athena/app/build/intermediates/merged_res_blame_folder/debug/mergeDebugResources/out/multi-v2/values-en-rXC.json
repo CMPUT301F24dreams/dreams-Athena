@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-37:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\b8a963a2c33e4d69a8148831e199fced\\transformed\\core-1.13.0\\res\\values-en-rXC\\values-en-rXC.xml",

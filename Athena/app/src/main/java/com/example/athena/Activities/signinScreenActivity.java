@@ -38,14 +38,14 @@ public class signinScreenActivity extends AppCompatActivity {
         signinbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    switchToCorrespondingActivity(bundle);
+                    switchToCorrespondingActivity(bundle, LoadingScreenActivity.class);
                 }
         });
 
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchToCorrespondingActivity(bundle);
+                switchToCorrespondingActivity(bundle, LoadingScreenActivity.class);
             }
         });
 
@@ -53,7 +53,7 @@ public class signinScreenActivity extends AppCompatActivity {
 
     }
 
-    public void switchToCorrespondingActivity(Bundle deviceID) {
+    public void switchToCorrespondingActivity(Bundle deviceID, Class<?> Activity) {
 
         boolean is_admin = false;
         //Place holder until the database is working, to represent the idea that having admin privileges will allow you to access the correct screen
@@ -62,7 +62,7 @@ public class signinScreenActivity extends AppCompatActivity {
             admin.show();
         }
 
-        Intent entrantsAndOrganizersHome = new Intent(this, entrantAndOrganizerHomeActivity.class);
+        Intent entrantsAndOrganizersHome = new Intent(this, Activity);
         entrantsAndOrganizersHome.putExtras(deviceID);
         startActivity(entrantsAndOrganizersHome);
     }
