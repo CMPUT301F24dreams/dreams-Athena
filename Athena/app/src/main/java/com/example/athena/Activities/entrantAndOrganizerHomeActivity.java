@@ -3,8 +3,10 @@ package com.example.athena.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +39,8 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     ImageButton ScanQRCodeButton;
     ImageButton CreateEventButton;
     ImageButton MoreOptionsButton;
+    private ListView invitedList;
+    private FrameLayout frameContent;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -63,6 +67,10 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         ///Assigns button used using additional features
         ImageButton MoreOptionsButton = findViewById(R.id.more_options_button);
 
+        ///Assigns the Frame-layout to a variable
+        frameContent = findViewById(R.id.content_frame);
+
+
 
 
         ///Click listener for the check current events button
@@ -77,6 +85,12 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                frameContent.removeAllViews();
+                invitedList = findViewById(R.id.invited_list);
+                // set up arrayaddapter with type notifications
+                // also create an addapter class for Invited list
+//                invitedList.setAdapter();
+                frameContent.addView(invitedList);
             }
         });
 
