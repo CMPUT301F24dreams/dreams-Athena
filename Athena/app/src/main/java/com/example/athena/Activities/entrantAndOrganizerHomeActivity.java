@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.athena.ArrayAdapter.InvitedListAdapter;
 import com.example.athena.R;
 import com.example.athena.Roles.User;
+import com.example.athena.WaitList.Notification;
 import com.example.athena.WaitList.WaitList;
 import com.example.athena.WaitList.WaitListArrayAdapter;
 import com.example.athena.controllers.EventController;
@@ -39,7 +41,9 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     ImageButton ScanQRCodeButton;
     ImageButton CreateEventButton;
     ImageButton MoreOptionsButton;
+    private ArrayList<Notification> notificationsList;
     private ListView invitedList;
+    private InvitedListAdapter invitedAdapter;
     private FrameLayout frameContent;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +76,6 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
 
 
-
         ///Click listener for the check current events button
         CheckCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +88,23 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
-                frameContent.removeAllViews();
+                //No clue if this works but prage
+                //set this up properly in proper code file later.
                 invitedList = findViewById(R.id.invited_list);
-                // set up arrayaddapter with type notifications
-                // also create an addapter class for Invited list
-//                invitedList.setAdapter();
+                if(invitedAdapter == null) {
+                    ///set the invited array adapter
+                    invitedAdapter = new InvitedListAdapter(frameContent.getContext(), notificationsList);
+                }
+                //if invitedList does not have a adapter set it
+                if(invitedList.getAdapter() == null){invitedList.setAdapter(invitedAdapter);}
+                //this clears the frame
+                frameContent.removeAllViews();
+                //this sets it's content to the list of invites
                 frameContent.addView(invitedList);
+                // set up array-adapter with type notifications
+                // also create an adapter class for Invited list
+
+
             }
         });
 
