@@ -1,0 +1,25 @@
+# Android Studio specific files
+.idea/
+*.iml
+.gradle/
+local.properties
+
+# Gradle specific files
+/build/
+captures/
+
+# Ignore Gradle cache files
+.gradle/
+build/
+
+# Ignore Android log files
+*.log
+
+# Ignore other build directories
+app/build/
+
+# Mac OS system files
+.DS_Store
+
+# JetBrains file
+.idea/workspace.xml
