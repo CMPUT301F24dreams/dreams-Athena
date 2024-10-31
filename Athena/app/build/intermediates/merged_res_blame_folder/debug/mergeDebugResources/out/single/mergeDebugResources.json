@@ -1,0 +1,190 @@
+[
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_createeventtext.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/createeventtext.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_gradient_background.xml.flat",
+        "source": "com.example.athena.app-main-50:/drawable/gradient_background.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_updatesbuttonimage.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/updatesbuttonimage.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_waitlist_notified_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/waitlist_notified_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_signin_button.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/signin_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_scanqrcodebutton.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/scanqrcodebutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_waitlist_invited_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/waitlist_invited_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_addeventsbutton.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/addeventsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_event_registered_entrants_view.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/event_registered_entrants_view.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_image_place_holder.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/image_place_holder.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_profilepicturebutton.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/profilepicturebutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_leave_event_button.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/leave_event_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/menu_organizer_menu.xml.flat",
+        "source": "com.example.athena.app-main-50:/menu/organizer_menu.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_bottombarcoloring.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/bottombarcoloring.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_activity_main.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_loading_screen.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/loading_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/xml_backup_rules.xml.flat",
+        "source": "com.example.athena.app-main-50:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.athena.app-main-50:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.athena.app-main-50:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_user_registered_events_page.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/user_registered_events_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.athena.app-main-50:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_waitlists_declined_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/waitlists_declined_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_moreoptionsbutton.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/moreoptionsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_border.xml.flat",
+        "source": "com.example.athena.app-main-50:/drawable/border.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_profile_screen_notif_edit.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/profile_screen_notif_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_title.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/title.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_organizer_drawer.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/organizer_drawer.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_event_clicked_by_user.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/event_clicked_by_user.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_checkeventsbutton.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/checkeventsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_event_list_item_layout.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/event_list_item_layout.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_profile_screen.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/profile_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_profile_screen_edit.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/profile_screen_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/drawable_register_button.png.flat",
+        "source": "com.example.athena.app-main-50:/drawable/register_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_entrants_and_organizer_home.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/entrants_and_organizer_home.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-50:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-48:/layout_signin_screen.xml.flat",
+        "source": "com.example.athena.app-main-50:/layout/signin_screen.xml"
+    }
+]
