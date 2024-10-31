@@ -9,67 +9,12 @@
       </config>
     </shared>
     <layouts>
-      <layout url="file://$USER_HOME$/Desktop/CMPUT 301 (Software Engineering)/CMPUT 301 Assignments/Assignment 1 Deliverables (build folder removed)/code/asshittu-MyBookWishlist/app/src/main/res/layout/content.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/entrants_and_organizer_home.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/event_clicked_by_user.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/event_clicked_by_user_page.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/event_list_item_layout.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/initial_screen.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_list_content.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_page.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/leave_event_layout.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/loading_screen.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/notified_entrants_page.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_drawer.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -89,7 +34,7 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/registered_entrants_view.xml">
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/registeredeventspage.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -99,17 +44,7 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/user_registered_events_page.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/waitlistview.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/menu/organizer_menu.xml">
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/user_registration.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -121,17 +56,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/eventClickedByUserActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/leave_event_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_clicked_by_user.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/notified_entrants_page.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/user_registration_screen.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/entrantAndOrganizerHomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Activities/entrantAndOrganizerHomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Roles/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_list_item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_list_item_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/registeredeventspage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/user_registered_events_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/waitlistview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/registered_entrants_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +67,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Ahmed\.android\avd\Pixel_2_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\bgfis\.android\avd\Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/Athena">
       <ProjectState />
@@ -162,7 +88,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="resourceFile" />
         <option value="Class" />
         <option value="layoutResourceFile" />
@@ -190,7 +115,7 @@
     </scriptDefinition>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -209,28 +134,19 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "AhmedSecond",
+    "git-widget-placeholder": "UI+ProfileInformation+Fragments",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/CMPUT 301 Assignments/Assignment 1 Deliverables (build folder removed)/code/asshittu-MyBookWishlist",
+    "last_opened_file_path": "C:/Users/bgfis/Android_studio_stutffs/dreams-Athena/Athena/app/src/main/res/drawable",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.0",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack"
-  },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JSON"
-    ]
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app" />
       <recent name="C:\Users\bgfis\Android_studio_stutffs\dreams-Athena\Athena\app\src\main\res\drawable" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunManager">
