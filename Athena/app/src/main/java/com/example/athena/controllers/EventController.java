@@ -3,7 +3,7 @@ package com.example.athena.controllers;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-
+import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.example.athena.Roles.User;
 import com.example.athena.WaitList.WaitList;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +20,7 @@ public class EventController {
     private FirebaseFirestore Db;
 
     public EventController(FirebaseFirestore DBConnection) {
-        this.Db = DBConnection;
+        this.Db = DBConnector.getInstance().getDb();
     }
 
 }
