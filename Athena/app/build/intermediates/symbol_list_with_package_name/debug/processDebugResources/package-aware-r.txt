@@ -3187,6 +3187,7 @@ id BOTTOM_END
 id BOTTOM_START
 id BackButton
 id CTRL
+id Cancel_reg
 id DeletePicture
 id EditEmail
 id EditName
@@ -3205,6 +3206,7 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Submit_reg
 id TOP_END
 id TOP_START
 id WaitlistPageTitle
@@ -3281,6 +3283,7 @@ id app_name2
 id app_name3
 id app_name4
 id app_name5
+id app_name6
 id arc
 id asConfigured
 id async
@@ -3385,6 +3388,9 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextText
+id editTextText2
+id editTextText3
 id edit_query
 id edit_text_id
 id elastic
@@ -3714,6 +3720,7 @@ id textStart
 id textTop
 id textView
 id textView18
+id textView2
 id textView24
 id textView4
 id text_input_end_icon
@@ -3979,6 +3986,7 @@ layout select_dialog_singlechoice_material
 layout signin_screen
 layout support_simple_spinner_dropdown_item
 layout user_registered_events_page
+layout user_registration_screen
 layout waitlist_invited_entrants_page
 layout waitlist_notified_entrants_page
 layout waitlists_declined_entrants_page

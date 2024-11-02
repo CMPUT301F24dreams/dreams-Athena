@@ -21,6 +21,7 @@ drawable signin_button
 drawable title
 drawable updatesbuttonimage
 id BackButton
+id Cancel_reg
 id DeletePicture
 id EditEmail
 id EditName
@@ -31,12 +32,14 @@ id EditProfileAll
 id Event_title_layout
 id ProfileEmail
 id ProfileNumber
+id Submit_reg
 id WaitlistPageTitle
 id app_name
 id app_name2
 id app_name3
 id app_name4
 id app_name5
+id app_name6
 id backButton
 id backButton3
 id bar
@@ -49,6 +52,9 @@ id content_frame
 id create_event_button
 id declined_entrants_listview
 id declined_entrants_title_non_edit
+id editTextText
+id editTextText2
+id editTextText3
 id entrants_to_notify_listview
 id entrants_to_notify_non_edit
 id event_card_layout
@@ -95,6 +101,7 @@ id scan_qr_code_button
 id signin_button
 id textView
 id textView18
+id textView2
 id textView24
 id textView4
 id thing1
@@ -113,6 +120,7 @@ layout profile_screen_edit
 layout profile_screen_notif_edit
 layout signin_screen
 layout user_registered_events_page
+layout user_registration_screen
 layout waitlist_invited_entrants_page
 layout waitlist_notified_entrants_page
 layout waitlists_declined_entrants_page

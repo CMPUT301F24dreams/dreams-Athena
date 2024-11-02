@@ -4,7 +4,7 @@
             "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\daman\\.gradle\\caches\\8.9\\transforms\\f18787143a8448334e7062698152705d\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\f18787143a8448334e7062698152705d\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\daman\\.gradle\\caches\\8.9\\transforms\\afe59d34171102ec939d77c33608ee3b\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\afe59d34171102ec939d77c33608ee3b\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",

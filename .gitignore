@@ -1,4 +1,6 @@
 
+*.apk
+*.apk
 *.dex
 *.json
 *.jar
@@ -10,3 +12,4 @@
 /Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-es
 /Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-ms
 /Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-be
+/Athena/app/build/intermediates/stable_resource_ids_file/debug
