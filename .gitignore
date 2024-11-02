@@ -1,0 +1,12 @@
+
+*.dex
+*.json
+*.jar
+/.idea
+/Athena/app/build
+*.properties
+/Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-mn
+/Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-bg
+/Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-es
+/Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-ms
+/Athena/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir/values-be
