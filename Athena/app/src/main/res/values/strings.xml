@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Athena</string>
-    <string name="notified_entrants">Notified Entrants</string>
+    <string name="open">open\n</string>
+    <string name="close">close\n</string>
 </resources>
