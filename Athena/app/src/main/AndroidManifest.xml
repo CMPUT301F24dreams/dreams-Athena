@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <application
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,9 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Athena"
         tools:targetApi="31">
-
         <activity
-            android:name=".Activities.signinScreenActivity"
+            android:name=".Activities.InitialScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,31 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".Activities.entrantAndOrganizerHomeActivity">
-        </activity>
-        <activity
-            android:name=".Activities.viewProfileActivity">
-        </activity>
-        <activity
-            android:name=".Activities.editNotificationSettingsActivity">
-        </activity>
-        <activity
-            android:name=".Activities.editProfileDetailsActivity">
-        </activity>
-        <activity
-            android:name=".Activities.LoadingScreenActivity">
-        </activity>
-
-
-
+        <service
+            android:name=".Notifications.PushNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <uses-permission android:name="android.hardware.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 </manifest>
