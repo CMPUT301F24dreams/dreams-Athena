@@ -57,8 +57,6 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
         ///Assigns button used for checking notifications
         ImageButton ScanQRCodeButton = findViewById(R.id.scan_qr_code_button);
 
-        ///Assigns button used for checking notifications
-        ImageButton CreateEventButton = findViewById(R.id.create_event_button);
 
         ///Assigns button used using additional features
         ImageButton MoreOptionsButton = findViewById(R.id.more_options_button);

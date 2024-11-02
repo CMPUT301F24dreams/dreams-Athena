@@ -14,6 +14,6 @@ public class eventClickedByUserActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_clicked_by_user);
+        setContentView(R.layout.event_clicked_by_user_page);
     }
 }

@@ -32,16 +32,8 @@ public class signinScreenActivity extends AppCompatActivity {
 
 
 
-        ImageButton signinbutton = findViewById(R.id.signin_button);
         ImageButton signupbutton = findViewById(R.id.register_button);
-
-        signinbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    switchToCorrespondingActivity(bundle, LoadingScreenActivity.class);
-                }
-        });
-
+        
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
