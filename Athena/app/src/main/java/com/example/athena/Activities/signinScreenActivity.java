@@ -33,7 +33,7 @@ public class signinScreenActivity extends AppCompatActivity {
 
 
         ImageButton signupbutton = findViewById(R.id.register_button);
-        
+
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
