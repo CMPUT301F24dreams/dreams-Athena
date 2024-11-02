@@ -21,17 +21,17 @@
         <TextView
             android:id="@+id/entrants_to_notify_non_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="Entrants To Notify"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#000000"
+            android:textColor="#256B63"
             android:textSize="28sp"
             android:textStyle="bold|italic" />
 
         <ListView
             android:id="@+id/entrants_to_notify_listview"
             android:layout_width="match_parent"
-            android:layout_height="852dp" />
+            android:layout_height="836dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

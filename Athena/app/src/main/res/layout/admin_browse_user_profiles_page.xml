@@ -2,16 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_user_profile_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="411dp"
+        android:layout_width="409dp"
         android:layout_height="889dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:background="@color/mainBackground"
+        android:backgroundTint="@color/mainBackground"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,18 +22,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/notified_entrants_non_edit"
+            android:id="@+id/user_profile_title_non_edit"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:text="Notified Entrants"
+            android:layout_height="63dp"
+            android:text="User Profiles"
             android:textAlignment="center"
-            android:textAllCaps="true"
             android:textColor="#256B63"
-            android:textSize="28sp"
+            android:textSize="34sp"
             android:textStyle="bold|italic" />
 
         <ListView
-            android:id="@+id/notified_entrants_listview"
+            android:id="@+id/user_profiles_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

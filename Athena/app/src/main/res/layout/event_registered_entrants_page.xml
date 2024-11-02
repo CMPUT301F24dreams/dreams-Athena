@@ -26,7 +26,7 @@
             android:text="Registered Entrants"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#0F0101"
+            android:textColor="#256B63"
             android:textSize="28sp"
             android:textStyle="bold|italic" />
 
