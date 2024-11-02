@@ -58,7 +58,6 @@ public class UsersDBManager {
     public Task<Void> removeRoleFromUser(String userId, String roleToRemove) {
         return usersCollection.document(userId).update("roles", FieldValue.arrayRemove(roleToRemove));
     }
-
     // Checks if the user has the admin role
     public Task<Boolean> isAdmin(String userId) {
         return getUser(userId).continueWith(task -> {
@@ -95,9 +94,4 @@ public class UsersDBManager {
         });
     }
 }
-
-
-
-
-
 
