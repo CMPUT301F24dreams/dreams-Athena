@@ -1,4 +1,4 @@
-package com.example.athena.Activities;
+package com.example.athena.GeneralActivities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity;
+import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
 import com.example.athena.R;
 
 /**

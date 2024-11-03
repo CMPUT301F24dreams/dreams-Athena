@@ -1,15 +1,14 @@
-package com.example.athena.Activities;
+package com.example.athena.GeneralActivities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.CountDownTimer;
+
+import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
 import com.example.athena.R;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoadingScreenActivity extends AppCompatActivity {
 

@@ -1,25 +1,17 @@
-package com.example.athena.Activities;
+package com.example.athena.EntrantAndOrganizerActivities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.athena.GeneralActivities.viewProfileActivity;
 import com.example.athena.R;
-import com.example.athena.Roles.User;
-import com.example.athena.WaitList.WaitList;
-import com.example.athena.WaitList.WaitListArrayAdapter;
-import com.example.athena.controllers.EventController;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.athena.dbInfoRetrieval.DBConnector;
-
-import java.util.ArrayList;
 
 /**
  * This will be the home screen for people that are entrants or organizers

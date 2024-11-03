@@ -1,4 +1,4 @@
-package com.example.athena.Activities;
+package com.example.athena.EntrantAndOrganizerActivities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.athena.GeneralActivities.viewProfileActivity;
 import com.example.athena.R;
 
 

@@ -15,7 +15,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".Activities.LoadingScreenActivity"
+            android:name=".GeneralActivities.LoadingScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,19 +25,19 @@
         </activity>
 
         <activity
-            android:name=".Activities.entrantAndOrganizerHomeActivity">
+            android:name=".EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity">
         </activity>
         <activity
-            android:name=".Activities.viewProfileActivity">
+            android:name=".GeneralActivities.viewProfileActivity">
         </activity>
         <activity
-            android:name=".Activities.editNotificationSettingsActivity">
+            android:name=".EntrantAndOrganizerActivities.editNotificationSettingsActivity">
         </activity>
         <activity
-            android:name=".Activities.editProfileDetailsActivity">
+            android:name=".EntrantAndOrganizerActivities.editProfileDetailsActivity">
         </activity>
         <activity
-            android:name=".Activities.signinScreenActivity">
+            android:name=".GeneralActivities.signinScreenActivity">
         </activity>
 
 

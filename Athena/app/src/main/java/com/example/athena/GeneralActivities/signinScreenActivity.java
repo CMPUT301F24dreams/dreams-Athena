@@ -1,4 +1,4 @@
-package com.example.athena.Activities;
+package com.example.athena.GeneralActivities;
 
 import static android.widget.Toast.makeText;
 

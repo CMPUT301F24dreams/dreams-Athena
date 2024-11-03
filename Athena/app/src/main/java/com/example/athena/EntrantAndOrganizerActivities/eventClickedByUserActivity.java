@@ -1,4 +1,4 @@
-package com.example.athena.Activities;
+package com.example.athena.EntrantAndOrganizerActivities;
 
 import android.os.Bundle;
 
