@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-gu/values-gu.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-53:/values-gu/values-gu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\2c60d5caa6437d1cc8ca2e546bf1fcdb\\transformed\\play-services-basement-18.3.0\\res\\values-gu\\values.xml",
@@ -55,6 +55,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-gu\\values-gu.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,165",
+                        "endColumns": "109,114",
+                        "endOffsets": "160,275"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11586,11696",
+                        "endColumns": "109,114",
+                        "endOffsets": "11691,11806"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\afe59d34171102ec939d77c33608ee3b\\transformed\\material-1.12.0\\res\\values-gu\\values-gu.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80",
@@ -71,23 +88,6 @@
                         "endLines": "5,33,34,35,36,37,45,46,47,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,131,133,134,135",
                         "endColumns": "12,73,71,81,105,97,98,119,83,56,62,90,66,58,89,62,64,63,68,61,53,114,57,60,53,72,126,85,81,98,84,83,132,74,75,132,85,80,53,51,65,72,79,70,79,70,75,78,68,106,95,77,94,95,73,74,98,50,81,66,86,89,61,63,62,66,101,104,96,101,57,55,77,85,74,72",
                         "endOffsets": "313,3070,3142,3224,3330,3428,4245,4365,4449,6682,6745,6836,6903,6962,7052,7115,7180,7244,7313,7375,7429,7544,7602,7663,7717,7790,7917,8003,8085,8184,8269,8353,8486,8561,8637,8770,8856,8937,8991,9043,9109,9182,9262,9333,9413,9484,9560,9639,9708,9815,9911,9989,10084,10180,10254,10329,10428,10479,10561,10628,10715,10805,10867,10931,10994,11061,11163,11268,11365,11467,11525,11581,11884,12051,12126,12199"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-gu\\values-gu.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,165",
-                        "endColumns": "109,114",
-                        "endOffsets": "160,275"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11586,11696",
-                        "endColumns": "109,114",
-                        "endOffsets": "11691,11806"
                     }
                 },
                 {

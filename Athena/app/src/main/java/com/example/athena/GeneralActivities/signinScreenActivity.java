@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.athena.EntrantAndOrganizerActivities.signUpActivity;
 import com.example.athena.R;
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-ka/values-ka.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-53:/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\afe59d34171102ec939d77c33608ee3b\\transformed\\material-1.12.0\\res\\values-ka\\values-ka.xml",
@@ -20,6 +20,23 @@
                         "endLines": "5,33,34,35,36,37,45,46,47,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,131,133,134,135",
                         "endColumns": "12,77,73,83,92,93,98,124,87,62,66,96,68,62,86,63,65,59,68,60,53,114,58,59,53,71,129,87,78,97,87,83,137,77,75,138,93,79,55,53,65,72,77,70,83,72,77,72,74,109,89,74,93,97,73,76,99,52,83,67,88,88,61,64,62,69,106,99,99,95,59,57,79,89,74,80",
                         "endOffsets": "318,3099,3173,3257,3350,3444,4267,4392,4480,6763,6830,6927,6996,7059,7146,7210,7276,7336,7405,7466,7520,7635,7694,7754,7808,7880,8010,8098,8177,8275,8363,8447,8585,8663,8739,8878,8972,9052,9108,9162,9228,9301,9379,9450,9534,9607,9685,9758,9833,9943,10033,10108,10202,10300,10374,10451,10551,10604,10688,10756,10845,10934,10996,11061,11124,11194,11301,11401,11501,11597,11657,11715,12022,12194,12269,12350"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-ka\\values-ka.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,117",
+                        "endOffsets": "159,277"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11720,11829",
+                        "endColumns": "108,117",
+                        "endOffsets": "11824,11942"
                     }
                 },
                 {
@@ -71,23 +88,6 @@
                         "startOffsets": "3449,3545,3647,3746,3845,3951,4055,12355",
                         "endColumns": "95,101,98,98,105,103,117,100",
                         "endOffsets": "3540,3642,3741,3840,3946,4050,4168,12451"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-ka\\values-ka.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,164",
-                        "endColumns": "108,117",
-                        "endOffsets": "159,277"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11720,11829",
-                        "endColumns": "108,117",
-                        "endOffsets": "11824,11942"
                     }
                 },
                 {

@@ -37,6 +37,7 @@ id Event_title_layout
 id Organizer_my_events_listview
 id ProfileEmail
 id ProfileNumber
+id Reg_start_event_non_edit
 id WaitlistPageTitle
 id action_signinScreenFragment_to_signUpFragment
 id admin_search_for_organizers_view
@@ -75,13 +76,13 @@ id event_description_textview
 id event_name_non_edit
 id event_poster
 id event_title_textview
-id fragmentContainerView
 id geolocation_warn
 id imageButton
 id imageView
 id imageView3
 id more_options_button
 id nav_graph
+id nav_host_container
 id not_chosen_notif
 id notified_entrants_listview
 id notified_entrants_non_edit
@@ -97,12 +98,12 @@ id profile_image4
 id profile_picture_button
 id profile_picture_button2
 id progressBar2
-id reg_deadline_non_edit
-id reg_start_non_edit
+id reg_deadline_text_view
+id reg_end_event_non_edit
+id reg_start_text_view
 id regisration
 id register_button
 id registered_entrants_title_non_edit
-id registration_deadline_textview
 id registration_start_date_textview
 id registration_start_layout
 id return_home_entrant_and_organizers
@@ -126,7 +127,6 @@ id user_profile_title_non_edit
 id user_profiles_listview
 id view_my_events_option
 id waitlistText
-layout activity_main
 layout admin_browse_facilities_page
 layout admin_browse_user_profiles_page
 layout entrants_and_organizer_home
@@ -135,6 +135,7 @@ layout event_clicked_by_user_page
 layout event_list_item_layout
 layout event_registered_entrants_page
 layout loading_screen
+layout nav_host_fragment
 layout organizer_create_event_page
 layout organizer_my_events_page
 layout profile_screen

@@ -1,258 +1,254 @@
 [
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_bottombarcoloring.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\bottombarcoloring.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_signin_button.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\signin_button.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\navigation\\nav_graph.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_search_for_event_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\search_for_event_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_user_registration.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\user_registration.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_search_for_event_fragment.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\search_for_event_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_waitlist_entrants_to_notify_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\waitlist_entrants_to_notify_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_organizer_create_event_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\organizer_create_event_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_organizer_my_events_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\organizer_my_events_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_admin_browse_user_profiles_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\admin_browse_user_profiles_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_user_registered_events_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\user_registered_events_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_checkeventsbutton.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\checkeventsbutton.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\navigation_nav_graph.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\navigation\\nav_graph.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\menu_admin_menu.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\menu\\admin_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\menu_admin_menu.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\menu\\admin_menu.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_profile_screen_notif_edit.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\profile_screen_notif_edit.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\xml\\data_extraction_rules.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_scanqrcodebutton.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\scanqrcodebutton.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_search_for_facility_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\search_for_facility_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_back_to_home_button.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\back_to_home_button.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_event_clicked_by_user_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\event_clicked_by_user_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_image_place_holder.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\image_place_holder.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_create_event_button.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\create_event_button.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_checkeventsbutton.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\checkeventsbutton.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_border.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\border.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_events_calendar_holo.jpg.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\events_calendar_holo.jpg"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_moreoptionsbutton.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\moreoptionsbutton.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_profilepicturebutton.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\profilepicturebutton.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_profile_screen.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\profile_screen.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_event_registered_entrants_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\event_registered_entrants_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_waitlist_notified_entrants_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\waitlist_notified_entrants_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_back_to_home_button.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\back_to_home_button.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_leave_event_button.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\leave_event_button.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_entrants_and_organizer_home_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\entrants_and_organizer_home_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_event_list_item_layout.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\event_list_item_layout.xml"
     },
     {
-        "merged": "com.example.athena.app-debug-48:/navigation_nav_graph.xml.flat",
-        "source": "com.example.athena.app-main-50:/navigation/nav_graph.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_profilepicturebutton.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\profilepicturebutton.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_organizer_my_events_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\organizer_my_events_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_profile_screen_edit.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\profile_screen_edit.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\gradient_background.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_createeventtext.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\createeventtext.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_events_attending_text_addon.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\events_attending_text_addon.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_bottombarcoloring.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\bottombarcoloring.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_event_list_item_layout.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\event_list_item_layout.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_entrants_and_organizer_home.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\entrants_and_organizer_home.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_loading_screen.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\loading_screen.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_scanqrcodebutton.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\scanqrcodebutton.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\menu_organizer_and_user_menu.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\menu\\organizer_and_user_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_events_calendar_holo.jpg.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\events_calendar_holo.jpg"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_entrants_and_organizer_home.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\entrants_and_organizer_home.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_user_registered_events_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\user_registered_events_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_waitlist_entrants_to_notify_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\waitlist_entrants_to_notify_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_organizer_create_event_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\organizer_create_event_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_signin_screen.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\signin_screen.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_signin_screen.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\signin_screen.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_createeventtext.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\createeventtext.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_event_clicked_by_user_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\event_clicked_by_user_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_updatesbuttonimage.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\updatesbuttonimage.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.athena.app-debug-55:/layout_nav_host_fragment.xml.flat",
+        "source": "com.example.athena.app-main-57:/layout/nav_host_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_event_registered_entrants_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\event_registered_entrants_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_profile_screen.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\profile_screen.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_events_logo.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\events_logo.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_profile_screen_edit.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\profile_screen_edit.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_entrants_and_organizer_home_fragment.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\entrants_and_organizer_home_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_user_registration.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\user_registration.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_events_logo.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\events_logo.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\menu_organizer_and_user_menu.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\menu\\organizer_and_user_menu.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_events_attending_text_addon.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\events_attending_text_addon.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_loading_screen.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\loading_screen.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_search_for_facility_fragment.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\search_for_facility_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_title.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\title.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_create_event_button.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\create_event_button.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_gradient_background.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\gradient_background.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_title.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\title.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_sign_up_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\sign_up_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_admin_browse_user_profiles_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\admin_browse_user_profiles_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_signin_screen_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\signin_screen_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_signin_button.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\signin_button.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_moreoptionsbutton.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\moreoptionsbutton.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_sign_up_fragment.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\sign_up_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_border.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\border.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_admin_browse_facilities_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\admin_browse_facilities_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_waitlists_declined_entrants_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\waitlists_declined_entrants_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_register_button.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\register_button.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_waitlists_declined_entrants_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\waitlists_declined_entrants_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_signin_screen_fragment.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\signin_screen_fragment.xml"
     },
     {
-        "merged": "com.example.athena.app-debug-48:/layout_sign_up_fragment.xml.flat",
-        "source": "com.example.athena.app-main-50:/layout/sign_up_fragment.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_register_button.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\register_button.png"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_leave_event_button.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\leave_event_button.png"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_admin_browse_facilities_page.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\admin_browse_facilities_page.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.athena.app-debug-55:/layout_signin_screen_fragment.xml.flat",
+        "source": "com.example.athena.app-main-57:/layout/signin_screen_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_profile_screen_notif_edit.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\profile_screen_notif_edit.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\drawable_image_place_holder.png.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\drawable\\image_place_holder.png"
-    },
-    {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-48:\\layout_waitlist_notified_entrants_page.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-50:\\layout\\waitlist_notified_entrants_page.xml"
+        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_updatesbuttonimage.png.flat",
+        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\updatesbuttonimage.png"
     }
 ]

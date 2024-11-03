@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-tl/values-tl.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-53:/values-tl/values-tl.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-tl\\values-tl.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,169",
+                        "endColumns": "113,122",
+                        "endOffsets": "164,287"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "12068,12182",
+                        "endColumns": "113,122",
+                        "endOffsets": "12177,12300"
+                    }
+                },
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\afe59d34171102ec939d77c33608ee3b\\transformed\\material-1.12.0\\res\\values-tl\\values-tl.xml",
                     "from": {
@@ -20,23 +37,6 @@
                         "endLines": "5,33,34,35,36,37,45,46,47,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,131,133,134,135",
                         "endColumns": "12,83,79,85,96,89,104,135,84,59,64,98,67,58,88,67,66,62,74,67,53,119,57,61,53,74,141,89,77,93,82,84,144,83,82,145,95,76,57,50,65,73,77,70,85,73,78,72,71,115,103,72,98,99,73,74,106,51,88,66,90,93,61,63,62,69,118,104,108,99,61,54,84,86,77,74",
                         "endOffsets": "325,3149,3229,3315,3412,3502,4341,4477,4562,6984,7049,7148,7216,7275,7364,7432,7499,7562,7637,7705,7759,7879,7937,7999,8053,8128,8270,8360,8438,8532,8615,8700,8845,8929,9012,9158,9254,9331,9389,9440,9506,9580,9658,9729,9815,9889,9968,10041,10113,10229,10333,10406,10505,10605,10679,10754,10861,10913,11002,11069,11160,11254,11316,11380,11443,11513,11632,11737,11846,11946,12008,12063,12385,12557,12635,12710"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-tl\\values-tl.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,169",
-                        "endColumns": "113,122",
-                        "endOffsets": "164,287"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "12068,12182",
-                        "endColumns": "113,122",
-                        "endOffsets": "12177,12300"
                     }
                 },
                 {
