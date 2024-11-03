@@ -65,12 +65,17 @@ dependencies {
     testImplementation("androidx.test.ext:junit:1.1.5")
     testImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
-
-
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
+    implementation("androidx.camera:camera-core:1.4.0")
+    implementation("androidx.camera:camera-camera2:1.4.0")
+    implementation("androidx.camera:camera-lifecycle:1.4.0")
+    implementation("androidx.camera:camera-view:1.4.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
 }

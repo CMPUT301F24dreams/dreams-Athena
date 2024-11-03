@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< Updated upstream
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\ic_launcher_foreground.xml"
     },
@@ -254,5 +255,261 @@
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_nav_host_fragment.xml.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\nav_host_fragment.xml"
+=======
+        "merged": "com.example.athena.app-debug-62:/drawable_updatesbuttonimage.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/updatesbuttonimage.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_waitlist_notified_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/waitlist_notified_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_event_clicked_by_user_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/event_clicked_by_user_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_profile_screen_notif_edit.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen_notif_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_bottombarcoloring.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/bottombarcoloring.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_nav_host_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/nav_host_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_checkeventsbutton.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/checkeventsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_events_logo.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/events_logo.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_title.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/title.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_admin_browse_facilities_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/admin_browse_facilities_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_moreoptionsbutton.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/moreoptionsbutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.athena.app-main-64:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_profile_placeholder.jpg.flat",
+        "source": "com.example.athena.app-main-64:/drawable/profile_placeholder.jpg"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_createeventtext.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/createeventtext.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_user_registered_events_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/user_registered_events_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_signin_button.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/signin_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_profile_screen_edit.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_event_list_item_layout.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/event_list_item_layout.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_search_for_event_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/search_for_event_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_gradient_background.xml.flat",
+        "source": "com.example.athena.app-main-64:/drawable/gradient_background.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_admin_browse_user_profiles_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/admin_browse_user_profiles_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/menu_admin_menu.xml.flat",
+        "source": "com.example.athena.app-main-64:/menu/admin_menu.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_profilepicturebutton.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/profilepicturebutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_waitlist_entrants_to_notify_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/waitlist_entrants_to_notify_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/menu_organizer_and_user_menu.xml.flat",
+        "source": "com.example.athena.app-main-64:/menu/organizer_and_user_menu.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_waitlists_declined_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/waitlists_declined_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_scanqrcodebutton.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/scanqrcodebutton.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_register_button.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/register_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_back_to_home_button.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/back_to_home_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_events_attending_text_addon.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/events_attending_text_addon.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_search_for_facility_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/search_for_facility_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_events_calendar_holo.jpg.flat",
+        "source": "com.example.athena.app-main-64:/drawable/events_calendar_holo.jpg"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_organizer_my_events_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/organizer_my_events_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.athena.app-main-64:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_loading_screen.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/loading_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_organizer_create_event_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/organizer_create_event_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.athena.app-main-64:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_qr_code_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/qr_code_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/navigation_nav_graph.xml.flat",
+        "source": "com.example.athena.app-main-64:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_profile_screen.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_border.xml.flat",
+        "source": "com.example.athena.app-main-64:/drawable/border.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_entrants_and_organizer_home.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/entrants_and_organizer_home.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_signin_screen.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/signin_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/xml_backup_rules.xml.flat",
+        "source": "com.example.athena.app-main-64:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_image_place_holder.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/image_place_holder.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_user_registration.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/user_registration.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_sign_up_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/sign_up_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_entrants_and_organizer_home_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/entrants_and_organizer_home_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_leave_event_button.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/leave_event_button.png"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.athena.app-main-64:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_signin_screen_fragment.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/signin_screen_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/layout_event_registered_entrants_page.xml.flat",
+        "source": "com.example.athena.app-main-64:/layout/event_registered_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-62:/drawable_create_event_button.png.flat",
+        "source": "com.example.athena.app-main-64:/drawable/create_event_button.png"
+>>>>>>> Stashed changes
     }
 ]
