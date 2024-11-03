@@ -77,8 +77,8 @@
 42-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:14:9-44
 43        <activity
 43-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:17:9-25:20
-44            android:name="com.example.athena.Activities.LoadingScreenActivity"
-44-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:18:13-61
+44            android:name="com.example.athena.GeneralActivities.LoadingScreenActivity"
+44-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:18:13-68
 45            android:exported="true" >
 45-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:19:13-36
 46            <intent-filter>
@@ -92,25 +92,25 @@
 49-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:23:27-74
 50            </intent-filter>
 51        </activity>
-52        <activity android:name="com.example.athena.Activities.entrantAndOrganizerHomeActivity" >
+52        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity" >
 52-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:27:9-29:20
-52-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:28:13-71
+52-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:28:13-90
 53        </activity>
-54        <activity android:name="com.example.athena.Activities.viewProfileActivity" >
+54        <activity android:name="com.example.athena.GeneralActivities.viewProfileActivity" >
 54-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:30:9-32:20
-54-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:31:13-59
+54-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:31:13-66
 55        </activity>
-56        <activity android:name="com.example.athena.Activities.editNotificationSettingsActivity" >
+56        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.editNotificationSettingsActivity" >
 56-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:33:9-35:20
-56-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:34:13-72
+56-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:34:13-91
 57        </activity>
-58        <activity android:name="com.example.athena.Activities.editProfileDetailsActivity" >
+58        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity" >
 58-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:36:9-38:20
-58-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:37:13-66
+58-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:37:13-85
 59        </activity>
-60        <activity android:name="com.example.athena.Activities.signinScreenActivity" >
+60        <activity android:name="com.example.athena.GeneralActivities.signinScreenActivity" >
 60-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:39:9-41:20
-60-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:40:13-60
+60-->C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:40:13-67
 61        </activity>
 62
 63        <service

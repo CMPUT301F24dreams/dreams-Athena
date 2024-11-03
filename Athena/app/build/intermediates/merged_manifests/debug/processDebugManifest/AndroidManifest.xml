@@ -41,7 +41,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Athena" >
         <activity
-            android:name="com.example.athena.Activities.LoadingScreenActivity"
+            android:name="com.example.athena.GeneralActivities.LoadingScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,15 +49,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.athena.Activities.entrantAndOrganizerHomeActivity" >
+        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity" >
         </activity>
-        <activity android:name="com.example.athena.Activities.viewProfileActivity" >
+        <activity android:name="com.example.athena.GeneralActivities.viewProfileActivity" >
         </activity>
-        <activity android:name="com.example.athena.Activities.editNotificationSettingsActivity" >
+        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.editNotificationSettingsActivity" >
         </activity>
-        <activity android:name="com.example.athena.Activities.editProfileDetailsActivity" >
+        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity" >
         </activity>
-        <activity android:name="com.example.athena.Activities.signinScreenActivity" >
+        <activity android:name="com.example.athena.GeneralActivities.signinScreenActivity" >
         </activity>
 
         <service

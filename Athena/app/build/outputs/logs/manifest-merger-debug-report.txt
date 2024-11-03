@@ -154,12 +154,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Ahmed\.gradle\cach
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:14:9-44
 	android:dataExtractionRules
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:8:9-65
-activity#com.example.athena.Activities.LoadingScreenActivity
+activity#com.example.athena.GeneralActivities.LoadingScreenActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:17:9-25:20
 	android:exported
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:19:13-36
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:18:13-61
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:18:13-68
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:20:13-24:29
 action#android.intent.action.MAIN
@@ -170,26 +170,26 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:23:17-77
 	android:name
 		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:23:27-74
-activity#com.example.athena.Activities.entrantAndOrganizerHomeActivity
+activity#com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:27:9-29:20
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:28:13-71
-activity#com.example.athena.Activities.viewProfileActivity
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:28:13-90
+activity#com.example.athena.GeneralActivities.viewProfileActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:30:9-32:20
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:31:13-59
-activity#com.example.athena.Activities.editNotificationSettingsActivity
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:31:13-66
+activity#com.example.athena.EntrantAndOrganizerActivities.editNotificationSettingsActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:33:9-35:20
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:34:13-72
-activity#com.example.athena.Activities.editProfileDetailsActivity
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:34:13-91
+activity#com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:36:9-38:20
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:37:13-66
-activity#com.example.athena.Activities.signinScreenActivity
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:37:13-85
+activity#com.example.athena.GeneralActivities.signinScreenActivity
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:39:9-41:20
 	android:name
-		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:40:13-60
+		ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:40:13-67
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from C:\Users\Ahmed\Documents\GitHub\dreams-Athena\Athena\app\src\main\AndroidManifest.xml:47:5-81
 	android:name
