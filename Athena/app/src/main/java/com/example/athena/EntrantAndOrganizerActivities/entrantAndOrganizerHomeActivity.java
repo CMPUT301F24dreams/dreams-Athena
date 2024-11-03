@@ -33,7 +33,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.entrants_and_organizer_home);
+        setContentView(R.layout.ent_and_org_home_fragment);
 
 
 

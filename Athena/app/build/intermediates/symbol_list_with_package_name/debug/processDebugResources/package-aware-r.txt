@@ -3643,7 +3643,6 @@ id profile_image2
 id profile_image4
 id profile_picture_button
 id profile_picture_button2
-id progressBar2
 id progress_circular
 id progress_horizontal
 id radio
@@ -3957,8 +3956,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout entrants_and_organizer_home
-layout entrants_and_organizer_home_fragment
+layout ent_and_org_home_fragment
 layout event_clicked_by_user_page
 layout event_list_item_layout
 layout event_registered_entrants_page
