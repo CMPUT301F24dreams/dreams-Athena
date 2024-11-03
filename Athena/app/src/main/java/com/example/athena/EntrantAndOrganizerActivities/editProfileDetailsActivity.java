@@ -22,7 +22,6 @@ public class editProfileDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_screen_edit);
 
-
         ImageButton BackButton = findViewById(R.id.backButton3);
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
