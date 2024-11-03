@@ -176,10 +176,6 @@
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\profile_screen_edit.xml"
     },
     {
-        "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_entrants_and_organizer_home_fragment.xml.flat",
-        "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\entrants_and_organizer_home_fragment.xml"
-    },
-    {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\drawable_events_logo.png.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\drawable\\events_logo.png"
     },
@@ -238,6 +234,10 @@
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\layout_admin_browse_facilities_page.xml.flat",
         "source": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-main-57:\\layout\\admin_browse_facilities_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-55:/layout_signin_screen_fragment.xml.flat",
+        "source": "com.example.athena.app-main-57:/layout/signin_screen_fragment.xml"
     },
     {
         "merged": "C:\\Users\\Ahmed\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-55:\\xml_data_extraction_rules.xml.flat",

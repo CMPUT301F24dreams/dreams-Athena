@@ -143,7 +143,6 @@ layout profile_screen_notif_edit
 layout search_for_event_fragment
 layout search_for_facility_fragment
 layout sign_up_fragment
-layout signin_screen
 layout signin_screen_fragment
 layout user_registered_events_page
 layout user_registration
