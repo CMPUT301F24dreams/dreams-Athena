@@ -39,6 +39,9 @@
         <activity
             android:name=".GeneralActivities.signinScreenActivity">
         </activity>
+        <activity
+            android:name=".EntrantAndOrganizerActivities.signUpActivity">
+        </activity>
 
 
 

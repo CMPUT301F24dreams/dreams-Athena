@@ -3267,6 +3267,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_signinScreenFragment_to_signUpFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3315,6 +3316,7 @@ id bounceStart
 id buttonPanel
 id cache_measures
 id callMeasure
+id cancelButton
 id cancel_button
 id carryVelocity
 id center
@@ -3345,6 +3347,7 @@ id container
 id content
 id contentPanel
 id content_frame
+id content_layout
 id contiguous
 id continuousVelocity
 id coordinator
@@ -3393,6 +3396,9 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editEmailReg
+id editNameReg
+id editNumberReg
 id edit_query
 id edit_text_id
 id elastic
@@ -3431,6 +3437,7 @@ id fixed
 id flip
 id floating
 id forever
+id fragmentContainerView
 id fragment_container_view_tag
 id frost
 id fullscreen_header
@@ -3482,7 +3489,6 @@ id line3
 id linear
 id listMode
 id list_item
-id loading_text
 id m3_side_sheet
 id marquee
 id masked
@@ -3545,6 +3551,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nav_controller_view_tag
+id nav_graph
 id nav_host_fragment_container
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
@@ -3613,7 +3620,7 @@ id profile_image2
 id profile_image4
 id profile_picture_button
 id profile_picture_button2
-id progress_bar
+id progressBar2
 id progress_circular
 id progress_horizontal
 id radio
@@ -3672,6 +3679,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signUpFragment
+id signinScreenFragment
 id sin
 id skipCollapsed
 id skipped
@@ -3702,6 +3711,7 @@ id staticPostLayout
 id stop
 id stretch
 id submenuarrow
+id submitButton
 id submit_area
 id supportScrollUp
 id tabMode
@@ -3730,6 +3740,7 @@ id textView2
 id textView3
 id textView4
 id textView5
+id textView7
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3902,6 +3913,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_main
 layout admin_browse_facilities_page
 layout admin_browse_user_profiles_page
 layout custom_dialog
@@ -3921,6 +3933,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout entrants_and_organizer_home
+layout entrants_and_organizer_home_fragment
 layout event_clicked_by_user_page
 layout event_list_item_layout
 layout event_registered_entrants_page
@@ -3994,9 +4007,12 @@ layout search_for_facility_fragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout sign_up_fragment
 layout signin_screen
+layout signin_screen_fragment
 layout support_simple_spinner_dropdown_item
 layout user_registered_events_page
+layout user_registration
 layout waitlist_entrants_to_notify_page
 layout waitlist_notified_entrants_page
 layout waitlists_declined_entrants_page
@@ -4004,6 +4020,7 @@ menu admin_menu
 menu organizer_and_user_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+navigation nav_graph
 plurals mtrl_badge_content_description
 raw firebase_common_keep
 string abc_action_bar_home_description
@@ -4082,6 +4099,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description

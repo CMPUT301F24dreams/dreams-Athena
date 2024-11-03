@@ -5,10 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.CountDownTimer;
 
+import com.example.athena.EntrantAndOrganizerFragments.signUpFragment;
+import com.example.athena.RegistrationFragments.signinScreenFragment;
 import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
+import com.example.athena.EntrantAndOrganizerActivities.signUpActivity;
 import com.example.athena.R;
+import com.example.athena.RegistrationFragments.signinScreenFragment;
 
 public class LoadingScreenActivity extends AppCompatActivity {
 
@@ -18,22 +26,23 @@ public class LoadingScreenActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading_screen);
+        //TODO make this check if the user is an admin or entrant/organizer
 
         //15 second timer and then go to the main activity
-        //loading screen can later be adjusted so that it switches acivities once all info is retrieved from the database
+        //loading screen can later be adjusted so that it switches activities once all info is retrieved from the database
         new CountDownTimer(15000, 15000) {
 
             public void onTick(long millisUntilFinished) {
             }
 
             public void onFinish() {
-               switchToCorrespondingActivity(getApplicationContext(), entrantAndOrganizerHomeActivity.class);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new signinScreenFragment()); // Replace with your container ID
+                transaction.commit();
             }
         }.start();
 
     }
-    public void switchToCorrespondingActivity(Context context, Class<?> chosenActivity) {
-        Intent activityToSwitchTo = new Intent(context, chosenActivity);
-        startActivity(activityToSwitchTo);
-    }
+
 }

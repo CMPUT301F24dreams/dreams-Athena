@@ -2,6 +2,7 @@ package com.example.athena.GeneralActivities;
 
 import static android.widget.Toast.makeText;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.athena.EntrantAndOrganizerActivities.signUpActivity;
 import com.example.athena.R;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,7 +39,7 @@ public class signinScreenActivity extends AppCompatActivity {
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchToCorrespondingActivity(bundle, LoadingScreenActivity.class);
+                switchToCorrespondingActivity(getApplicationContext(), signUpActivity.class);
             }
         });
 
@@ -45,7 +47,7 @@ public class signinScreenActivity extends AppCompatActivity {
 
     }
 
-    public void switchToCorrespondingActivity(Bundle deviceID, Class<?> Activity) {
+    public void switchToCorrespondingActivity(Context context, Class<?> Activity) {
 
         boolean is_admin = false;
         //Place holder until the database is working, to represent the idea that having admin privileges will allow you to access the correct screen
@@ -54,9 +56,9 @@ public class signinScreenActivity extends AppCompatActivity {
             admin.show();
         }
 
-        Intent entrantsAndOrganizersHome = new Intent(this, Activity);
-        entrantsAndOrganizersHome.putExtras(deviceID);
-        startActivity(entrantsAndOrganizersHome);
+        Intent nextActivity = new Intent(this, Activity);
+        startActivity(nextActivity);
+        finish();
     }
 
 

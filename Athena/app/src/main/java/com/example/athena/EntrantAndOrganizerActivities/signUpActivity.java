@@ -62,7 +62,7 @@ public class signUpActivity extends AppCompatActivity {
 
                 // If all fields are filled, proceed with action
                 Toast.makeText(signUpActivity.this, "Data Saved", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(signUpActivity.this, signinScreenActivity.class); // Replace 'signinScreenActivity.class' with the actual home screen activity
+                Intent intent = new Intent(signUpActivity.this, entrantAndOrganizerHomeActivity.class); // Replace 'signinScreenActivity.class' with the actual home screen activity
                 startActivity(intent);
                 finish(); // Finish current activity
             }

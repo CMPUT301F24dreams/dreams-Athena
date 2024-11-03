@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signinScreenFragment">
+
+    <fragment
+        android:id="@+id/signinScreenFragment"
+        android:name="com.example.athena.RegistrationFragments.signinScreenFragment"
+        android:label="signin_screen_fragment"
+        tools:layout="@layout/signin_screen_fragment" >
+        <action
+            android:id="@+id/action_signinScreenFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.signUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" />
+</navigation>

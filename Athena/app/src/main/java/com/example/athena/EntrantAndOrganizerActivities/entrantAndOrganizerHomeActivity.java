@@ -86,12 +86,6 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
             }
         });
 
-        CreateEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-            }
-        });
 
         NotificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +115,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     public void switchToCorrespondingActivity(Context context, Class<?> chosenActivity) {
         Intent activityToSwitchTo = new Intent(context, chosenActivity);
         startActivity(activityToSwitchTo);
+        finish();
     }
 
 

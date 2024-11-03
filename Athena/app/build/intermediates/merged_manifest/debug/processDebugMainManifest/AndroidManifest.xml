@@ -59,6 +59,8 @@
         </activity>
         <activity android:name="com.example.athena.GeneralActivities.signinScreenActivity" >
         </activity>
+        <activity android:name="com.example.athena.EntrantAndOrganizerActivities.signUpActivity" >
+        </activity>
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"

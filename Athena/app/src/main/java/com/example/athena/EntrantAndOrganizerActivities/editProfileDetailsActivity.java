@@ -34,5 +34,6 @@ public class editProfileDetailsActivity extends AppCompatActivity {
     public void switchToCorrespondingActivity(Context context, Class<?> chosenActivity) {
         Intent activityToSwitchTo = new Intent(context, chosenActivity);
         startActivity(activityToSwitchTo);
+        finish();
     }
 }
