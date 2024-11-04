@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -65,7 +66,10 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         LinearLayout appDrawer = view.findViewById(R.id.more_options_drawer);
 
         ///Assigns the home screen
-        ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_view);
+        ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_constraint_layout);
+
+        ///Assigns the fragment container view
+        FragmentContainerView fragmentView = view.findViewById(R.id.content_frame);
 
         ///Assigns the close drawer button
         ImageButton closeDrawerButton = view.findViewById(R.id.close_drawer_button);
@@ -88,11 +92,11 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
          //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
 
+
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-
 
             }
        });
@@ -105,10 +109,13 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             }
         });
 
-        ///Click listener for the check current events button
+
+        ///Click listener for to check current events
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                appDrawer.setVisibility(View.GONE);
+                displayFragment(new userViewAttendingEventsFragment());
 
             }
         });
@@ -165,6 +172,15 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
         homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+            }
+        });
+
+
+
+        fragmentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);

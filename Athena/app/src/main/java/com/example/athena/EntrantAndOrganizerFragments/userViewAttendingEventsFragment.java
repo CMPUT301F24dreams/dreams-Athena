@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.athena.R;
 
 
-public class user_view_events_attending_fragment extends Fragment {
+public class userViewAttendingEventsFragment extends Fragment {
 
 
 

@@ -3459,7 +3459,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id entrantAndOrganizerHomeFragment
-id entrant_and_organizer_drawer_layout
+id entrant_and_organizer_constraint_layout
 id entrant_and_organizer_view
 id entrants_to_notify_listview
 id entrants_to_notify_non_edit
@@ -3797,6 +3797,7 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
 id textView7
 id text_input_end_icon
 id text_input_error_icon
@@ -3831,6 +3832,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id user_noti_title_non_edit
 id user_notifications_listview
 id user_notis_title_non_edit
 id user_profile_title_non_edit
@@ -4082,10 +4084,10 @@ layout select_dialog_singlechoice_material
 layout sign_up_fragment
 layout signin_screen_fragment
 layout support_simple_spinner_dropdown_item
-layout user_my_notifications_page
 layout user_my_notis_fragment
 layout user_registered_events_page
 layout user_registration
+layout user_view_events_attending_fragment
 layout waitlist_entrants_to_notify_page
 layout waitlist_notified_entrants_page
 layout waitlists_declined_entrants_page
