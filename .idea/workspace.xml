@@ -136,8 +136,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/entrantAndOrganizerHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/entrantAndOrganizerHomeFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
