@@ -145,8 +145,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/organizer_and_user_menu">
-
-        </com.google.android.material.navigation.NavigationView>
+            app:menu="@menu/organizer_and_user_menu"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
