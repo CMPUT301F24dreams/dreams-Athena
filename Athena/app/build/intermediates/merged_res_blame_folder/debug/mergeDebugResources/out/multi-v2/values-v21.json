@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-v21/values-v21.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-v21/values-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\4717f0aeea713641a7b38e87ccdc3275\\transformed\\core-1.6.1\\res\\values-v21\\values.xml",

@@ -21,11 +21,11 @@
         <TextView
             android:id="@+id/notified_entrants_non_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/notified_entrants"
+            android:layout_height="54dp"
+            android:text="Notified Entrants"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#000000"
+            android:textColor="#256B63"
             android:textSize="28sp"
             android:textStyle="bold|italic" />
 

@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-ta/values-ta.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-ta/values-ta.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-ta\\values-ta.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,163",
+                        "endColumns": "107,126",
+                        "endOffsets": "158,285"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11994,12102",
+                        "endColumns": "107,126",
+                        "endOffsets": "12097,12224"
+                    }
+                },
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\abd638eb8d3acf1d6c4b207dd2fb280a\\transformed\\core-1.13.0\\res\\values-ta\\values-ta.xml",
                     "from": {
@@ -88,23 +105,6 @@
                         "startOffsets": "322,435,537,652,741,852,973,1052,1128,1226,1326,1421,1515,1622,1722,1824,1918,2016,2114,2195,2303,2406,2505,2621,2724,2829,2986,12315",
                         "endColumns": "112,101,114,88,110,120,78,75,97,99,94,93,106,99,101,93,97,97,80,107,102,98,115,102,104,156,101,81",
                         "endOffsets": "430,532,647,736,847,968,1047,1123,1221,1321,1416,1510,1617,1717,1819,1913,2011,2109,2190,2298,2401,2500,2616,2719,2824,2981,3083,12392"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-ta\\values-ta.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,163",
-                        "endColumns": "107,126",
-                        "endOffsets": "158,285"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11994,12102",
-                        "endColumns": "107,126",
-                        "endOffsets": "12097,12224"
                     }
                 }
             ]

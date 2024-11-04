@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-km/values-km.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-km/values-km.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\2c60d5caa6437d1cc8ca2e546bf1fcdb\\transformed\\play-services-basement-18.3.0\\res\\values-km\\values.xml",
@@ -18,23 +18,6 @@
                         "startOffsets": "5411",
                         "endColumns": "148",
                         "endOffsets": "5555"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-km\\values-km.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,160",
-                        "endColumns": "104,104",
-                        "endOffsets": "155,260"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11659,11764",
-                        "endColumns": "104,104",
-                        "endOffsets": "11759,11864"
                     }
                 },
                 {
@@ -88,6 +71,23 @@
                         "endLines": "5,33,34,35,36,37,45,46,47,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,131,133,134,135",
                         "endColumns": "12,77,75,79,78,78,99,111,79,65,64,93,69,61,86,62,64,58,64,60,56,118,57,60,56,70,129,85,75,84,81,77,137,74,70,149,96,77,54,55,65,79,89,70,84,78,76,69,74,111,87,72,99,98,73,75,106,53,89,72,90,95,61,63,62,70,98,97,91,95,57,59,82,81,77,75",
                         "endOffsets": "314,3080,3156,3236,3315,3394,4215,4327,4407,6694,6759,6853,6923,6985,7072,7135,7200,7259,7324,7385,7442,7561,7619,7680,7737,7808,7938,8024,8100,8185,8267,8345,8483,8558,8629,8779,8876,8954,9009,9065,9131,9211,9301,9372,9457,9536,9613,9683,9758,9870,9958,10031,10131,10230,10304,10380,10487,10541,10631,10704,10795,10891,10953,11017,11080,11151,11250,11348,11440,11536,11594,11654,11947,12113,12191,12267"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-km\\values-km.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,160",
+                        "endColumns": "104,104",
+                        "endOffsets": "155,260"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11659,11764",
+                        "endColumns": "104,104",
+                        "endOffsets": "11759,11864"
                     }
                 },
                 {

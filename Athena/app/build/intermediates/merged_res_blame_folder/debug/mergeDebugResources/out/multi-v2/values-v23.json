@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-v23/values-v23.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\4a126935f43c2e3fbd4f808141caf17f\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
