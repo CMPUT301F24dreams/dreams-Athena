@@ -41,7 +41,7 @@ public class viewProfileFragment extends Fragment {
         binding.BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
                 transaction.commit();
@@ -51,7 +51,7 @@ public class viewProfileFragment extends Fragment {
         binding.EditNotfis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.content_layout, new profileNotiEditFragment());
                 transaction.commit();
@@ -61,7 +61,7 @@ public class viewProfileFragment extends Fragment {
         binding.EditProfileAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.content_layout, new profileScreenEditFragment());
                 transaction.commit();

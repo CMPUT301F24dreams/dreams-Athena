@@ -4,7 +4,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,17 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.athena.R;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
-import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.os.CountDownTimer;
-
-import com.example.athena.RegistrationFragments.signinScreenFragment;
-import com.example.athena.R;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -38,46 +33,55 @@ import com.journeyapps.barcodescanner.ScanOptions;
 public class entrantAndOrganizerHomeFragment extends Fragment {
 
     private FirebaseFirestore db;
-    private TextView databaseOutput;
-    ImageButton CheckCurrentEventsButton;
-    ImageButton NotificationsButton;
-    ImageButton ProfilePictureButton;
-    ImageButton ScanQRCodeButton;
-    ImageButton CreateEventButton;
-    ImageButton MoreOptionsButton;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
         Toast.makeText(getActivity(), "main", Toast.LENGTH_SHORT).show();
 
         super.onCreate(savedInstanceState);
 
+        return view;
+
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         /// Assigns Button used for checking currently registered events
-        ImageButton CheckCurrentEventsButton = view.findViewById(R.id.check_events_button);
+        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
         /// Assigns button used for checking notifications
-        ImageButton NotificationsButton = view.findViewById(R.id.check_updates_button);
+        ImageButton notificationsButton = view.findViewById(R.id.check_updates_button);
 
         ///Assigns button used for checking notifications
-        ImageButton ProfilePictureButton = view.findViewById(R.id.profile_picture_button);
+        ImageButton profilePictureButton = view.findViewById(R.id.profile_picture_button);
 
         ///Assigns button used for checking notifications
-        ImageButton ScanQRCodeButton = view.findViewById(R.id.scan_qr_code_button);
+        ImageButton scanQRCodeButton = view.findViewById(R.id.scan_qr_code_button);
 
         ///Assigns button used using additional features
-        ImageButton MoreOptionsButton = view.findViewById(R.id.more_options_button);
+        ImageButton moreOptionsButton = view.findViewById(R.id.more_options_button);
+
+        ///Assigns the app drawer
+        NavigationView appDrawer = view.findViewById(R.id.entrant_and_organizer_nav_view);
+
+        ///Assigns the home screen
+        ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_view);
+
+        ///Assigns the view my events button
+        Item 
 
         ///Click listener for the check current events button
-        CheckCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
+        checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //WILL SWITCH TO THE REGISTRATION PAGE
             }
         });
 
-        NotificationsButton.setOnClickListener(new View.OnClickListener() {
+
+        notificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
@@ -85,7 +89,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
         ///This method is responsible for any clicks of the profile picture button
-        ProfilePictureButton.setOnClickListener(new View.OnClickListener() {
+        profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
@@ -95,7 +99,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             }
         });
 
-        ScanQRCodeButton.setOnClickListener(new View.OnClickListener() {
+        scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
@@ -115,7 +119,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 //            }
 //        });
 
-        NotificationsButton.setOnClickListener(new View.OnClickListener() {
+        notificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
@@ -123,17 +127,24 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
 
-        MoreOptionsButton.setOnClickListener(new View.OnClickListener() {
+
+        moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+                appDrawer.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+        homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.INVISIBLE);
             }
         });
 
-        // Inflate the layout for this fragment
-        return view;
 
-    }
+}
 
     private void scanCode() {
         ScanOptions options = new ScanOptions();
