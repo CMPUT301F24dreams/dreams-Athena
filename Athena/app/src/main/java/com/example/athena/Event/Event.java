@@ -1,5 +1,6 @@
 package com.example.athena.Event;
 
+import com.example.athena.Interfaces.Observer;
 import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -10,9 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import Interfaces.Observer;
-import Interfaces.Model;
-
+import com.example.athena.Interfaces.Model;
 public class Event implements Model { // TO-DO Java-doc
     private String eventName;
     private String description;
@@ -23,7 +22,7 @@ public class Event implements Model { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
-    private List<Interfaces.Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
 
     public Event(String eventID) {
         FirebaseFirestore db = DBConnector.getInstance().getDb();
@@ -60,8 +59,6 @@ public class Event implements Model { // TO-DO Java-doc
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(this);
     }
-    //TODO make complete implementations
-    /*
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
@@ -77,8 +74,6 @@ public class Event implements Model { // TO-DO Java-doc
             observer.update(this);
         }
     }
-    */
-
 
     // TO-DO: Add getters/setters properly
     public String getEventName() {
