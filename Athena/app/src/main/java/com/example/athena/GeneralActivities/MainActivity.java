@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //15 second timer and then go to the main activity
         //loading screen can later be adjusted so that it switches activities once all info is retrieved from the database
-        new CountDownTimer(15000, 15000) {
+        new CountDownTimer(5000, 5000) {
 
             public void onTick(long millisUntilFinished) {
             }

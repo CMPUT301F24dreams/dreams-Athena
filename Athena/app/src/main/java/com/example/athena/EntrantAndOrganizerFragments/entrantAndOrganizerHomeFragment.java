@@ -7,24 +7,18 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.athena.GeneralActivities.MainActivity;
 import com.example.athena.R;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.journeyapps.barcodescanner.ScanContract;
@@ -68,19 +62,54 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ImageButton moreOptionsButton = view.findViewById(R.id.more_options_button);
 
         ///Assigns the app drawer
-        NavigationView appDrawer = view.findViewById(R.id.entrant_and_organizer_nav_view);
+        LinearLayout appDrawer = view.findViewById(R.id.more_options_drawer);
 
         ///Assigns the home screen
         ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_view);
 
-        ///Assigns the view my events button
-        MenuItem viewMyEventsOption = view.findViewById(R.id.view_my_events_option);
+        ///Assigns the close drawer button
+        ImageButton closeDrawerButton = view.findViewById(R.id.close_drawer_button);
+
+        ///Assigns the create event button
+        ImageButton createEventButton = view.findViewById(R.id.create_event_button);
+
+        ///Assigns the create events I'm hosting button
+        ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
+
+
+
+        eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayFragment(new viewMyCreatedEventsFragment());
+
+            }
+        });
+         //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
+
+        createEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+
+
+            }
+       });
+
+        ///Click Listener used to close the app drawer
+        closeDrawerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+            }
+        });
 
         ///Click listener for the check current events button
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE REGISTRATION PAGE
+
             }
         });
 
@@ -88,7 +117,9 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         notificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //WILL SWITCH TO THE DESIGNATE PAGE FOR THE USER'S SPECIFIC ROLE
+                appDrawer.setVisibility(View.GONE);
+                displayFragment(new userViewNotisFragment());
+
             }
         });
 
@@ -123,13 +154,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 //            }
 //        });
 
-        notificationsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-            }
-        });
-
 
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +167,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         homeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appDrawer.setVisibility(View.INVISIBLE);
+                appDrawer.setVisibility(View.GONE);
             }
         });
 
@@ -151,6 +175,11 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
 }
 
+
+
+private void displayFragment(Fragment fragment){
+    getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
+}
 
 
 
@@ -177,4 +206,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             }).show();
         }
     });
+
+
 }

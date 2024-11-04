@@ -12,7 +12,27 @@
         android:id="@+id/entrant_and_organizer_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D7F2EE">
+        android:background="#D7F2EE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/content_frame"
+            android:layout_width="412dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="34dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/more_options_drawer"
+            app:layout_constraintTop_toBottomOf="@+id/app_name"
+            app:layout_constraintVertical_bias="1.0">
+
+        </androidx.fragment.app.FragmentContainerView>
 
         <TextView
             android:id="@+id/app_name"
@@ -43,63 +63,24 @@
             app:layout_constraintVertical_bias="0.998"
             app:srcCompat="@drawable/bottombarcoloring" />
 
-        <ImageButton
-            android:id="@+id/scan_qr_code_button"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:backgroundTint="#93BDB6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/scanqrcodebutton" />
-
-        <ImageButton
-            android:id="@+id/check_updates_button"
-            android:layout_width="125dp"
-            android:layout_height="79dp"
-            android:backgroundTint="#93BDB6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.993"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/updatesbuttonimage" />
-
-        <ImageButton
-            android:id="@+id/check_events_button"
-            android:layout_width="130dp"
-            android:layout_height="77dp"
-            android:backgroundTint="#93BDB6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.995"
-            app:srcCompat="@drawable/checkeventsbutton" />
-
 
         <ImageButton
             android:id="@+id/profile_picture_button"
-            android:layout_width="57dp"
-            android:layout_height="50dp"
+            android:layout_width="51dp"
+            android:layout_height="46dp"
             android:backgroundTint="#D7F2EE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintHorizontal_bias="0.994"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.062"
+            app:layout_constraintVertical_bias="0.043"
             app:srcCompat="@drawable/profilepicturebutton" />
 
         <ImageButton
             android:id="@+id/more_options_button"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="54dp"
+            android:layout_height="28dp"
             android:backgroundTint="#D7F2EE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,35 +90,129 @@
             app:layout_constraintVertical_bias="0.061"
             app:srcCompat="@drawable/moreoptionsbutton" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="872dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/events_attending_text_addon" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/drawer_layer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-2dp">
 
-        <LinearLayout
-            android:id="@+id/more_options_drawer"
-            android:layout_width="262dp"
-            android:layout_height="763dp"
-            android:background="#93BDB6"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="50dp">
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="872dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/more_options_drawer"
+                app:srcCompat="@drawable/events_attending_text_addon" />
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/content_frame"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
+            <ImageButton
+                android:id="@+id/check_events_button"
+                android:layout_width="120dp"
+                android:layout_height="71dp"
+                android:backgroundTint="#93BDB6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.989"
+                app:srcCompat="@drawable/checkeventsbutton" />
 
-            </androidx.fragment.app.FragmentContainerView>
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/check_updates_button"
+                android:layout_width="125dp"
+                android:layout_height="79dp"
+                android:layout_marginTop="812dp"
+                android:backgroundTint="#93BDB6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.993"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/updatesbuttonimage" />
+
+            <ImageButton
+                android:id="@+id/scan_qr_code_button"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#93BDB6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/scanqrcodebutton" />
+
+            <LinearLayout
+                android:id="@+id/more_options_drawer"
+                android:layout_width="141dp"
+                android:layout_height="0dp"
+                android:background="#90C5BD"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/scan_qr_code_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.007"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="401dp">
+
+                    <ImageButton
+                        android:id="@+id/create_event_button"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="64dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/create_event_drawer_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/events_im_hosting_button"
+                        android:layout_width="0dp"
+                        android:layout_height="74dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="228dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/events_hosting_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.454"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/create_event_button"
+                        app:layout_constraintVertical_bias="0.095" />
+
+                    <ImageButton
+                        android:id="@+id/close_drawer_button"
+                        android:layout_width="45dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="99dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/left_arrow_drawer"
+                        app:layout_constraintBottom_toTopOf="@+id/create_event_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

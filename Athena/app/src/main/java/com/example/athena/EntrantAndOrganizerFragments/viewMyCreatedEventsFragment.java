@@ -4,40 +4,40 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.athena.R;
-import com.example.athena.databinding.OrganizerCreateEventPageBinding;
-import com.example.athena.databinding.OrganizerMyEventsPageBinding;
-import com.example.athena.databinding.ProfileScreenEditBinding;
+import com.example.athena.databinding.OrganizerMyEventsViewBinding;
 
 
 public class viewMyCreatedEventsFragment extends Fragment {
 
 
-    OrganizerMyEventsPageBinding binding;
+    OrganizerMyEventsViewBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ///Initializer the binding object
-        binding = OrganizerMyEventsPageBinding.inflate(inflater, container, false);
+        View view = inflater.inflate(R.layout.organizer_my_events_view, container, false);
 
-
+        super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
-        return binding.getRoot();
+        return view;
 
     }
+
+
+
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //This may or not be useless depending on our decided implementation
+        /*
         binding.returnHomeEntrantAndOrganizers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +47,7 @@ public class viewMyCreatedEventsFragment extends Fragment {
                 transaction.commit();
             }
         });
+        */
     }
 
 }

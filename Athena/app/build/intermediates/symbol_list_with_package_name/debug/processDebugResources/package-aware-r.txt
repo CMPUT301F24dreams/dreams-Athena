@@ -1496,6 +1496,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color drawer_background_color
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -3076,6 +3077,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable add_items_button
 drawable avd_hide_password
 drawable avd_show_password
 drawable back_to_home_button
@@ -3109,7 +3111,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
-drawable create_event_button
+drawable create_event_drawer_button
 drawable createeventtext
 drawable design_fab_background
 drawable design_ic_visibility
@@ -3118,6 +3120,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable events_attending_text_addon
 drawable events_calendar_holo
+drawable events_hosting_button
 drawable events_logo
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -3145,6 +3148,7 @@ drawable ic_search_black_24
 drawable image_place_holder
 drawable indeterminate_static
 drawable leave_event_button
+drawable left_arrow_drawer
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3244,7 +3248,6 @@ id Event_title_layout
 id FUNCTION
 id META
 id NO_DEBUG
-id Organizer_my_events_listview
 id ProfileEmail
 id ProfileNumber
 id Reg_start_event_non_edit
@@ -3356,6 +3359,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3381,6 +3385,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id close_drawer_button
 id closest
 id collapseActionView
 id compatible
@@ -3398,6 +3403,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id create_event_button
 id create_event_option
 id currentState
 id custom
@@ -3434,6 +3440,7 @@ id dragLeft
 id dragRight
 id dragStart
 id dragUp
+id drawer_layer
 id dropdown_menu
 id easeIn
 id easeInOut
@@ -3453,7 +3460,6 @@ id enterAlways
 id enterAlwaysCollapsed
 id entrantAndOrganizerHomeFragment
 id entrant_and_organizer_drawer_layout
-id entrant_and_organizer_nav_view
 id entrant_and_organizer_view
 id entrants_to_notify_listview
 id entrants_to_notify_non_edit
@@ -3465,6 +3471,7 @@ id event_description_textview
 id event_name_non_edit
 id event_poster
 id event_title_textview
+id events_im_hosting_button
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3574,6 +3581,7 @@ id month_navigation_next
 id month_navigation_previous
 id month_title
 id more_options_button
+id more_options_drawer
 id motion_base
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
@@ -3642,7 +3650,7 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
-id organizer_created_events_page
+id organizer_events_title_non_edit
 id outline
 id outward
 id overshoot
@@ -3685,7 +3693,6 @@ id registered_entrants_title_non_edit
 id registration_start_date_textview
 id registration_start_layout
 id report_drawn
-id return_home_entrant_and_organizers
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3790,7 +3797,6 @@ id textView
 id textView2
 id textView3
 id textView4
-id textView5
 id textView7
 id text_input_end_icon
 id text_input_error_icon
@@ -3825,6 +3831,8 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id user_notifications_listview
+id user_notis_title_non_edit
 id user_profile_title_non_edit
 id user_profiles_listview
 id vertical_only
@@ -4062,7 +4070,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout organizer_create_event_page
-layout organizer_my_events_page
+layout organizer_my_events_view
 layout profile_screen
 layout profile_screen_edit
 layout profile_screen_notif_edit
@@ -4074,6 +4082,8 @@ layout select_dialog_singlechoice_material
 layout sign_up_fragment
 layout signin_screen_fragment
 layout support_simple_spinner_dropdown_item
+layout user_my_notifications_page
+layout user_my_notis_fragment
 layout user_registered_events_page
 layout user_registration
 layout waitlist_entrants_to_notify_page
