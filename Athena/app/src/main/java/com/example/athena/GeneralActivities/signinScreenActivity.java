@@ -20,7 +20,7 @@ public class signinScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signin_screen);
+        setContentView(R.layout.signin_screen_fragment);
 
         // Get Device ID
         //Line derived from copilot: https://copilot.microsoft.com/?msockid=1ce35a3ee9c767ff0e974f22e87366e5, 2024-10-25
