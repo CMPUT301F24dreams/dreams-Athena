@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signinScreenFragment">
-
+    app:startDestination="@+id/entrantAndOrganizerHomeFragment">
     <fragment
-        android:id="@+id/signinScreenFragment"
-        android:label="signin_screen_fragment"
-        tools:layout="@layout/signin_screen_fragment">
+        android:id="@+id/entrantAndOrganizerHomeFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment"
+        android:label="ent_and_org_home_fragment"
+        tools:layout="@layout/ent_and_org_home_fragment" >
         <action
-            android:id="@+id/action_signinScreenFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_entrantAndOrganizerHomeFragment_to_viewMyCreatedEventsFragment"
+            app:destination="@id/viewMyCreatedEventsFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/signUpFragment"
-        android:label="sign_up_fragment"
-        tools:layout="@layout/sign_up_fragment" />
+        android:id="@+id/viewMyCreatedEventsFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.viewMyCreatedEventsFragment"
+        android:label="organizer_my_events_page"
+        tools:layout="@layout/organizer_my_events_page" />
 </navigation>

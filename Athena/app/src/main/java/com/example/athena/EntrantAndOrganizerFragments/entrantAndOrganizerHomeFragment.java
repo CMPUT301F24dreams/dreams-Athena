@@ -11,14 +11,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.athena.GeneralActivities.MainActivity;
 import com.example.athena.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -70,7 +74,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_view);
 
         ///Assigns the view my events button
-        Item 
+        MenuItem viewMyEventsOption = view.findViewById(R.id.view_my_events_option);
 
         ///Click listener for the check current events button
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +148,24 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
 
+
 }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.view_my_events_option:
+                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                transaction.commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
     private void scanCode() {
         ScanOptions options = new ScanOptions();

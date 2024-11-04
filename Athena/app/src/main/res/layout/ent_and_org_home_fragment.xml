@@ -23,8 +23,9 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_picture_button"
-            app:layout_constraintVertical_bias="0.025">
-
+            app:layout_constraintVertical_bias="0.025"
+            app:navGraph="@navigation/nav_graph"
+            android:name="androidx.navigation.fragment.NavHostFragment">
         </androidx.fragment.app.FragmentContainerView>
 
         <TextView

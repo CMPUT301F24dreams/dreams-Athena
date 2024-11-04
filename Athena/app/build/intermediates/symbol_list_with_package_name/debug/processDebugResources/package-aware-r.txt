@@ -3303,13 +3303,13 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_entrantAndOrganizerHomeFragment_to_viewMyCreatedEventsFragment
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_signinScreenFragment_to_signUpFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3451,6 +3451,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id entrantAndOrganizerHomeFragment
 id entrant_and_organizer_drawer_layout
 id entrant_and_organizer_nav_view
 id entrant_and_organizer_view
@@ -3729,8 +3730,6 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
-id signUpFragment
-id signinScreenFragment
 id sin
 id skipCollapsed
 id skipped
@@ -3829,6 +3828,7 @@ id useLogo
 id user_profile_title_non_edit
 id user_profiles_listview
 id vertical_only
+id viewMyCreatedEventsFragment
 id view_my_events_option
 id view_offset_helper
 id view_transition
