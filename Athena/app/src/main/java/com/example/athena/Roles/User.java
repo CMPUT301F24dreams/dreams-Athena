@@ -5,7 +5,8 @@ import android.media.Image;
 import java.util.ArrayList;
 
 /**
- *This class represents users who have no events or
+ *This class represents users in the application
+ * and implements the roles of the different types of users in the application
  */
 public class User implements AdminOperations, EntrantOperations, OrganizerOperations {
     String name;
@@ -209,6 +210,5 @@ public class User implements AdminOperations, EntrantOperations, OrganizerOperat
         }
 
     }
-
 
 }
