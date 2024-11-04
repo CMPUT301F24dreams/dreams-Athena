@@ -1,7 +1,10 @@
 package com.example.athena.Event;
 
+import com.example.athena.Roles.User;
+import com.example.athena.WaitList.WaitList;
 import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,6 +26,7 @@ public class Event implements Model { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
+    private WaitList waitList;
     private List<Interfaces.Observer> observers = new ArrayList<>();
 
     public Event(String eventID) {
@@ -79,6 +83,20 @@ public class Event implements Model { // TO-DO Java-doc
     }
     */
 
+
+    //waitlist access things
+
+    public void addUser(User user){
+        waitList.addWaiting(user);
+    }
+
+    public void chooseUsers(int numOfUser){
+        waitList.selectUsersToInvite(numOfUser);
+    }
+
+    public void removeUser(User user){
+        waitList.removeUser(user);
+    }
 
     // TO-DO: Add getters/setters properly
     public String getEventName() {

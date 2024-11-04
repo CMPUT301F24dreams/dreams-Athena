@@ -2,6 +2,9 @@ package com.example.athena.WaitList;
 
 import com.example.athena.Event.Event;
 import com.example.athena.Roles.User;
+import com.example.athena.dbInfoRetrieval.DBConnector;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
@@ -46,6 +49,10 @@ public class WaitList{
         this.waiting.add(user);
     }
 
+    public void removeUser(User user){
+        this.waiting.remove(user);
+    }
+
 
     /**
      * Randomly selects x amount of users to be sent a invitation to the event
@@ -54,17 +61,16 @@ public class WaitList{
     public void selectUsersToInvite(int numSelect){
 
         if (numSelect > waiting.size()){
-            //Throw an exception if numSelected is greater than the amount of users waiting
-            try {
-                throw new Exception("Number selected is greater than amount of users signed up");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            //if number to select is greater than amount signed up send all to invited
+            for(User user: waiting){
+                moveUsers(user,invited,waiting);
             }
-        }
-        //get random from list and move it
-        for (int i = 0; i < numSelect; i++) {
-            int indexNum = (int) (Math.random() * waiting.size());
-            moveUsers(waiting.get(indexNum),invited,waiting);
+        }else {
+            //get random from list and move it
+            for (int i = 0; i < numSelect; i++) {
+                int indexNum = (int) (Math.random() * waiting.size());
+                moveUsers(waiting.get(indexNum), invited, waiting);
+            }
         }
 
     }
