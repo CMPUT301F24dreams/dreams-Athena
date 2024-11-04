@@ -5,6 +5,7 @@
     android:id="@+id/entrant_and_organizer_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -147,13 +148,5 @@
             app:menu="@menu/organizer_and_user_menu">
 
         </com.google.android.material.navigation.NavigationView>
-
-
-
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

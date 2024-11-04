@@ -30,9 +30,7 @@ public class signinScreenActivity extends AppCompatActivity {
         // Put Device ID in Bundle
         Bundle bundle = new Bundle();
         bundle.putString("device_id", deviceId);
-
-
-
+        
         ImageButton signupbutton = findViewById(R.id.register_button);
 
         signupbutton.setOnClickListener(new View.OnClickListener() {
@@ -41,9 +39,6 @@ public class signinScreenActivity extends AppCompatActivity {
                 switchToCorrespondingActivity(getApplicationContext(), signUpActivity.class);
             }
         });
-
-
-
     }
 
     public void switchToCorrespondingActivity(Context context, Class<?> Activity) {

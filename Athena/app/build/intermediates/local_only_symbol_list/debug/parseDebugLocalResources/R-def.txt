@@ -98,6 +98,10 @@ id profile_image2
 id profile_image4
 id profile_picture_button
 id profile_picture_button2
+<<<<<<< Updated upstream
+=======
+id progressBar2
+>>>>>>> Stashed changes
 id reg_deadline_text_view
 id reg_end_event_non_edit
 id reg_start_text_view
@@ -129,7 +133,12 @@ id view_my_events_option
 id waitlistText
 layout admin_browse_facilities_page
 layout admin_browse_user_profiles_page
+<<<<<<< Updated upstream
 layout ent_and_org_home_fragment
+=======
+layout entrants_and_organizer_home
+layout entrants_and_organizer_home_fragment
+>>>>>>> Stashed changes
 layout event_clicked_by_user_page
 layout event_list_item_layout
 layout event_registered_entrants_page
@@ -140,6 +149,7 @@ layout organizer_my_events_page
 layout profile_screen
 layout profile_screen_edit
 layout profile_screen_notif_edit
+layout qr_code_fragment
 layout search_for_event_fragment
 layout search_for_facility_fragment
 layout sign_up_fragment

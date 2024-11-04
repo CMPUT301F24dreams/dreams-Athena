@@ -59,9 +59,9 @@ public class signUpFragment extends Fragment {
                 String number = binding.editNumberReg.getText().toString().trim();
 
                 // Debugging Toasts to verify values
-                Toast.makeText(getContext(), "Name: " + name, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Email: " + email, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Number: " + number, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Name: " + name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Email: " + email, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Number: " + number, Toast.LENGTH_SHORT).show();
 
                 // Check if fields are empty
                 if (name.isEmpty()) {

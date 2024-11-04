@@ -9,9 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
+import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
 import com.example.athena.R;
+import com.example.athena.RegistrationFragments.signinScreenFragment;
 
 public class signUpActivity extends AppCompatActivity {
 
@@ -42,10 +46,10 @@ public class signUpActivity extends AppCompatActivity {
                 String email = editEmail.getText().toString().trim();
                 String number = editNum.getText().toString().trim();
 
-                // Debugging Toasts to verify values
-                Toast.makeText(signUpActivity.this, "Name: " + name, Toast.LENGTH_SHORT).show();
-                Toast.makeText(signUpActivity.this, "Email: " + email, Toast.LENGTH_SHORT).show();
-                Toast.makeText(signUpActivity.this, "Number: " + number, Toast.LENGTH_SHORT).show();
+                // Debugging Toasts
+                // Toast.makeText(signUpActivity.this, "Name: " + name, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(signUpActivity.this, "Email: " + email, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(signUpActivity.this, "Number: " + number, Toast.LENGTH_SHORT).show();
 
                 // Check if fields are empty
                 if (name.isEmpty()) {
@@ -62,9 +66,15 @@ public class signUpActivity extends AppCompatActivity {
 
                 // If all fields are filled, proceed with action
                 Toast.makeText(signUpActivity.this, "Data Saved", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(signUpActivity.this, entrantAndOrganizerHomeActivity.class); // Replace 'signinScreenActivity.class' with the actual home screen activity
-                startActivity(intent);
-                finish(); // Finish current activity
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment()); // Replace with your container ID
+                transaction.commit();
+
+//                Intent intent = new Intent(signUpActivity.this, entrantAndOrganizerHomeActivity.class); // Replace 'signinScreenActivity.class' with the actual home screen activity
+//                startActivity(intent);
+//                finish(); // Finish current activity
             }
         });
 
