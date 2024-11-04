@@ -135,19 +135,5 @@
             app:srcCompat="@drawable/events_attending_text_addon" />
 
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/entrant_and_organizer_nav_view"
-            android:layout_width="216dp"
-            android:layout_height="0dp"
-            android:layout_gravity="start"
-            android:animateLayoutChanges="false"
-            android:background="#C4DEDD"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/organizer_and_user_menu">
-
-        </com.google.android.material.navigation.NavigationView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

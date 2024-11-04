@@ -151,19 +151,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
 }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.view_my_events_option:
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
-                transaction.commit();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 
 
 
