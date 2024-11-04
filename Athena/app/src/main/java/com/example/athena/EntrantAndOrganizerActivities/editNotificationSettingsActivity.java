@@ -1,4 +1,11 @@
-package com.example.athena.EntrantAndOrganizerActivities;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+/*package com.example.athena.EntrantAndOrganizerActivities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +19,8 @@ import com.example.athena.GeneralActivities.viewProfileActivity;
 import com.example.athena.R;
 
 
-/**
- * This class is used to edit a User's Notification settings
- */
+
+
 public class editNotificationSettingsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,3 +48,4 @@ public class editNotificationSettingsActivity extends AppCompatActivity {
 
 }
 
+*/

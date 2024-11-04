@@ -1,4 +1,15 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+/*
 package com.example.athena.GeneralActivities;
+
 
 import static android.widget.Toast.makeText;
 
@@ -15,7 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * This class represent the class that the user will user to register their details or sign into the application
- */
+
 public class signinScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,4 +69,4 @@ public class signinScreenActivity extends AppCompatActivity {
 
 }
 
-
+ */

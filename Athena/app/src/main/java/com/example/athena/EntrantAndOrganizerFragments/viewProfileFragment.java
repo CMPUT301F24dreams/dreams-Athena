@@ -58,6 +58,15 @@ public class viewProfileFragment extends Fragment {
 
             }
         });
+        binding.EditProfileAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new profileScreenEditFragment());
+                transaction.commit();
+            }
+        });
     }
 
 }

@@ -1,3 +1,5 @@
+/*
+
 package com.example.athena.EntrantAndOrganizerActivities;
 
 import android.content.Context;
@@ -11,9 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.athena.GeneralActivities.viewProfileActivity;
 import com.example.athena.R;
 
-/**
- * This class is used to edit a user's profile details
- */
+
 public class editProfileDetailsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,3 +36,4 @@ public class editProfileDetailsActivity extends AppCompatActivity {
         finish();
     }
 }
+*/

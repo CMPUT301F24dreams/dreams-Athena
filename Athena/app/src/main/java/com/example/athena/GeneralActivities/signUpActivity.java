@@ -1,3 +1,5 @@
+/*
+
 package com.example.athena.GeneralActivities;
 
 import android.content.Intent;
@@ -12,8 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
+//import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
 import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
+import com.example.athena.GeneralActivities.signinScreenActivity;
 import com.example.athena.R;
 import com.example.athena.RegistrationFragments.signinScreenFragment;
 
@@ -88,3 +91,4 @@ public class signUpActivity extends AppCompatActivity {
         });
     }
 }
+*/

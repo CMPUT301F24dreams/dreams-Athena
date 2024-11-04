@@ -1,3 +1,19 @@
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+//import com.example.athena.EntrantAndOrganizerActivities.editNotificationSettingsActivity;
+//import com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity;
+
+/*
+
 package com.example.athena.GeneralActivities;
 
 import android.content.Context;
@@ -15,12 +31,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.athena.EntrantAndOrganizerActivities.editNotificationSettingsActivity;
 import com.example.athena.EntrantAndOrganizerActivities.editProfileDetailsActivity;
-import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
+//import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
 import com.example.athena.R;
 
 /**
  * This is the activity where the user is able to view all of the information about their profile, and optionally navigate to change their profile settings
- */
+
 public class viewProfileActivity extends AppCompatActivity {
 
     private static final int GALLERY_REQUEST_CODE = 100;
@@ -121,4 +137,4 @@ public class viewProfileActivity extends AppCompatActivity {
         Intent activityToSwitchTo = new Intent(context, chosenActivity);
         startActivity(activityToSwitchTo);
     }
-}
+}*/

@@ -4066,7 +4066,6 @@ layout organizer_my_events_page
 layout profile_screen
 layout profile_screen_edit
 layout profile_screen_notif_edit
-layout qr_code_fragment
 layout search_for_event_fragment
 layout search_for_facility_fragment
 layout select_dialog_item_material

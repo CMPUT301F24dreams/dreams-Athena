@@ -1,4 +1,10 @@
+/*
+
+import android.content.Intent;
+
+
 package com.example.athena.EntrantAndOrganizerActivities;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerFragments.qrCodeFragment;
+
 import com.example.athena.GeneralActivities.signUpActivity;
 import com.example.athena.GeneralActivities.viewProfileActivity;
 import com.example.athena.R;
@@ -22,7 +28,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * This will be the home screen for people that are entrants or organizers
  * Using this screen, users and organizer will be able to navigate through all of their responsibilities and privileges by navigating to the respective button or drawer
- */
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.athena.GeneralActivities.viewProfileActivity;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
@@ -39,14 +56,8 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-<<<<<<< Updated upstream
-        setContentView(R.layout.ent_and_org_home_fragment);
+       setContentView(R.layout.ent_and_org_home_fragment);
 
-
-=======
-        setContentView(R.layout.entrants_and_organizer_home);
-        Toast.makeText(entrantAndOrganizerHomeActivity.this, "Data Saved1", Toast.LENGTH_SHORT).show();
->>>>>>> Stashed changes
 
         /// Assigns Button used for checking currently registered events
         ImageButton CheckCurrentEventsButton = findViewById(R.id.check_events_button);
@@ -90,17 +101,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
             }
         });
 
-        ScanQRCodeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-                Toast.makeText(entrantAndOrganizerHomeActivity.this, "Data Saved2", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
-                transaction.commit();
-            }
-        });
+
 
 //        CreateEventButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -128,12 +129,7 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * This method is responsible for switching to the desired activities throughout the application's navigation
-     * It is used with the same logic in other classes, so it will only be documented once
-     * @param context the context that the application is currently in
-     * @param chosenActivity the activity that the user is currently aiming to switch to
-     */
+
     public void switchToCorrespondingActivity(Context context, Class<?> chosenActivity) {
         Intent activityToSwitchTo = new Intent(context, chosenActivity);
         startActivity(activityToSwitchTo);
@@ -142,4 +138,4 @@ public class entrantAndOrganizerHomeActivity extends AppCompatActivity {
 
 
 }
-
+*/

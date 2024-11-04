@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="#D7F2EE">
 
-        <FrameLayout
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/content_frame"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_picture_button"
             app:layout_constraintVertical_bias="0.025">
 
-        </FrameLayout>
+        </androidx.fragment.app.FragmentContainerView>
 
         <TextView
             android:id="@+id/app_name"

@@ -14,10 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
+//import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
 import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
 import com.example.athena.GeneralActivities.MainActivity;
-import com.example.athena.GeneralActivities.signUpActivity;
 import com.example.athena.R;
 import com.example.athena.databinding.SignUpFragmentBinding;
 import com.example.athena.databinding.SigninScreenFragmentBinding;
