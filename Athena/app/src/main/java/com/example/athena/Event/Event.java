@@ -1,5 +1,6 @@
 package com.example.athena.Event;
 
+import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,25 +26,25 @@ public class Event implements Model { // TO-DO Java-doc
     private List<Interfaces.Observer> observers = new ArrayList<>();
 
     public Event(String eventID) {
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            DocumentReference docRef = db.collection("Events").document(eventID);
+        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        DocumentReference docRef = db.collection("Events").document(eventID);
 
-            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    Event newEvent = documentSnapshot.toObject(Event.class);
-                    eventName = newEvent.getEventName();
-                    description = newEvent.getDescription();
-                    facilityID = newEvent.getFacilityID();
-                    geoRequire = newEvent.getGeoRequire();
-                    maxParticipants = newEvent.getMaxParticipants();
-                    poster = newEvent.getPoster();
-                    regStart = newEvent.getRegStart();
-                    regEnd = newEvent.getRegEnd();
-                    eventDate = newEvent.getEventDate();
-                }
-            });
-        }
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Event newEvent = documentSnapshot.toObject(Event.class);
+                eventName = newEvent.getEventName();
+                description = newEvent.getDescription();
+                facilityID = newEvent.getFacilityID();
+                geoRequire = newEvent.getGeoRequire();
+                maxParticipants = newEvent.getMaxParticipants();
+                poster = newEvent.getPoster();
+                regStart = newEvent.getRegStart();
+                regEnd = newEvent.getRegEnd();
+                eventDate = newEvent.getEventDate();
+            }
+        });
+    }
 
     public Event(String eventName, String description, String facilityID, Boolean geoRequire, Integer maxParticipants, String poster, String regStart, String regEnd, String eventDate) {
         this.eventName = eventName;
@@ -59,6 +60,8 @@ public class Event implements Model { // TO-DO Java-doc
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(this);
     }
+    //TODO make complete implementations
+    /*
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
@@ -74,6 +77,8 @@ public class Event implements Model { // TO-DO Java-doc
             observer.update(this);
         }
     }
+    */
+
 
     // TO-DO: Add getters/setters properly
     public String getEventName() {
