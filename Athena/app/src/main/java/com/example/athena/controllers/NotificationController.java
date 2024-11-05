@@ -1,4 +1,5 @@
 package com.example.athena.controllers;
 
-public class EventController {
+public class NotificationController {
+
 }
