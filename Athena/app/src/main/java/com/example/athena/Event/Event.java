@@ -1,6 +1,7 @@
 package com.example.athena.Event;
 
 import com.example.athena.Interfaces.Observer;
+import com.example.athena.WaitList.WaitList;
 import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.athena.Interfaces.Model;
-public class Event implements Model { // TO-DO Java-doc
+public class Event { // TO-DO Java-doc
     private String eventName;
     private String description;
     private String facilityID;
@@ -22,7 +23,9 @@ public class Event implements Model { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
+    private WaitList waitList;
     private final List<Observer> observers = new ArrayList<>();
+
 
     public Event(String eventID) {
         FirebaseFirestore db = DBConnector.getInstance().getDb();
