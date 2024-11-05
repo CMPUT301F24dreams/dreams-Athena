@@ -92,8 +92,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-
-
+                displayFragment(new createEvent());
             }
        });
 
