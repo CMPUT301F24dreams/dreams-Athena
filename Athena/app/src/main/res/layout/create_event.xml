@@ -119,10 +119,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regDateStart2" />
+        app:layout_constraintTop_toBottomOf="@+id/regDateStart" />
 
     <EditText
-        android:id="@+id/regDateStart2"
+        android:id="@+id/regDateStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="448dp"
