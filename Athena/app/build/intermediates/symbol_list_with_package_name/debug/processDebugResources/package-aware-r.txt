@@ -3258,6 +3258,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id UIBox
 id WaitlistPageTitle
 id accelerate
 id accessibility_action_clickable_span
@@ -3360,6 +3361,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id button
+id button3
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3403,6 +3405,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id createEventButton
 id create_event_button
 id create_event_option
 id currentState
@@ -3419,6 +3422,7 @@ id decor_content_parent
 id default_activity_button
 id deltaRelative
 id dependency_ordering
+id description
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3464,6 +3468,8 @@ id entrant_and_organizer_view
 id entrants_to_notify_listview
 id entrants_to_notify_non_edit
 id escape
+id eventDate
+id eventNameText
 id event_card_layout
 id event_desc_non_edit
 id event_description_layout
@@ -3475,6 +3481,7 @@ id events_im_hosting_button
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id facilityID
 id fade
 id fill
 id fillCenter
@@ -3495,6 +3502,7 @@ id forever
 id fragment_container_view_tag
 id frost
 id fullscreen_header
+id geoRequire
 id geolocation_warn
 id ghost_view
 id ghost_view_holder
@@ -3660,6 +3668,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id participants
 id password_toggle
 id path
 id pathRelative
@@ -3684,6 +3693,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id regDateEnd
+id regDateStart
 id reg_deadline_text_view
 id reg_end_event_non_edit
 id reg_start_text_view
@@ -3831,6 +3842,7 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id uploadPhoto
 id useLogo
 id user_noti_title_non_edit
 id user_notifications_listview
@@ -3990,6 +4002,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout admin_browse_facilities_page
 layout admin_browse_user_profiles_page
+layout create_event
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4008,6 +4021,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ent_and_org_home_fragment
 layout event_clicked_by_user_page
+layout event_details
 layout event_list_item_layout
 layout event_registered_entrants_page
 layout ime_base_split_test_activity
@@ -4175,6 +4189,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fcm_fallback_notification_channel_label
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
