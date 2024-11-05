@@ -3463,7 +3463,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id entrantAndOrganizerHomeFragment
-id entrant_and_organizer_drawer_layout
+id entrant_and_organizer_constraint_layout
 id entrant_and_organizer_view
 id entrants_to_notify_listview
 id entrants_to_notify_non_edit
@@ -3844,6 +3844,7 @@ id unlabeled
 id up
 id uploadPhoto
 id useLogo
+id user_noti_title_non_edit
 id user_notifications_listview
 id user_notis_title_non_edit
 id user_profile_title_non_edit

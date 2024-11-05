@@ -2,213 +2,130 @@ package com.example.athena.Roles;
 
 import android.media.Image;
 
+import com.example.athena.Event.Event;
+import com.example.athena.dbInfoRetrieval.DBConnector;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *This class represents users in the application
  * and implements the roles of the different types of users in the application
  */
-public class User implements AdminOperations, EntrantOperations, OrganizerOperations {
-    String name;
-    ArrayList<String> roles;
-    String email;
-    Integer phoneNumber;
-    Image profilePicture;
+public class User{
+    private String name;
+    private Boolean isAdmin;
+    private Boolean isOrganizer;
+    private Boolean isEntrant;
+    private String email;
+    private Integer phoneNumber;
+    private Image profilePicture;
+    private ArrayList<Event> invitedEvents;
+    private ArrayList<Event> events;
+    private Boolean sendNotification;
 
-    public User(String name, ArrayList<String> roles, String email){
+    public User(String name, Boolean isAdmin, Boolean isEntrant, Boolean isOrginizer, String email) {
         this.name = name;
-        this.roles = new ArrayList<String>();
+        this.isEntrant = isEntrant;
+        this.isAdmin = isAdmin;
+        this.isOrganizer = isOrginizer;
         this.email = email;
+        this.sendNotification = Boolean.TRUE;
+        this.events = new ArrayList<Event>();
+        this.invitedEvents = new ArrayList<Event>();
     }
 
-    /**
-     * This method implementation will contain the logic for an admin to be able to delete a user
-     */
-    @Override
-    public void deleteUser(){
-        if(roles.contains("admin")){
+    public User(String userID) {
+        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        DocumentReference docRef = db.collection("Users").document(userID);
 
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User newUser = documentSnapshot.toObject(User.class);
+                name = newUser.getName();
+                email = newUser.getEmail();
+                isAdmin = newUser.getAdmin();
+                isEntrant = newUser.getEntrant();
+                isOrganizer = newUser.getOrganizer();
+                sendNotification = newUser.getSendNotification();
+                phoneNumber = newUser.getPhoneNumber();
+                profilePicture = newUser.getProfilePicture();
+            }
+        });
+
+        List<DocumentSnapshot> pending = db.collection("Users").document(userID)
+                .collection("Events")
+                .whereEqualTo("status","chosen")
+                .get().getResult().getDocuments();
+        for (DocumentSnapshot x: pending){
+            Event event = db.collection("Events").document(x.get("eventID").toString()).get().getResult().toObject(Event.class);
+            this.invitedEvents.add(event);
         }
 
-    }
-
-    /**
-     * This method implementation will contain the logic for an admin to be able to delete a QR Code
-     */
-    @Override
-    public void deleteQRCode(){
-        if(roles.contains("admin")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an admin to be able to delete an event image
-     */
-    @Override
-    public void deleteEventImage(){
-        if(roles.contains("admin")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an admin to be able to delete a user's profile image
-     */
-    @Override
-    public void deleteUserProfileImage(){
-        if(roles.contains("admin")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an admin to be able to delete a facility
-     */
-    @Override
-    public void deleteFacility(){
-        if(roles.contains("admin") || roles.contains("organizer")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logio for an organizer to be able to create an event
-     */
-    @Override
-    public void createEvent() {
-        if(roles.contains("organizer")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an organizer to be able to add a facility
-     */
-    @Override
-    public void addFacility(){
-        if(roles.contains("organizer")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an organizer to be able to add a facility
-     */
-    @Override
-    public void generateQrCode(){
-        if(roles.contains("organizer")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an organizer or admin
-     * to be able to delete and Event QR Code
-     */
-    @Override
-    public void deleteEventQRcode(){
-        if(roles.contains("admin") || roles.contains("organizer")){
-
-        }
-
-    }
-
-    /**
-     * This method implementation will contain the logic for an admin or organizer to be able to delete an event
-     */
-    @Override
-    public void deleteEvent(){
-        if(roles.contains("admin") || roles.contains("organizer")){
-
-        }
-    }
-    /**
-     * This method implementation will contain the logic
-     * for an organizer to be able to sample a replacement for a cancelled entrant
-     */
-    @Override
-    public void sampleReplacementEntrants(){
-        if(roles.contains("organizer")){
-
+        //grabs all documents in user events and converts them into event class and then stores them in arrayList
+        List<DocumentSnapshot> event = db.collection("Users").document(userID).collection("Events").get().getResult().getDocuments();
+        for (DocumentSnapshot i: event){
+            this.events.add(i.toObject(Event.class));
         }
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an organizer to be able to notify entrants that they have been selected for an event
-     */
-    @Override
-    public void notifyChosenEntrants(){
-        if(roles.contains("organizer")){
-
-        }
+    public boolean getSendNotification() {
+        return sendNotification;
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an organizer to be able to notify cancelled entrants that they have been selected for an event
-     */
-    @Override
-    public void notifyCancelledEntrants(){
-        if(roles.contains("organizer")){
-
-        }
+    public String getName() {
+        return name;
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an entrant to be able to join an event
-     */
-    @Override
-    public void joinEvent(){
-        if(roles.contains("entrant")){
 
-        }
-
+    public ArrayList<Event> getEvents() {
+        return events;
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an entrant to be able to accept an event invitation
-     */
-    @Override
-    public void acceptEventInvitation(){
-        if(roles.contains("entrant")){
-
-        }
-
+    public ArrayList<Event> getInvitedEvents() {
+        return invitedEvents;
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an entrant to be able to deny an event invitation
-     */
-    @Override
-    public void denyEventInvitation(){
-        if(roles.contains("entrant")){
-
-        }
-
+    public Image getProfilePicture() {
+        return profilePicture;
     }
 
-    /**
-     * This method implementation will contain the logic
-     * for an entrant to be able to join a waitlist
-     */
-    @Override
-    public void joinWaitlist(){
-        if(roles.contains("entrant")){
-
-        }
-
+    public Integer getPhoneNumber() {
+        return phoneNumber;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Boolean getOrganizer() {
+        return isOrganizer;
+    }
+
+    public void setOrganizer(Boolean organizer) {
+        isOrganizer = organizer;
+    }
+
+    public Boolean getEntrant() {
+        return isEntrant;
+    }
+
+    public void setEntrant(Boolean entrant) {
+        isEntrant = entrant;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
 
 }
