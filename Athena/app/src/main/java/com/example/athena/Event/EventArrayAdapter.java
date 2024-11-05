@@ -31,7 +31,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         TextView eventTitle = view.findViewById(R.id.event_title_textview);
         TextView eventDisc = view.findViewById(R.id.event_description_textview);
         TextView eventRegStart = view.findViewById(R.id.registration_start_date_textview);
-        TextView eventRegDead = view.findViewById(R.id.textView18);
+        TextView eventRegDead = view.findViewById(R.id.reg_deadline_text_view);
 
         eventTitle.setText(event.getEventName());
         eventDisc.setText(event.getDescription());

@@ -86,16 +86,16 @@ public class Event implements Model { // TO-DO Java-doc
 
     //waitlist access things
 
-    public void addUser(String userId){
-        waitList.addWaiting(userId);
+    public void addUser(String userId,String eventID){
+        waitList.addWaiting(userId, eventID);
     }
 
-    public void chooseUsers(int numOfUser){
-        waitList.selectUsersToInvite(numOfUser);
+    public void chooseUsers(int numOfUser, String eventID){
+        waitList.selectUsersToInvite(numOfUser, eventID);
     }
 
-    public void removeUser(String userId){
-        waitList.removeUser(userId);
+    public void removeUser(String userId, String eventID){
+        waitList.removeUser(userId, eventID);
     }
 
     // TO-DO: Add getters/setters properly

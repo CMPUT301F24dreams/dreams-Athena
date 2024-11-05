@@ -14,6 +14,8 @@ public class User implements AdminOperations, EntrantOperations, OrganizerOperat
     String email;
     Integer phoneNumber;
     Image profilePicture;
+    ArrayList<String> invitedEvents;
+    ArrayList<String> events;
 
     public User(String name, ArrayList<String> roles, String email){
         this.name = name;
