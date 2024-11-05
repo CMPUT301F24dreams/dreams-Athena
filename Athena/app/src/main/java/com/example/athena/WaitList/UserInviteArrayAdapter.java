@@ -13,16 +13,13 @@ import androidx.annotation.Nullable;
 import com.example.athena.Event.Event;
 import com.example.athena.R;
 import com.example.athena.Roles.User;
-import com.example.athena.dbInfoRetrieval.DBConnector;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.ArrayList;
 
-public class UserInviteArrayAdapter extends ArrayAdapter<String> {
-    private String userID;
-    public UserInviteArrayAdapter(Context context, ArrayList<String> events, String userID){
+public class UserInviteArrayAdapter extends ArrayAdapter<Event> {
+    public UserInviteArrayAdapter(Context context, ArrayList<Event> events){
         super(context, 0, events);
-        this.userID = userID;
     }
     @NonNull
     @Override
@@ -33,15 +30,13 @@ public class UserInviteArrayAdapter extends ArrayAdapter<String> {
         } else {
             view = convertView;
         }
-        String eventID = getItem(position);
-        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        Event event = getItem(position);
         TextView eventTitle = view.findViewById(R.id.accept_event_title);
         TextView eventDesc = view.findViewById(R.id.accept_discription);
-        String eventName = db.collection("Events").document(eventID).get().getResult().getDocumentReference("eventName").toString();
+        String eventName = event.getEventName();
+        String eventDescription = event.getDescription();
         eventTitle.setText(eventName);
-        String eventDescription = db.collection("Events").document(eventID).get().getResult().getDocumentReference("description").toString();
         eventDesc.setText(String.format("you have been invited to %s. Do you wish to accept or decline the invite?", eventDescription));
-
 
         return view;
     }
