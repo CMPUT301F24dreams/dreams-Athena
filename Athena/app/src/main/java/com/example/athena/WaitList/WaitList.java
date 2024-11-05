@@ -1,18 +1,21 @@
 package com.example.athena.WaitList;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.athena.Event.Event;
-import com.example.athena.Roles.User;
 import com.example.athena.dbInfoRetrieval.DBConnector;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class is responsible for storing information about waitlists for corresponding events
@@ -104,12 +107,17 @@ public class WaitList{
         return invited;
     }
 
-    public void addWaiting(String userId) {
-        this.waiting.add(userId);
+    public void addWaiting(String userID, String eventID) {
+
+        this.waiting.add(userID);
+        addToDatabase(userID,eventID);
+
     }
 
-    public void removeUser(String userId){
-        this.waiting.remove(userId);
+    public void removeUser(String userID, String eventID){
+
+        this.waiting.remove(userID);
+        deleteFromDatabase(userID, eventID);
     }
 
 
@@ -117,22 +125,135 @@ public class WaitList{
      * Randomly selects x amount of users to be sent a invitation to the event
      * @param numSelect the number of users to be selected
      */
-    public void selectUsersToInvite(int numSelect){
+    public void selectUsersToInvite(int numSelect, String eventID){
 
         if (numSelect > waiting.size()){
+
             //if number to select is greater than amount signed up send all to invited
-            for(String userId: waiting){
-                moveUsers(userId,invited,waiting);
+            for(String userID: waiting){
+                moveUsers(userID,invited,waiting);
+                updateDatabaseChosen(userID,eventID);
             }
         }else {
             //get random from list and move it
             for (int i = 0; i < numSelect; i++) {
                 int indexNum = (int) (Math.random() * waiting.size());
                 moveUsers(waiting.get(indexNum), invited, waiting);
+                updateDatabaseChosen(waiting.get(indexNum),eventID);
             }
         }
 
     }
+
+    private void addToDatabase(String userID,String eventID){
+        /*  we are calling to the data base to add a new document with the same ID as the events but in a different collection
+         *  we are doing this so that the user collection can store its own events and not have to search through each event in event
+         *  collection to find it's id to then display or modify
+         */
+        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        Map<String, Object> eventDetail = new HashMap<>();
+        eventDetail.put("eventID", eventID);
+        eventDetail.put("status", "pending");
+        db.collection("Users").document(userID).collection("Events").document(eventID).set(eventDetail)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("WaitListAdd", "onSuccess: event details added to user");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitListAdd", "onFailure: Error writing to doc");
+                    }
+                });
+
+
+        Map<String, Object> userDetail = new HashMap<>();
+        userDetail.put("UserID", userID);
+        userDetail.put("status", "pending");
+        db.collection("Events").document(eventID).collection("Waitlist").document(userID).set(userDetail)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("WaitListAdd", "onSuccess: user details added to event");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitListAdd", "onFailure: Error writing to doc");
+                    }
+                });
+    }
+
+
+    private void deleteFromDatabase(String userID, String eventID){
+        /*
+            we are removing both references to the user and event from the database when the user no longer wish to be in the event
+
+         */
+        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        db.collection("Events").document(eventID).collection("waitlist").document(userID).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("WaitlistDelete", "onSuccess: delete user on event side");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitlistDelete", "onFailure: delete user on event side");
+                    }
+                });
+        db.collection("Users").document(userID).collection("Events").document(eventID).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("WaitlistDelete", "onSuccess: delete event on user side");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitlistDelete", "onFailure: delete event on user side");
+                    }
+                });
+    }
+
+    private void updateDatabaseChosen(String userID, String eventID){
+        FirebaseFirestore db = DBConnector.getInstance().getDb();
+        // updates the database on the status of the user in the user collection
+        db.collection("Users").document(userID).collection("Events").document(eventID).update("status","chosen")
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("WaitlistInviteUser", "onSuccess: status change on user side");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitlistInviteUser", "onFailure: status change on user side");
+                    }
+                });
+        // updates the database on the status of the user in the event collection
+        db.collection("Events").document(eventID).collection("Waitlist").document(userID).update("status","chosen")
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("WaitlistInviteUser", "onSuccess: status change on event side");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("WaitlistInviteUser", "onFailure: status change on event side");
+                    }
+                });
+    }
+
 
     /**
      * Moves user object from one array list to another
