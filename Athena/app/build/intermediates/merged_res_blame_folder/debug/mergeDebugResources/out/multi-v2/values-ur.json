@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-ur/values-ur.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-ur/values-ur.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\abd638eb8d3acf1d6c4b207dd2fb280a\\transformed\\core-1.13.0\\res\\values-ur\\values-ur.xml",
@@ -74,23 +74,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-ur\\values-ur.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,167",
-                        "endColumns": "111,114",
-                        "endOffsets": "162,277"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11660,11772",
-                        "endColumns": "111,114",
-                        "endOffsets": "11767,11882"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\7ce925e977691f6a87db453c05169df7\\transformed\\play-services-base-18.0.1\\res\\values-ur\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -105,6 +88,23 @@
                         "startOffsets": "4480,4588,4752,4878,4989,5129,5256,5368,5624,5776,5886,6058,6186,6332,6501,6564,6631",
                         "endColumns": "107,163,125,110,139,126,111,103,151,109,171,127,145,168,62,66,87",
                         "endOffsets": "4583,4747,4873,4984,5124,5251,5363,5467,5771,5881,6053,6181,6327,6496,6559,6626,6714"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-ur\\values-ur.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,167",
+                        "endColumns": "111,114",
+                        "endOffsets": "162,277"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11660,11772",
+                        "endColumns": "111,114",
+                        "endOffsets": "11767,11882"
                     }
                 }
             ]

@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_start_date_textview"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/event_card_layout"
         android:layout_width="411dp"
-        android:layout_height="351dp"
+        android:layout_height="318dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="1dp">
 
@@ -21,7 +22,7 @@
         <LinearLayout
             android:id="@+id/Event_title_layout"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="39dp"
             android:orientation="horizontal">
 
             <TextView
@@ -33,7 +34,7 @@
 
             <TextView
                 android:id="@+id/event_title_textview"
-                android:layout_width="337dp"
+                android:layout_width="318dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Title" />
@@ -66,14 +67,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/reg_start_non_edit"
+                android:id="@+id/Reg_start_event_non_edit"
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:text="Registrations Start:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/registration_start_date_textview"
+                android:id="@+id/reg_start_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,14 +89,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/reg_deadline_non_edit"
+                android:id="@+id/reg_end_event_non_edit"
                 android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:text="Registration Deadline:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/reg_deadline_text_view"
                 android:layout_width="252dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -104,30 +105,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Position In Queue:"
-                android:textAllCaps="true"
-                android:textColor="#BC1212"
-                android:textSize="16sp"
-                android:textStyle="normal|bold" />
-
-            <TextView
-                android:id="@+id/position_in_waitlist_view"
-                android:layout_width="246dp"
-                android:layout_height="wrap_content"
-                android:text="Position Number "
-                android:textAllCaps="true"
-                android:textColor="#BC1212"
-                android:textSize="16sp"
-                android:textStyle="normal|bold" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
 
     </LinearLayout>
 

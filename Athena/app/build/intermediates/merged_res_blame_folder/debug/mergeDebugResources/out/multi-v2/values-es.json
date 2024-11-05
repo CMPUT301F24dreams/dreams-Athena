@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-es/values-es.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-es/values-es.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\2c60d5caa6437d1cc8ca2e546bf1fcdb\\transformed\\play-services-basement-18.3.0\\res\\values-es\\values.xml",
@@ -18,23 +18,6 @@
                         "startOffsets": "5578",
                         "endColumns": "159",
                         "endOffsets": "5733"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-es\\values-es.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,174",
-                        "endColumns": "118,119",
-                        "endOffsets": "169,289"
-                    },
-                    "to": {
-                        "startLines": "129,130",
-                        "startColumns": "4,4",
-                        "startOffsets": "11990,12109",
-                        "endColumns": "118,119",
-                        "endOffsets": "12104,12224"
                     }
                 },
                 {
@@ -88,6 +71,40 @@
                         "startOffsets": "4542,4650,4813,4944,5052,5213,5346,5468,5738,5930,6039,6204,6336,6501,6658,6725,6794",
                         "endColumns": "107,162,130,107,160,132,121,109,191,108,164,131,164,156,66,68,84",
                         "endOffsets": "4645,4808,4939,5047,5208,5341,5463,5573,5925,6034,6199,6331,6496,6653,6720,6789,6874"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-es\\values-es.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,174",
+                        "endColumns": "118,119",
+                        "endOffsets": "169,289"
+                    },
+                    "to": {
+                        "startLines": "129,130",
+                        "startColumns": "4,4",
+                        "startOffsets": "11990,12109",
+                        "endColumns": "118,119",
+                        "endOffsets": "12104,12224"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\65d78e4551b105c4024ef687383d5b82\\transformed\\zxing-android-embedded-4.3.0\\res\\values-es\\values-es.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,161,331",
+                        "endColumns": "58,46,169,135",
+                        "endOffsets": "109,156,326,462"
+                    },
+                    "to": {
+                        "startLines": "137,138,139,140",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "12732,12791,12838,13008",
+                        "endColumns": "58,46,169,135",
+                        "endOffsets": "12786,12833,13003,13139"
                     }
                 },
                 {

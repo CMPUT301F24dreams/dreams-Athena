@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-ro/values-ro.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-ro/values-ro.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\6b3ccd3b5a2b8df84db9e9611eed41a1\\transformed\\navigation-ui-2.3.5\\res\\values-ro\\values-ro.xml",
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\e5e851104aa6efd2085f9badbc491d63\\transformed\\navigation-ui-2.8.3\\res\\values-ro\\values-ro.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -88,6 +88,23 @@
                         "startOffsets": "5612",
                         "endColumns": "143",
                         "endOffsets": "5751"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\65d78e4551b105c4024ef687383d5b82\\transformed\\zxing-android-embedded-4.3.0\\res\\values-ro\\values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,166,275",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "109,161,270,387"
+                    },
+                    "to": {
+                        "startLines": "138,139,140,141",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "12637,12696,12748,12857",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "12691,12743,12852,12969"
                     }
                 },
                 {

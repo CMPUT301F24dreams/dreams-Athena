@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.athena.app-mergeDebugResources-46:/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "com.example.athena.app-mergeDebugResources-60:/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ahmed\\.gradle\\caches\\8.9\\transforms\\f18787143a8448334e7062698152705d\\transformed\\appcompat-1.7.0\\res\\values-en-rCA\\values-en-rCA.xml",
