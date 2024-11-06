@@ -4062,10 +4062,7 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout invited_list_content
 layout invited_page
-<<<<<<< HEAD
-=======
 layout invited_to_event_noti_display
->>>>>>> Refactoring-with-fragments-attempt
 layout loading_screen
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

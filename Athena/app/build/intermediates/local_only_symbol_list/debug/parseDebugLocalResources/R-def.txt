@@ -118,10 +118,7 @@ id imageButton
 id imageView
 id imageView3
 id invited_list
-<<<<<<< HEAD
-=======
 id linearLayout
->>>>>>> Refactoring-with-fragments-attempt
 id list_of_events
 id more_options_button
 id more_options_drawer
@@ -196,10 +193,7 @@ layout event_list_item_layout
 layout event_registered_entrants_page
 layout invited_list_content
 layout invited_page
-<<<<<<< HEAD
-=======
 layout invited_to_event_noti_display
->>>>>>> Refactoring-with-fragments-attempt
 layout loading_screen
 layout nav_host_fragment
 layout organizer_create_event_page
