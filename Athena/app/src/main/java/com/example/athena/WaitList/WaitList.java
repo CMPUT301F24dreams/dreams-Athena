@@ -1,6 +1,6 @@
 package com.example.athena.WaitList;
 
-import com.example.athena.Event.Event;
+import com.example.athena.Models.Event;
 import com.example.athena.Roles.User;
 
 

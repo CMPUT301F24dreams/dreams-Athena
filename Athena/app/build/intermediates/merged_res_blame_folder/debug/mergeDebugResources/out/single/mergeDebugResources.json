@@ -32,10 +32,6 @@
         "source": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-main-65:\\drawable\\bottombarcoloring.png"
     },
     {
-        "merged": "com.example.athena.app-debug-63:/layout_create_event.xml.flat",
-        "source": "com.example.athena.app-main-65:/layout/create_event.xml"
-    },
-    {
         "merged": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-63:\\drawable_back_to_home_button.png.flat",
         "source": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-main-65:\\drawable\\back_to_home_button.png"
     },
@@ -154,6 +150,10 @@
     {
         "merged": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-63:\\layout_ent_and_org_home_fragment.xml.flat",
         "source": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-main-65:\\layout\\ent_and_org_home_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-debug-63:/layout_sign_up_fragment.xml.flat",
+        "source": "com.example.athena.app-main-65:/layout/sign_up_fragment.xml"
     },
     {
         "merged": "C:\\Users\\roger\\.gradle\\daemon\\8.9\\com.example.athena.app-debug-63:\\layout_profile_screen_notif_edit.xml.flat",
