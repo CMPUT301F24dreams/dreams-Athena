@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
+                        transaction.replace(R.id.content_layout, homeScreen);
                         transaction.commit();
                     } else {
                         signUpFragment signUp = new signUpFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         signUp.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
+                        transaction.replace(R.id.content_layout, signUp);
                         transaction.commit();
                     }
                 }
