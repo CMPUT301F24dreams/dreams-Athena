@@ -59,7 +59,6 @@ id UIBox
 id WaitlistPageTitle
 id accept_discription
 id accept_event_title
-id accept_invite_btn
 id accept_page_content
 id action_entrantAndOrganizerHomeFragment_to_viewMyCreatedEventsFragment
 id admin_search_for_organizers_view
@@ -86,7 +85,6 @@ id content_layout
 id createEventButton
 id create_event_button
 id create_event_option
-id decline_invite_btn
 id declined_entrants_listview
 id declined_entrants_title_non_edit
 id description
@@ -176,7 +174,6 @@ id textView7
 id uploadPhoto
 id user_noti_title_non_edit
 id user_notifications_listview
-id user_notis_title_non_edit
 id user_profile_title_non_edit
 id user_profiles_listview
 id viewMyCreatedEventsFragment
