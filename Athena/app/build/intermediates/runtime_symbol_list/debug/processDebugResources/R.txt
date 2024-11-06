@@ -3076,6 +3076,7 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f070074
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f070075
 int drawable abc_textfield_search_material 0x7f070076
 int drawable abc_vector_test 0x7f070077
+int drawable accept_invitation_button 0x7f070116
 int drawable add_items_button 0x7f070078
 int drawable avd_hide_password 0x7f070079
 int drawable avd_show_password 0x7f07007a
@@ -3112,6 +3113,7 @@ int drawable common_google_signin_btn_text_light_normal 0x7f070098
 int drawable common_google_signin_btn_text_light_normal_background 0x7f070099
 int drawable create_event_drawer_button 0x7f07009a
 int drawable createeventtext 0x7f07009b
+int drawable deny_invitation_button 0x7f070117
 int drawable design_fab_background 0x7f07009c
 int drawable design_ic_visibility 0x7f07009d
 int drawable design_ic_visibility_off 0x7f07009e
@@ -3220,10 +3222,12 @@ int drawable notification_oversize_large_icon_bg 0x7f070104
 int drawable notification_template_icon_bg 0x7f070105
 int drawable notification_template_icon_low_bg 0x7f070106
 int drawable notification_tile_bg 0x7f070107
+int drawable notify_entrants 0x7f070113
 int drawable notify_panel_notification_icon_bg 0x7f070108
 int drawable profile_placeholder 0x7f070109
 int drawable profilepicturebutton 0x7f07010a
 int drawable register_button 0x7f07010b
+int drawable sample_participants_button 0x7f070114
 int drawable scanqrcodebutton 0x7f07010c
 int drawable signin_button 0x7f07010d
 int drawable test_level_drawable 0x7f07010e
@@ -3231,6 +3235,7 @@ int drawable title 0x7f07010f
 int drawable tooltip_frame_dark 0x7f070110
 int drawable tooltip_frame_light 0x7f070111
 int drawable updatesbuttonimage 0x7f070112
+int drawable view_selected_entrants_button 0x7f070115
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
@@ -3247,9 +3252,17 @@ int id Event_title_layout 0x7f08000c
 int id FUNCTION 0x7f08000d
 int id META 0x7f08000e
 int id NO_DEBUG 0x7f08000f
+int id Noti_layout 0x7f0802b2
+int id Noti_reg_end_textview 0x7f0802b3
+int id Noti_reg_start_textview 0x7f0802b4
+int id Notification_title_non_edit 0x7f0802b5
+int id OrgViewEventDescription 0x7f080295
+int id OrgViewEventDescriptionNonEdit 0x7f080296
+int id OrgViewEventName 0x7f080297
+int id OrgViewEventNameNonEdit 0x7f080298
 int id ProfileEmail 0x7f080010
 int id ProfileNumber 0x7f080011
-int id Reg_start_event_non_edit 0x7f080012
+int id Reg_start_event_non_edit_list 0x7f080299
 int id SHIFT 0x7f080013
 int id SHOW_ALL 0x7f080014
 int id SHOW_PATH 0x7f080015
@@ -3473,6 +3486,7 @@ int id entrants_to_notify_listview 0x7f0800ee
 int id entrants_to_notify_non_edit 0x7f0800ef
 int id escape 0x7f0800f0
 int id eventDate 0x7f0800f1
+<<<<<<< HEAD
 int id eventNameText 0x7f0800f2
 int id event_card_layout 0x7f0800f3
 int id event_desc_non_edit 0x7f0800f4
@@ -3481,6 +3495,18 @@ int id event_description_textview 0x7f0800f6
 int id event_name_non_edit 0x7f0800f7
 int id event_poster 0x7f0800f8
 int id event_title_textview 0x7f0800f9
+=======
+int id eventNameNotiTitleNonEdit 0x7f0802a9
+int id eventNameText 0x7f0800f2
+int id event_card_layout 0x7f0800f3
+int id event_card_layout_org_view 0x7f08029a
+int id event_desc_non_edit_list 0x7f08029b
+int id event_description_layout 0x7f0800f5
+int id event_description_textview_list 0x7f08029c
+int id event_name_non_edit_list 0x7f08029d
+int id event_poster 0x7f0800f8
+int id event_title_textview_list 0x7f08029e
+>>>>>>> Refactoring-with-fragments-attempt
 int id events_im_hosting_button 0x7f0800fa
 int id exitUntilCollapsed 0x7f0800fb
 int id expand_activities_button 0x7f0800fc
@@ -3554,6 +3580,10 @@ int id light 0x7f08013f
 int id line1 0x7f080140
 int id line3 0x7f080141
 int id linear 0x7f080142
+<<<<<<< HEAD
+=======
+int id linearLayout 0x7f0802a0
+>>>>>>> Refactoring-with-fragments-attempt
 int id listMode 0x7f080143
 int id list_item 0x7f080144
 int id list_of_events 0x7f080145
@@ -3641,12 +3671,24 @@ int id none 0x7f080196
 int id normal 0x7f080197
 int id north 0x7f080198
 int id not_chosen_notif 0x7f080199
+<<<<<<< HEAD
+=======
+int id notiEventName 0x7f0802ac
+int id noti_accept_button 0x7f0802b6
+int id noti_deny_button 0x7f0802b7
+int id noti_reg_end_non_edit 0x7f0802b8
+int id noti_reg_start_non_edit 0x7f0802b9
+>>>>>>> Refactoring-with-fragments-attempt
 int id notification_background 0x7f08019a
 int id notification_main_column 0x7f08019b
 int id notification_main_column_container 0x7f08019c
 int id notified_entrants_listview 0x7f08019d
 int id notified_entrants_non_edit 0x7f08019e
 int id notifs_from_others 0x7f08019f
+<<<<<<< HEAD
+=======
+int id notify_entrants_button 0x7f0802a1
+>>>>>>> Refactoring-with-fragments-attempt
 int id off 0x7f0801a0
 int id on 0x7f0801a1
 int id onInterceptTouchReturnSwipe 0x7f0801a2
@@ -3701,8 +3743,13 @@ int id ratio 0x7f0801d2
 int id rectangles 0x7f0801d3
 int id regDateEnd 0x7f0801d4
 int id regDateStart 0x7f0801d5
+<<<<<<< HEAD
 int id reg_deadline_text_view 0x7f0801d6
 int id reg_end_event_non_edit 0x7f0801d7
+=======
+int id reg_deadline_text_view_list 0x7f0802a2
+int id reg_end_event_non_edit_list 0x7f0802a3
+>>>>>>> Refactoring-with-fragments-attempt
 int id reg_start_text_view 0x7f0801d8
 int id regisration 0x7f0801d9
 int id register_button 0x7f0801da
@@ -3718,6 +3765,10 @@ int id right_side 0x7f0801e3
 int id rounded 0x7f0801e4
 int id row_index_key 0x7f0801e5
 int id rtl 0x7f0801e6
+<<<<<<< HEAD
+=======
+int id sample_participants_button 0x7f0802a4
+>>>>>>> Refactoring-with-fragments-attempt
 int id saveProfile 0x7f0801e7
 int id save_non_transition_alpha 0x7f0801e8
 int id save_overlay_view 0x7f0801e9
@@ -3747,6 +3798,11 @@ int id search_users_option 0x7f080200
 int id search_voice_btn 0x7f080201
 int id select_dialog_listview 0x7f080202
 int id selected 0x7f080203
+<<<<<<< HEAD
+=======
+int id selectedEntrantsListView 0x7f0802a6
+int id selected_entrants_title_non_edit 0x7f0802ba
+>>>>>>> Refactoring-with-fragments-attempt
 int id selection_type 0x7f080204
 int id sharedValueSet 0x7f080205
 int id sharedValueUnset 0x7f080206
@@ -3815,6 +3871,10 @@ int id textView2 0x7f080244
 int id textView3 0x7f080245
 int id textView4 0x7f080246
 int id textView5 0x7f080247
+<<<<<<< HEAD
+=======
+int id textView6 0x7f080293
+>>>>>>> Refactoring-with-fragments-attempt
 int id textView7 0x7f080248
 int id text_input_end_icon 0x7f080249
 int id text_input_error_icon 0x7f08024a
@@ -3859,6 +3919,10 @@ int id vertical_only 0x7f080270
 int id viewMyCreatedEventsFragment 0x7f080271
 int id view_my_events_option 0x7f080272
 int id view_offset_helper 0x7f080273
+<<<<<<< HEAD
+=======
+int id view_sampled_entrants_button 0x7f0802a7
+>>>>>>> Refactoring-with-fragments-attempt
 int id view_transition 0x7f080274
 int id view_tree_lifecycle_owner 0x7f080275
 int id view_tree_on_back_pressed_dispatcher_owner 0x7f080276
@@ -4034,6 +4098,10 @@ int layout ime_base_split_test_activity 0x7f0b0034
 int layout ime_secondary_split_test_activity 0x7f0b0035
 int layout invited_list_content 0x7f0b0036
 int layout invited_page 0x7f0b0037
+<<<<<<< HEAD
+=======
+int layout invited_to_event_noti_display 0x7f0b008c
+>>>>>>> Refactoring-with-fragments-attempt
 int layout loading_screen 0x7f0b0038
 int layout m3_alert_dialog 0x7f0b0039
 int layout m3_alert_dialog_actions 0x7f0b003a
@@ -4094,6 +4162,10 @@ int layout notification_template_icon_group 0x7f0b0070
 int layout notification_template_part_chronometer 0x7f0b0071
 int layout notification_template_part_time 0x7f0b0072
 int layout organizer_create_event_page 0x7f0b0073
+<<<<<<< HEAD
+=======
+int layout organizer_entrant_operations 0x7f0b008a
+>>>>>>> Refactoring-with-fragments-attempt
 int layout organizer_my_events_view 0x7f0b0074
 int layout profile_screen 0x7f0b0075
 int layout profile_screen_edit 0x7f0b0076
@@ -4103,6 +4175,10 @@ int layout search_for_facility_fragment 0x7f0b0079
 int layout select_dialog_item_material 0x7f0b007a
 int layout select_dialog_multichoice_material 0x7f0b007b
 int layout select_dialog_singlechoice_material 0x7f0b007c
+<<<<<<< HEAD
+=======
+int layout selected_entrants_fragment 0x7f0b008b
+>>>>>>> Refactoring-with-fragments-attempt
 int layout sign_up_fragment 0x7f0b007d
 int layout signin_screen_fragment 0x7f0b007e
 int layout support_simple_spinner_dropdown_item 0x7f0b007f

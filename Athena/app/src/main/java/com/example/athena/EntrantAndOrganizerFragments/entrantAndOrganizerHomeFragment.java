@@ -77,10 +77,20 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ///Assigns the create events I'm hosting button
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
+
         Bundle bundle = getArguments();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Users");
+
+        checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayFragment(new userViewAttendingEventsFragment());
+
+            }
+        });
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
