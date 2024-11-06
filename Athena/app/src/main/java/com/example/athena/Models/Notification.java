@@ -1,4 +1,4 @@
-package com.example.athena.Notifications;
+package com.example.athena.Models;
 
 public class Notification {
     private String deviceID;
