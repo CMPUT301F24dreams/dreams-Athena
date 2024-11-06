@@ -28,20 +28,7 @@ public class Event { // TO-DO Java-doc
 
     public Event(String eventName) {
         this.eventName = eventName;
-        this.description = description;
-        this.facilityID = facilityID;
-        this.geoRequire = geoRequire;
-        this.maxParticipants = maxParticipants;
-        this.poster = poster;
-        this.regStart = regStart;
-        this.regEnd = regEnd;
-        this.eventDate = eventDate;
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Events").add(this);
     }
-
-
 
     //TODO make complete implementations
     /*
