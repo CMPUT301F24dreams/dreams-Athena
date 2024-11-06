@@ -16,7 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.athena.Event.Event;
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.example.athena.WaitList.UserInviteArrayAdapter;
 
