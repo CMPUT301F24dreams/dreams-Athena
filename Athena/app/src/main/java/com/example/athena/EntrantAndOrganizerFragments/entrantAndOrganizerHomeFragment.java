@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.provider.CalendarContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +21,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.athena.ArrayAdapters.EventArrayAdapter;
-import com.example.athena.Firebase.EventsDBManager;
 import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
 import com.example.athena.R;
-import com.example.athena.WaitList.UserInviteArrayAdapter;
-import com.example.athena.WaitList.WaitListArrayAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -46,7 +36,6 @@ import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 /**
@@ -110,9 +99,12 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ///Assigns the create events I'm hosting button
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
+        ///Assigns the invitation  button
+        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
         list = view.findViewById(R.id.mainList);
 
-        Bundle bundle = getArguments();
+//        Bundle bundle = getArguments();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Users");
@@ -153,7 +145,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
 
-        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
 
     checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
         @Override
