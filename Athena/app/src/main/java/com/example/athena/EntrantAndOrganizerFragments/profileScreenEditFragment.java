@@ -98,12 +98,16 @@ public class profileScreenEditFragment extends Fragment {
             saveProfileChanges();
         });
     }
+    /**
+     * Method for editing name
+     */
+
     // Code to display a dialog
     private void showEditNameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Name");
 
-        // Set up the input field
+        // Set up the input
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
@@ -118,6 +122,9 @@ public class profileScreenEditFragment extends Fragment {
         builder.show();
     }
 
+    /**
+     * Method for editing email
+     */
     private void showEditEmailDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Email");
@@ -135,6 +142,9 @@ public class profileScreenEditFragment extends Fragment {
         builder.show();
     }
 
+    /**
+     * Method for editing number
+     */
     private void showEditNumberDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Phone Number");
@@ -153,6 +163,6 @@ public class profileScreenEditFragment extends Fragment {
     }
 
     private void saveProfileChanges() {
-
+        // TODO: database stuffs
     }
 }
