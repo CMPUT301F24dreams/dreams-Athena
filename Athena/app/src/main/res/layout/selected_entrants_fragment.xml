@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:backgroundTint="@color/mainBackground"
+    tools:context=".EntrantAndOrganizerFragments.selectedEntrantsFragment">
+
+    <ListView
+        android:id="@+id/selectedEntrantsListView"
+        android:layout_width="409dp"
+        android:layout_height="805dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_entrants_title_non_edit"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/selected_entrants_title_non_edit"
+        android:layout_width="402dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="5dp"
+        android:text="Selected Entrants:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

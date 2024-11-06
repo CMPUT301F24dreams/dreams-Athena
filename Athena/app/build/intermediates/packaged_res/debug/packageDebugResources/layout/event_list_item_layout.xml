@@ -26,14 +26,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/event_name_non_edit"
+                android:id="@+id/event_name_non_edit_list"
                 android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:text="Event Name:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_title_textview"
+                android:id="@+id/event_title_textview_list"
                 android:layout_width="318dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -47,14 +47,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/event_desc_non_edit"
+                android:id="@+id/event_desc_non_edit_list"
                 android:layout_width="124dp"
                 android:layout_height="match_parent"
                 android:text="Event Description:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/event_description_textview"
+                android:id="@+id/event_description_textview_list"
                 android:layout_width="289dp"
                 android:layout_height="match_parent"
                 android:text="Description" />
@@ -67,7 +67,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/Reg_start_event_non_edit"
+                android:id="@+id/Reg_start_event_non_edit_list"
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:text="Registrations Start:"
@@ -89,14 +89,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/reg_end_event_non_edit"
+                android:id="@+id/reg_end_event_non_edit_list"
                 android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:text="Registration Deadline:"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reg_deadline_text_view"
+                android:id="@+id/reg_deadline_text_view_list"
                 android:layout_width="252dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
