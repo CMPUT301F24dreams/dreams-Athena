@@ -3261,6 +3261,10 @@ id TOP_START
 id UIBox
 id WaitlistPageTitle
 id accelerate
+id accept_discription
+id accept_event_title
+id accept_invite_btn
+id accept_page_content
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -3416,6 +3420,7 @@ id dark
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
+id decline_invite_btn
 id declined_entrants_listview
 id declined_entrants_title_non_edit
 id decor_content_parent
@@ -3535,6 +3540,7 @@ id included
 id indeterminate
 id info
 id invisible
+id invited_list
 id inward
 id italic
 id item_touch_helper_previous_elevation
@@ -3551,6 +3557,7 @@ id line3
 id linear
 id listMode
 id list_item
+id list_of_events
 id locale
 id ltr
 id m3_side_sheet
@@ -3783,6 +3790,7 @@ id submenuarrow
 id submitButton
 id submit_area
 id supportScrollUp
+id switch1
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -4026,6 +4034,8 @@ layout event_list_item_layout
 layout event_registered_entrants_page
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout invited_list_content
+layout invited_page
 layout loading_screen
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

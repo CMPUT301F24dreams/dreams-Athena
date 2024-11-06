@@ -1,19 +1,19 @@
-#Mon Nov 04 21:54:05 MST 2024
-base.0=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.10=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.11=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.12=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.13=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.14=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
-base.2=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
-base.3=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.4=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.5=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
-base.6=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.7=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.8=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.9=C\:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Tue Nov 05 16:49:54 MST 2024
+base.0=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.10=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.11=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.12=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.13=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.14=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+base.2=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.3=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.4=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
+base.5=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
+base.6=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.7=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.8=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.9=C\:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.10=7/classes.dex

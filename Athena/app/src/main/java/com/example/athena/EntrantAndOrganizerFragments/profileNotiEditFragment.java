@@ -22,13 +22,16 @@ import com.example.athena.databinding.ProfileScreenNotifEditBinding;
  */
 public class profileNotiEditFragment extends Fragment {
 
+    // Variables for profile information
+    private String name;
+    private String number;
+    private String email;
+
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
     public profileNotiEditFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +43,9 @@ public class profileNotiEditFragment extends Fragment {
 
         ///Inflates the layout for the fragment
         return binding.getRoot();
+
+
+
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

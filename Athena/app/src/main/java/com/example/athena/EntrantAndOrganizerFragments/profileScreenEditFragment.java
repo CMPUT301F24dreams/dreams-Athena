@@ -1,5 +1,6 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
@@ -70,5 +73,86 @@ public class profileScreenEditFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+        // Edit Name button functionality
+        binding.EditName.setOnClickListener(v -> {
+            // Open dialog or activity for editing name
+            showEditNameDialog();
+        });
+
+        // Edit Email button functionality
+        binding.EditEmail.setOnClickListener(v -> {
+            // Open dialog or activity for editing email
+            showEditEmailDialog();
+        });
+
+        // Edit Number button functionality
+        binding.EditNumber.setOnClickListener(v -> {
+            // Open dialog or activity for editing number
+            showEditNumberDialog();
+        });
+
+        // Save Profile button functionality
+        binding.saveProfile.setOnClickListener(v -> {
+            // Save changes to profile information
+            saveProfileChanges();
+        });
+    }
+    // Code to display a dialog
+    private void showEditNameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Name");
+
+        // Set up the input field
+        final EditText input = new EditText(requireContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up buttons
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newName = input.getText().toString();
+            binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    private void showEditEmailDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Email");
+
+        final EditText input = new EditText(requireContext());
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newEmail = input.getText().toString();
+            binding.profileEmail2.setText("Email: " + newEmail);
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    private void showEditNumberDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Phone Number");
+
+        final EditText input = new EditText(requireContext());
+        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newNumber = input.getText().toString();
+            binding.profileNumber2.setText("Number: " + newNumber);
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    private void saveProfileChanges() {
+
     }
 }

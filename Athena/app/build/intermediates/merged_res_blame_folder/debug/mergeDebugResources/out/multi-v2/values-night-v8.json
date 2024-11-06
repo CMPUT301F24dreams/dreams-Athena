@@ -4,24 +4,7 @@
             "outputFile": "com.example.athena.app-mergeDebugResources-61:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\roger\\.gradle\\caches\\8.9\\transforms\\c596bede46c2b0b5d875dacc53b41148\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,687",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,771"
-                    },
-                    "to": {
-                        "startLines": "6,7,8,9,10,11,12,39",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "169,239,323,407,503,605,707,3689",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "234,318,402,498,600,702,796,3773"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\roger\\.gradle\\caches\\8.9\\transforms\\157f25308aad75ce20413e3a044b1adf\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\bgfis\\.gradle\\caches\\8.9\\transforms\\157f25308aad75ce20413e3a044b1adf\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\roger\\Documents\\dreams-Athena\\Athena\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\bgfis\\Android_studio_stutffs\\dreams-Athena\\Athena\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -54,6 +37,23 @@
                         "endLines": "5",
                         "endColumns": "12",
                         "endOffsets": "164"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\bgfis\\.gradle\\caches\\8.9\\transforms\\c596bede46c2b0b5d875dacc53b41148\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11,12,39",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "169,239,323,407,503,605,707,3689",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "234,318,402,498,600,702,796,3773"
                     }
                 }
             ]
