@@ -2,7 +2,6 @@ package com.example.athena.Firebase;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,7 +24,7 @@ public class UsersDBManager {
     }
 
     // Adds a new user to the Users collection
-    public Task<DocumentReference> addUser(String deviceID, HashMap<String, Object> userData) {
+    public Task<Void> addUser(String deviceID, HashMap<String, Object> userData) {
         return usersCollection.document(deviceID).set(userData);
     }
 
