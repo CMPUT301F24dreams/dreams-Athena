@@ -160,6 +160,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
                 displayChildFragment(new viewMyCreatedEventsFragment());
 
             }
@@ -170,6 +171,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+                listView.setVisibility((View.GONE));
                 displayChildFragment(new createEvent());
             }
         });
@@ -189,8 +191,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-
-
+                listView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -198,7 +199,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-
+                listView.setVisibility(View.VISIBLE);
             }
         });
 

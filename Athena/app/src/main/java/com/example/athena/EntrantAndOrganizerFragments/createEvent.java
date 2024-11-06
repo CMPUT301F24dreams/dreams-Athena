@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
@@ -46,7 +47,7 @@ public class createEvent extends Fragment implements displayFragments{
             createEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // FIX LATER:" Event newEvent = new Event(eventName.getText().toString(), description.getText().toString(), facility.getText().toString(), georequire.isChecked(), Integer.parseInt(participants.getText().toString()), upload.getText().toString(), regStart.getText().toString(), regEnd.getText().toString(), eventDate.getText().toString());
+                    // FIX LATER
                     displayChildFragment(new eventDetails());
                 }
             });
