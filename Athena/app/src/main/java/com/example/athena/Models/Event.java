@@ -1,17 +1,19 @@
-package com.example.athena.Models;
+package com.example.athena.Event;
 
 import com.example.athena.Interfaces.Observer;
-import com.example.athena.Firebase.DBConnector;
+import com.example.athena.WaitList.WaitList;
+import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.athena.Interfaces.Model;
-public class Event implements Model { // TO-DO Java-doc
+public class Event { // TO-DO Java-doc
     private String eventName;
     private String description;
     private String facilityID;
@@ -21,7 +23,9 @@ public class Event implements Model { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
+    private WaitList waitList;
     private final List<Observer> observers = new ArrayList<>();
+
 
     public Event(String eventID) {
         FirebaseFirestore db = DBConnector.getInstance().getDb();
@@ -58,6 +62,8 @@ public class Event implements Model { // TO-DO Java-doc
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(this);
     }
+    //TODO make complete implementations
+    /*
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
@@ -72,6 +78,22 @@ public class Event implements Model { // TO-DO Java-doc
         for (Observer observer : observers) {
             observer.update(this);
         }
+    }
+    */
+
+
+    //waitlist access things
+
+    public void addUser(String userId,String eventID){
+        waitList.addWaiting(userId, eventID);
+    }
+
+    public void chooseUsers(int numOfUser, String eventID){
+        waitList.selectUsersToInvite(numOfUser, eventID);
+    }
+
+    public void removeUser(String userId, String eventID){
+        waitList.removeUser(userId, eventID);
     }
 
     // TO-DO: Add getters/setters properly
