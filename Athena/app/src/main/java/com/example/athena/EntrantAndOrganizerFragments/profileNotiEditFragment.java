@@ -43,6 +43,35 @@ public class profileNotiEditFragment extends Fragment {
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //when ever the user clicks on the switch get if it is checked then update the user.
+        binding.chosenNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                binding.chosenNotif.isChecked();
+            }
+        });
+        binding.notChosenNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                binding.notChosenNotif.isChecked();
+            }
+        });
+        binding.notifsFromOthers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                binding.notifsFromOthers.isChecked();
+            }
+        });
+        binding.geolocationWarn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.geolocationWarn.isChecked();
+            }
+        });
+
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override

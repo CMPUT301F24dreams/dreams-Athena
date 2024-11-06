@@ -43,12 +43,15 @@ public class WaitList{
     //constructor for existing events in the db
     public WaitList(String eventID, Event event){
         FirebaseFirestore db = DBConnector.getInstance().getDb(); //get the db
+
+
         //get all entrants who's status is accepted and add them to the accepted list
         List<DocumentSnapshot> accepted = db.collection("Events").document(eventID)
                 .collection("waitlist")
                 .whereEqualTo("status","accepted")
                 .get().getResult().getDocuments();
         for (DocumentSnapshot x: accepted){
+
             this.accepted.add(x.get("entrantID").toString());
 
         }
@@ -264,5 +267,14 @@ public class WaitList{
     private void moveUsers(String userId, ArrayList<String> receiver, ArrayList<String> donor){
         receiver.add(userId);
         donor.remove(userId);
+    }
+
+    public void moveUserFromInvited(String userID, String newStatus){
+        if(newStatus == "accepted"){
+            moveUsers(userID,accepted,invited);
+        } else {
+            moveUsers(userID,declined,invited);
+        }
+
     }
 }
