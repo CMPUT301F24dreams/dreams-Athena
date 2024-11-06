@@ -26,28 +26,7 @@ public class Event { // TO-DO Java-doc
     private final List<Observer> observers = new ArrayList<>();
 
 
-    public Event(String eventID) {
-        FirebaseFirestore db = DBConnector.getInstance().getDb();
-        DocumentReference docRef = db.collection("Events").document(eventID);
-
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Event newEvent = documentSnapshot.toObject(Event.class);
-                eventName = newEvent.getEventName();
-                description = newEvent.getDescription();
-                facilityID = newEvent.getFacilityID();
-                geoRequire = newEvent.getGeoRequire();
-                maxParticipants = newEvent.getMaxParticipants();
-                poster = newEvent.getPoster();
-                regStart = newEvent.getRegStart();
-                regEnd = newEvent.getRegEnd();
-                eventDate = newEvent.getEventDate();
-            }
-        });
-    }
-
-    public Event(String eventName, String description, String facilityID, Boolean geoRequire, Integer maxParticipants, String poster, String regStart, String regEnd, String eventDate) {
+    public Event(String eventName) {
         this.eventName = eventName;
         this.description = description;
         this.facilityID = facilityID;
@@ -58,9 +37,12 @@ public class Event { // TO-DO Java-doc
         this.regEnd = regEnd;
         this.eventDate = eventDate;
 
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("Events").add(this);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Events").add(this);
     }
+
+
+
     //TODO make complete implementations
     /*
     @Override

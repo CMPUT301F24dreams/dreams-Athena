@@ -3,9 +3,7 @@ package com.example.athena.WaitList;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-import androidx.annotation.NonNull;
-
-import com.example.athena.Roles.User;
+import com.example.athena.Models.User;
 
 import java.util.ArrayList;
 //displays all user who are in the wait list for the organizer

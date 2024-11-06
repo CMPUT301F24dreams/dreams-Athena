@@ -47,7 +47,7 @@ public class createEvent extends Fragment {
             createEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Event newEvent = new Event(eventName.getText().toString(), description.getText().toString(), facility.getText().toString(), georequire.isChecked(), Integer.parseInt(participants.getText().toString()), upload.getText().toString(), regStart.getText().toString(), regEnd.getText().toString(), eventDate.getText().toString());
+                    // FIX LATER:" Event newEvent = new Event(eventName.getText().toString(), description.getText().toString(), facility.getText().toString(), georequire.isChecked(), Integer.parseInt(participants.getText().toString()), upload.getText().toString(), regStart.getText().toString(), regEnd.getText().toString(), eventDate.getText().toString());
                     displayFragment(new eventDetails());
                 }
             });
