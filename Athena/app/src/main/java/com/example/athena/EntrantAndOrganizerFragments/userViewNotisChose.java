@@ -2,15 +2,18 @@ package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 public class userViewNotisChose extends DialogFragment {
@@ -47,7 +50,7 @@ public class userViewNotisChose extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder.setView(view)
-                .setTitle("Accept or Decline")
+                .setTitle("YOU'RE INVITED!")
                 .setNeutralButton("Cancel", null)
                 .setNegativeButton("Decline",(dialog, which) -> listener.declineInvite(pos))
                 .setPositiveButton("Accept", (dialog, which) -> listener.acceptInvite(pos))
