@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,20 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.userDB;
 import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
 import com.example.athena.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -36,6 +45,8 @@ import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 /**
@@ -45,8 +56,12 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
 
     private FirebaseFirestore db;
     private User user;
+    private userDB userDB;
+    private eventsDB eventsDB;
+
+
     private String deviceID;
-    private ListView list;
+    private ListView listView;
     private EventArrayAdapter eventAdapter;
     private ArrayList<Event> events;
 
@@ -64,12 +79,53 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.db = FirebaseFirestore.getInstance();
-
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
+        userDB = new userDB();
+        eventsDB = new eventsDB();
         events = new ArrayList<>();
+
+        listView = view.findViewById(R.id.mainList);
+
+        Task getUserEvents = userDB.getUserEvents(deviceID);
+        Task getEventList = eventsDB.getEventsList();
+
+        Task eventsLoaded = Tasks.whenAll(getUserEvents, getEventList);
+        eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
+                listView.setAdapter(eventAdapter);
+
+                if (task.isSuccessful()) {
+                    QuerySnapshot userEvents = (QuerySnapshot) getUserEvents.getResult();
+                    List<String> userEventList = new ArrayList<>();
+
+                    for (Iterator<DocumentSnapshot> it = userEvents.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        userEventList.add(document.getId());
+                    }
+
+                    QuerySnapshot eventsList = (QuerySnapshot) getEventList.getResult();
+                    for (Iterator<DocumentSnapshot> it = eventsList.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        if (userEventList.contains(document.getId())) {
+                            String eventName = document.getString("eventName");
+                            Event currentEvent = new Event(eventName);
+                            events.add(currentEvent);
+                        }
+                    }
+
+                    eventAdapter.notifyDataSetChanged();
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
+
+
+
 
 
         /// Assigns button used for checking notifications
@@ -99,10 +155,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
         ///Assigns the create events I'm hosting button
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
-        list = view.findViewById(R.id.mainList);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Users");
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,42 +189,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-
-                ArrayList<String> eventIDList = new ArrayList<>();
-                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
-                list.setAdapter(eventAdapter);
-
-                CollectionReference userEventsRef = db.collection("Users/" + deviceID + "/Events");
-                ListenerRegistration userEventListener = userEventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                        if (querySnapshots != null) {
-                            eventIDList.clear();
-                            for (QueryDocumentSnapshot doc : querySnapshots) {
-                                String eventID = doc.getId();
-                                eventIDList.add(eventID);
-                            }
-
-                        }
-                    }
-                });
-                CollectionReference eventsRef = db.collection("Events");
-                ListenerRegistration eventListener = eventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                        if (querySnapshots != null) {
-                            events.clear();
-                            for (QueryDocumentSnapshot doc : querySnapshots) {
-                                if (eventIDList.contains(doc.getId())) {
-                                    Object eventName = doc.get("eventName");
-                                    assert eventName != null;
-                                    events.add(new Event(eventName.toString()));
-                                }
-                            }
-                            eventAdapter.notifyDataSetChanged();
-                        }
-                    }
-                });
 
 
             }

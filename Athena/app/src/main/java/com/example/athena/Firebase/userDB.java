@@ -1,12 +1,6 @@
 package com.example.athena.Firebase;
 
-import android.app.Activity;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -19,17 +13,17 @@ import java.util.List;
 /**
  * This class handles database operations for the users collection in Firestore.
  */
-public class UsersDBManager {
+public class userDB {
     private FirebaseFirestore db;
     private CollectionReference usersCollection;
 
-    public UsersDBManager() {
+    public userDB() {
         // Initialize Firestore and set the users collection
         this.db = FirebaseFirestore.getInstance();
         this.usersCollection = db.collection("Users");
     }
 
-    public Task getUserEvents(Activity activity, String deviceID) {
+    public Task<QuerySnapshot> getUserEvents(String deviceID) {
         Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
         return ueRef;
     }
