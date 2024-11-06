@@ -34,7 +34,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 
         TextView eventName = view.findViewById(R.id.eventNameText);
         assert event != null;
-        eventName.setText(String.format("Event Name: %s",event.getEventName()));
+        eventName.setText(event.getEventName());
 
         ImageView image = view.findViewById(R.id.eventImage);
         Glide.with(getContext()).load(event.getImageURL()).into(image);
