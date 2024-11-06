@@ -1,41 +1,53 @@
 package com.example.athena.GeneralActivities;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.CountDownTimer;
+import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
 
-import com.example.athena.RegistrationFragments.signinScreenFragment;
 import com.example.athena.R;
+import com.example.athena.RegistrationFragments.signUpFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading_screen);
-        //TODO make this check if the user is an admin or entrant/organizer
 
-        //15 second timer and then go to the main activity
-        //loading screen can later be adjusted so that it switches activities once all info is retrieved from the database
-        new CountDownTimer(5000, 5000) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-            public void onTick(long millisUntilFinished) {
-            }
-
-            public void onFinish() {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new signinScreenFragment()); // Replace with your container ID
-                transaction.commit();
-            }
-        }.start();
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            db.collection("Users").document(String.valueOf(getDeviceId())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("deviceID", String.valueOf(getDeviceId()));
+                    if (task.getResult().exists()) {
+                        entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        homeScreen.setArguments(bundle);
+                        transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
+                        transaction.commit();
+                    } else {
+                        signUpFragment signUp = new signUpFragment();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        signUp.setArguments(bundle);
+                        transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
+                        transaction.commit();
+                    }
+                }
+            });
+        }
     }
-
 }

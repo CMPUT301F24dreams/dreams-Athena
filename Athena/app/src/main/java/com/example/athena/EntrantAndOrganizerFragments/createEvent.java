@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.athena.Event.Event;
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 
