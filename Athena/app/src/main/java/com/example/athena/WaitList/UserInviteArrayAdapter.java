@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import com.example.athena.Models.Event;
 import com.example.athena.R;
-import com.example.athena.Roles.User;
 
 
 import java.util.ArrayList;

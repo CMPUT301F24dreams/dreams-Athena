@@ -1,12 +1,20 @@
 package com.example.athena.Firebase;
 
+import androidx.annotation.Nullable;
+
+import com.example.athena.Models.Event;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -30,6 +38,26 @@ public class EventsDBManager {
     // Retrieves a specific event by its ID
     public Task<DocumentSnapshot> getEvent(String eventId){
         return eventsCollection.document(eventId).get();
+    }
+
+    public ArrayList<Event> getEventList(ArrayList<String> eventIDList){
+        ArrayList<Event> events = new ArrayList<>();
+        ListenerRegistration eventListener = eventsCollection.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                if (querySnapshots != null) {
+                    events.clear();
+                    for (QueryDocumentSnapshot doc : querySnapshots) {
+                        if (eventIDList.contains(doc.getId())) {
+                            Object eventName = doc.get("eventName");
+                            assert eventName != null;
+                            events.add(new Event(eventName.toString()));
+                        }
+                    }
+                }
+            }
+        });
+        return events;
     }
 
     // Updates an existing event with new data

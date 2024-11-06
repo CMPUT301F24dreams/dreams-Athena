@@ -33,6 +33,14 @@
 
         </androidx.fragment.app.FragmentContainerView>
 
+        <ListView
+            android:id="@+id/mainList"
+            android:layout_width="406dp"
+            android:layout_height="568dp"
+            android:layout_marginTop="34dp"
+            app:layout_constraintTop_toBottomOf="@+id/app_name"
+            tools:layout_editor_absoluteX="2dp" />
+
         <TextView
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
@@ -93,8 +101,8 @@
             android:id="@+id/drawer_layer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="-2dp">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -225,6 +233,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -29,15 +29,11 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
             view = convertView;
         }
         Event event = getItem(position);
-        TextView eventTitle = view.findViewById(R.id.event_title_textview);
-        TextView eventDisc = view.findViewById(R.id.event_description_textview);
-        TextView eventRegStart = view.findViewById(R.id.registration_start_date_textview);
-        TextView eventRegDead = view.findViewById(R.id.reg_deadline_text_view);
+        TextView eventName = view.findViewById(R.id.eventNameText);
 
-        eventTitle.setText(event.getEventName());
-        eventDisc.setText(event.getDescription());
-        eventRegStart.setText(event.getRegStart());
-        eventRegDead.setText(event.getRegEnd());
+        assert event != null;
+        eventName.setText(String.format("Event Name: %s",event.getEventName()));
+
         return view;
     }
 }

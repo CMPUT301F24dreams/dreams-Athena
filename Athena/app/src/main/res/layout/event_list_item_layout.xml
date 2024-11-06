@@ -4,109 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/registration_start_date_textview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="7dp">
 
     <LinearLayout
         android:id="@+id/event_card_layout"
-        android:layout_width="411dp"
-        android:layout_height="318dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="410dp"
+        android:layout_height="98dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ImageView
-            android:id="@+id/event_poster"
-            android:layout_width="match_parent"
-            android:layout_height="159dp"
-            app:srcCompat="@drawable/image_place_holder" />
+            android:id="@+id/eventPicture"
+            android:layout_width="80dp"
+            android:layout_height="83dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            app:srcCompat="@drawable/back_to_home_button" />
 
-        <LinearLayout
-            android:id="@+id/Event_title_layout"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/event_name_non_edit"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:text="Event Name:"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/event_title_textview"
-                android:layout_width="318dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Title" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/event_description_layout"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/event_desc_non_edit"
-                android:layout_width="124dp"
-                android:layout_height="match_parent"
-                android:text="Event Description:"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/event_description_textview"
-                android:layout_width="289dp"
-                android:layout_height="match_parent"
-                android:text="Description" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/registration_start_layout"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/Reg_start_event_non_edit"
-                android:layout_width="138dp"
-                android:layout_height="wrap_content"
-                android:text="Registrations Start:"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/reg_start_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="registration start" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/regisration"
-            android:layout_width="match_parent"
-            android:layout_height="29dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/reg_end_event_non_edit"
-                android:layout_width="154dp"
-                android:layout_height="wrap_content"
-                android:text="Registration Deadline:"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/reg_deadline_text_view"
-                android:layout_width="252dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="registration deadline" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/eventNameText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:text="Event Name:" />
 
     </LinearLayout>
 

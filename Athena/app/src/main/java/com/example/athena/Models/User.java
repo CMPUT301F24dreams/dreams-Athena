@@ -21,6 +21,7 @@ public class User implements Model { // TO-DO Java-doc
     private String name;
     private String email;
     private String phone;
+    private ArrayList<String> Events;
 
     public User(String name, String email, String phone) {
         this.name = name;
@@ -69,6 +70,13 @@ public class User implements Model { // TO-DO Java-doc
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ArrayList<String> getEvents() {
+        return Events;
+    }
+    public void addEvent(String eventID) {
+        this.Events.add(eventID);
     }
 
 }
