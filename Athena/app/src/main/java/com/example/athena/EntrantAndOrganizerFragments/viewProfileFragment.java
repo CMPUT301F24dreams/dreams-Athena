@@ -30,9 +30,8 @@ public class viewProfileFragment extends Fragment {
 
         ///Initializer the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
+        
         ///Inflates the layout for the fragment
-
-
         return binding.getRoot();
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

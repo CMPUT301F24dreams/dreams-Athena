@@ -22,11 +22,6 @@ import com.example.athena.databinding.ProfileScreenNotifEditBinding;
  */
 public class profileNotiEditFragment extends Fragment {
 
-    // Variables for profile information
-    private String name;
-    private String number;
-    private String email;
-
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
     public profileNotiEditFragment() {
@@ -40,15 +35,42 @@ public class profileNotiEditFragment extends Fragment {
         ///Initializer the binding object
         binding = ProfileScreenNotifEditBinding.inflate(inflater, container, false);
 
-
         ///Inflates the layout for the fragment
         return binding.getRoot();
 
-
-
     }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // TODO: Need to add the db stuff
+
+        binding.chosenNotif.setChecked(getSwitchStateFromDb("chosenNotif"));
+        binding.notChosenNotif.setChecked(getSwitchStateFromDb("notChosenNotif"));
+        binding.geolocationWarn.setChecked(getSwitchStateFromDb("geolocationWarn"));
+        binding.notifsFromOthers.setChecked(getSwitchStateFromDb("notifsFromOthers"));
+
+        // Listeners for each switch
+        // Chosen notifications
+        binding.chosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("chosenNotif", isChecked);
+        });
+
+        // Not chosen notifications
+        binding.notChosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notChosenNotif", isChecked);
+        });
+
+        // Geolocation warning notifcations
+        binding.geolocationWarn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("geolocationWarn", isChecked);
+        });
+
+        // Notifications from organizers and admins
+        binding.notifsFromOthers.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifsFromOthers", isChecked);
+        });
+
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,5 +81,20 @@ public class profileNotiEditFragment extends Fragment {
                 transaction.commit();
             }
         });
+    }
+
+    /**
+     * Method for retrieving the switch state from the database
+     */
+    private boolean getSwitchStateFromDb(String key) {
+        // TODO: Take the switch state from db
+        return false; // Default value
+    }
+
+    /**
+     * Method for saving the switch state to the database
+     */
+    private void saveSwitchStateToDb(String key, boolean isChecked) {
+        // TODO: Save the switch stuff to db
     }
 }
