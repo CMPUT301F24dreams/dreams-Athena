@@ -1,34 +1,32 @@
 package com.example.athena.Firebase;
 
-import androidx.annotation.Nullable;
-
-import com.example.athena.Models.Event;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * This class handles database operations for events collection, interacting with the Firestore database.
  */
-public class EventsDBManager {
+public class eventsDB {
     private FirebaseFirestore db;
     private CollectionReference eventsCollection;
 
-    public EventsDBManager(){
+    public eventsDB(){
         // Initialize the Firestore connection and specify the collection
-        this.db = DBConnector.getInstance().getDb();
+        this.db = FirebaseFirestore.getInstance();
         this.eventsCollection= db.collection("Events");
     }
+
+    public Task<QuerySnapshot> getEventsList() {
+        Task eRef = db.collection("Events").get();
+        return eRef;
+    }
+
 
     // Adds a new event to the Events collection
     public Task<DocumentReference> addEvent(HashMap<String, Object> eventData){

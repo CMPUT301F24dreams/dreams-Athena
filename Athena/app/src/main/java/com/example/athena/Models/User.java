@@ -21,7 +21,7 @@ public class User implements Model { // TO-DO Java-doc
     private String name;
     private String email;
     private String phone;
-    private ArrayList<String> Events;
+    private ArrayList<Event> Events;
 
     public User(String name, String email, String phone) {
         this.name = name;
@@ -72,11 +72,11 @@ public class User implements Model { // TO-DO Java-doc
         this.email = email;
     }
 
-    public ArrayList<String> getEvents() {
+    public ArrayList<Event> getEvents() {
         return Events;
     }
-    public void addEvent(String eventID) {
-        this.Events.add(eventID);
+    public void addEvent(Event event) {
+        this.Events.add(event);
     }
 
 }
