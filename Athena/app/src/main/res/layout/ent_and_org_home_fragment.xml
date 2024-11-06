@@ -157,7 +157,7 @@
                 android:layout_height="0dp"
                 android:background="#90C5BD"
                 android:orientation="vertical"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/scan_qr_code_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
