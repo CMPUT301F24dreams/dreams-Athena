@@ -32,12 +32,19 @@ public class userViewNotisFragment extends Fragment implements userViewNotisChos
     private String userID;
 
     @Override
+    /**
+     * changes the users status from chosen to accepted
+     * @param position the position in list the event is
+     */
     public void acceptInvite(int position) {
         adapter.getItem(position).setEventName("YIPPE");
         adapter.notifyDataSetChanged();
 //        events.get(position).moveUser(userID,"accepted");
     }
-
+    /**
+     * changes the users status from chosen to declined
+     * @param position the position in list the event is
+     */
     @Override
     public void declineInvite(int position) {
         adapter.getItem(position).setEventName("AWWW");
@@ -98,7 +105,10 @@ public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         });
         */
 }
-
+    /**
+     * shows a DialogFragment where the user can choose to accept or decline an invite to an event
+     * @param bundle bundle with name, description and position of the event
+     */
     private void showDialog(Bundle bundle) {
         FragmentManager fm = getParentFragmentManager();
         userViewNotisChose frag = new userViewNotisChose();

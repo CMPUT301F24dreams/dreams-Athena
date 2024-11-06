@@ -12,6 +12,7 @@
         android:id="@+id/accept_event_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="Event Title"
         android:textSize="28sp" />
 
@@ -19,6 +20,7 @@
         android:id="@+id/accept_discription"
         android:layout_width="match_parent"
         android:layout_height="42dp"
+        android:layout_marginLeft="10dp"
         android:text="default acceptance message" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
