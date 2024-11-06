@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="drawer_background_color">#90C5BD</color>
     <color name="mainBackground">#D7F2EE</color>
+    <color name="title_text_color">#256B63</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Athena</string>
+    <string name="close">close\n</string>
     <string name="gcm_defaultSenderId" translatable="false">642024070747</string>
     <string name="google_api_key" translatable="false">AIzaSyCYLcE0vrvtA5XEiUa08uDunZkSablxaH0</string>
     <string name="google_app_id" translatable="false">1:642024070747:android:7dbc404e8bc01b998b297e</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCYLcE0vrvtA5XEiUa08uDunZkSablxaH0</string>
     <string name="google_storage_bucket" translatable="false">dreams-lottery.appspot.com</string>
-    <string name="notified_entrants">Notified Entrants</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">open\n</string>
     <string name="project_id" translatable="false">dreams-lottery</string>
     <style name="Base.Theme.Athena" parent="Theme.Material3.DayNight.NoActionBar">
         

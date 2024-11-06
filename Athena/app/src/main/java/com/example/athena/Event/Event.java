@@ -1,5 +1,7 @@
 package com.example.athena.Event;
 
+import com.example.athena.Interfaces.Observer;
+import com.example.athena.WaitList.WaitList;
 import com.example.athena.dbInfoRetrieval.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -10,10 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import Interfaces.Observer;
-import Interfaces.Model;
-
-public class Event implements Model { // TO-DO Java-doc
+import com.example.athena.Interfaces.Model;
+public class Event { // TO-DO Java-doc
     private String eventName;
     private String description;
     private String facilityID;
@@ -23,7 +23,9 @@ public class Event implements Model { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
-    private List<Interfaces.Observer> observers = new ArrayList<>();
+    private WaitList waitList;
+    private final List<Observer> observers = new ArrayList<>();
+
 
     public Event(String eventID) {
         FirebaseFirestore db = DBConnector.getInstance().getDb();
@@ -79,6 +81,20 @@ public class Event implements Model { // TO-DO Java-doc
     }
     */
 
+
+    //waitlist access things
+
+    public void addUser(String userId,String eventID){
+        waitList.addWaiting(userId, eventID);
+    }
+
+    public void chooseUsers(int numOfUser, String eventID){
+        waitList.selectUsersToInvite(numOfUser, eventID);
+    }
+
+    public void removeUser(String userId, String eventID){
+        waitList.removeUser(userId, eventID);
+    }
 
     // TO-DO: Add getters/setters properly
     public String getEventName() {
