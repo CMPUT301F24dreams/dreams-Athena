@@ -155,13 +155,31 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
                             String eventID = doc.getId();
                             eventIDList.add(eventID);
                         }
+
+                    }
+                }
+            });
+            CollectionReference eventsRef = db.collection("Events");
+            ListenerRegistration eventListener = eventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                    if (querySnapshots != null) {
+                        events.clear();
+                        for (QueryDocumentSnapshot doc : querySnapshots) {
+                            if (eventIDList.contains(doc.getId())) {
+                                Object eventName = doc.get("eventName");
+                                assert eventName != null;
+                                events.add(new Event(eventName.toString()));
+                            }
+                        }
+                        eventAdapter.notifyDataSetChanged();
                     }
                 }
             });
 
-            EventsDBManager eventDB = new EventsDBManager();
-            events = eventDB.getEventList(eventIDList);
-            eventAdapter.notifyDataSetChanged();
+
+
+
         }
     });
 

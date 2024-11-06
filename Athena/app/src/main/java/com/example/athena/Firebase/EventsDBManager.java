@@ -40,26 +40,6 @@ public class EventsDBManager {
         return eventsCollection.document(eventId).get();
     }
 
-    public ArrayList<Event> getEventList(ArrayList<String> eventIDList){
-        ArrayList<Event> events = new ArrayList<>();
-        ListenerRegistration eventListener = eventsCollection.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                if (querySnapshots != null) {
-                    events.clear();
-                    for (QueryDocumentSnapshot doc : querySnapshots) {
-                        if (eventIDList.contains(doc.getId())) {
-                            Object eventName = doc.get("eventName");
-                            assert eventName != null;
-                            events.add(new Event(eventName.toString()));
-                        }
-                    }
-                }
-            }
-        });
-        return events;
-    }
-
     // Updates an existing event with new data
     public Task<Void> updateEvent(String eventId, HashMap<String, Object> updatedData){
         return eventsCollection.document(eventId).update(updatedData);
