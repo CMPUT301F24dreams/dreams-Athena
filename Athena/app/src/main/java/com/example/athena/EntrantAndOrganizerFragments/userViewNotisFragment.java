@@ -69,6 +69,7 @@ public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
     adapter = new UserInviteArrayAdapter(getContext(),events);
     invites.setAdapter(adapter);
 
+
     invites.setClickable(Boolean.TRUE);
     invites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
