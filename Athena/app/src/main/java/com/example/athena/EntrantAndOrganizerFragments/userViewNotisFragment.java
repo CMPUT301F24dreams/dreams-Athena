@@ -33,13 +33,15 @@ public class userViewNotisFragment extends Fragment implements userViewNotisChos
 
     @Override
     public void acceptInvite(int position) {
-        events.get(position).setEventName("YIPPE");
+        adapter.getItem(position).setEventName("YIPPE");
+        adapter.notifyDataSetChanged();
 //        events.get(position).moveUser(userID,"accepted");
     }
 
     @Override
     public void declineInvite(int position) {
-        events.get(position).setEventName("AWWW");
+        adapter.getItem(position).setEventName("AWWW");
+        adapter.notifyDataSetChanged();
 //        events.get(position).moveUser(userID,"declined");
     }
 
