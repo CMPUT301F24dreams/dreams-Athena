@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.provider.CalendarContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +19,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.ArrayAdapters.EventArrayAdapter;
-import com.example.athena.Firebase.EventsDBManager;
 import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
 import com.example.athena.R;
-import com.example.athena.WaitList.UserInviteArrayAdapter;
-import com.example.athena.WaitList.WaitListArrayAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -46,13 +36,12 @@ import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 /**
  * This is a fragment used as a home page for entrants and organizers
  */
-public class entrantAndOrganizerHomeFragment extends Fragment {
+public class entrantAndOrganizerHomeFragment extends Fragment implements displayFragments{
 
     private FirebaseFirestore db;
     private User user;
@@ -119,7 +108,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayFragment(new viewMyCreatedEventsFragment());
+                displayChildFragment(new viewMyCreatedEventsFragment());
 
             }
         });
@@ -129,7 +118,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayFragment(new createEvent());
+                displayChildFragment(new createEvent());
             }
         });
 
@@ -246,12 +235,18 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
     }
 
 
-private void displayFragment(Fragment fragment) {
+    @Override
+    public void displayChildFragment(Fragment fragment) {
     getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-}
+    }
+
+    @Override
+    public void switchToNewFragment(Fragment fragment) {
+
+    }
 
 
-private void scanCode() {
+    private void scanCode() {
     ScanOptions options = new ScanOptions();
     options.setPrompt("Volume up to flash on");
     options.setBeepEnabled(true);

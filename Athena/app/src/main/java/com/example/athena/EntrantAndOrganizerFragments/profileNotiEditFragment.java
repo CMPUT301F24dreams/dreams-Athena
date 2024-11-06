@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenNotifEditBinding;
@@ -20,7 +20,7 @@ import com.example.athena.databinding.ProfileScreenNotifEditBinding;
  * This is the fragment responsible for handling the operations of the user when they want to edit their profile
  * notification settings
  */
-public class profileNotiEditFragment extends Fragment {
+public class profileNotiEditFragment extends Fragment implements displayFragments{
 
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
@@ -76,11 +76,26 @@ public class profileNotiEditFragment extends Fragment {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
-                transaction.commit();
+                switchToNewFragment(new viewProfileFragment());
             }
         });
     }
+
+
+    @Override
+    public void displayChildFragment(Fragment fragment) {
+    }
+
+    @Override
+    public void switchToNewFragment(Fragment fragment){
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.content_layout, fragment);
+        transaction.commit();
+
+    }
+
+
+
+
 }

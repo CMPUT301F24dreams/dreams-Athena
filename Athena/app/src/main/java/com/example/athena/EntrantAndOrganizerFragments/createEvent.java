@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
-import com.example.athena.Models.Event;
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 
 
-public class createEvent extends Fragment {
+public class createEvent extends Fragment implements displayFragments{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,12 +47,18 @@ public class createEvent extends Fragment {
                 @Override
                 public void onClick(View v) {
                     // FIX LATER:" Event newEvent = new Event(eventName.getText().toString(), description.getText().toString(), facility.getText().toString(), georequire.isChecked(), Integer.parseInt(participants.getText().toString()), upload.getText().toString(), regStart.getText().toString(), regEnd.getText().toString(), eventDate.getText().toString());
-                    displayFragment(new eventDetails());
+                    displayChildFragment(new eventDetails());
                 }
             });
         }
-        private void displayFragment(Fragment fragment){
+
+        @Override
+        public void displayChildFragment(Fragment fragment){
             getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
+        }
+
+        @Override
+        public void switchToNewFragment(Fragment fragment){
         }
 }
 

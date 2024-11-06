@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
+import com.example.athena.Interfaces.displayFragments;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 
-public class eventDetails extends Fragment {
+public class eventDetails extends Fragment implements displayFragments {
 
 
 
@@ -42,12 +39,17 @@ public class eventDetails extends Fragment {
             public void onClick(View v) {
                 ///Change with your own logic, for now it will just go to the page that shows all of the sampling options
                 Fragment organizerOperations = new OrganizerEntrantOperations();
-                displayFragment(organizerOperations);
+                displayChildFragment(organizerOperations);
             }
         });
     }
-    private void displayFragment(Fragment fragment){
+
+    @Override
+    public void displayChildFragment(Fragment fragment){
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
+    }
+    @Override
+    public void switchToNewFragment(Fragment fragment){
     }
 
 }

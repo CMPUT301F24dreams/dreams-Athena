@@ -111,10 +111,12 @@
             tools:layout_editor_absoluteX="0dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/text_addon_non_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="872dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.082"
                 app:layout_constraintStart_toStartOf="parent"

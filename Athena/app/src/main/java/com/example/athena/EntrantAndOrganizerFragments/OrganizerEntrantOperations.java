@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 
 
-public class OrganizerEntrantOperations extends Fragment {
+public class OrganizerEntrantOperations extends Fragment implements displayFragments {
 
 
 
@@ -40,12 +40,18 @@ public class OrganizerEntrantOperations extends Fragment {
             public void onClick(View v) {
                 ///Change with your own logic, for now it will just go to the page that shows all of the sampling options
                 Fragment selectedEntrants = new selectedEntrantsFragment();
-                displayFragment(selectedEntrants);
+                displayChildFragment(selectedEntrants);
             }
         });
     }
-    private void displayFragment(Fragment fragment){
+
+    @Override
+    public void displayChildFragment(Fragment fragment){
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
+    }
+
+    @Override
+    public void switchToNewFragment(Fragment fragment){
     }
 
 }

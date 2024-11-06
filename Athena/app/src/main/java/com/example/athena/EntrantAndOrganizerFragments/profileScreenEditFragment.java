@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenEditBinding;
@@ -71,4 +71,5 @@ public class profileScreenEditFragment extends Fragment {
             }
         });
     }
+
 }
