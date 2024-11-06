@@ -1,6 +1,12 @@
 package com.example.athena.Firebase;
 
+import android.app.Activity;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -19,8 +25,13 @@ public class UsersDBManager {
 
     public UsersDBManager() {
         // Initialize Firestore and set the users collection
-        this.db = DBConnector.getInstance().getDb();
+        this.db = FirebaseFirestore.getInstance();
         this.usersCollection = db.collection("Users");
+    }
+
+    public Task getUserEvents(Activity activity, String deviceID) {
+        Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
+        return ueRef;
     }
 
     // Adds a new user to the Users collection

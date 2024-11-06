@@ -29,6 +29,9 @@ public class Event { // TO-DO Java-doc
     public Event(String eventName) {
         this.eventName = eventName;
     }
+    public Event() {
+
+    }
 
     //TODO make complete implementations
     /*
