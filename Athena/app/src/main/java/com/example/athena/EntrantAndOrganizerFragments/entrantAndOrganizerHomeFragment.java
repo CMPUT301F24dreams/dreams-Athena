@@ -69,7 +69,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
-        Toast.makeText(getActivity(), "main", Toast.LENGTH_SHORT).show();
 
         super.onCreate(savedInstanceState);
 
@@ -112,7 +111,8 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                         if (userEventList.contains(document.getId())) {
                             String eventName = document.getString("eventName");
-                            Event currentEvent = new Event(eventName);
+                            String imageURL = document.getString("imageURL");
+                            Event currentEvent = new Event(eventName, imageURL);
                             events.add(currentEvent);
                         }
                     }
