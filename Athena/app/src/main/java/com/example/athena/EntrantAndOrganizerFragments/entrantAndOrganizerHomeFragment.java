@@ -112,19 +112,8 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
         list = view.findViewById(R.id.mainList);
 
-        Bundle bundle = getArguments();
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Users");
-
-        checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                appDrawer.setVisibility(View.GONE);
-                displayFragment(new userViewAttendingEventsFragment());
-
-            }
-        });
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +123,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
             }
         });
-         //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
+        //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
 
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +131,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
                 appDrawer.setVisibility(View.GONE);
                 displayFragment(new createEvent());
             }
-       });
+        });
 
         ///Click Listener used to close the app drawer
         closeDrawerButton.setOnClickListener(new View.OnClickListener() {
@@ -155,84 +144,82 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
-    checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            appDrawer.setVisibility(View.GONE);
+        checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appDrawer.setVisibility(View.GONE);
 
-            ArrayList<String> eventIDList = new ArrayList<>();
-            EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
-            list.setAdapter(eventAdapter);
+                ArrayList<String> eventIDList = new ArrayList<>();
+                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
+                list.setAdapter(eventAdapter);
 
-            CollectionReference userEventsRef = db.collection("Users/" + deviceID + "/Events");
-            ListenerRegistration userEventListener = userEventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                    if (querySnapshots != null) {
-                        eventIDList.clear();
-                        for (QueryDocumentSnapshot doc : querySnapshots) {
-                            String eventID = doc.getId();
-                            eventIDList.add(eventID);
-                        }
-
-                    }
-                }
-            });
-            CollectionReference eventsRef = db.collection("Events");
-            ListenerRegistration eventListener = eventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                    if (querySnapshots != null) {
-                        events.clear();
-                        for (QueryDocumentSnapshot doc : querySnapshots) {
-                            if (eventIDList.contains(doc.getId())) {
-                                Object eventName = doc.get("eventName");
-                                assert eventName != null;
-                                events.add(new Event(eventName.toString()));
+                CollectionReference userEventsRef = db.collection("Users/" + deviceID + "/Events");
+                ListenerRegistration userEventListener = userEventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                        if (querySnapshots != null) {
+                            eventIDList.clear();
+                            for (QueryDocumentSnapshot doc : querySnapshots) {
+                                String eventID = doc.getId();
+                                eventIDList.add(eventID);
                             }
+
                         }
-                        eventAdapter.notifyDataSetChanged();
                     }
-                }
-            });
+                });
+                CollectionReference eventsRef = db.collection("Events");
+                ListenerRegistration eventListener = eventsRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                        if (querySnapshots != null) {
+                            events.clear();
+                            for (QueryDocumentSnapshot doc : querySnapshots) {
+                                if (eventIDList.contains(doc.getId())) {
+                                    Object eventName = doc.get("eventName");
+                                    assert eventName != null;
+                                    events.add(new Event(eventName.toString()));
+                                }
+                            }
+                            eventAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
 
 
+            }
+        });
 
+        notificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appDrawer.setVisibility(View.GONE);
 
-        }
-    });
+            }
+        });
 
-    notificationsButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            appDrawer.setVisibility(View.GONE);
+        ///This method is responsible for any clicks of the profile picture button
+        profilePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                transaction.commit();
+            }
+        });
 
-        }
-    });
-
-    ///This method is responsible for any clicks of the profile picture button
-    profilePictureButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new viewProfileFragment());
-            transaction.commit();
-        }
-    });
-
-    scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+        scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
 //                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
 //                FragmentManager fragmentManager = getParentFragmentManager();
 //                FragmentTransaction transaction = fragmentManager.beginTransaction();
 //                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
 //                transaction.commit();
-            scanCode();
-        }
-    });
+                scanCode();
+            }
+        });
 
 //        CreateEventButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -242,21 +229,21 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 //        });
 
 
-    moreOptionsButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            appDrawer.setVisibility(View.VISIBLE);
-        }
+        moreOptionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appDrawer.setVisibility(View.VISIBLE);
+            }
 
-    });
+        });
 
-    homeScreen.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            appDrawer.setVisibility(View.GONE);
-        }
-    });
-}
+        homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+            }
+        });
+    }
 
 
 private void displayFragment(Fragment fragment) {
