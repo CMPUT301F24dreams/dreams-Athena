@@ -20,9 +20,12 @@ import com.example.athena.GeneralActivities.MainActivity;
 import com.example.athena.R;
 import com.example.athena.databinding.SignUpFragmentBinding;
 import com.example.athena.databinding.SigninScreenFragmentBinding;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 public class signUpFragment extends Fragment {
-
     private SignUpFragmentBinding binding;
 
     public signUpFragment() {
@@ -41,11 +44,13 @@ public class signUpFragment extends Fragment {
         ImageButton regButton = signUpScreenLayout.findViewById(R.id.register_button);
 
         return signUpScreenLayout;
+
     }
 
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
 
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +61,6 @@ public class signUpFragment extends Fragment {
                 String name = binding.editNameReg.getText().toString().trim();
                 String email = binding.editEmailReg.getText().toString().trim();
                 String number = binding.editNumberReg.getText().toString().trim();
-
-                // Debugging Toasts to verify values
-                //Toast.makeText(getContext(), "Name: " + name, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getContext(), "Email: " + email, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getContext(), "Number: " + number, Toast.LENGTH_SHORT).show();
 
                 // Check if fields are empty
                 if (name.isEmpty()) {
@@ -75,23 +75,25 @@ public class signUpFragment extends Fragment {
                     return;
                 }
 
+                Bundle mainActivity = getArguments();
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("name", name);
+                data.put("email", email);
+                data.put("phone", number);
+
+                assert mainActivity != null;
+                db.collection("Users").document(Objects.requireNonNull(mainActivity.getString("deviceID"))).set(data);
+
+                entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
+
                 // If all fields are filled, proceed with action
-                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
-                transaction.commit();
-            }
-
-        });
-
-
-        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new signinScreenFragment());
+                homeScreen.setArguments(mainActivity);
+                transaction.replace(R.id.content_layout, homeScreen);
                 transaction.commit();
             }
         });
