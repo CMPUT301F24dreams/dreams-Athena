@@ -58,8 +58,8 @@ public class Event { // TO-DO Java-doc
         this.regEnd = regEnd;
         this.eventDate = eventDate;
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Events").add(this);
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        db.collection("Events").add(this);
     }
     //TODO make complete implementations
     /*
@@ -93,6 +93,10 @@ public class Event { // TO-DO Java-doc
 
     public void removeUser(String userId, String eventID){
         waitList.removeUser(userId, eventID);
+    }
+
+    public void moveUser(String userID,String status){
+        waitList.moveUserFromInvited(userID,status);
     }
 
     // TO-DO: Add getters/setters properly
