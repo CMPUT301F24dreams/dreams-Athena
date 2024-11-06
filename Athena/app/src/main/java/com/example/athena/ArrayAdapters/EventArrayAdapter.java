@@ -1,4 +1,4 @@
-package com.example.athena.Event;
+package com.example.athena.ArrayAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 import java.util.ArrayList;
@@ -28,10 +29,10 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
             view = convertView;
         }
         Event event = getItem(position);
-        TextView eventTitle = view.findViewById(R.id.event_title_textview);
-        TextView eventDisc = view.findViewById(R.id.event_description_textview);
+        TextView eventTitle = view.findViewById(R.id.event_title_textview_list);
+        TextView eventDisc = view.findViewById(R.id.event_description_textview_list);
         TextView eventRegStart = view.findViewById(R.id.registration_start_date_textview);
-        TextView eventRegDead = view.findViewById(R.id.reg_deadline_text_view);
+        TextView eventRegDead = view.findViewById(R.id.reg_deadline_text_view_list);
 
         eventTitle.setText(event.getEventName());
         eventDisc.setText(event.getDescription());

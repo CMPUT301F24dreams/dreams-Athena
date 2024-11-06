@@ -1,6 +1,5 @@
-package com.example.athena.dbInfoRetrieval;
+package com.example.athena.Firebase;
 
-import com.example.athena.Event.Event;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;

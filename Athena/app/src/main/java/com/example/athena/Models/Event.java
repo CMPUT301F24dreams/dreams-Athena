@@ -1,8 +1,7 @@
-package com.example.athena.Event;
-
+package com.example.athena.Models;
 import com.example.athena.Interfaces.Observer;
 import com.example.athena.WaitList.WaitList;
-import com.example.athena.dbInfoRetrieval.DBConnector;
+import com.example.athena.Firebase.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;

@@ -1,13 +1,9 @@
-package com.example.athena.controllers;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
+package com.example.athena.Controllers;
 
 import android.content.Intent;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.athena.R;
 
 
 public class UserProfileController extends AppCompatActivity {

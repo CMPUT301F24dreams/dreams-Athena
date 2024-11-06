@@ -1,4 +1,4 @@
-package com.example.athena.dbInfoRetrieval;
+package com.example.athena.Firebase;
 
 
 import com.google.firebase.firestore.FirebaseFirestore;

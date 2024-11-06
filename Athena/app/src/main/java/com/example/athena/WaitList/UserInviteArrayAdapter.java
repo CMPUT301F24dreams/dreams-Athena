@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.athena.Event.Event;
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 

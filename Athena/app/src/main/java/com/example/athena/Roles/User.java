@@ -2,8 +2,8 @@ package com.example.athena.Roles;
 
 import android.media.Image;
 
-import com.example.athena.Event.Event;
-import com.example.athena.dbInfoRetrieval.DBConnector;
+import com.example.athena.Models.Event;
+import com.example.athena.Firebase.DBConnector;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;

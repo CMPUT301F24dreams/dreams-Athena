@@ -1,4 +1,4 @@
-package com.example.athena.controllers;
+package com.example.athena.Controllers;
 
 public class NotificationController {
 

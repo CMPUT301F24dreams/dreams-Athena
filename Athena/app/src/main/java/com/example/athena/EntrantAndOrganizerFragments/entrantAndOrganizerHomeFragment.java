@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -70,13 +71,26 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ///Assigns the close drawer button
         ImageButton closeDrawerButton = view.findViewById(R.id.close_drawer_button);
 
-        ///Assigns the create event button
+        ///Assigns the create event buttons
         ImageButton createEventButton = view.findViewById(R.id.create_event_button);
 
         ///Assigns the create events I'm hosting button
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
 
+        Bundle bundle = getArguments();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Users");
+
+        checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayFragment(new userViewAttendingEventsFragment());
+
+            }
+        });
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +125,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
             }
         });
-
 
         notificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,9 +182,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
                 appDrawer.setVisibility(View.GONE);
             }
         });
-
-
-
 }
 
 
