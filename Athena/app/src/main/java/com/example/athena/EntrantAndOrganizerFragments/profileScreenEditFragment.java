@@ -14,13 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenEditBinding;
 
 
-public class profileScreenEditFragment extends Fragment implements displayFragments{
+public class profileScreenEditFragment extends Fragment {
 
     ///Binds the fragment to its elements
     ProfileScreenEditBinding binding;
@@ -68,7 +67,10 @@ public class profileScreenEditFragment extends Fragment implements displayFragme
         binding.backButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               switchToNewFragment(new viewProfileFragment());
+                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                transaction.commit();
             }
         });
 
@@ -96,16 +98,12 @@ public class profileScreenEditFragment extends Fragment implements displayFragme
             saveProfileChanges();
         });
     }
-    /**
-     * Method for editing name
-     */
-
     // Code to display a dialog
     private void showEditNameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Name");
 
-        // Set up the input
+        // Set up the input field
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
@@ -120,9 +118,6 @@ public class profileScreenEditFragment extends Fragment implements displayFragme
         builder.show();
     }
 
-    /**
-     * Method for editing email
-     */
     private void showEditEmailDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Email");
@@ -140,9 +135,6 @@ public class profileScreenEditFragment extends Fragment implements displayFragme
         builder.show();
     }
 
-    /**
-     * Method for editing number
-     */
     private void showEditNumberDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Phone Number");
@@ -161,20 +153,6 @@ public class profileScreenEditFragment extends Fragment implements displayFragme
     }
 
     private void saveProfileChanges() {
-        // TODO: database stuffs
-    }
-
-    @Override
-    public void displayChildFragment(Fragment fragment) {
-
-    }
-
-    @Override
-    public void switchToNewFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content_layout, fragment);
-        transaction.commit();
 
     }
 }
