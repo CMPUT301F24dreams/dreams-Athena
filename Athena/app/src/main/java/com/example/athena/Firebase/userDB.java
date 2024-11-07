@@ -97,5 +97,15 @@ public class userDB {
             return false;
         });
     }
+
+    //Save the profile picture URL
+    public Task<Void> saveProfilePictureUrl(String userId, String imageUrl) {
+        return usersCollection.document(userId).update("profilePicUrl", imageUrl);
+    }
+
+    // Clear the profile picture URL to reset to default
+    public Task<Void> clearProfilePictureUrl(String userId) {
+        return usersCollection.document(userId).update("profilePicUrl", FieldValue.delete());
+    }
 }
 

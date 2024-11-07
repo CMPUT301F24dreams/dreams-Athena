@@ -36,8 +36,8 @@ android {
 
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -52,6 +52,8 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
     implementation ("androidx.databinding:viewbinding:4.1.3")
+    implementation ("com.google.firebase:firebase-storage:20.1.0")
+
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -70,7 +72,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.github.bumptech.glide:glide:4.11.0")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
 
     implementation("androidx.camera:camera-core:1.4.0")
