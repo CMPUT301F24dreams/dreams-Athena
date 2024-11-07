@@ -13,10 +13,12 @@ import android.widget.ImageButton;
 
 import com.example.athena.Firebase.EventsDBManager;
 import com.example.athena.Models.Event;
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 
 
-public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener {
+public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener displayFragments {
+
 
     private String eventID;
     private Event event;
@@ -88,7 +90,14 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
     }
 
     private void displayFragment(Fragment fragment){
+
+    @Override
+    public void displayChildFragment(Fragment fragment){
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
+    }
+
+    @Override
+    public void switchToNewFragment(Fragment fragment){
     }
 
 }

@@ -13,14 +13,19 @@ import java.util.List;
 /**
  * This class handles database operations for the users collection in Firestore.
  */
-public class UsersDBManager {
+public class userDB {
     private FirebaseFirestore db;
     private CollectionReference usersCollection;
 
-    public UsersDBManager() {
+    public userDB() {
         // Initialize Firestore and set the users collection
-        this.db = DBConnector.getInstance().getDb();
+        this.db = FirebaseFirestore.getInstance();
         this.usersCollection = db.collection("Users");
+    }
+
+    public Task<QuerySnapshot> getUserEvents(String deviceID) {
+        Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
+        return ueRef;
     }
 
     // Adds a new user to the Users collection

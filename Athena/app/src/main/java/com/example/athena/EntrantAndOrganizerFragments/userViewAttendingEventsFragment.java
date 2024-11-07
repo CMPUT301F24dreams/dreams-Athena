@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.athena.Models.Event;
+import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.example.athena.WaitList.UserInviteArrayAdapter;
 

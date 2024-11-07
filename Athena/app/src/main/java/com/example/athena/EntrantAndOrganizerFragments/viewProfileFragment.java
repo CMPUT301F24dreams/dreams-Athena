@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
+import com.example.athena.Interfaces.displayFragments;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +18,7 @@ import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.SigninScreenFragmentBinding;
 
 
-public class viewProfileFragment extends Fragment {
+public class viewProfileFragment extends Fragment implements displayFragments{
 
     ProfileScreenBinding binding;
     public viewProfileFragment() {
@@ -41,32 +41,38 @@ public class viewProfileFragment extends Fragment {
         binding.BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
-                transaction.commit();
+                switchToNewFragment(new entrantAndOrganizerHomeFragment());
             }
         });
 
         binding.EditNotfis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new profileNotiEditFragment());
-                transaction.commit();
+
+                switchToNewFragment(new profileNotiEditFragment());
+
 
             }
         });
         binding.EditProfileAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new profileScreenEditFragment());
-                transaction.commit();
+                switchToNewFragment(new profileScreenEditFragment());
             }
         });
     }
+
+    @Override
+    public void displayChildFragment(Fragment fragment){
+    }
+
+    @Override
+    public void switchToNewFragment(Fragment fragment){
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.content_layout, fragment);
+        transaction.commit();
+    }
+
 
 }
