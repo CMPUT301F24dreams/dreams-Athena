@@ -18,9 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.athena.R;
-import com.example.athena.RegistrationFragments.signUpFragment;
 import com.example.athena.databinding.ProfileScreenBinding;
-import com.example.athena.databinding.SigninScreenFragmentBinding;
 
 import androidx.activity.result.ActivityResultLauncher;
 
@@ -38,14 +36,14 @@ public class viewProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        ///Initializer the binding object
+        // Initialize the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
-        
-        ///Inflates the layout for the fragment
+
+        // Inflate the layout for the fragment
         return binding.getRoot();
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
