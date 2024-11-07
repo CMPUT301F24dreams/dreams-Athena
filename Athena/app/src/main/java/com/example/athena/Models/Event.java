@@ -22,12 +22,14 @@ public class Event { // TO-DO Java-doc
     private String regStart;
     private String regEnd;
     private String eventDate;
+    private String imageURL;
     private WaitList waitList;
     private final List<Observer> observers = new ArrayList<>();
 
 
-    public Event(String eventName) {
+    public Event(String eventName, String imageURL) {
         this.eventName = eventName;
+        this.imageURL = imageURL;
     }
     public Event() {
 
@@ -111,8 +113,8 @@ public class Event { // TO-DO Java-doc
         this.maxParticipants = maxParticipants;
     }
 
-    public String getPoster() {
-        return poster;
+    public String getImageURL() {
+        return imageURL;
     }
 
     public void setPoster(String poster) {
