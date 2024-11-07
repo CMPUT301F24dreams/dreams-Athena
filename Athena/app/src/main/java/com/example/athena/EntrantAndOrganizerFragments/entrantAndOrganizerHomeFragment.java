@@ -42,7 +42,7 @@ import java.util.ArrayList;
  * This is a fragment used as a home page for entrants and organizers
  */
 public class entrantAndOrganizerHomeFragment extends Fragment {
-
+    //                                                  ^ this should be activity fragment
     private FirebaseFirestore db;
     private User user;
     private String deviceID;
