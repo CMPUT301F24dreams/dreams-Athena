@@ -1,9 +1,11 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -27,11 +29,12 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class myEventsList extends Fragment implements displayFragments{
+public class myEventsList extends Fragment {
     private String deviceID;
     private userDB userDB;
     private eventsDB eventsDB;
     private ArrayList<Event> events;
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class myEventsList extends Fragment implements displayFragments{
         eventsDB = new eventsDB();
         events = new ArrayList<>();
 
-        ListView listView = view.findViewById(R.id.myEventList);
+        listView = view.findViewById(R.id.myEventList);
 
         Task getUserEvents = userDB.getUserEvents(deviceID);
         Task getEventList = eventsDB.getEventsList();
@@ -76,7 +79,8 @@ public class myEventsList extends Fragment implements displayFragments{
                         if (userEventList.contains(document.getId())) {
                             String eventName = document.getString("eventName");
                             String imageURL = document.getString("imageURL");
-                            Event currentEvent = new Event(eventName, imageURL);
+                            String eventID = document.getString("eventID");
+                            Event currentEvent = new Event(eventName, imageURL, eventID);
                             events.add(currentEvent);
                         }
                     }
@@ -87,15 +91,24 @@ public class myEventsList extends Fragment implements displayFragments{
                 }
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Event event = (Event) parent.getAdapter().getItem(position);
+                String eventID = event.getEventID();
+
+                Bundle eventDetails = new Bundle();
+                eventDetails.putString("eventID", eventID);
+                displayChildFragment(new eventDetails(), eventDetails);
+            }
+        });
+
+    }
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
+        fragment.setArguments(bundle);
+        getParentFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
-    @Override
-    public void displayChildFragment(Fragment fragment){
-        getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
-    }
-
-    @Override
-    public void switchToNewFragment(Fragment fragment){
-    }
 }
 

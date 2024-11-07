@@ -19,23 +19,21 @@ public class eventsDB {
     public eventsDB(){
         // Initialize the Firestore connection and specify the collection
         this.db = FirebaseFirestore.getInstance();
-        this.eventsCollection= db.collection("Events");
+        this.eventsCollection = db.collection("Events");
     }
 
     public Task<QuerySnapshot> getEventsList() {
-        Task eRef = db.collection("Events").get();
-        return eRef;
+        return db.collection("Events").get();
+    }
+
+    public Task<DocumentSnapshot> getEvent(String eventID) {
+        return db.collection("Events").document(eventID).get();
     }
 
 
     // Adds a new event to the Events collection
     public Task<DocumentReference> addEvent(HashMap<String, Object> eventData){
         return eventsCollection.add(eventData);
-    }
-
-    // Retrieves a specific event by its ID
-    public Task<DocumentSnapshot> getEvent(String eventId){
-        return eventsCollection.document(eventId).get();
     }
 
     // Updates an existing event with new data

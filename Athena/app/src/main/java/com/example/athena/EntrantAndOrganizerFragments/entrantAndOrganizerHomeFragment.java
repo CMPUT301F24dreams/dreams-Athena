@@ -53,27 +53,11 @@ import java.util.List;
  * This is a fragment used as a home page for entrants and organizers
  */
 public class entrantAndOrganizerHomeFragment extends Fragment {
-
-    private FirebaseFirestore db;
-    private User user;
-    private userDB userDB;
-    private eventsDB eventsDB;
-
-
-    private String deviceID;
-    private ListView listView;
-    private EventArrayAdapter eventAdapter;
-    private ArrayList<Event> events;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
-
         super.onCreate(savedInstanceState);
-
         return view;
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -113,13 +97,12 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
                 displayChildFragment(new viewMyCreatedEventsFragment(), bundle);
 
             }
         });
-        //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
 
+        //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +119,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             }
         });
 
-
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
@@ -151,11 +133,9 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
             }
         });
 
-        ///This method is responsible for any clicks of the profile picture button
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,7 +166,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 //            }
 //        });
 
-
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,7 +185,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         fragment.setArguments(bundle);
         getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
-
     private void scanCode() {
     ScanOptions options = new ScanOptions();
     options.setPrompt("Volume up to flash on");
