@@ -14,11 +14,11 @@ import java.util.List;
 import com.example.athena.Interfaces.Model;
 public class Event { // TO-DO Java-doc
     private String eventName;
+    private String eventID;
     private String description;
     private String facilityID;
     private Boolean geoRequire;
     private Integer maxParticipants;
-    private String poster;
     private String regStart;
     private String regEnd;
     private String eventDate;
@@ -27,9 +27,10 @@ public class Event { // TO-DO Java-doc
     private final List<Observer> observers = new ArrayList<>();
 
 
-    public Event(String eventName, String imageURL) {
+    public Event(String eventName, String imageURL, String eventID) {
         this.eventName = eventName;
         this.imageURL = imageURL;
+        this.eventID = eventID;
     }
     public Event() {
 
@@ -117,10 +118,6 @@ public class Event { // TO-DO Java-doc
         return imageURL;
     }
 
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
     public String getRegStart() {
         return regStart;
     }
@@ -143,5 +140,9 @@ public class Event { // TO-DO Java-doc
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
+    }
+
+    public String getEventID() {
+        return eventID;
     }
 }

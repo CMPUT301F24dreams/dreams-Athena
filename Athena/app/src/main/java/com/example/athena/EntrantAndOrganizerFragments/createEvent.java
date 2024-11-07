@@ -19,17 +19,12 @@ import com.example.athena.R;
 public class createEvent extends Fragment implements displayFragments{
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_event, container, false);
-
         super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
         return view;
-
-
-        }
+    }
 
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);

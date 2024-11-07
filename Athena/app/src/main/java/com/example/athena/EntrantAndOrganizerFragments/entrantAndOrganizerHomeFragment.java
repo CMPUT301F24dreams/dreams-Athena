@@ -52,81 +52,17 @@ import java.util.List;
 /**
  * This is a fragment used as a home page for entrants and organizers
  */
-public class entrantAndOrganizerHomeFragment extends Fragment implements displayFragments{
-
-    private FirebaseFirestore db;
-    private User user;
-    private userDB userDB;
-    private eventsDB eventsDB;
-
-
-    private String deviceID;
-    private ListView listView;
-    private EventArrayAdapter eventAdapter;
-    private ArrayList<Event> events;
-
+public class entrantAndOrganizerHomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
-
         super.onCreate(savedInstanceState);
-
         return view;
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
-        assert bundle != null;
-        this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
-        eventsDB = new eventsDB();
-        events = new ArrayList<>();
-
-        listView = view.findViewById(R.id.mainList);
-
-        Task getUserEvents = userDB.getUserEvents(deviceID);
-        Task getEventList = eventsDB.getEventsList();
-
-        Task eventsLoaded = Tasks.whenAll(getUserEvents, getEventList);
-        eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
-                listView.setAdapter(eventAdapter);
-
-                if (task.isSuccessful()) {
-                    QuerySnapshot userEvents = (QuerySnapshot) getUserEvents.getResult();
-                    List<String> userEventList = new ArrayList<>();
-
-                    for (Iterator<DocumentSnapshot> it = userEvents.getDocuments().iterator(); it.hasNext(); ) {
-                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                        userEventList.add(document.getId());
-                    }
-
-                    QuerySnapshot eventsList = (QuerySnapshot) getEventList.getResult();
-                    for (Iterator<DocumentSnapshot> it = eventsList.getDocuments().iterator(); it.hasNext(); ) {
-                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                        if (userEventList.contains(document.getId())) {
-                            String eventName = document.getString("eventName");
-                            String imageURL = document.getString("imageURL");
-                            Event currentEvent = new Event(eventName, imageURL);
-                            events.add(currentEvent);
-                        }
-                    }
-
-                    eventAdapter.notifyDataSetChanged();
-                } else {
-                    Exception e = task.getException();
-                }
-            }
-        });
-
-
-
-
 
         /// Assigns button used for checking notifications
         ImageButton notificationsButton = view.findViewById(R.id.check_updates_button);
@@ -155,24 +91,23 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
         ///Assigns the create events I'm hosting button
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
+        displayChildFragment(new myEventsList(), bundle);
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
-                displayChildFragment(new viewMyCreatedEventsFragment());
+                displayChildFragment(new viewMyCreatedEventsFragment(), bundle);
 
             }
         });
-        //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
 
+        //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility((View.GONE));
-                displayChildFragment(new createEvent());
+                displayChildFragment(new createEvent(), bundle);
             }
         });
 
@@ -184,14 +119,13 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             }
         });
 
-
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
+                displayChildFragment(new myEventsList(), bundle);
             }
         });
 
@@ -199,11 +133,9 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
             }
         });
 
-        ///This method is responsible for any clicks of the profile picture button
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -234,7 +166,6 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
 //            }
 //        });
 
-
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -250,19 +181,10 @@ public class entrantAndOrganizerHomeFragment extends Fragment implements display
             }
         });
     }
-
-
-    @Override
-    public void displayChildFragment(Fragment fragment) {
-    getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
+        fragment.setArguments(bundle);
+        getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
-
-    @Override
-    public void switchToNewFragment(Fragment fragment) {
-
-    }
-
-
     private void scanCode() {
     ScanOptions options = new ScanOptions();
     options.setPrompt("Volume up to flash on");
