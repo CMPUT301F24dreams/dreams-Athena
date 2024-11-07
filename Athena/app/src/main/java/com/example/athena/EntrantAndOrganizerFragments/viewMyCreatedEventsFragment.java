@@ -106,10 +106,14 @@ public class viewMyCreatedEventsFragment extends Fragment {
         eventList.setAdapter(eventAdapter);
 
         eventList.setClickable(Boolean.TRUE);
+
         eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ;
+                OrganizerEntrantOperations detailFrag = new OrganizerEntrantOperations();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, detailFrag)
+                        .commit();
 
             }
         });

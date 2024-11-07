@@ -41,7 +41,21 @@ public class WaitList{
         attachedEvent = event;
     }
 
+    public void setAccepted(ArrayList<String> accepted) {
+        this.accepted = accepted;
+    }
 
+    public void setDeclined(ArrayList<String> declined) {
+        this.declined = declined;
+    }
+
+    public void setInvited(ArrayList<String> invited) {
+        this.invited = invited;
+    }
+
+    public void setWaiting(ArrayList<String> waiting) {
+        this.waiting = waiting;
+    }
 
     public ArrayList<String> getDeclined() {
         return declined;
