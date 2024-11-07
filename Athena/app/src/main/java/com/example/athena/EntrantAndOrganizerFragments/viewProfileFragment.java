@@ -33,7 +33,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-
 import androidx.activity.result.ActivityResultLauncher;
 
 import java.util.HashMap;
@@ -65,7 +64,7 @@ public class viewProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Initialize the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
-        userDatabase= new userDB();
+        userDatabase = new userDB();
         // Inflate the layout for the fragment
         return binding.getRoot();
     }
@@ -75,28 +74,13 @@ public class viewProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Navigate back to the main profile screen
-        binding.BackButton.setOnClickListener(v -> {
-            FragmentManager fragmentManager = getParentFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
-            transaction.commit();
-        });
+        binding.BackButton.setOnClickListener(v -> navigateToFragment(new entrantAndOrganizerHomeFragment()));
 
         // Navigate to the notification edit fragment
-        binding.EditNotfis.setOnClickListener(v -> {
-            FragmentManager fragmentManager = getParentFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileNotiEditFragment());
-            transaction.commit();
-        });
+        binding.EditNotfis.setOnClickListener(v -> navigateToFragment(new profileNotiEditFragment()));
 
         // Navigate to the profile edit screen
-        binding.EditProfileAll.setOnClickListener(v -> {
-            FragmentManager fragmentManager = getParentFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileScreenEditFragment());
-            transaction.commit();
-        });
+        binding.EditProfileAll.setOnClickListener(v -> navigateToFragment(new profileScreenEditFragment()));
 
         // Open gallery when EditPicture is clicked
         binding.EditPicture.setOnClickListener(v -> openGallery());
@@ -136,7 +120,7 @@ public class viewProfileFragment extends Fragment {
         Map<String, Object> userUpdates = new HashMap<>();
         userUpdates.put("profilePicUrl", imageUrl);
 
-        db.collection("users").document(userId)
+        db.collection("Users").document(userId)
                 .update(userUpdates)
                 .addOnSuccessListener(aVoid -> Log.d("ProfilePic", "Profile image URL updated successfully!"))
                 .addOnFailureListener(e -> Log.e("ProfilePic", "Failed to update profile image URL", e));
@@ -147,7 +131,7 @@ public class viewProfileFragment extends Fragment {
      */
     private void loadProfileImageFromFirestore() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").document(userId)
+        db.collection("Users").document(userId)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     String profilePicUrl = documentSnapshot.getString("profilePicUrl");
@@ -170,8 +154,7 @@ public class viewProfileFragment extends Fragment {
                 .addOnFailureListener(e -> Log.e("ProfilePic", "Failed to delete profile image", e));
     }
 
-
-     /**
+    /**
      * Generates a letter-based avatar if profilePicUrl is empty in Firestore
      */
     private void generateLetterAvatarIfEmpty() {
@@ -183,10 +166,6 @@ public class viewProfileFragment extends Fragment {
             }
         });
     }
-
-    /*
-    *Reference- ChatGPT for the custom avatar
-     */
 
     /**
      * Generates a drawable with the first letter of the user’s name as the avatar
@@ -214,5 +193,20 @@ public class viewProfileFragment extends Fragment {
         return new BitmapDrawable(getResources(), bitmap);
     }
 
+    /**
+     * Helper method to navigate to a different fragment safely
+     */
+    private void navigateToFragment(Fragment fragment) {
+        if (isAdded() && getParentFragmentManager() != null) {
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.content_layout, fragment);
+            transaction.commitAllowingStateLoss(); // Allow state loss to avoid crashes in certain cases
+        }
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Cancel any ongoing operations or listeners if necessary
+    }
 }
