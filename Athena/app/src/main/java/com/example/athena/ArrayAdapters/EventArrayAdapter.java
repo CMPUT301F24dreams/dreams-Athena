@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 
@@ -29,15 +31,14 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
             view = convertView;
         }
         Event event = getItem(position);
-        TextView eventTitle = view.findViewById(R.id.event_title_textview);
-        TextView eventDisc = view.findViewById(R.id.event_description_textview);
-        TextView eventRegStart = view.findViewById(R.id.registration_start_date_textview);
-        TextView eventRegDead = view.findViewById(R.id.reg_deadline_text_view);
 
-        eventTitle.setText(event.getEventName());
-        eventDisc.setText(event.getDescription());
-        eventRegStart.setText(event.getRegStart());
-        eventRegDead.setText(event.getRegEnd());
+        TextView eventName = view.findViewById(R.id.eventNameText);
+        assert event != null;
+        eventName.setText(event.getEventName());
+
+        ImageView image = view.findViewById(R.id.eventImage);
+        Glide.with(getContext()).load(event.getImageURL()).into(image);
+
         return view;
     }
 }

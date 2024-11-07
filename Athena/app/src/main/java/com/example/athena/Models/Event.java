@@ -14,53 +14,28 @@ import java.util.List;
 import com.example.athena.Interfaces.Model;
 public class Event { // TO-DO Java-doc
     private String eventName;
+    private String eventID;
     private String description;
     private String facilityID;
     private Boolean geoRequire;
     private Integer maxParticipants;
-    private String poster;
     private String regStart;
     private String regEnd;
     private String eventDate;
+    private String imageURL;
     private WaitList waitList;
     private final List<Observer> observers = new ArrayList<>();
 
 
-    public Event(String eventID) {
-        FirebaseFirestore db = DBConnector.getInstance().getDb();
-        DocumentReference docRef = db.collection("Events").document(eventID);
-
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Event newEvent = documentSnapshot.toObject(Event.class);
-                eventName = newEvent.getEventName();
-                description = newEvent.getDescription();
-                facilityID = newEvent.getFacilityID();
-                geoRequire = newEvent.getGeoRequire();
-                maxParticipants = newEvent.getMaxParticipants();
-                poster = newEvent.getPoster();
-                regStart = newEvent.getRegStart();
-                regEnd = newEvent.getRegEnd();
-                eventDate = newEvent.getEventDate();
-            }
-        });
-    }
-
-    public Event(String eventName, String description, String facilityID, Boolean geoRequire, Integer maxParticipants, String poster, String regStart, String regEnd, String eventDate) {
+    public Event(String eventName, String imageURL, String eventID) {
         this.eventName = eventName;
-        this.description = description;
-        this.facilityID = facilityID;
-        this.geoRequire = geoRequire;
-        this.maxParticipants = maxParticipants;
-        this.poster = poster;
-        this.regStart = regStart;
-        this.regEnd = regEnd;
-        this.eventDate = eventDate;
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Events").add(this);
+        this.imageURL = imageURL;
+        this.eventID = eventID;
     }
+    public Event() {
+
+    }
+
     //TODO make complete implementations
     /*
     @Override
@@ -93,6 +68,10 @@ public class Event { // TO-DO Java-doc
 
     public void removeUser(String userId, String eventID){
         waitList.removeUser(userId, eventID);
+    }
+
+    public void moveUser(String userID,String status){
+        waitList.moveUserFromInvited(userID,status);
     }
 
     // TO-DO: Add getters/setters properly
@@ -135,12 +114,8 @@ public class Event { // TO-DO Java-doc
         this.maxParticipants = maxParticipants;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
+    public String getImageURL() {
+        return imageURL;
     }
 
     public String getRegStart() {
@@ -165,5 +140,9 @@ public class Event { // TO-DO Java-doc
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
+    }
+
+    public String getEventID() {
+        return eventID;
     }
 }

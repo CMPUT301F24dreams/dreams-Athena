@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Noti_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/Notification_title_non_edit"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="serif"
+        android:text="You're Invited!"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/eventNameNotiTitleNonEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Event Name:"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/notiEventName"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:text="Event Name Here" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/noti_reg_start_non_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:text="Event Registration Start Date:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Noti_reg_start_textview"
+            android:layout_width="211dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="reg start goes here" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/noti_reg_end_non_edit"
+            android:layout_width="193dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:text="Event Registration End Date:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Noti_reg_end_textview"
+            android:layout_width="214dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:text="reg end date goes here" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp">
+
+        <ImageButton
+            android:id="@+id/noti_deny_button"
+            android:layout_width="124dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/mainBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.235"
+            app:srcCompat="@drawable/deny_invitation_button" />
+
+        <ImageButton
+            android:id="@+id/noti_accept_button"
+            android:layout_width="124dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/mainBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/accept_invitation_button"
+            tools:layout_editor_absoluteY="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -8,17 +8,11 @@
     tools:context=".EntrantAndOrganizerFragments.userViewNotisFragment">
 
     <ListView
-        android:id="@+id/user_notifications_listview"
-        android:layout_width="406dp"
-        android:layout_height="783dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="1dp"
+        android:id="@+id/myEventList"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
