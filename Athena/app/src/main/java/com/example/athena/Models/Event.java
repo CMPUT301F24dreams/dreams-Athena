@@ -18,7 +18,6 @@ public class Event { // TO-DO Java-doc
     private String facilityID;
     private Boolean geoRequire;
     private Integer maxParticipants;
-    private String poster;
     private String regStart;
     private String regEnd;
     private String eventDate;
@@ -115,10 +114,6 @@ public class Event { // TO-DO Java-doc
 
     public String getImageURL() {
         return imageURL;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
     }
 
     public String getRegStart() {
