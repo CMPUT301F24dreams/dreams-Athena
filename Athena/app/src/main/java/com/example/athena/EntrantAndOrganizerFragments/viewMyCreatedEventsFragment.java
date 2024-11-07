@@ -4,10 +4,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.Interfaces.displayFragments;
+import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.userDB;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +16,7 @@ import android.widget.ListView;
 
 import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.Model;
 import com.example.athena.R;
-import com.example.athena.WaitList.UserInviteArrayAdapter;
 import com.example.athena.databinding.OrganizerMyEventsViewBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +36,8 @@ public class viewMyCreatedEventsFragment extends Fragment{
     private EventArrayAdapter eventAdapter;
     private ArrayList<Event> events;
     private String deviceID;
+    private userDB userDB;
+    private eventsDB eventsDB;
     OrganizerMyEventsViewBinding binding;
 
     @Override
@@ -67,10 +67,10 @@ public class viewMyCreatedEventsFragment extends Fragment{
 
 
 
-        Task getUserEvents = userDB.getUserEvents(deviceID);
+        Task getOrgEvents = userDB.getOrganizerEvent(deviceID);
         Task getEventList = eventsDB.getEventsList();
 
-        Task eventsLoaded = Tasks.whenAll(getUserEvents, getEventList);
+        Task eventsLoaded = Tasks.whenAll(getOrgEvents, getEventList);
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -78,7 +78,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
                 eventList.setAdapter(eventAdapter);
 
                 if (task.isSuccessful()) {
-                    QuerySnapshot userEvents = (QuerySnapshot) getUserEvents.getResult();
+                    QuerySnapshot userEvents = (QuerySnapshot) getOrgEvents.getResult();
                     List<String> userEventList = new ArrayList<>();
 
                     for (Iterator<DocumentSnapshot> it = userEvents.getDocuments().iterator(); it.hasNext(); ) {
@@ -92,7 +92,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
                         if (userEventList.contains(document.getId())) {
                             String eventName = document.getString("eventName");
                             String imageURL = document.getString("imageURL");
-                            Event currentEvent = new Event(eventName, imageURL);
+                            Event currentEvent = new Event(eventName, imageURL, document.getId());
                             events.add(currentEvent);
                         }
                     }

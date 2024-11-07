@@ -31,6 +31,7 @@ public class Event { // TO-DO Java-doc
         this.eventName = eventName;
         this.imageURL = imageURL;
         this.eventID = eventID;
+        this.waitList = new WaitList(this);
     }
     public Event() {
 
@@ -72,6 +73,10 @@ public class Event { // TO-DO Java-doc
 
     public void moveUser(String userID,String status){
         waitList.moveUserFromInvited(userID,status);
+    }
+
+    public WaitList getWaitList() {
+        return waitList;
     }
 
     // TO-DO: Add getters/setters properly

@@ -43,6 +43,8 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
 
         View view = inflater.inflate(R.layout.user_my_notis_fragment, container, false);
         invites = view.findViewById(R.id.user_notifications_listview);
+        Bundle bundle = getArguments();
+        assert bundle != null;
         super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
         return view;
@@ -52,10 +54,6 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
 //    Bundle args = getArguments();
 //    userID = args.getString("userID");
         events = new ArrayList<Event>();
-        events.add(new Event("someEvent"));
-        events.add(new Event("someEvent"));
-        events.add(new Event("someEvent"));
-        events.add(new Event("someEvent"));
         adapter = new UserInviteArrayAdapter(getContext(),events);
         invites.setAdapter(adapter);
         invites.setClickable(Boolean.TRUE);

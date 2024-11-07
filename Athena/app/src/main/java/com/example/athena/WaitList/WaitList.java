@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * This class is responsible for storing information about waitlists for corresponding events
@@ -129,7 +128,7 @@ public class WaitList{
      * @param newStatus whether the user accepted or declined the event
      */
     public void moveUserFromInvited(String userID, String newStatus){
-        if(Objects.equals(newStatus, "accepted")){
+        if(newStatus == "accepted"){
             moveUsers(userID,accepted,invited);
         } else {
             moveUsers(userID,declined,invited);

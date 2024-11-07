@@ -11,18 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.example.athena.Firebase.EventsDBManager;
+import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Models.Event;
 import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 
 
-public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener displayFragments {
+public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener,displayFragments {
 
 
     private String eventID;
     private Event event;
-    private EventsDBManager eventDB;
+    private eventsDB eventDB;
     @Override
 
     /**
@@ -69,7 +69,7 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
         ///get the event here
 
         //this is temp
-        event = new Event("Name");
+        event = new Event("Name","https://www.google.com/imgres?q=cat&imgurl=https%3A%2F%2Fmedia.4-paws.org%2Fd%2F2%2F5%2Ff%2Fd25ff020556e4b5eae747c55576f3b50886c0b90%2Fcut%2520cat%2520serhio%252002-1813x1811-720x719.jpg&imgrefurl=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2Fa-cats-personality&docid=bh-aFWFDaFL8GM&tbnid=1YGJmRFWjzXDeM&vet=12ahUKEwiF-Lmb38mJAxWnFTQIHdAQAVQQM3oECHwQAA..i&w=720&h=719&hcb=2&ved=2ahUKEwiF-Lmb38mJAxWnFTQIHdAQAVQQM3oECHwQAA",eventID);
         ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
 
     private void displayFragment(Fragment fragment){
 
-    @Override
+    }
     public void displayChildFragment(Fragment fragment){
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
     }

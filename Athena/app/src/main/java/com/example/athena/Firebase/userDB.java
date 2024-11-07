@@ -28,6 +28,11 @@ public class userDB {
         return ueRef;
     }
 
+    public Task<QuerySnapshot> getOrganizerEvent(String deviceID){
+        Task ueRef = db.collection("Users/" + deviceID + "/OrgEvents").get();
+        return ueRef;
+    }
+
     // Adds a new user to the Users collection
     public Task<Void> addUser(String deviceID, HashMap<String, Object> userData) {
         return usersCollection.document(deviceID).set(userData);
