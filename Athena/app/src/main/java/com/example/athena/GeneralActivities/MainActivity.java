@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     // Notification setup
                     requestNotificationPermission();
 
-                    Intent notificationIntent = new Intent(this, NotificationService.class);
+                    Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
 
                     startService(notificationIntent);
 
