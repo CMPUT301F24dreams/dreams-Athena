@@ -140,32 +140,16 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
-                transaction.commit();
+                displayChildFragment(new viewProfileFragment(), bundle);
             }
         });
 
         scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-//                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
-//                FragmentManager fragmentManager = getParentFragmentManager();
-//                FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
-//                transaction.commit();
                 scanCode();
             }
         });
-
-//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-//            }
-//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override

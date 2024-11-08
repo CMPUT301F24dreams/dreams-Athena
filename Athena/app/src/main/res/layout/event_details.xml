@@ -70,7 +70,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/qrCodeView"
+                android:layout_width="match_parent"
+                android:layout_height="152dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
+import com.example.athena.Models.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -13,9 +15,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Iterator;
 
 /**
@@ -32,17 +36,21 @@ public class eventsDB {
     }
 
     public Task<QuerySnapshot> getEventsList() {
-        return db.collection("Events").get();
+        return eventsCollection.get();
     }
 
     public Task<DocumentSnapshot> getEvent(String eventID) {
-        return db.collection("Events").document(eventID).get();
+        return eventsCollection.document(eventID).get();
     }
 
+
+    // Adds a new event to the Events collection, return it's eventID
+    public Task addEvent(Event event){
+        return eventsCollection.add(event);
+=======
     public Task<QuerySnapshot> getEventUserList(String eventID){
         return db.collection("Events/" + eventID + "/UserList").get();
     }
-
 
     public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
         for(String userID: userIDs) {
@@ -57,9 +65,10 @@ public class eventsDB {
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
     }
 
-    // Adds a new event to the Events collection
-    public Task<DocumentReference> addEvent(HashMap<String, Object> eventData){
-        return eventsCollection.add(eventData);
+    public void updateEventID(String eventID) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("eventID", eventID);
+        eventsCollection.document(eventID).set(data, SetOptions.merge());
     }
 
     // Updates an existing event with new data

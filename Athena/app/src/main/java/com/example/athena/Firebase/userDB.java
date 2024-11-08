@@ -6,9 +6,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class handles database operations for the users collection in Firestore.
@@ -28,6 +30,10 @@ public class userDB {
         return ueRef;
     }
 
+    public void updateOrgEvents(String deviceID, String eventID) {
+        db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
+    }
+  
     public void changeEventStatusInvited(String eventID, String deviceID){
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
     }
@@ -114,5 +120,7 @@ public class userDB {
             return false;
         });
     }
+
+
 }
 
