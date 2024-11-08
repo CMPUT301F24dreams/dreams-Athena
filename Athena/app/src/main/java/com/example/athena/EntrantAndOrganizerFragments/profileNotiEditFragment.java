@@ -67,8 +67,6 @@ public class profileNotiEditFragment extends Fragment {
                 if (task.isSuccessful()){
                     DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
 
-
-
                     binding.chosenNotif.setChecked(user.getBoolean("chosenNotif"));
                     binding.notChosenNotif.setChecked(user.getBoolean("notChosenNotif"));
                     binding.geolocationWarn.setChecked(user.getBoolean("geolocationWarn"));
@@ -79,7 +77,6 @@ public class profileNotiEditFragment extends Fragment {
                 }
             }
         });
-
 
 
         // Listeners for each switch

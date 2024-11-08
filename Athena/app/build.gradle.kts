@@ -59,6 +59,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
     implementation("androidx.test.ext:truth:1.6.0")
+    implementation("androidx.test.espresso:espresso-intents:3.6.1")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:3.11.2")
