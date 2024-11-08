@@ -28,6 +28,23 @@ public class userDB {
         return ueRef;
     }
 
+    public void changeEventStatusInvited(String eventID, String deviceID){
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
+    }
+
+    public void changeEventStatusAccepted(String eventID, String deviceID){
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","accepted");
+    }
+
+    public void changeEventStatusDeclined(String eventID, String deviceID){
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","declined");
+    }
+
+    public Task<QuerySnapshot> getOrganizerEvent(String deviceID){
+        Task ueRef = db.collection("Users/" + deviceID + "/OrgEvents").get();
+        return ueRef;
+    }
+
     // Adds a new user to the Users collection
     public Task<Void> addUser(String deviceID, HashMap<String, Object> userData) {
         return usersCollection.document(deviceID).set(userData);

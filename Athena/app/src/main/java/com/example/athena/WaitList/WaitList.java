@@ -1,22 +1,9 @@
 package com.example.athena.WaitList;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
 import com.example.athena.Models.Event;
-import com.example.athena.Firebase.DBConnector;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * This class is responsible for storing information about waitlists for corresponding events
@@ -42,7 +29,21 @@ public class WaitList{
         attachedEvent = event;
     }
 
+    public void setAccepted(ArrayList<String> accepted) {
+        this.accepted = accepted;
+    }
 
+    public void setDeclined(ArrayList<String> declined) {
+        this.declined = declined;
+    }
+
+    public void setInvited(ArrayList<String> invited) {
+        this.invited = invited;
+    }
+
+    public void setWaiting(ArrayList<String> waiting) {
+        this.waiting = waiting;
+    }
 
     public ArrayList<String> getDeclined() {
         return declined;
@@ -54,6 +55,10 @@ public class WaitList{
 
     public ArrayList<String> getWaiting() {
         return waiting;
+    }
+
+    public ArrayList<String> getAccepted() {
+        return accepted;
     }
 
     public ArrayList<String> getInvited() {
@@ -115,7 +120,7 @@ public class WaitList{
      * @param newStatus whether the user accepted or declined the event
      */
     public void moveUserFromInvited(String userID, String newStatus){
-        if(Objects.equals(newStatus, "accepted")){
+        if(newStatus == "accepted"){
             moveUsers(userID,accepted,invited);
         } else {
             moveUsers(userID,declined,invited);

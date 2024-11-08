@@ -133,6 +133,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new userViewAttendingEventsFragment(), bundle);
             }
         });
 

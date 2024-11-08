@@ -1,13 +1,22 @@
 package com.example.athena.Firebase;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * This class handles database operations for events collection, interacting with the Firestore database.
@@ -30,6 +39,23 @@ public class eventsDB {
         return db.collection("Events").document(eventID).get();
     }
 
+    public Task<QuerySnapshot> getEventUserList(String eventID){
+        return db.collection("Events/" + eventID + "/UserList").get();
+    }
+
+
+    public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
+        for(String userID: userIDs) {
+            db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","invited");
+            db.collection("Events").document(eventID).collection("UserList").document(userID).update("notified",Boolean.FALSE);
+        }
+    }
+    public void changeStatusAccepted(String eventID, String userID){
+        db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","accepted");
+    }
+    public void changeStatusDeclined(String eventID, String userID){
+            db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
+    }
 
     // Adds a new event to the Events collection
     public Task<DocumentReference> addEvent(HashMap<String, Object> eventData){
