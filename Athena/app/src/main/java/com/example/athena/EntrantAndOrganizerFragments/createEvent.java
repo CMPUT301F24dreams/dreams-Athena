@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.userDB;
 import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
@@ -39,6 +40,7 @@ public class createEvent extends Fragment {
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         eventsDB eventsDB = new eventsDB();
+        userDB userDB = new userDB();
 
         Bundle bundle = getArguments();
         assert bundle != null;
@@ -76,6 +78,7 @@ public class createEvent extends Fragment {
                         String eventID = doc.getId();
 
                         eventsDB.updateEventID(eventID);
+                        userDB.updateOrgEvents(deviceID, eventID);
 
                         Bundle eventIDBundle = new Bundle();
                         eventIDBundle.putString("eventID", eventID);
