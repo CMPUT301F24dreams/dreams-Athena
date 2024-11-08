@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,17 +14,22 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
+import com.example.athena.Firebase.userDB;
+import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
-
-import androidx.activity.result.ActivityResultLauncher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class viewProfileFragment extends Fragment {
 
-    static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
-
+    private static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
+    private userDB usersDB;
+    private String deviceID;
+    private User user;
     ProfileScreenBinding binding;
 
 
@@ -36,6 +40,8 @@ public class viewProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Initialize the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
 
@@ -46,12 +52,44 @@ public class viewProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle bundle = getArguments();
+        assert bundle != null;
+        deviceID = bundle.getString("deviceID");
+        usersDB = new userDB();
+        Task getUser = usersDB.getUser(deviceID);
+        Task userLoaded = Tasks.whenAll(getUser);
+        userLoaded.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
+                    if (userdoc.exists()){
+                        String name = userdoc.getString("name");
+                        String email = userdoc.getString("email");
+                        String phone = userdoc.getString("phone");
+                        user = new User(name,email,phone);
+                    }
+
+                    binding.profileName.setText(String.format("Name: %s", user.getName()));
+                    binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
+                    binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
+
+
+
+
 
         // Navigate back to the main profile screen
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
+            entrantAndOrganizerHomeFragment frag = new entrantAndOrganizerHomeFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
         });
 
@@ -59,7 +97,9 @@ public class viewProfileFragment extends Fragment {
         binding.EditNotfis.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileNotiEditFragment());
+            profileNotiEditFragment frag = new profileNotiEditFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
         });
 
@@ -67,7 +107,9 @@ public class viewProfileFragment extends Fragment {
         binding.EditProfileAll.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileScreenEditFragment());
+            profileScreenEditFragment frag = new profileScreenEditFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
             transaction.commit();
         });
 

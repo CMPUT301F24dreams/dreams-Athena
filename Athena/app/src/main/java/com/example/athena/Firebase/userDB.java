@@ -1,5 +1,6 @@
 package com.example.athena.Firebase;
 
+import com.example.athena.Models.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,6 +29,16 @@ public class userDB {
         return ueRef;
     }
 
+    public void saveNotifSetting (String userID, String setting, Boolean isChecked){
+        db.collection("Users").document(userID).update(setting,isChecked);
+    }
+
+    public void saveUserDetail(User user,String userID){
+        db.collection("Users").document(userID).update("name",user.getName());
+        db.collection("Users").document(userID).update("email",user.getEmail());
+        db.collection("Users").document(userID).update("phone",user.getPhone());
+    }
+
     public Task<QuerySnapshot> getUserList() {
         return usersCollection.get();
     }
@@ -35,15 +46,30 @@ public class userDB {
     public void updateOrgEvents(String deviceID, String eventID) {
         db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
     }
-  
+
+    /**
+     * updates the users status to invited on the users events sub-collection
+     * @param eventID the events id
+     * @param deviceID the users id
+     */
     public void changeEventStatusInvited(String eventID, String deviceID){
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
     }
 
+    /**
+     * updates the users status to accepted on the users events sub-collection
+     * @param eventID the events id
+     * @param deviceID the users id
+     */
     public void changeEventStatusAccepted(String eventID, String deviceID){
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","accepted");
     }
 
+    /**
+     * updates the users status to declined on the users events sub-collection
+     * @param eventID the events id
+     * @param deviceID the users id
+     */
     public void changeEventStatusDeclined(String eventID, String deviceID){
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","declined");
     }

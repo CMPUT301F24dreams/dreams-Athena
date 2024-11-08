@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.athena.AdminFragments.browseAppEvents;
+import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Interfaces.displayFragments;
@@ -78,6 +80,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
 
         ///Assigns the app drawer
         LinearLayout appDrawer = view.findViewById(R.id.more_options_drawer);
+        appDrawer.setVisibility(View.GONE);
 
         ///Assigns the home screen
         ConstraintLayout homeScreen = view.findViewById(R.id.entrant_and_organizer_view);
@@ -92,6 +95,29 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
         displayChildFragment(new myEventsList(), bundle);
+
+
+        ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+        ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
+
+
+        viewAppImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new browseAppImages(), bundle);
+
+            }
+        });
+
+        viewAppEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new browseAppEvents(), bundle);
+
+            }
+        });
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +146,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,16 +175,29 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                displayChildFragment(new viewProfileFragment(), bundle);
+                displayNewFrag(new viewProfileFragment(), bundle);
             }
         });
 
         scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
+//                transaction.commit();
                 scanCode();
             }
         });
+
+//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//            }
+//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +217,10 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
     public void displayChildFragment(Fragment fragment, Bundle bundle) {
         fragment.setArguments(bundle);
         getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+    }
+    public void displayNewFrag(Fragment fragment, Bundle bundle) {
+        fragment.setArguments(bundle);
+        getChildFragmentManager().beginTransaction().replace(R.id.entrant_and_organizer_constraint_layout, fragment).commit();
     }
     private void scanCode() {
     ScanOptions options = new ScanOptions();
