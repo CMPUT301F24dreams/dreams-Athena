@@ -13,8 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.athena.R;
-
-public class OrgChooseNumDialog extends DialogFragment {
+/**
+ * This class defines a dialog fragment used for selecting the number of entrants in an event.
+ * The dialog prompts the user to enter a number (integer) representing the desired number of entrants.
+ * Upon confirmation, the dialog returns the selected number to the calling fragment via the numOfEntListener interface.
+ */
+ public class OrgChooseNumDialog extends DialogFragment {
 
     interface numOfEntListener{
         void choseEntrants(int num);

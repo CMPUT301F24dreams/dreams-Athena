@@ -1,3 +1,7 @@
+/*
+ * This fragment displays detailed information about a specific event for the admin, including the event name, image, and a button for deleting the event.
+ * The event data is retrieved from the Firebase Firestore database using the event's ID.
+ */
 package com.example.athena.AdminFragments;
 
 import android.app.AlertDialog;

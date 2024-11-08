@@ -10,7 +10,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
+/**
+ * Class for interacting with Firebase Storage to upload and delete images.
+ */
 public class imageDB {
     FirebaseStorage storage;
     private StorageReference storageRef;

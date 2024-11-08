@@ -28,8 +28,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-public class myEventsList extends Fragment {
+/**
+ * This fragment class represents the details of a specific event within the application.
+ */
+ public class myEventsList extends Fragment {
     private String deviceID;
     private userDB userDB;
     private eventsDB eventsDB;

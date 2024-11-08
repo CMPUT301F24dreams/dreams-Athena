@@ -24,7 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-
+/**
+ * Fragment to handle editing of a user's profile details.
+ * This fragment allows the user to modify their profile information (name, email, phone number).
+ * After changes are made, the user can save the updated details to the database.
+ */
 public class profileScreenEditFragment extends Fragment {
 
     private String deviceID;

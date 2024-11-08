@@ -1,3 +1,8 @@
+/*
+ * This fragment is responsible for displaying a list of events to the admin in the application.
+ * It retrieves event data from Firebase and populates a ListView with event details such as event name, image, and ID.
+ */
+
 package com.example.athena.AdminFragments;
 
 import android.os.Bundle;

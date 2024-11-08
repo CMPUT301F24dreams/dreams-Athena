@@ -24,7 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Objects;
-
+/**
+ * Fragment for the user sign-up screen where the user can input their details and register.
+ */
 public class signUpFragment extends Fragment {
     private SignUpFragmentBinding binding;
 
