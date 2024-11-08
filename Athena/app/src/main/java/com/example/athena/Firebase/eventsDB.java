@@ -127,5 +127,9 @@ public class eventsDB {
         db.collection("Events").document(eventID).collection(donor).document(userID).delete();
     }
 
+    public void deleteEvent(String eventID){
+        db.collection("Events").document(eventID).delete();
+    }
+
 
 }
