@@ -1,17 +1,26 @@
 package com.example.athena.GeneralActivities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.Manifest;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
+import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
 
 import com.example.athena.R;
 import com.example.athena.RegistrationFragments.signUpFragment;
+import com.example.athena.Services.NotificationService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             db.collection("Users").document(String.valueOf(getDeviceId())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -32,26 +42,51 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("deviceID", String.valueOf(getDeviceId()));
                     if (task.getResult().exists()) {
-                        homeScreen homeScreen = new homeScreen();
+                        entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, homeScreen);
+                        transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
                         transaction.commit();
                     } else {
                         signUpFragment signUp = new signUpFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         signUp.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, signUp);
+                        transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
                         transaction.commit();
                     }
                 }
             });
+
+            // Notification setup
+            requestNotificationPermission();
+
+            Intent notificationIntent = new Intent(this, NotificationService.class);
+            notificationIntent.putExtra("deviceId", getDeviceId());
+
+            startService(notificationIntent);
         }
 
 
     }
+    // Logic for getting notification permission
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // permission is granted
+                } else {
+                    // permission is denied, might need to disable notifications somewhere
+                    // make a toast that says "notifs are disabled, go to settings to enable them"
+                }
+            });
 
-
+    private void requestNotificationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+            == PackageManager.PERMISSION_GRANTED) {
+            // Permission is granted, no further code required
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+        }
+    }
 }
