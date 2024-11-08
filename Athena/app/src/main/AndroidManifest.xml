@@ -30,6 +30,8 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".Services.NotificationService"/>
+
         <activity
             android:name=".EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity">
         </activity>
