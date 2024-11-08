@@ -22,7 +22,7 @@ public class Event {
     private Integer maxParticipants;
     private Boolean geoRequire;
     private String eventID;
-    public WaitList waitList;
+    private WaitList waitList;
 
     /**
      * Constructor to initialize the event with all properties except for the waitlist.
