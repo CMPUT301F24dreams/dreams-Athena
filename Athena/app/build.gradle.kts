@@ -8,14 +8,12 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         applicationId = "com.example.athena"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         viewBinding {
             enable = true
         }
@@ -32,17 +30,14 @@ android {
         }
     }
 
-
-
+    tasks.withType<Test>{
+        useJUnitPlatform()
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -58,15 +53,14 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.ext.junit)
-    implementation("com.google.firebase:firebase-firestore:25.1.1")
-    implementation("com.google.firebase:firebase-storage")
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation(libs.firebase.messaging)
+
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.0.1")
-    testImplementation("androidx.test.ext:junit:1.1.5")
-    testImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
