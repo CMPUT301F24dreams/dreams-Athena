@@ -11,9 +11,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.athena.Firebase.userDB;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenNotifEditBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 /**
@@ -21,7 +32,8 @@ import com.example.athena.databinding.ProfileScreenNotifEditBinding;
  * notification settings
  */
 public class profileNotiEditFragment extends Fragment {
-
+    private userDB usersDB;
+    private String deviceID;
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
     public profileNotiEditFragment() {
@@ -43,12 +55,32 @@ public class profileNotiEditFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
+        assert bundle != null;
+        deviceID = bundle.getString("deviceID");
+        usersDB = new userDB();
         // TODO: Need to add the db stuff
+        Task getUser = usersDB.getUser(deviceID);
+        Task loadedUser = Tasks.whenAll(getUser);
+        loadedUser.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
 
-        binding.chosenNotif.setChecked(getSwitchStateFromDb("chosenNotif"));
-        binding.notChosenNotif.setChecked(getSwitchStateFromDb("notChosenNotif"));
-        binding.geolocationWarn.setChecked(getSwitchStateFromDb("geolocationWarn"));
-        binding.notifsFromOthers.setChecked(getSwitchStateFromDb("notifsFromOthers"));
+
+
+                    binding.chosenNotif.setChecked(user.getBoolean("chosenNotif"));
+                    binding.notChosenNotif.setChecked(user.getBoolean("notChosenNotif"));
+                    binding.geolocationWarn.setChecked(user.getBoolean("geolocationWarn"));
+                    binding.notifsFromOthers.setChecked(user.getBoolean("notifsFromOthers"));
+
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
+
+
 
         // Listeners for each switch
         // Chosen notifications
@@ -91,6 +123,7 @@ public class profileNotiEditFragment extends Fragment {
      */
     private boolean getSwitchStateFromDb(String key) {
         // TODO: Take the switch state from db
+
         return false; // Default value
     }
 
@@ -99,5 +132,6 @@ public class profileNotiEditFragment extends Fragment {
      */
     private void saveSwitchStateToDb(String key, boolean isChecked) {
         // TODO: Save the switch stuff to db
+        usersDB.saveNotifSetting(deviceID,key,isChecked);
     }
 }
