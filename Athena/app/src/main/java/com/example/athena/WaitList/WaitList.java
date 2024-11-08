@@ -25,7 +25,6 @@ public class WaitList{
         declined = new ArrayList<String>();
         accepted = new ArrayList<String>();
 
-
         attachedEvent = event;
     }
 

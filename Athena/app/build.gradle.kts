@@ -60,6 +60,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
+    androidTestImplementation("androidx.test:runner:1.6.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.0.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

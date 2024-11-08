@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,7 +94,7 @@ public class viewProfileFragment extends Fragment {
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            entrantAndOrganizerHomeFragment frag = new entrantAndOrganizerHomeFragment();
+            homeScreen frag = new homeScreen();
             frag.setArguments(bundle);
             transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();

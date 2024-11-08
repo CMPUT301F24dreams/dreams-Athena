@@ -133,7 +133,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
+                transaction.replace(R.id.content_layout, new homeScreen());
                 transaction.commit();
             }
         });
