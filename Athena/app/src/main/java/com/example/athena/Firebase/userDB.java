@@ -34,8 +34,8 @@ public class userDB {
     }
 
     // Retrieves a specific user by their ID
-    public Task<DocumentSnapshot> getUser(String userId) {
-        return usersCollection.document(userId).get();
+    public Task<DocumentSnapshot> getUser(String deviceId) {
+        return usersCollection.document(deviceId).get();
     }
 
     // Updates an existing user's data

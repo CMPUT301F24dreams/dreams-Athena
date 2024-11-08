@@ -7,7 +7,11 @@ import android.os.IBinder;
 import android.os.Looper;
 
 import com.example.athena.Controllers.NotificationController;
+import com.example.athena.Models.Notification;
+import com.example.athena.Models.detailsForNotification;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -49,7 +53,26 @@ public class NotificationService extends Service {
         this.handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                notificationController.checkNotifications(db);
+                notificationController.getNotificationData(new NotificationController.NotificationDataCallback() {
+                    @Override
+                    public void onDataRetrieved(List<detailsForNotification> notifDetailList) {
+                        for (detailsForNotification details : notifDetailList) {
+                            // check that the user allows notifications of this type
+                            if (notificationController.checkValidNotification(details)) {
+                                // convert notification details into a notification object
+                                Notification notification = notificationController.convertToNotification(details);
+
+                                // show the notification object
+                                notificationController.showNotification(NotificationService.this, notification);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
 
                 // reschedules the task
                 handler.postDelayed(this, Interval);

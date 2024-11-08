@@ -8,6 +8,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import com.example.athena.Models.Notification;
+import com.example.athena.Models.detailsForNotification;
 import com.example.athena.R;
 
 public class NotificationView {

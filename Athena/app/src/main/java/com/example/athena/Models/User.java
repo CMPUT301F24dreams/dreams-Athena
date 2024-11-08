@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class User implements Model { // TO-DO Java-doc
+    private String deviceId;
     private String name;
     private String email;
     private String phone;
@@ -78,5 +79,4 @@ public class User implements Model { // TO-DO Java-doc
     public void addEvent(Event event) {
         this.Events.add(event);
     }
-
 }
