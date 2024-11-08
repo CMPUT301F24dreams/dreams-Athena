@@ -72,7 +72,7 @@ public class adminProfileDetail extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name, email, phone);
+                        user = new User(name, email, phone, null);
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));

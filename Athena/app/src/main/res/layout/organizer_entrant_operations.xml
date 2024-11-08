@@ -21,16 +21,16 @@
 
     <ImageButton
         android:id="@+id/notify_entrants_button"
-        android:layout_width="186dp"
-        android:layout_height="60dp"
+        android:layout_width="181dp"
+        android:layout_height="61dp"
         android:backgroundTint="@color/mainBackground"
         android:src="@drawable/notify_entrants"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <ImageButton
         android:id="@+id/view_sampled_entrants_button"
@@ -40,9 +40,10 @@
         android:src="@drawable/view_selected_entrants_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
 
     <TextView
         android:id="@+id/textView6"
@@ -59,5 +60,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="188dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="87dp"
+        android:backgroundTint="@color/mainBackground"
+        android:src="@drawable/cancel_unregistered"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton10"
+        app:layout_constraintTop_toBottomOf="@+id/view_sampled_entrants_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="204dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="86dp"
+        android:backgroundTint="@color/mainBackground"
+        android:src="@drawable/view_enrolled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notify_entrants_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="204dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/mainBackground"
+        android:src="@drawable/view_cancelled_entrants"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton10"
+        app:layout_constraintVertical_bias="0.085" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

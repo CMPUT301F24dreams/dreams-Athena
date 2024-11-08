@@ -29,6 +29,11 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/choose_num_dialog.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -59,6 +64,21 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_list_content.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_page.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_to_event_noti_display.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/loading_screen.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -70,6 +90,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_create_event_page.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_entrant_operations.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -104,12 +129,22 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/selected_entrants_fragment.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/sign_up_fragment.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/signin_screen_fragment.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/user_list_item_layout.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -170,7 +205,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="" />
+    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -267,7 +304,7 @@
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.0",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+    "settings.editor.selected.configurable": "memory.settings"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment">
+    tools:context=".EntrantAndOrganizerFragments.homeScreen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/entrant_and_organizer_view"

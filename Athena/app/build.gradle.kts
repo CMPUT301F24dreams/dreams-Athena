@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.firebase.messaging)
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
+    androidTestImplementation("androidx.test:runner:1.6.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.0.1")
     testImplementation("androidx.test.ext:junit:1.1.5")
     testImplementation("androidx.test.espresso:espresso-core:3.6.1")

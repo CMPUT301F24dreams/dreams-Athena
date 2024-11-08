@@ -5,56 +5,28 @@ import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.athena.AdminFragments.browseAppEvents;
 import com.example.athena.AdminFragments.browseAppImages;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
-import com.example.athena.Interfaces.displayFragments;
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
-import com.example.athena.Models.Event;
-import com.example.athena.Models.User;
 import com.example.athena.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 
 /**
  * This is a fragment used as a home page for entrants and organizers
  */
-public class entrantAndOrganizerHomeFragment extends Fragment {
+public class homeScreen extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
