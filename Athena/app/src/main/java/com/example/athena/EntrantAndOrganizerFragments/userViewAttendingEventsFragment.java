@@ -39,14 +39,15 @@ import java.util.Objects;
  */
 public class userViewAttendingEventsFragment extends Fragment implements userViewNotisChose.acceptDeclineListener {
 
-    private ListView invites;
+    public ListView invites;
     private UserInviteArrayAdapter adapter;
-    private ArrayList<Event> events;
-    private String deviceID;
-    private userDB userDB;
-    private eventsDB eventsDB;
+    public ArrayList<Event> events;
+    public String deviceID;
+    public userDB userDB;
+    public eventsDB eventsDB;
     @Override
 
+    ///This method is used to handle a user accepting an invite
     public void acceptInvite(int position) {
         events.get(position).moveUser(deviceID, "accepted");
         eventsDB.moveUserID("invited","accepted",deviceID, events.get(position).getEventID());
@@ -55,6 +56,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
         adapter.notifyDataSetChanged();
 
     }
+    ///This method handles users who reject invites
     @Override
     public void declineInvite(int position) {
         Log.d("updateEvent", "onItemClick: " + events.get(position).getWaitList().getInvited());
@@ -82,6 +84,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        ///These are representative of database connections used for the respective entities (Users, events, and events)
         userDB = new userDB();
         eventsDB = new eventsDB();
         events = new ArrayList<>();
@@ -194,7 +197,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
 
 
     }
-    private void showDialog(Bundle bundle) {
+    public void showDialog(Bundle bundle) {
         FragmentManager fm = getParentFragmentManager();
         userViewNotisChose frag = new userViewNotisChose();
         frag.setArguments(bundle);

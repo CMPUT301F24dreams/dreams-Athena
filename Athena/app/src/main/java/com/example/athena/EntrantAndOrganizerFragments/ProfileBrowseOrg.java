@@ -31,8 +31,8 @@ import java.util.Iterator;
  * */
 public class ProfileBrowseOrg extends Fragment {
     private String deviceID;
-    private userDB userDB;
-    private eventsDB eventsDB;
+    public userDB userDB;
+    public eventsDB eventsDB;
     private ArrayList<User> users;
     private ListView listView;
     private ArrayList<String> usersID;

@@ -36,11 +36,11 @@ import java.util.Iterator;
 
 
     private String eventID;
-    private Event event;
+    public Event event;
     private String deviceID;
-    private eventsDB eventDB;
-    private userDB userDB;
-    private Bundle bundle;
+    public eventsDB eventDB;
+    public userDB userDB;
+    public Bundle bundle;
     @Override
 
     /**
@@ -139,9 +139,9 @@ import java.util.Iterator;
 
         //this is temp
         ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
-        ImageButton viewInvited = view.findViewById(R.id.viewSelected);
-        Button viewCanclled = view.findViewById(R.id.viewCancelledEntrants);
-        Button viewAccepted = view.findViewById(R.id.viewSelected);
+        ImageButton viewInvited = view.findViewById(R.id.view_selected_entrants);
+        ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
+        ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,13 +170,22 @@ import java.util.Iterator;
             }
         });
 
+        viewAccepted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putString("eventID", eventID);
+                bundle.putString("status", "accepted");
+                displayChildFragment(new ProfileBrowseOrg());
+            }
+        });
+
 
     }
 
 
 
 
-    private void showDialog() {
+    public void showDialog() {
         FragmentManager fm = getParentFragmentManager();
         OrgChooseNumDialog frag = new OrgChooseNumDialog();
         frag.setTargetFragment(this,0);

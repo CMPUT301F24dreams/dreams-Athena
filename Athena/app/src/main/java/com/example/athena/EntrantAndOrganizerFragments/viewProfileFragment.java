@@ -32,12 +32,12 @@ import com.google.firebase.storage.UploadTask;
  */
 public class viewProfileFragment extends Fragment {
 
-    static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
-    private userDB usersDB;
-    private imageDB imageDB;
+    public static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
+    public userDB usersDB;
+    public imageDB imageDB;
     private String deviceID;
     private User user;
-    ProfileScreenBinding binding;
+    public ProfileScreenBinding binding;
 
 
     public viewProfileFragment() {

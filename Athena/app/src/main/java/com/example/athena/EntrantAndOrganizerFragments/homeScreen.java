@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.example.athena.AdminFragments.adminProfileBrowse;
 import com.example.athena.AdminFragments.browseAppEvents;
 import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;

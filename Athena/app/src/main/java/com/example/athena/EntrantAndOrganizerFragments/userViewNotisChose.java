@@ -20,7 +20,7 @@ import com.example.athena.R;
  * It communicates with the calling fragment to handle the user's response.
  */
 public class userViewNotisChose extends DialogFragment {
-    interface acceptDeclineListener{
+    public interface acceptDeclineListener{
         /**
          * declines the invite
          * @param position the position in eventList

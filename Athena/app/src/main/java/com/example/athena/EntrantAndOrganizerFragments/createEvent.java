@@ -45,7 +45,7 @@ import com.google.firebase.storage.UploadTask;
 
 public class createEvent extends Fragment {
     Uri imageURI;
-    ImageView imageView;
+    public ImageView imageView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_event, container, false);
@@ -120,7 +120,7 @@ public class createEvent extends Fragment {
         }
     });
 }
-    private void openGallery() {
+    public void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }

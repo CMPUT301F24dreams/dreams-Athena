@@ -39,8 +39,8 @@ public class viewMyCreatedEventsFragment extends Fragment{
     private EventArrayAdapter eventAdapter;
     private ArrayList<Event> events;
     private String deviceID;
-    private userDB userDB;
-    private eventsDB eventsDB;
+    public userDB userDB;
+    public eventsDB eventsDB;
     OrganizerMyEventsViewBinding binding;
 
     @Override

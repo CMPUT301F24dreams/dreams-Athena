@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.User;
@@ -137,6 +138,7 @@ public class profileScreenEditFragment extends Fragment {
         // Save Profile button functionality
         binding.saveProfile.setOnClickListener(v -> {
             // Save changes to profile information
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
             saveProfileChanges();
         });
     }
