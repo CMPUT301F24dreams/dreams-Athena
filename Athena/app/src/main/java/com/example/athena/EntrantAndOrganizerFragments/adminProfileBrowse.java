@@ -64,7 +64,8 @@ public class adminProfileBrowse extends Fragment {
                         String name = documentSnapshot.getString("name");
                         String email = documentSnapshot.getString("email");
                         String phone = documentSnapshot.getString("phone");
-                        User user = new User(name, email, phone);
+                        String imageURL = documentSnapshot.getString("imageURL");
+                        User user = new User(name, email, phone, imageURL);
                         users.add(user);
                     }
                     userAdapter.notifyDataSetChanged();

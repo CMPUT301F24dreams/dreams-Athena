@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
@@ -23,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.storage.UploadTask;
 
 public class viewProfileFragment extends Fragment {
 
@@ -67,12 +70,14 @@ public class viewProfileFragment extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name,email,phone);
+                        String imageURL = userdoc.getString("imageURL");
+                        user = new User(name,email,phone, imageURL);
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));
                     binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
                     binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
+                    Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
                 } else {
                     Exception e = task.getException();
                 }
@@ -138,11 +143,11 @@ public class viewProfileFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null) {
             Uri imageUri = data.getData();
 
-            // Set the new image in the profile image view
-            binding.profileImage.setImageURI(imageUri);
+            imageDB imageDB = new imageDB();
+            UploadTask upload = imageDB.addImage(deviceID, imageUri);
+            usersDB.saveURLToUser(upload, deviceID);
 
-            // Save image URI
-            saveProfileImageUri(imageUri);
+            binding.profileImage.setImageURI(imageUri);
         }
     }
 
@@ -151,7 +156,7 @@ public class viewProfileFragment extends Fragment {
      */
     private void deleteProfilePicture() {
         //binding.profileImage.setImageResource(R.drawable.SOMETHING);
-        // TODO: Daman, this is the default pic from db
+        // TODO: ROGER, this is the default pic from db
 
         // Will hopefully clear the db of the old pfp
         clearProfileImageUrl();
