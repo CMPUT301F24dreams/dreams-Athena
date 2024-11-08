@@ -175,9 +175,9 @@
 
                     <ImageButton
                         android:id="@+id/create_event_button"
-                        android:layout_width="0dp"
-                        android:layout_height="72dp"
-                        android:layout_marginTop="64dp"
+                        android:layout_width="141dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="92dp"
                         android:backgroundTint="@color/drawer_background_color"
                         android:src="@drawable/create_event_drawer_button"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -229,8 +229,8 @@
 
                     <ImageButton
                         android:id="@+id/adminProfileBrowse"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_width="139dp"
+                        android:layout_height="72dp"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/drawer_background_color"
                         android:src="@drawable/admin_profile_browse_button"
@@ -239,6 +239,36 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/events_im_hosting_button"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageButton
+                        android:id="@+id/adminImageBrowse"
+                        android:layout_width="139dp"
+                        android:layout_height="76dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="324dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/browse_images"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/adminEventsBrowse"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageButton
+                        android:id="@+id/adminEventsBrowse"
+                        android:layout_width="143dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/browse_events_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/adminProfileBrowse"
                         app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
