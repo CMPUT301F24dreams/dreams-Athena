@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
@@ -19,11 +20,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.Objects;
+
 public class adminProfileDetail extends Fragment {
     private String userID;
     private userDB usersDB;
     private User user;
     private Bundle bundle;
+    private com.example.athena.Firebase.imageDB imageDB;
     /// Binds the fragment to its elements
     ProfileScreenAdminBinding binding;
 
@@ -61,6 +65,7 @@ public class adminProfileDetail extends Fragment {
         assert bundle != null;
         userID = bundle.getString("userID");
         usersDB = new userDB();
+        imageDB = new imageDB();
         Task getUser = usersDB.getUser(userID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -72,7 +77,8 @@ public class adminProfileDetail extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name, email, phone);
+                        String img = userdoc.getString("imageIRL");
+                        user = new User(name, email, phone,img);
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));
@@ -110,6 +116,11 @@ public class adminProfileDetail extends Fragment {
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
+            if (Objects.equals("NULL", user.getImageURL())){
+                ;
+            } else {
+                imageDB.deleteImage(userID);
+            }
             usersDB.deleteUser(userID);
             displayChildFragment(new adminProfileBrowse(), bundle);
         });
