@@ -27,11 +27,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/event_desc_non_edit_list"
+                android:id="@+id/event_desc_non_edit"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:background="#D7F2EE"
                 android:backgroundTint="#D7F2EE"
+                android:fontFamily="@font/bai_jamjuree_bold"
                 android:text="Event Description:"
                 android:textAlignment="center"
                 android:textColor="#0D0C0C"
@@ -39,7 +40,7 @@
                 android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/event_description_textview_list"
+                android:id="@+id/event_description_textview"
                 android:layout_width="match_parent"
                 android:layout_height="149dp"
                 android:background="#D7F2EE"

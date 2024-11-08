@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/waitlists_declined_entrants_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/waitlists_declined_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/profile_screen_notif_edit.xml",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen_notif_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/profile_screen.xml",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/user_registered_events_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/user_registered_events_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/profile_screen_edit.xml",
+        "source": "com.example.athena.app-main-64:/layout/profile_screen_edit.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/search_for_event_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/search_for_event_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/event_list_item_layout.xml",
+        "source": "com.example.athena.app-main-64:/layout/event_list_item_layout.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/ent_and_org_home_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/ent_and_org_home_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/waitlist_notified_entrants_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/waitlist_notified_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/waitlist_entrants_to_notify_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/waitlist_entrants_to_notify_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/admin_browse_facilities_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/admin_browse_facilities_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/user_registration.xml",
+        "source": "com.example.athena.app-main-64:/layout/user_registration.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/organizer_my_events_view.xml",
+        "source": "com.example.athena.app-main-64:/layout/organizer_my_events_view.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/sign_up_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/sign_up_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/loading_screen.xml",
+        "source": "com.example.athena.app-main-64:/layout/loading_screen.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/event_registered_entrants_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/event_registered_entrants_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/organizer_create_event_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/organizer_create_event_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/nav_host_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/nav_host_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/user_view_events_attending_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/user_view_events_attending_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/user_my_notis_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/user_my_notis_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/admin_browse_user_profiles_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/admin_browse_user_profiles_page.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/signin_screen_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/signin_screen_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/search_for_facility_fragment.xml",
+        "source": "com.example.athena.app-main-64:/layout/search_for_facility_fragment.xml"
+    },
+    {
+        "merged": "com.example.athena.app-mergeDebugResources-61:/layout/event_clicked_by_user_page.xml",
+        "source": "com.example.athena.app-main-64:/layout/event_clicked_by_user_page.xml"
+    }
+]

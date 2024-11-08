@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/view_my_events_option"
+
+        android:icon="@drawable/events_calendar_holo"
+        android:title="Events I'm Holding" />
+    <item
+        android:id="@+id/create_event_option"
+
+        android:icon="@drawable/add_items_button"
+        android:title="Create an Event" />
+</menu>
