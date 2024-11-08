@@ -160,69 +160,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Activities/InitialScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/AdminDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/EntrantDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/EventDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/OrganizerDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/UserDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/DBs/WaitlistDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Event/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Notifications/PushNotificationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Roles/Admin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Roles/Entrant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Roles/Organizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/Roles/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/WaitList/WaitList.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/WaitList/WaitList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EntrantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EntrantController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/NotificationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/OrganizerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/OrganizerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/WaitlistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/WaitlistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/merged_res/debug/mergeDebugResources/layout_initial_screen.xml.flat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/initial_screen.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c4691a4bd6ba9c99b607db8b33e8c65ba3cdd94339c6ec9fb4fddbead908e1a6_0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c4691a4bd6ba9c99b607db8b33e8c65ba3cdd94339c6ec9fb4fddbead908e1a6_1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c4691a4bd6ba9c99b607db8b33e8c65ba3cdd94339c6ec9fb4fddbead908e1a6_2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c4691a4bd6ba9c99b607db8b33e8c65ba3cdd94339c6ec9fb4fddbead908e1a6_3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Activities/InitialScreen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/AdminDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/EntrantDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/EventDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/OrganizerDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/UserDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/DBs/WaitlistDB.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Notifications/PushNotificationService.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Roles/Admin.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Roles/Entrant.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/Roles/Organizer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/UserController.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/UserController.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/WaitlistController.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/WaitlistController.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Services/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Services/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/local.properties" afterDir="false" />
-    </list>
+    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,7 +169,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/swcarson/.android/avd/Pixel_2_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/swcarson/.android/avd/Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/Athena">
       <ProjectState />
@@ -297,31 +235,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.Athena.app.executor": "Run",
-    "Android Instrumented Tests.ExampleInstrumentedTest.executor": "Run",
-    "Android Instrumented Tests.Tests in 'com.example.athena'.executor": "Run",
-    "Android Instrumented Tests.useAppContext().executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "notificationsP3",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/CMPUT 301 Assignments/Assignment 1 Deliverables (build folder removed)/code/asshittu-MyBookWishlist",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.Athena.app.executor&quot;: &quot;Run&quot;,
+    &quot;Android Instrumented Tests.ExampleInstrumentedTest.executor&quot;: &quot;Run&quot;,
+    &quot;Android Instrumented Tests.Tests in 'com.example.athena'.executor&quot;: &quot;Run&quot;,
+    &quot;Android Instrumented Tests.useAppContext().executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;notificationsP3&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/CMPUT 301 Assignments/Assignment 1 Deliverables (build folder removed)/code/asshittu-MyBookWishlist&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\bgfis\Android_studio_stutffs\dreams-Athena\Athena\app\src\main\res\drawable" />
