@@ -31,7 +31,8 @@ import com.google.firebase.storage.UploadTask;
  * It also provides options to edit the profile, change the profile picture, or navigate to other profile-related sections.
  */
 public class viewProfileFragment extends Fragment {
-    
+
+    public static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
     public userDB usersDB;
     public imageDB imageDB;
     private String deviceID;
