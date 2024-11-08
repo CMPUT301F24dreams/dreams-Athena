@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 
 import com.example.athena.Controllers.NotificationController;
 import com.example.athena.Models.Notification;
@@ -38,7 +39,7 @@ public class NotificationService extends Service {
         // Pull deviceId from intent and initialize controller and db
         String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         this.notificationController = new NotificationController(this, deviceId);
-        this.db = FirebaseFirestore.getInstance();
+        FirebaseFirestore.getInstance();
 
         // Start the periodic notification checker
         this.handler = new Handler(Looper.getMainLooper());

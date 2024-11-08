@@ -60,13 +60,15 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
                         transaction.commit();
                     }
-
+                    /*
                     // Notification setup
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(this, NotificationService.class);
 
                     startService(notificationIntent);
+
+                     */
                 }
             });
         }
