@@ -42,7 +42,7 @@ public class profileNotiEditFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Bundle bundle = getArguments();
         // TODO: Need to add the db stuff
 
         binding.chosenNotif.setChecked(getSwitchStateFromDb("chosenNotif"));
@@ -75,9 +75,12 @@ public class profileNotiEditFragment extends Fragment {
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                viewProfileFragment frag = new viewProfileFragment();
+                frag.setArguments(bundle);
+                transaction.replace(R.id.content_layout, frag);
                 transaction.commit();
             }
         });

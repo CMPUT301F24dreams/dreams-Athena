@@ -120,6 +120,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,9 +156,22 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
+//                transaction.commit();
                 scanCode();
             }
         });
+
+//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//            }
+//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override

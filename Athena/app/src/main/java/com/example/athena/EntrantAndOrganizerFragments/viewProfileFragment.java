@@ -36,6 +36,8 @@ public class viewProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Initialize the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
 
@@ -46,12 +48,14 @@ public class viewProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Bundle bundle = getArguments();
         // Navigate back to the main profile screen
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
+            entrantAndOrganizerHomeFragment frag = new entrantAndOrganizerHomeFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.content_layout, frag);
             transaction.commit();
         });
 
@@ -59,7 +63,9 @@ public class viewProfileFragment extends Fragment {
         binding.EditNotfis.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileNotiEditFragment());
+            profileNotiEditFragment frag = new profileNotiEditFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.content_layout, frag);
             transaction.commit();
         });
 
@@ -67,7 +73,9 @@ public class viewProfileFragment extends Fragment {
         binding.EditProfileAll.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.content_layout, new profileScreenEditFragment());
+            profileScreenEditFragment frag = new profileScreenEditFragment();
+            frag.setArguments(bundle);
+            transaction.replace(R.id.content_layout,frag);
             transaction.commit();
         });
 
