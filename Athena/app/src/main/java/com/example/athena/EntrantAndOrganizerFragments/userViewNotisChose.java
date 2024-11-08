@@ -18,7 +18,15 @@ import com.example.athena.R;
 
 public class userViewNotisChose extends DialogFragment {
     interface acceptDeclineListener{
+        /**
+         * declines the invite
+         * @param position the position in eventList
+         */
         void declineInvite(int position);
+        /**
+         * accepts the invite
+         * @param position the position in eventList
+         */
         void acceptInvite(int position);
     }
 
