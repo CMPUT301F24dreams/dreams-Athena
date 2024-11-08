@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.UploadTask;
-
+/**
+ * This fragment displays the user's profile, including their name, email, phone, and profile picture.
+ * It also provides options to edit the profile, change the profile picture, or navigate to other profile-related sections.
+ */
 public class viewProfileFragment extends Fragment {
 
     static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
@@ -92,7 +94,7 @@ public class viewProfileFragment extends Fragment {
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            entrantAndOrganizerHomeFragment frag = new entrantAndOrganizerHomeFragment();
+            homeScreen frag = new homeScreen();
             frag.setArguments(bundle);
             transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();

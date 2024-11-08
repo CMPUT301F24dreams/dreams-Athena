@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
+import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
 
 import com.example.athena.R;
 import com.example.athena.RegistrationFragments.signUpFragment;
@@ -25,7 +25,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+/**
+ * MainActivity is the entry point of the application.
+ * It determines whether the user is already registered or not by querying the Firestore database.
+ * Based on the result, it either displays the home screen (for registered users) or the sign-up screen (for new users).
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("deviceID", String.valueOf(getDeviceId()));
                     if (task.getResult().exists()) {
-                        entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
+                        homeScreen homeScreen = new homeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);

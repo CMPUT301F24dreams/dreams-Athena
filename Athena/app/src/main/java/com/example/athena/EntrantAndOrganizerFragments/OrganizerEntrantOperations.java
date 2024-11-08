@@ -6,13 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
@@ -22,17 +21,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
 
-
-public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener,displayFragments {
+/**
+ * Fragment that handles operations for organizing and managing entrants for an event.
+ * It provides functionality to choose the number of entrants to send invitations to and view
+ * different lists of entrants, such as accepted, declined, pending, and invited.
+ */
+ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
 
 
     private String eventID;
@@ -40,6 +40,7 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
     private String deviceID;
     private eventsDB eventDB;
     private userDB userDB;
+    private Bundle bundle;
     @Override
 
     /**
@@ -65,8 +66,9 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.organizer_entrant_operations, container, false);
-        Bundle args = getArguments();
-        eventID = args.getString("eventID");
+        bundle = getArguments();
+        assert bundle != null;
+        eventID = bundle.getString("eventID");
         super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
         return view;
@@ -137,6 +139,9 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
 
         //this is temp
         ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
+        ImageButton viewInvited = view.findViewById(R.id.viewSelected);
+        Button viewCanclled = view.findViewById(R.id.viewCancelledEntrants);
+        Button viewAccepted = view.findViewById(R.id.viewSelected);
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +151,30 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
                 showDialog();
             }
         });
+
+        viewInvited.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putString("eventID", eventID);
+                bundle.putString("status", "invited");
+                displayChildFragment(new ProfileBrowseOrg());
+            }
+        });
+
+        viewCanclled.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putString("eventID", eventID);
+                bundle.putString("status", "cancelled");
+                displayChildFragment(new ProfileBrowseOrg());
+            }
+        });
+
+
     }
+
+
+
 
     private void showDialog() {
         FragmentManager fm = getParentFragmentManager();
@@ -158,9 +186,12 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
     private void displayFragment(Fragment fragment){
 
     }
+
     public void displayChildFragment(Fragment fragment){
+        fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
     }
+
 
     @Override
     public void switchToNewFragment(Fragment fragment){

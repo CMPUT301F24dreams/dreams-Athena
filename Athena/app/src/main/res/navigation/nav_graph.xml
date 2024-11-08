@@ -6,7 +6,7 @@
     app:startDestination="@+id/entrantAndOrganizerHomeFragment">
     <fragment
         android:id="@+id/entrantAndOrganizerHomeFragment"
-        android:name="com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.homeScreen"
         android:label="ent_and_org_home_fragment"
         tools:layout="@layout/ent_and_org_home_fragment" >
         <action

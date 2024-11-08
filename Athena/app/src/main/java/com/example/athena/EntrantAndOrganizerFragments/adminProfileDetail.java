@@ -1,3 +1,11 @@
+/**
+ * Fragment that displays detailed information about a user profile in an admin view.
+ * The fragment allows the admin to view user information, such as name, email, and phone number,
+ * as well as delete the user's profile if necessary.
+ * The user details are fetched from the Firebase Firestore database.
+ * This class manages interactions between the UI and the data model, such as retrieving user details,
+ * navigating to a previous fragment, and displaying a confirmation dialog for deletion.
+ */
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.app.AlertDialog;
@@ -72,7 +80,7 @@ public class adminProfileDetail extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name, email, phone);
+                        user = new User(name, email, phone, null);
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));

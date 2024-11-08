@@ -1,6 +1,5 @@
 package com.example.athena.RegistrationFragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,19 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 //import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
-import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
-import com.example.athena.GeneralActivities.MainActivity;
+import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
 import com.example.athena.R;
 import com.example.athena.databinding.SignUpFragmentBinding;
-import com.example.athena.databinding.SigninScreenFragmentBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Objects;
-
+/**
+ * Fragment for the user sign-up screen where the user can input their details and register.
+ */
 public class signUpFragment extends Fragment {
     private SignUpFragmentBinding binding;
 
@@ -87,7 +85,7 @@ public class signUpFragment extends Fragment {
                 assert mainActivity != null;
                 db.collection("Users").document(Objects.requireNonNull(mainActivity.getString("deviceID"))).set(data);
 
-                entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
+                homeScreen homeScreen = new homeScreen();
 
                 // If all fields are filled, proceed with action
                 FragmentManager fragmentManager = getParentFragmentManager();

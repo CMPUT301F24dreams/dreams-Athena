@@ -1,10 +1,4 @@
-/**
- * This Fragment is responsible for browsing the list of users in the admin profile screen.
- * It fetches a list of users from the Firebase Firestore database and displays them in a ListView.
- * When a user is clicked, it navigates to a detailed user profile page.
- */
-
- package com.example.athena.EntrantAndOrganizerFragments;
+package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,11 +11,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.ArrayAdapters.userArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,15 +25,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-
-public class adminProfileBrowse extends Fragment {
+/**
+ * Fragment for browsing users associated with a particular event.
+ * */
+public class ProfileBrowseOrg extends Fragment {
     private String deviceID;
     private userDB userDB;
+    private eventsDB eventsDB;
     private ArrayList<User> users;
     private ListView listView;
     private ArrayList<String> usersID;
+    private String status;
+    private String eventID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,43 +50,51 @@ public class adminProfileBrowse extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         assert bundle != null;
+        eventID = bundle.getString("eventID");
+        status = bundle.getString("status");
         this.deviceID = bundle.getString("deviceID");
+        eventID = bundle.getString("eventID");
+        status = bundle.getString("status");
         userDB = new userDB();
         users = new ArrayList<>();
         usersID = new ArrayList<>();
+        eventsDB = new eventsDB();
 
         listView = view.findViewById(R.id.myEventList);
 
+        Task getUserEventList = eventsDB.getEventUserList(eventID,status);
         Task getUserList = userDB.getUserList();
-        getUserList.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        Task gotInfo = Tasks.whenAll(getUserEventList,getUserList);
+        gotInfo.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     userArrayAdapter userAdapter = new userArrayAdapter(getContext(), users);
                     listView.setAdapter(userAdapter);
-                    for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
-                        String name = documentSnapshot.getString("name");
-                        String email = documentSnapshot.getString("email");
-                        String phone = documentSnapshot.getString("phone");
-                        String imageURL = documentSnapshot.getString("imageURL");
-                        User user = new User(name, email, phone, imageURL);
-                        users.add(user);
-                        usersID.add(documentSnapshot.getId());
+                    ArrayList<String> listOfUsersID = new ArrayList<>();
+                    QuerySnapshot userList = (QuerySnapshot) getUserEventList.getResult();
+                    for (Iterator<DocumentSnapshot> it = userList.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        listOfUsersID.add(document.getId());
+                    }
+                    QuerySnapshot listOfUsers = (QuerySnapshot) getUserList.getResult();
+                    for (Iterator<DocumentSnapshot> it = listOfUsers.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        if (listOfUsersID.contains(document.getId())) {
+                            String name = document.getString("name");
+                            String email = document.getString("email");
+                            String phone = document.getString("phone");
+                            String imageURL = document.getString("imageURL");
+                            User user = new User(name, email, phone, imageURL);
+                            users.add(user);
+                            usersID.add(document.getId());
+                        }
                     }
                     userAdapter.notifyDataSetChanged();
                 }
             }
         });
 
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TO - DO
-                bundle.putString("userID",usersID.get(position));
-                displayChildFragment(new adminProfileDetail(),bundle);
-            }
-        });
 
     }
     public void displayChildFragment(Fragment fragment, Bundle bundle) {

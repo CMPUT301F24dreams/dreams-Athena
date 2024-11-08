@@ -29,7 +29,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
+/**
+ * This fragment displays the list of events created by the organizer and allows navigation to event details.
+ * It fetches events from Firestore and displays them using a custom adapter.
+ */
 public class viewMyCreatedEventsFragment extends Fragment{
 
     private ListView eventList;
@@ -130,7 +133,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new entrantAndOrganizerHomeFragment());
+                transaction.replace(R.id.content_layout, new homeScreen());
                 transaction.commit();
             }
         });

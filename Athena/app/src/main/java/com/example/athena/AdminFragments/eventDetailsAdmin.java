@@ -1,3 +1,7 @@
+/*
+ * This fragment displays detailed information about a specific event for the admin, including the event name, image, and a button for deleting the event.
+ * The event data is retrieved from the Firebase Firestore database using the event's ID.
+ */
 package com.example.athena.AdminFragments;
 
 import android.app.AlertDialog;
@@ -16,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.imageDB;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +30,7 @@ public class eventDetailsAdmin extends Fragment{
     private com.example.athena.Firebase.eventsDB eventsDB;
     private String eventID;
     private Bundle bundle;
+    private com.example.athena.Firebase.imageDB imageDB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class eventDetailsAdmin extends Fragment{
         eventID = bundle.getString("eventID");
 
         eventsDB = new eventsDB();
+        imageDB = new imageDB();
 
         Task eventDetails = eventsDB.getEvent(eventID);
         eventDetails.addOnCompleteListener(new OnCompleteListener() {
@@ -76,6 +83,7 @@ public class eventDetailsAdmin extends Fragment{
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
+            imageDB.deleteImage(eventID);
             eventsDB.deleteEvent(eventID);
             displayChildFragment(new browseAppEvents(), bundle);
         });
