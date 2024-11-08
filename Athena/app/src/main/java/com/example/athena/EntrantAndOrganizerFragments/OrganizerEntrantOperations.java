@@ -50,9 +50,11 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
         event.chooseUsers(num,eventID);
         //update the dataBase:
         ArrayList<String> userIDs;
+
         userIDs = event.getWaitList().getInvited();
-        eventDB.changeStatusInvited(eventID,userIDs);
+        Log.d("databasee", "choseEntrants: " + userIDs.toString());
         for(String deviceID: userIDs){
+            eventDB.moveUserID("pending","invited",deviceID, eventID);
             userDB.changeEventStatusInvited(eventID,deviceID);
         }
 
@@ -80,8 +82,11 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
 
 //        Task getUser = userDB.getUser(deviceID);
         Task getEvent = eventDB.getEvent(eventID);
-        Task getUserList = eventDB.getEventUserList(eventID);
-        Task eventsLoaded = Tasks.whenAll( getEvent, getUserList);
+        Task getAccept = eventDB.getEventUserList(eventID,"accepted");
+        Task getDecline = eventDB.getEventUserList(eventID,"declined");
+        Task getPen = eventDB.getEventUserList(eventID,"pending");
+        Task getInvite = eventDB.getEventUserList(eventID,"invited");
+        Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -98,22 +103,25 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
                     Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
                     event = currentEvent;
 
-                    QuerySnapshot userList = (QuerySnapshot) getUserList.getResult();
-                    for (Iterator<DocumentSnapshot> it = userList.getDocuments().iterator(); it.hasNext(); ) {
+                    QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
+                    for (Iterator<DocumentSnapshot> it = acceptList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                            String status = document.getString("status");
-                        if(Objects.equals(status, "invited")){
-                            invited.add(document.getId());
-                        }
-                        if(Objects.equals(status, "pending")){
-                            pending.add(document.getId());
-                        }
-                        if(Objects.equals(status, "accepted")){
                             accepted.add(document.getId());
-                        }
-                        if(Objects.equals(status, "declined")){
-                            declined.add(document.getId());
-                        }
+                    }
+                    QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
+                    for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        declined.add(document.getId());
+                    }
+                    QuerySnapshot pendList = (QuerySnapshot) getPen.getResult();
+                    for (Iterator<DocumentSnapshot> it = pendList.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        pending.add(document.getId());
+                    }
+                    QuerySnapshot inviteList = (QuerySnapshot) getInvite.getResult();
+                    for (Iterator<DocumentSnapshot> it = inviteList.getDocuments().iterator(); it.hasNext(); ) {
+                        QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                        invited.add(document.getId());
                     }
 
                     event.getWaitList().setAccepted(accepted);

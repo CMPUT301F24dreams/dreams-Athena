@@ -17,6 +17,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class handles database operations for events collection, interacting with the Firestore database.
@@ -35,27 +37,60 @@ public class eventsDB {
         return db.collection("Events").get();
     }
 
+    /**
+     * get the document of the event from the database
+     * @param eventID the id of the event to grab
+     * @return a Task(DocumentSnapshot) of the event
+     */
     public Task<DocumentSnapshot> getEvent(String eventID) {
         return db.collection("Events").document(eventID).get();
     }
-
-    public Task<QuerySnapshot> getEventUserList(String eventID){
-        return db.collection("Events/" + eventID + "/UserList").get();
+    /**
+     * get the sub-collection of users from the event from the database
+     * @param eventID the id of the event to grab
+     * @return a Task(QuerySnapshot) of the event
+     */
+    public Task<QuerySnapshot> getEventUserList(String eventID,String list){
+        return db.collection("Events/").document(eventID).collection(list).get();
     }
 
-
+    /**
+     * change the status of the user in the events collection to invited and set notified to false
+     * @param eventID the ID of the event
+     * @param userIDs ArrayList of user IDs
+     */
     public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
         for(String userID: userIDs) {
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","invited");
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("notified",Boolean.FALSE);
         }
     }
+    /**
+     * change the status of the user in the events collection to accepted
+     * @param eventID the ID of the event
+     * @param userID the users ID
+     */
     public void changeStatusAccepted(String eventID, String userID){
         db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","accepted");
     }
+    /**
+     * change the status of the user in the events collection to declined
+     * @param eventID the ID of the event
+     * @param userID the users ID
+     */
     public void changeStatusDeclined(String eventID, String userID){
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
     }
+
+    public void moveUserID(String donor, String receiver, String userID,String eventID ){
+
+        Map<String,Boolean> notifi = new HashMap<>();
+        notifi.put("notified",Boolean.FALSE);
+        db.collection("Events").document(eventID).collection(receiver).document(userID).set(notifi);
+        db.collection("Events").document(eventID).collection(donor).document(userID).delete();
+    }
+
+
 
     // Adds a new event to the Events collection
     public Task<DocumentReference> addEvent(HashMap<String, Object> eventData){

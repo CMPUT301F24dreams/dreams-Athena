@@ -142,7 +142,9 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                viewProfileFragment frag = new viewProfileFragment();
+                frag.setArguments(bundle);
+                transaction.replace(R.id.content_layout,frag );
                 transaction.commit();
             }
         });

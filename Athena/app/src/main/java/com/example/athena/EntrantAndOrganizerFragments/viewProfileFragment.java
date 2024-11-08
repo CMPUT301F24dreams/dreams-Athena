@@ -68,8 +68,10 @@ public class viewProfileFragment extends Fragment implements displayFragments{
 
     @Override
     public void switchToNewFragment(Fragment fragment){
+        Bundle bundle = getArguments();
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        fragment.setArguments(bundle);
         transaction.replace(R.id.content_layout, fragment);
         transaction.commit();
     }

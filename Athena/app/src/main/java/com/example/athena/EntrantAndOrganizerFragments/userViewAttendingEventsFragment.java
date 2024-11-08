@@ -42,9 +42,10 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
     private userDB userDB;
     private eventsDB eventsDB;
     @Override
+
     public void acceptInvite(int position) {
         events.get(position).moveUser(deviceID, "accepted");
-        eventsDB.changeStatusAccepted(events.get(position).getEventID(), deviceID);
+        eventsDB.moveUserID("invited","accepted",deviceID, events.get(position).getEventID());
         userDB.changeEventStatusAccepted(events.get(position).getEventID(), deviceID);
         adapter.remove(events.get(position));
         adapter.notifyDataSetChanged();
@@ -54,7 +55,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
     public void declineInvite(int position) {
         Log.d("updateEvent", "onItemClick: " + events.get(position).getWaitList().getInvited());
         events.get(position).moveUser(deviceID, "declined");
-        eventsDB.changeStatusDeclined(events.get(position).getEventID(), deviceID);
+        eventsDB.moveUserID("invited","declined",deviceID, events.get(position).getEventID());
         userDB.changeEventStatusDeclined(events.get(position).getEventID(), deviceID);
         adapter.remove(events.get(position));
         adapter.notifyDataSetChanged();
@@ -127,9 +128,17 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
         invites.setClickable(Boolean.TRUE);
         invites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Task getEventUserList = eventsDB.getEventUserList(events.get(position).getEventID());
-                Task gotEventUserList = Tasks.whenAll(getEventUserList);
+                /* we create a new task here to grab the info for the waitlist then attach it to the event
+                * we are doing this here instead of where we are doing all the other db call as to do this call we need to know what event to search through
+                * so instead we will do when the user clicks on the event.
+                 */
+                Task getAccept = eventsDB.getEventUserList(events.get(position).getEventID(),"accepted");
+                Task getDecline = eventsDB.getEventUserList(events.get(position).getEventID(),"declined");
+                Task getPen = eventsDB.getEventUserList(events.get(position).getEventID(),"pending");
+                Task getInvite = eventsDB.getEventUserList(events.get(position).getEventID(),"invited");
+                Task gotEventUserList = Tasks.whenAll(getDecline,getAccept,getPen,getInvite);
                 gotEventUserList.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -139,23 +148,27 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
                         ArrayList<String> invited = new ArrayList<>();
                         if(task.isSuccessful()){
 
-                            QuerySnapshot userList = (QuerySnapshot) getEventUserList.getResult();
-                            for (Iterator<DocumentSnapshot> it = userList.getDocuments().iterator(); it.hasNext(); ) {
+                            QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
+                            for (Iterator<DocumentSnapshot> it = acceptList.getDocuments().iterator(); it.hasNext(); ) {
                                 QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                                String status = document.getString("status");
-                                if(Objects.equals(status, "invited")){
-                                    invited.add(document.getId());
-                                }
-                                if(Objects.equals(status, "pending")){
-                                    pending.add(document.getId());
-                                }
-                                if(Objects.equals(status, "accepted")){
-                                    accepted.add(document.getId());
-                                }
-                                if(Objects.equals(status, "declined")){
-                                    declined.add(document.getId());
-                                }
+                                accepted.add(document.getId());
                             }
+                            QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
+                            for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
+                                QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                                declined.add(document.getId());
+                            }
+                            QuerySnapshot pendList = (QuerySnapshot) getPen.getResult();
+                            for (Iterator<DocumentSnapshot> it = pendList.getDocuments().iterator(); it.hasNext(); ) {
+                                QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                                pending.add(document.getId());
+                            }
+                            QuerySnapshot inviteList = (QuerySnapshot) getInvite.getResult();
+                            for (Iterator<DocumentSnapshot> it = inviteList.getDocuments().iterator(); it.hasNext(); ) {
+                                QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
+                                invited.add(document.getId());
+                            }
+
 
                             events.get(position).getWaitList().setInvited(invited);
                             events.get(position).getWaitList().setWaiting(pending);
