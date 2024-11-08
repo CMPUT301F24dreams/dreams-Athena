@@ -3,6 +3,7 @@ package com.example.athena.Controllers;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -19,6 +20,7 @@ import com.example.athena.Models.userNotifDetails;
 import com.example.athena.Views.NotificationView;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -150,5 +152,17 @@ public class NotificationController {
 
             notificationManager.notify((int) System.currentTimeMillis(), notificationBuilder.build());
         }
+    }
+
+    public void updateNotifiedStatus(String eventId) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference notificationRef = db.collection("Users")
+                .document(deviceId)
+                .collection("Events")
+                .document(eventId);
+
+        // update isNotified to true
+        notificationRef.update("isNotified", true);
     }
 }

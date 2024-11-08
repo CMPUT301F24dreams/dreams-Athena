@@ -13,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class NotificationService extends Service {
     // Service to periodically check the database for new notifications
@@ -64,6 +64,9 @@ public class NotificationService extends Service {
 
                                 // show the notification object
                                 notificationController.showNotification(NotificationService.this, notification);
+
+                                // update notified status in db
+                                notificationController.updateNotifiedStatus(details.getEventId());
                             }
                         }
                     }
