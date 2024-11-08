@@ -53,7 +53,6 @@ public class myEventsList extends Fragment {
         events = new ArrayList<>();
 
         listView = view.findViewById(R.id.myEventList);
-
         Task getUserEvents = userDB.getUserEvents(deviceID);
         Task getEventList = eventsDB.getEventsList();
 

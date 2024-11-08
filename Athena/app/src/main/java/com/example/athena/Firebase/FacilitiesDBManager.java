@@ -18,7 +18,7 @@ public class FacilitiesDBManager {
 
     public FacilitiesDBManager() {
         // Initialize Firestore and set the facilities collection
-        this.db = DBConnector.getInstance().getDb();
+        this.db = FirebaseFirestore.getInstance();
         this.facilitiesCollection = db.collection("Facilities");
     }
 
