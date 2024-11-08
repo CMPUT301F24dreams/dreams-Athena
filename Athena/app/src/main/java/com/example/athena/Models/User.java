@@ -46,6 +46,7 @@ public class User { // TO-DO Java-doc
     public void addEvent(Event event) {
         this.Events.add(event);
     }
+
     public String getImageURL() {
         return imageURL;
     }

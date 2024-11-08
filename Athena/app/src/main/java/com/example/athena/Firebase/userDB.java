@@ -120,8 +120,10 @@ public class userDB {
     }
 
     // Updates an existing user's data
-    public Task<Void> updateUser(String userId, HashMap<String, Object> updatedData) {
-        return usersCollection.document(userId).update(updatedData);
+    public void resetImage(String deviceID) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("imageURL", "NULL");
+        usersCollection.document(deviceID).set(data, SetOptions.merge());
     }
 
     // Deletes a specific user by their ID

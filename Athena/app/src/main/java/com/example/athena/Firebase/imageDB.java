@@ -18,8 +18,13 @@ public class imageDB {
         this.storage = FirebaseStorage.getInstance();
         this.storageRef = storage.getReference();
     }
-    public UploadTask addImage(String eventID, Uri uri) {
-        StorageReference imageRef = storageRef.child("images/" + eventID);
+    public UploadTask addImage(String imageID, Uri uri) {
+        StorageReference imageRef = storageRef.child("images/" + imageID);
         return imageRef.putFile(uri);
+    }
+
+    public void deleteImage(String imageID) {
+        StorageReference imageRef = storageRef.child("images/" + imageID);
+        imageRef.delete();
     }
 }
