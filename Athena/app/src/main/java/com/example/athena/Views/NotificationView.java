@@ -10,6 +10,7 @@ import androidx.core.app.NotificationCompat;
 import com.example.athena.Models.Notification;
 import com.example.athena.Models.detailsForNotification;
 import com.example.athena.R;
+// View class responsible for creating and building notifications in the app.
 
 public class NotificationView {
 

@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+// Service class responsible for periodically checking for new notifications and displaying them.
 
 public class NotificationService extends Service {
     // Service to periodically check the database for new notifications
