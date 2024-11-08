@@ -37,7 +37,7 @@
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
+            android:fontFamily="@font/bai_jamjuree_bold"
             android:text="@string/app_name"
             android:textAllCaps="true"
             android:textColor="@color/title_text_color"

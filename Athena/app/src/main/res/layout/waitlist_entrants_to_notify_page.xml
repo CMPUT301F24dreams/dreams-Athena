@@ -22,6 +22,7 @@
             android:id="@+id/entrants_to_notify_non_edit"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Entrants To Notify"
             android:textAlignment="center"
             android:textAllCaps="true"

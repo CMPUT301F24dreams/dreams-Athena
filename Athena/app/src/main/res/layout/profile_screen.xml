@@ -51,10 +51,10 @@
 
     <TextView
         android:id="@+id/app_name2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="58dp"
         android:elevation="20dp"
-        android:fontFamily="serif"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:text="Profile"
         android:textAllCaps="true"
         android:textColor="#000000"

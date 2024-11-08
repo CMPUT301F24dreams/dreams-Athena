@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="80dp"
-            android:layout_height="83dp"
+            android:layout_width="109dp"
+            android:layout_height="87dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:paddingStart="0dp"
@@ -31,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event Name:"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
     </LinearLayout>

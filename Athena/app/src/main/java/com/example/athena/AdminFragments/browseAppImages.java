@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.athena.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link browseAppImages#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class browseAppImages extends Fragment {
 
 
