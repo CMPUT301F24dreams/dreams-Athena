@@ -109,6 +109,11 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/profile_screen_admin.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/profile_screen_edit.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -201,29 +206,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/AdminProfileDetailUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/OrganizerEntrantOperationsUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/ProfileBrowseOrgUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/UserViewNotisChoseUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/ViewMyCreatedEventsFragmentUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileDetailTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/ProfileBrowseOrgTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/UserViewNotisChoseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/ViewMyCreatedEventsFragmentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/ProfileBrowseOrg.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/ProfileBrowseOrg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/adminProfileBrowse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/adminProfileBrowse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/adminProfileDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/adminProfileDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/homeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/homeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewNotisChose.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewNotisChose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_my_events_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_my_events_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileBrowseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileBrowseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/AdminProfileBrowseUITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/profile_screen_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/profile_screen_admin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
