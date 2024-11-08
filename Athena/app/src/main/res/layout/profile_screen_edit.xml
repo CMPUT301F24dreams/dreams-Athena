@@ -57,8 +57,8 @@
         android:id="@+id/bar4"
         android:layout_width="414dp"
         android:layout_height="61dp"
-        android:layout_marginTop="25dp"
-        android:background="#93BDB6"
+        android:layout_marginTop="4dp"
+        android:background="@color/mainBackground"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -70,7 +70,7 @@
         android:layout_width="217dp"
         android:layout_height="198dp"
         android:layout_gravity="center"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="104dp"
         android:elevation="2dp"
         app:civ_border_color="@android:color/black"
         app:civ_border_width="2dp"
@@ -83,7 +83,7 @@
         android:layout_width="369dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/border"
         android:elevation="20dp"
@@ -102,25 +102,24 @@
         android:layout_height="wrap_content"
         android:elevation="20dp"
         android:fontFamily="serif"
-        android:textStyle="italic"
         android:text="Profile"
         android:textAllCaps="true"
-        android:textColor="#000000"
+        android:textColor="@color/title_text_color"
         android:textSize="28sp"
+        android:textStyle="italic"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <TextView
         android:id="@+id/profileName3"
         android:layout_width="372dp"
         android:layout_height="53dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/border"
         android:elevation="20dp"
@@ -131,19 +130,24 @@
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image4" />
 
     <ImageButton
-        android:id="@+id/backButton3"
-        android:layout_width="58dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/backToProfile"
+        android:layout_width="37dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="2dp"
         android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmail2"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_revert"
         app:tint="@color/black" />
 
@@ -165,7 +169,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileNumber2"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <ImageButton
         android:id="@+id/saveProfile"
@@ -174,10 +178,36 @@
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842"
+        app:layout_constraintVertical_bias="0.911"
         app:srcCompat="@android:drawable/ic_menu_save" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="111dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="80dp"
+        android:text="Back To Profile"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/saveProfile"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmail2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="87dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="4dp"
+        android:text="Save Details"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveProfile"
+        app:layout_constraintVertical_bias="0.093" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

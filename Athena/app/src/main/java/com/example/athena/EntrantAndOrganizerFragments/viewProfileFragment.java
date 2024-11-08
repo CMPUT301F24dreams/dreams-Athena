@@ -1,6 +1,7 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -22,8 +23,11 @@ import com.example.athena.databinding.ProfileScreenBinding;
 
 import androidx.activity.result.ActivityResultLauncher;
 
-public class viewProfileFragment extends Fragment {
+import de.hdodenhof.circleimageview.CircleImageView;
 
+public class viewProfileFragment extends Fragment{
+    public Uri imageUri;
+    public CircleImageView profileImage;
     private static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
 
     ProfileScreenBinding binding;
@@ -102,6 +106,10 @@ public class viewProfileFragment extends Fragment {
             // Save image URI
             saveProfileImageUri(imageUri);
         }
+
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
+        fragment.setArguments(bundle);
+        getChildFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
     /**

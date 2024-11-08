@@ -139,10 +139,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
-                transaction.commit();
+                displayChildFragment(new viewProfileFragment(), bundle);
             }
         });
 

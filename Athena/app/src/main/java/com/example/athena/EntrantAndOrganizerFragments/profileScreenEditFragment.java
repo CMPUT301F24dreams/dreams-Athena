@@ -64,12 +64,12 @@ public class profileScreenEditFragment extends Fragment {
 
         ///This is the back button that leads back to the profile view screen, the click listener will return to view profile
         ///and replace the current view with that of the profile screen
-        binding.backButton3.setOnClickListener(new View.OnClickListener() {
+        binding.backToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                transaction.replace(R.id.content_frame, new viewProfileFragment());
                 transaction.commit();
             }
         });
