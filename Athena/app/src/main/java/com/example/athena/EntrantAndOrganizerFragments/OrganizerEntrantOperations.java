@@ -6,14 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
@@ -23,14 +21,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
 
 
 public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
@@ -140,9 +135,9 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
 
         //this is temp
         ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
-        ImageButton viewInvited = view.findViewById(R.id.view_sampled_entrants_button);
-        Button viewCanclled = view.findViewById(R.id.viewCanclledBtn);
-        Button viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
+        ImageButton viewInvited = view.findViewById(R.id.viewSelected);
+        Button viewCanclled = view.findViewById(R.id.viewCancelledEntrants);
+        Button viewAccepted = view.findViewById(R.id.viewSelected);
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
             @Override
