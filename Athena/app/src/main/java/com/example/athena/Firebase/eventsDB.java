@@ -43,11 +43,18 @@ public class eventsDB {
         return db.collection("Events/" + eventID + "/UserList").get();
     }
 
+
     public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
         for(String userID: userIDs) {
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","invited");
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("notified",Boolean.FALSE);
         }
+    }
+    public void changeStatusAccepted(String eventID, String userID){
+        db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","accepted");
+    }
+    public void changeStatusDeclined(String eventID, String userID){
+            db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
     }
 
     // Adds a new event to the Events collection

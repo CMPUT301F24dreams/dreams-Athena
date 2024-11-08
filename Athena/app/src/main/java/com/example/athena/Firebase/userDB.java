@@ -32,6 +32,14 @@ public class userDB {
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
     }
 
+    public void changeEventStatusAccepted(String eventID, String deviceID){
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","accepted");
+    }
+
+    public void changeEventStatusDeclined(String eventID, String deviceID){
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","declined");
+    }
+
     public Task<QuerySnapshot> getOrganizerEvent(String deviceID){
         Task ueRef = db.collection("Users/" + deviceID + "/OrgEvents").get();
         return ueRef;

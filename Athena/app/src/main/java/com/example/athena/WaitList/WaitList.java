@@ -57,6 +57,10 @@ public class WaitList{
         return waiting;
     }
 
+    public ArrayList<String> getAccepted() {
+        return accepted;
+    }
+
     public ArrayList<String> getInvited() {
         return invited;
     }
