@@ -52,7 +52,6 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
         ArrayList<String> userIDs;
 
         userIDs = event.getWaitList().getInvited();
-        Log.d("databasee", "choseEntrants: " + userIDs.toString());
         for(String deviceID: userIDs){
             eventDB.moveUserID("pending","invited",deviceID, eventID);
             userDB.changeEventStatusInvited(eventID,deviceID);
