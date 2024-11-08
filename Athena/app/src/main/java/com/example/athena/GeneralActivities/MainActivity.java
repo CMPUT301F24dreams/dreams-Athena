@@ -60,21 +60,21 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
                         transaction.commit();
                     }
+
+                    // Notification setup
+                    requestNotificationPermission();
+
+                    Intent notificationIntent = new Intent(this, NotificationService.class);
+
+                    startService(notificationIntent);
                 }
             });
-
-            // Notification setup
-            requestNotificationPermission();
-
-            Intent notificationIntent = new Intent(this, NotificationService.class);
-            notificationIntent.putExtra("deviceId", getDeviceId());
-
-            startService(notificationIntent);
         }
-
-
     }
-    // Logic for getting notification permission
+
+    /**
+     * Activity launcher for requesting permission from the user for push notifications
+     */
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
@@ -85,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+    /**
+     * Calls the activity launcher in the current cotext
+     */
     private void requestNotificationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
             == PackageManager.PERMISSION_GRANTED) {

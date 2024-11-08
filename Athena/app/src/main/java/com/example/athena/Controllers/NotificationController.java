@@ -3,18 +3,13 @@ package com.example.athena.Controllers;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.athena.Firebase.userDB;
-import com.example.athena.Models.Entrant;
 import com.example.athena.Models.Event;
 import com.example.athena.Models.Notification;
-import com.example.athena.Models.User;
 import com.example.athena.Models.detailsForNotification;
 import com.example.athena.Models.userNotifDetails;
 import com.example.athena.Views.NotificationView;
@@ -32,20 +27,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-// Controller class responsible for managing notifications, fetching event and user data, and displaying notifications.
 
+/**
+ * Controller class responsible for coordinating the pulling of notification data
+ * from the database, and creating notification objects
+ */
 public class NotificationController {
     private List<Notification> notificationList;
 
     private Context context;
     private String deviceId;
 
+    /**
+     * Constructor for the NotificationController class
+     * @param context - The context object that the notifications will be created in
+     * @param deviceId - the device Id of the current android device
+     */
     public NotificationController(Context context, String deviceId) {
         this.context = context;
         this.deviceId = deviceId;
         NotificationView.createNotificationChannel(context);
     }
 
+    /**
+     * Checks a notifiation details object for validity based on user preferences
+     * @param details - an object containing details and user preferences for a notification
+     * @return true if notification is valid, false if invalid
+     */
     public boolean checkValidNotification(detailsForNotification details) {
         boolean invalid1 = details.getUser().isChosenNotif() && Objects.equals(details.getNotifType(), "invited");
         boolean invalid2 = details.getUser().isNotChosenNotif() && Objects.equals(details.getNotifType(), "waiting");
@@ -53,6 +61,11 @@ public class NotificationController {
         return !invalid1 && !invalid2;
     }
 
+    /**
+     * Converts a notification details object into a usable notification object
+     * @param details - object containing notification details needed to create a notification object
+     * @return the created notification object
+     */
     public Notification convertToNotification(detailsForNotification details) {
         String title = "BLANK";
         String bodyText = "BLANK";
@@ -69,13 +82,20 @@ public class NotificationController {
         return newNotif;
     }
 
-    // Callback for notification data
+    /**
+     * Callback for getNotificationData method, needed in order to return data
+     */
     public interface NotificationDataCallback {
         void onDataRetrieved(List<detailsForNotification> notifDetailList);
         void onError(Exception e);
     }
 
-    // Unified method to fetch user details and non-notified events
+    /**
+     * Method to check the firestore database for users that need to be notified about
+     * changes in their registered events, then gather data needed to build a notifiation
+     * and return it
+     * @param callback - callback object that helps return data to the callee
+     */
     public void getNotificationData(NotificationDataCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -144,6 +164,11 @@ public class NotificationController {
         });
     }
 
+    /**
+     * Shows a notification to the user by building it in android
+     * @param context - the context the notification will be sent in
+     * @param notification - object containing the details of the new notification
+     */
     public void showNotification(Context context, Notification notification) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -155,6 +180,10 @@ public class NotificationController {
         }
     }
 
+    /**
+     * Updates the specified event, telling it that the user has been notified of changes
+     * @param eventId - Id of the event to be updated
+     */
     public void updateNotifiedStatus(String eventId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
