@@ -24,7 +24,7 @@ import androidx.activity.result.ActivityResultLauncher;
 
 public class viewProfileFragment extends Fragment {
 
-    private static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
+    static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
 
     ProfileScreenBinding binding;
 
