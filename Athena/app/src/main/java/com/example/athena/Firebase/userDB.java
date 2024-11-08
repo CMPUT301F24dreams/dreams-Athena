@@ -68,6 +68,10 @@ public class userDB {
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
     }
 
+    public void deleteUser(String userID){
+        usersCollection.document(userID).delete();
+    }
+
     /**
      * updates the users status to accepted on the users events sub-collection
      * @param eventID the events id
@@ -124,11 +128,6 @@ public class userDB {
         Map<String, Object> data = new HashMap<>();
         data.put("imageURL", "NULL");
         usersCollection.document(deviceID).set(data, SetOptions.merge());
-    }
-
-    // Deletes a specific user by their ID
-    public Task<Void> deleteUser(String userId) {
-        return usersCollection.document(userId).delete();
     }
 
     // Retrieves all users, which can be useful for admin functionality

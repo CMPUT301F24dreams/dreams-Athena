@@ -35,6 +35,7 @@ public class adminProfileBrowse extends Fragment {
     private userDB userDB;
     private ArrayList<User> users;
     private ListView listView;
+    private ArrayList<String> usersID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class adminProfileBrowse extends Fragment {
         this.deviceID = bundle.getString("deviceID");
         userDB = new userDB();
         users = new ArrayList<>();
+        usersID = new ArrayList<>();
 
         listView = view.findViewById(R.id.myEventList);
 
@@ -67,6 +69,7 @@ public class adminProfileBrowse extends Fragment {
                         String imageURL = documentSnapshot.getString("imageURL");
                         User user = new User(name, email, phone, imageURL);
                         users.add(user);
+                        usersID.add(documentSnapshot.getId());
                     }
                     userAdapter.notifyDataSetChanged();
                 }
@@ -78,6 +81,8 @@ public class adminProfileBrowse extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TO - DO
+                bundle.putString("userID",usersID.get(position));
+                displayChildFragment(new adminProfileDetail(),bundle);
             }
         });
 
