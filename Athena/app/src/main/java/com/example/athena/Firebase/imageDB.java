@@ -22,7 +22,6 @@ public class imageDB {
         StorageReference imageRef = storageRef.child("images/" + imageID);
         return imageRef.putFile(uri);
     }
-
     public void deleteImage(String imageID) {
         StorageReference imageRef = storageRef.child("images/" + imageID);
         imageRef.delete();
