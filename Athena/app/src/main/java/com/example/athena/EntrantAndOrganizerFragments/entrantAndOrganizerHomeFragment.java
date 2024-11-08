@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.athena.AdminFragments.browseAppEvents;
+import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Interfaces.displayFragments;
@@ -93,6 +95,29 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         ImageButton eventsImHostingButton = view.findViewById(R.id.events_im_hosting_button);
 
         displayChildFragment(new myEventsList(), bundle);
+
+
+        ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+        ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
+
+
+        viewAppImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new browseAppImages(), bundle);
+
+            }
+        });
+
+        viewAppEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new browseAppEvents(), bundle);
+
+            }
+        });
 
         eventsImHostingButton.setOnClickListener(new View.OnClickListener() {
             @Override
