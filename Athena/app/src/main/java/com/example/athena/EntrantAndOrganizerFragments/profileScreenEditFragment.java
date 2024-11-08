@@ -71,7 +71,7 @@ public class profileScreenEditFragment extends Fragment {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 viewProfileFragment frag = new viewProfileFragment();
                 frag.setArguments(bundle);
-                transaction.replace(R.id.content_layout,frag);
+                transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
                 transaction.commit();
             }
         });

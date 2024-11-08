@@ -55,7 +55,7 @@ public class viewProfileFragment extends Fragment {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             entrantAndOrganizerHomeFragment frag = new entrantAndOrganizerHomeFragment();
             frag.setArguments(bundle);
-            transaction.replace(R.id.content_layout, frag);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
         });
 
@@ -65,7 +65,7 @@ public class viewProfileFragment extends Fragment {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             profileNotiEditFragment frag = new profileNotiEditFragment();
             frag.setArguments(bundle);
-            transaction.replace(R.id.content_layout, frag);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
         });
 
@@ -75,7 +75,7 @@ public class viewProfileFragment extends Fragment {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             profileScreenEditFragment frag = new profileScreenEditFragment();
             frag.setArguments(bundle);
-            transaction.replace(R.id.content_layout,frag);
+            transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
             transaction.commit();
         });
 
