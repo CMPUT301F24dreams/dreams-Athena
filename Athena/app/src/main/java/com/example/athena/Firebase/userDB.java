@@ -1,5 +1,6 @@
 package com.example.athena.Firebase;
 
+import com.example.athena.Models.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,6 +29,15 @@ public class userDB {
         return ueRef;
     }
 
+    public void saveNotifSetting (String userID, String setting, Boolean isChecked){
+        db.collection("Users").document(userID).update(setting,isChecked);
+    }
+
+    public void saveUserDetail(User user,String userID){
+        db.collection("Users").document(userID).update("name",user.getName());
+        db.collection("Users").document(userID).update("email",user.getEmail());
+        db.collection("Users").document(userID).update("phone",user.getPhone());
+    }
 
     public Task<QuerySnapshot> getUserList() {
         return usersCollection.get();
