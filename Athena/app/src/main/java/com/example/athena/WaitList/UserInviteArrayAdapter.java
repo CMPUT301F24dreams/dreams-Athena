@@ -33,7 +33,7 @@ public class UserInviteArrayAdapter extends ArrayAdapter<Event> {
         TextView eventTitle = view.findViewById(R.id.accept_event_title);
         TextView eventDesc = view.findViewById(R.id.accept_discription);
         String eventName = event.getEventName();
-        String eventDescription = event.getDescription();
+        String eventDescription = "";
         eventTitle.setText(eventName);
         eventDesc.setText(String.format("you have been invited to %s. Do you wish to accept or decline the invite?", eventDescription));
 

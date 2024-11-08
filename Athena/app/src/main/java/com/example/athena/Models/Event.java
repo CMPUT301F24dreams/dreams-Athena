@@ -14,49 +14,32 @@ import java.util.List;
 import com.example.athena.Interfaces.Model;
 public class Event { // TO-DO Java-doc
     private String eventName;
-    private String eventID;
-    private String description;
-    private String facilityID;
-    private Boolean geoRequire;
-    private Integer maxParticipants;
-    private String regStart;
-    private String regEnd;
-    private String eventDate;
     private String imageURL;
+    private String eventDescription;
+    private String organizer;
+    private String facility;
+    private Integer maxParticipants;
+    private Boolean geoRequire;
+    private String eventID;
     private WaitList waitList;
-    private final List<Observer> observers = new ArrayList<>();
 
+
+    public Event(String eventName, String imageURL, String eventDescription, String organizer, String facility, Integer maxParticipants, Boolean georequire, String eventID) {
+        this.eventName = eventName;
+        this.imageURL = imageURL;
+        this.eventDescription = eventDescription;
+        this.organizer = organizer;
+        this.facility = facility;
+        this.maxParticipants = maxParticipants;
+        this.geoRequire = georequire;
+        this.eventID = eventID;
+    }
 
     public Event(String eventName, String imageURL, String eventID) {
         this.eventName = eventName;
         this.imageURL = imageURL;
         this.eventID = eventID;
     }
-    public Event() {
-
-    }
-
-    //TODO make complete implementations
-    /*
-    @Override
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
-    }
-    */
-
-
-    //waitlist access things
 
     public void addUser(String userId,String eventID){
         waitList.addWaiting(userId, eventID);
@@ -82,21 +65,6 @@ public class Event { // TO-DO Java-doc
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getFacilityID() {
-        return facilityID;
-    }
-
-    public void setFacilityID(String facilityID) {
-        this.facilityID = facilityID;
-    }
 
     public Boolean getGeoRequire() {
         return geoRequire;
@@ -114,34 +82,33 @@ public class Event { // TO-DO Java-doc
         this.maxParticipants = maxParticipants;
     }
 
+    public String getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public String getFacility() {
+        return facility;
+    }
+
+    public void setFacility(String facility) {
+        this.facility = facility;
+    }
+
     public String getImageURL() {
         return imageURL;
     }
-
-    public String getRegStart() {
-        return regStart;
-    }
-
-    public void setRegStart(String regStart) {
-        this.regStart = regStart;
-    }
-
-    public String getRegEnd() {
-        return regEnd;
-    }
-
-    public void setRegEnd(String regEnd) {
-        this.regEnd = regEnd;
-    }
-
-    public String getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
-    }
-
     public String getEventID() {
         return eventID;
     }
