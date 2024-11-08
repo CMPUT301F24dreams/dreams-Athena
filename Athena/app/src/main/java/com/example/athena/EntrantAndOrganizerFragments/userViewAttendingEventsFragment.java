@@ -182,7 +182,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
 
                 Bundle bundle = new Bundle();
                 bundle.putString("name",events.get(position).getEventName());
-                bundle.putString("description", events.get(position).getDescription());
+                bundle.putString("description", events.get(position).getEventDescription());
                 bundle.putInt("pos",position);
                 showDialog(bundle);
             }

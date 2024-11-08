@@ -28,6 +28,15 @@ public class userDB {
         return ueRef;
     }
 
+
+    public Task<QuerySnapshot> getUserList() {
+        return usersCollection.get();
+    }
+
+    public void updateOrgEvents(String deviceID, String eventID) {
+        db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
+    }
+
     /**
      * updates the users status to invited on the users events sub-collection
      * @param eventID the events id
@@ -129,5 +138,7 @@ public class userDB {
             return false;
         });
     }
+
+
 }
 

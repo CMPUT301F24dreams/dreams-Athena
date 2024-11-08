@@ -161,7 +161,7 @@
                 android:layout_height="0dp"
                 android:background="#90C5BD"
                 android:orientation="vertical"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/scan_qr_code_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -171,7 +171,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="401dp">
+                    android:layout_height="match_parent">
 
                     <ImageButton
                         android:id="@+id/create_event_button"
@@ -190,15 +190,12 @@
                         android:layout_width="0dp"
                         android:layout_height="74dp"
                         android:layout_marginTop="2dp"
-                        android:layout_marginBottom="228dp"
                         android:backgroundTint="@color/drawer_background_color"
                         android:src="@drawable/events_hosting_button"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.454"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/create_event_button"
-                        app:layout_constraintVertical_bias="0.095" />
+                        app:layout_constraintTop_toBottomOf="@+id/create_event_button" />
 
                     <ImageButton
                         android:id="@+id/close_drawer_button"
@@ -223,12 +220,26 @@
                         android:text="close drawer"
                         android:textAlignment="viewEnd"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/create_event_button"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.106" />
+                        app:layout_constraintTop_toBottomOf="@+id/close_drawer_button"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageButton
+                        android:id="@+id/adminProfileBrowse"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/drawer_background_color"
+                        android:src="@drawable/admin_profile_browse_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/events_im_hosting_button"
+                        app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

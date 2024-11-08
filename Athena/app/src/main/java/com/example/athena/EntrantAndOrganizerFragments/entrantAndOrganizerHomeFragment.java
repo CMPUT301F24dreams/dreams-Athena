@@ -129,6 +129,15 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
             }
         });
 
+        ImageButton adminProfileButton = view.findViewById(R.id.adminProfileBrowse);
+        adminProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new adminProfileBrowse(), bundle);
+            }
+        });
+
         notificationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,12 +149,7 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         profilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                viewProfileFragment frag = new viewProfileFragment();
-                frag.setArguments(bundle);
-                transaction.replace(R.id.content_layout,frag );
-                transaction.commit();
+                displayChildFragment(new viewProfileFragment(), bundle);
             }
         });
 
