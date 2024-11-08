@@ -14,13 +14,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.example.athena.Firebase.userDB;
+import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenEditBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 
 public class profileScreenEditFragment extends Fragment {
 
+    private String deviceID;
+    private userDB usersDB;
+    private User user;
     ///Binds the fragment to its elements
     ProfileScreenEditBinding binding;
     public profileScreenEditFragment() {
@@ -61,6 +70,33 @@ public class profileScreenEditFragment extends Fragment {
      */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Bundle bundle = getArguments();
+        assert bundle != null;
+        deviceID = bundle.getString("deviceID");
+        usersDB = new userDB();
+        Task getUser = usersDB.getUser(deviceID);
+        Task userLoaded = Tasks.whenAll(getUser);
+        userLoaded.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
+                    if (userdoc.exists()){
+                        String name = userdoc.getString("name");
+                        String email = userdoc.getString("email");
+                        String phone = userdoc.getString("phone");
+                        String imageURL = userdoc.getString("imageURL");
+                        user = new User(name,email,phone, imageURL);
+                    }
+
+                    binding.profileName3.setText(String.format("Name: %s", user.getName()));
+                    binding.profileEmail2.setText(String.format("Email: %s", user.getEmail()));
+                    binding.profileNumber2.setText(String.format("Number: %s", user.getPhone()));
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
 
         ///This is the back button that leads back to the profile view screen, the click listener will return to view profile
         ///and replace the current view with that of the profile screen
@@ -69,7 +105,9 @@ public class profileScreenEditFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                viewProfileFragment frag = new viewProfileFragment();
+                frag.setArguments(bundle);
+                transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
                 transaction.commit();
             }
         });
@@ -116,6 +154,7 @@ public class profileScreenEditFragment extends Fragment {
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newName = input.getText().toString();
             binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
+            user.setName(newName);
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -136,6 +175,7 @@ public class profileScreenEditFragment extends Fragment {
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newEmail = input.getText().toString();
             binding.profileEmail2.setText("Email: " + newEmail);
+            user.setEmail(newEmail);
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -156,6 +196,7 @@ public class profileScreenEditFragment extends Fragment {
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newNumber = input.getText().toString();
             binding.profileNumber2.setText("Number: " + newNumber);
+            user.setPhone(newNumber);
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -164,5 +205,6 @@ public class profileScreenEditFragment extends Fragment {
 
     private void saveProfileChanges() {
         // TODO: database stuffs
+        usersDB.saveUserDetail(user,deviceID);
     }
 }

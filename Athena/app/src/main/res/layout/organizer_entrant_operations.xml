@@ -8,6 +8,18 @@
     tools:context=".EntrantAndOrganizerFragments.OrganizerEntrantOperations">
 
     <ImageButton
+        android:id="@+id/organizer_return_btn"
+        android:layout_width="58dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        app:tint="@color/black" />
+
+    <ImageButton
         android:id="@+id/notify_entrants_button"
         android:layout_width="186dp"
         android:layout_height="60dp"
@@ -34,10 +46,12 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="219dp"
-        android:layout_height="44dp"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:text="Entrant Operations:"
         android:textAlignment="center"
+        android:textColor="@color/title_text_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

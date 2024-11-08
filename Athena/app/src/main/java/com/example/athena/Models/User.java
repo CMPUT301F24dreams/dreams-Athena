@@ -1,52 +1,19 @@
 package com.example.athena.Models;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.example.athena.Interfaces.Model;
-import com.example.athena.Interfaces.Observer;
-import com.example.athena.Firebase.DBConnector;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-public class User implements Model { // TO-DO Java-doc
-    private String deviceId;
+public class User { // TO-DO Java-doc
     private String name;
     private String email;
     private String phone;
+    private String imageURL;
     private ArrayList<Event> Events;
 
-    public User(String name, String email, String phone) {
+    public User(String name, String email, String phone, String imageURL) {
         this.name = name;
         this.email = email;
         this.phone = phone;
-    }
-
-    private final List<Observer> observers = new ArrayList<>();
-
-    @Override
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
+        this.imageURL = imageURL;
     }
 
     public String getName() {
@@ -78,5 +45,9 @@ public class User implements Model { // TO-DO Java-doc
     }
     public void addEvent(Event event) {
         this.Events.add(event);
+    }
+
+    public String getImageURL() {
+        return imageURL;
     }
 }

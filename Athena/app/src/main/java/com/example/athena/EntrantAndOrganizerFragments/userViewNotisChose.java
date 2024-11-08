@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.athena.Interfaces.displayFragments;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -18,7 +18,15 @@ import com.example.athena.R;
 
 public class userViewNotisChose extends DialogFragment {
     interface acceptDeclineListener{
+        /**
+         * declines the invite
+         * @param position the position in eventList
+         */
         void declineInvite(int position);
+        /**
+         * accepts the invite
+         * @param position the position in eventList
+         */
         void acceptInvite(int position);
     }
 

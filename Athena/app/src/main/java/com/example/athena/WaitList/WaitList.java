@@ -1,22 +1,9 @@
 package com.example.athena.WaitList;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
 import com.example.athena.Models.Event;
-import com.example.athena.Firebase.DBConnector;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * This class is responsible for storing information about waitlists for corresponding events
@@ -41,24 +28,73 @@ public class WaitList{
         attachedEvent = event;
     }
 
+    /**
+     * set the declined arraylist to the the param
+     * @param declined arraylist of deviceIDs whos status is declined
+     */
+    public void setDeclined(ArrayList<String> declined) {
+        this.declined = declined;
+    }
 
+    /**
+     * set the accepted arraylist to the the param
+     * @param accepted arraylist of deviceIDs whos status is accepted
+     */
+    public void setAccepted(ArrayList<String> accepted) {
+        this.accepted = accepted;
+    }
 
+    /**
+     * set the invited arraylist to the the param
+     * @param invited arraylist of deviceIDs whos status is invited
+     */
+    public void setInvited(ArrayList<String> invited) {
+        this.invited = invited;
+    }
+
+    /**
+     * set the waiting arraylist to the the param
+     * @param waiting arraylist of deviceIDs whos status is pending
+     */
+    public void setWaiting(ArrayList<String> waiting) {
+        this.waiting = waiting;
+    }
+
+    /**
+     *  get ArrayList of DeviceID that status is declined
+     * @return returns an arraylist of deviceIDs who's status is declined
+     */
     public ArrayList<String> getDeclined() {
         return declined;
     }
 
-    public Event getAttachedEvent() {
-        return attachedEvent;
-    }
-
+    /**
+     *  get ArrayList of DeviceID that status is declined
+     * @return returns an arraylist of deviceIDs who's status is declined
+     */
     public ArrayList<String> getWaiting() {
         return waiting;
     }
-
+    /**
+     *  get ArrayList of DeviceID that status is accepted
+     * @return returns an arraylist of deviceIDs who's status is accepted
+     */
+    public ArrayList<String> getAccepted() {
+        return accepted;
+    }
+    /**
+     *  get ArrayList of DeviceID that status is invited
+     * @return returns an arraylist of deviceIDs who's status is invited
+     */
     public ArrayList<String> getInvited() {
         return invited;
     }
 
+    /**
+     * add a deviceID to the waiting list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
     public void addWaiting(String userID, String eventID) {
 
         this.waiting.add(userID);
@@ -66,6 +102,11 @@ public class WaitList{
 
     }
 
+    /**
+     * remove a user from the waiting list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
     public void removeUser(String userID, String eventID){
 
         this.waiting.remove(userID);
@@ -114,7 +155,7 @@ public class WaitList{
      * @param newStatus whether the user accepted or declined the event
      */
     public void moveUserFromInvited(String userID, String newStatus){
-        if(Objects.equals(newStatus, "accepted")){
+        if(newStatus == "accepted"){
             moveUsers(userID,accepted,invited);
         } else {
             moveUsers(userID,declined,invited);

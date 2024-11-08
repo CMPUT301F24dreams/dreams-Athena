@@ -37,7 +37,7 @@
             android:id="@+id/eventName"
             android:layout_width="match_parent"
             android:layout_height="38dp"
-            android:fontFamily="@font/bai_jamjuree_bold"
+            android:fontFamily="sans-serif"
             android:text="Event Name:"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -47,7 +47,7 @@
             android:id="@+id/OrgViewEventName"
             android:layout_width="match_parent"
             android:layout_height="29dp"
-            android:fontFamily="@font/bai_jamjuree_bold"
+            android:fontFamily="sans-serif"
             android:text="Event Name Goes Here"
             android:textAlignment="center" />
 
@@ -55,7 +55,6 @@
             android:id="@+id/OrgViewEventDescriptionNonEdit"
             android:layout_width="match_parent"
             android:layout_height="39dp"
-            android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event Description:"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -64,8 +63,7 @@
         <TextView
             android:id="@+id/OrgViewEventDescription"
             android:layout_width="match_parent"
-            android:layout_height="166dp"
-            android:fontFamily="@font/bai_jamjuree_bold"
+            android:layout_height="109dp"
             android:text="Event Description In Here"
             android:textAlignment="center" />
 
@@ -80,6 +78,18 @@
                 android:layout_height="152dp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
+
+            <Button
+                android:id="@+id/deleteEventAdmin"
+                android:layout_width="329dp"
+                android:layout_height="127dp"
+                android:text="Delete"
+                android:textAllCaps="true"
+                android:textSize="60sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/qrCodeView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

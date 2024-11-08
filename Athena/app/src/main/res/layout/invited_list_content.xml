@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:text="Event Title"
         android:textSize="28sp" />
 
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginLeft="10dp"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:text="default acceptance message" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
