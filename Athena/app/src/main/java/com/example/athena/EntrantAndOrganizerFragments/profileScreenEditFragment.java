@@ -85,7 +85,8 @@ public class profileScreenEditFragment extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name,email,phone);
+                        String imageURL = userdoc.getString("imageURL");
+                        user = new User(name,email,phone, imageURL);
                     }
 
                     binding.profileName3.setText(String.format("Name: %s", user.getName()));
