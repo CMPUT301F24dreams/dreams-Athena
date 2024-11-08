@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class viewProfileFragment extends Fragment {
 
     static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
     private userDB usersDB;
+    private imageDB imageDB;
     private String deviceID;
     private User user;
     ProfileScreenBinding binding;
@@ -59,6 +61,8 @@ public class viewProfileFragment extends Fragment {
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
         usersDB = new userDB();
+        imageDB = new imageDB();
+
         Task getUser = usersDB.getUser(deviceID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -83,10 +87,6 @@ public class viewProfileFragment extends Fragment {
                 }
             }
         });
-
-
-
-
 
         // Navigate back to the main profile screen
         binding.BackButton.setOnClickListener(v -> {
@@ -142,37 +142,15 @@ public class viewProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null) {
             Uri imageUri = data.getData();
-
-            imageDB imageDB = new imageDB();
+            binding.profileImage.setImageURI(imageUri);
             UploadTask upload = imageDB.addImage(deviceID, imageUri);
             usersDB.saveURLToUser(upload, deviceID);
-
-            binding.profileImage.setImageURI(imageUri);
         }
     }
 
-    /**
-     * Delete the current profile picture
-     */
     private void deleteProfilePicture() {
-        //binding.profileImage.setImageResource(R.drawable.SOMETHING);
-        // TODO: ROGER, this is the default pic from db
-
-        // Will hopefully clear the db of the old pfp
-        clearProfileImageUrl();
-    }
-
-    /**
-     * Save pfp to the db
-     */
-    private void saveProfileImageUri(Uri imageUri) {
-        // TODO: save the imageUri to the db
-    }
-
-    /**
-     * Delete the old pfp from db
-     */
-    private void clearProfileImageUrl() {
-        // TODO: remove the saved image URL to the db
+        usersDB.resetImage(deviceID);
+        imageDB.deleteImage(deviceID);
+        binding.profileImage.setImageResource(0);
     }
 }
