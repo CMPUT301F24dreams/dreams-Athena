@@ -47,6 +47,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
     public eventsDB eventsDB;
     @Override
 
+    ///This method is used to handle a user accepting an invite
     public void acceptInvite(int position) {
         events.get(position).moveUser(deviceID, "accepted");
         eventsDB.moveUserID("invited","accepted",deviceID, events.get(position).getEventID());
@@ -55,6 +56,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
         adapter.notifyDataSetChanged();
 
     }
+    ///This method handles users who reject invites
     @Override
     public void declineInvite(int position) {
         Log.d("updateEvent", "onItemClick: " + events.get(position).getWaitList().getInvited());
@@ -82,6 +84,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        ///These are representative of database connections used for the respective entities (Users, events, and events)
         userDB = new userDB();
         eventsDB = new eventsDB();
         events = new ArrayList<>();

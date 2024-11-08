@@ -1,14 +1,13 @@
 ///some tests in this package are derived from copilot: https://copilot.microsoft.com/chats/XkgPPffcGXrUadGYr6Wvi, 2024-11-08
 package com.example.athena;
 
-import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.espresso.matcher.ViewMatchers;
-import com.example.athena.EntrantAndOrganizerFragments.adminProfileBrowse;
+
+import com.example.athena.AdminFragments.adminProfileBrowse;
 import com.example.athena.Models.User;
 import com.example.athena.Firebase.userDB;
 import com.google.android.gms.tasks.Task;
@@ -17,7 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
+
 import java.util.ArrayList;
 import java.util.List;
 
