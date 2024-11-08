@@ -35,6 +35,14 @@ public class eventsDB {
         this.eventsCollection = db.collection("Events");
     }
 
+    public void updateEventID(String eventID) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("eventID", eventID);
+        eventsCollection.document(eventID).set(data, SetOptions.merge());
+    }
+    public Task<QuerySnapshot> getEventUserList(String eventID){
+        return db.collection("Events/" + eventID + "/UserList").get();
+    }
     public Task<QuerySnapshot> getEventsList() {
         return eventsCollection.get();
     }
@@ -42,14 +50,8 @@ public class eventsDB {
     public Task<DocumentSnapshot> getEvent(String eventID) {
         return eventsCollection.document(eventID).get();
     }
-
-
-    // Adds a new event to the Events collection, return it's eventID
     public Task addEvent(Event event){
         return eventsCollection.add(event);
-=======
-    public Task<QuerySnapshot> getEventUserList(String eventID){
-        return db.collection("Events/" + eventID + "/UserList").get();
     }
 
     public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
@@ -62,54 +64,7 @@ public class eventsDB {
         db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","accepted");
     }
     public void changeStatusDeclined(String eventID, String userID){
-            db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
+        db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
     }
-
-    public void updateEventID(String eventID) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("eventID", eventID);
-        eventsCollection.document(eventID).set(data, SetOptions.merge());
-    }
-
-    // Updates an existing event with new data
-    public Task<Void> updateEvent(String eventId, HashMap<String, Object> updatedData){
-        return eventsCollection.document(eventId).update(updatedData);
-    }
-
-    // Deletes a specific event by its ID
-    public Task<Void> deleteEvent(String eventId){
-        return eventsCollection.document(eventId).delete();
-    }
-
-    //Add Entrant to Waitlist
-    public Task<DocumentReference> addEntrantToWaitlist(String eventId, HashMap<String, Object> entrantData) {
-        return eventsCollection.document(eventId).collection("Waitlist").add(entrantData);
-    }
-
-    //Get Waitlist for an Event
-    public Task<QuerySnapshot> getWaitlist(String eventId) {
-        return eventsCollection.document(eventId).collection("Waitlist").get();
-    }
-
-    //Update Entrant Status to Waitlist
-    public Task<Void> updateEntrantStatus(String eventId, String entrantId, HashMap<String,Object> statusData){
-        return eventsCollection.document(eventId).collection("Waitlist").document(entrantId).update(statusData);
-    }
-
-    //Delete Entrant from Waitlist
-    public Task<Void> deleteEntrantFromWaitlist(String eventId, String entrantId) {
-        return eventsCollection.document(eventId).collection("Waitlist").document(entrantId).delete();
-    }
-
-    //Update Event Summary
-    public Task<Void> updateEventSummary(String eventId, HashMap<String, Object> summaryData) {
-        return eventsCollection.document(eventId).collection("eventSummary").document("summary").set(summaryData);
-    }
-
-    //Get Event Summary
-    public Task<DocumentSnapshot> getEventSummary(String eventId) {
-        return eventsCollection.document(eventId).collection("eventSummary").document("summary").get();
-    }
-
 
 }
