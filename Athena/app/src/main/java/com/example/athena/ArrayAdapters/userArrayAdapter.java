@@ -1,6 +1,7 @@
 package com.example.athena.ArrayAdapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,31 +14,36 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.User;
 import com.example.athena.R;
 
 import java.util.ArrayList;
 
-public class EventArrayAdapter extends ArrayAdapter<Event> {
-    public EventArrayAdapter (Context context, ArrayList<Event> events){
-        super(context,0,events);
+public class userArrayAdapter extends ArrayAdapter<User> {
+    public userArrayAdapter(Context context, ArrayList<User> users){
+        super(context,0, users);
     }
     @NonNull
     @Override
     public View getView (int position, @Nullable View convertView, @NonNull ViewGroup parent){
         View view;
         if (convertView == null){
-            view = LayoutInflater.from(getContext()).inflate(R.layout.event_list_item_layout,parent,false);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.user_list_item_layout,parent,false);
         } else {
             view = convertView;
         }
-        Event event = getItem(position);
 
-        TextView eventName = view.findViewById(R.id.userName);
-        assert event != null;
-        eventName.setText(event.getEventName());
+        User user = getItem(position);
 
-        ImageView image = view.findViewById(R.id.userImage);
-        Glide.with(getContext()).load(event.getImageURL()).into(image);
+        TextView nameText = view.findViewById(R.id.userName);
+        assert user != null;
+        nameText.setText(user.getName());
+
+        TextView emailText = view.findViewById(R.id.emailText);
+        emailText.setText(user.getEmail());
+
+        TextView phoneText = view.findViewById(R.id.phoneText);
+        phoneText.setText(user.getPhone());
 
         return view;
     }

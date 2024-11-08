@@ -11,23 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.Models.Event;
-import com.example.athena.Models.QRCode;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.SetOptions;
-import com.google.zxing.WriterException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class createEvent extends Fragment {
@@ -48,7 +40,7 @@ public class createEvent extends Fragment {
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
 
-        TextView eventNameText = view.findViewById(R.id.eventNameText);
+        TextView eventNameText = view.findViewById(R.id.userName);
         TextView eventDateText = view.findViewById(R.id.eventDate);
         TextView regStartText = view.findViewById(R.id.regDateStart);
         TextView regEndText = view.findViewById(R.id.regDateEnd);

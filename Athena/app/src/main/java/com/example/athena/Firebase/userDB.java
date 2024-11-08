@@ -6,11 +6,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class handles database operations for the users collection in Firestore.
@@ -28,6 +26,10 @@ public class userDB {
     public Task<QuerySnapshot> getUserEvents(String deviceID) {
         Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
         return ueRef;
+    }
+
+    public Task<QuerySnapshot> getUserList() {
+        return usersCollection.get();
     }
 
     public void updateOrgEvents(String deviceID, String eventID) {

@@ -120,12 +120,20 @@ public class entrantAndOrganizerHomeFragment extends Fragment {
         });
 
         ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
-
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
                 displayChildFragment(new myEventsList(), bundle);
+            }
+        });
+
+        ImageButton adminProfileButton = view.findViewById(R.id.adminProfileBrowse);
+        adminProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new adminProfileBrowse(), bundle);
             }
         });
 
