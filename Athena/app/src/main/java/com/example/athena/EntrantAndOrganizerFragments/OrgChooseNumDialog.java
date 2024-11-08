@@ -38,17 +38,21 @@ public class OrgChooseNumDialog extends DialogFragment {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.choose_num_dialog,null);
         EditText numEntrant = view.findViewById(R.id.num_entrants_input_dialog);
 
-        int num = Integer.parseInt(numEntrant.getText().toString());
-        if(num == Integer.parseInt(null)){
-            num = 0;
-        }
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        int finalNum = num;
         return builder.setView(view)
                 .setTitle("Chose Number of Entrants")
                 .setNeutralButton("Cancel", null)
-                .setPositiveButton("Confirm", (dialog, which) -> listener.choseEntrants(finalNum))
+                .setPositiveButton("Confirm", (dialog, which) -> {
+                        int num = 0;
+                        if(numEntrant.getText().toString().isEmpty()){
+                            num = 0;
+                        } else {
+                            num = Integer.parseInt(numEntrant.getText().toString());
+                        }
+                        listener.choseEntrants(num);
+                })
                 .create();
     }
 }

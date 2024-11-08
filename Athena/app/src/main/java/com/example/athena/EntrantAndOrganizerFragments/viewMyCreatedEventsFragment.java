@@ -112,7 +112,11 @@ public class viewMyCreatedEventsFragment extends Fragment{
         eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String eventID = eventAdapter.getItem(position).getEventID();
                 OrganizerEntrantOperations detailFrag = new OrganizerEntrantOperations();
+                Bundle bundleSend = new Bundle();
+                bundleSend.putString("eventID",eventID);
+                detailFrag.setArguments(bundleSend);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.content_frame, detailFrag)
                         .commit();

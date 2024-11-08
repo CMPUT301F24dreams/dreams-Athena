@@ -1,21 +1,9 @@
 package com.example.athena.WaitList;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
 import com.example.athena.Models.Event;
-import com.example.athena.Firebase.DBConnector;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This class is responsible for storing information about waitlists for corresponding events
