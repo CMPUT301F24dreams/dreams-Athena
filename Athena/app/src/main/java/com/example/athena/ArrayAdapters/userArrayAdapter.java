@@ -1,3 +1,8 @@
+/*
+ * This class is a custom ArrayAdapter for displaying user information in a ListView.
+ * It is responsible for binding a list of User objects to a list item layout, which includes the user's name, email, and phone number.
+ * The user data is populated into the corresponding TextViews within each list item.
+ */
 package com.example.athena.ArrayAdapters;
 
 import android.content.Context;

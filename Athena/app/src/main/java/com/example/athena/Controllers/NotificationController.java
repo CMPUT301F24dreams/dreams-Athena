@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+// Controller class responsible for managing notifications, fetching event and user data, and displaying notifications.
 
 public class NotificationController {
     private List<Notification> notificationList;

@@ -1,4 +1,10 @@
-package com.example.athena.EntrantAndOrganizerFragments;
+/**
+ * This Fragment is responsible for browsing the list of users in the admin profile screen.
+ * It fetches a list of users from the Firebase Firestore database and displays them in a ListView.
+ * When a user is clicked, it navigates to a detailed user profile page.
+ */
+
+ package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.os.Bundle;
 import android.util.Log;

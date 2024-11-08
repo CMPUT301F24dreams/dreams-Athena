@@ -19,8 +19,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-
-public class eventDetails extends Fragment {
+/**
+ * This fragment class represents the details of a specific event within the application.
+ */
+ public class eventDetails extends Fragment {
     private eventsDB eventsDB;
 
     @Override

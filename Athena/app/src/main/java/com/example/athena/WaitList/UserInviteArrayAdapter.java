@@ -15,7 +15,9 @@ import com.example.athena.R;
 
 
 import java.util.ArrayList;
-
+/**
+ * Custom ArrayAdapter to display a list of events in the invited user list.
+ */
 public class UserInviteArrayAdapter extends ArrayAdapter<Event> {
     public UserInviteArrayAdapter(Context context, ArrayList<Event> events){
         super(context, 0, events);

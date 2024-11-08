@@ -10,7 +10,14 @@ import android.view.ViewGroup;
 import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 
+/**
+ * selectedEntrantsFragment is a Fragment that inflates a layout for displaying selected entrants.
+ *Outstanding Issues:
+ * - The fragment currently only inflates a static layout. Future updates may involve adding
+ *   dynamic content, such as populating a list of selected entrants, implementing UI logic
+ *   for interacting with the list, or integrating event handling.
 
+ */
 public class selectedEntrantsFragment extends Fragment {
 
 

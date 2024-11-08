@@ -26,7 +26,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.UploadTask;
-
+/**
+ * This fragment displays the user's profile, including their name, email, phone, and profile picture.
+ * It also provides options to edit the profile, change the profile picture, or navigate to other profile-related sections.
+ */
 public class viewProfileFragment extends Fragment {
 
     static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher

@@ -27,8 +27,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
+/**
+ * Fragment that handles operations for organizing and managing entrants for an event.
+ * It provides functionality to choose the number of entrants to send invitations to and view
+ * different lists of entrants, such as accepted, declined, pending, and invited.
+ */
+ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
 
 
     private String eventID;

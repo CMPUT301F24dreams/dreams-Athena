@@ -26,7 +26,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
+/**
+ * Fragment for browsing users associated with a particular event.
+ * */
 public class ProfileBrowseOrg extends Fragment {
     private String deviceID;
     private userDB userDB;

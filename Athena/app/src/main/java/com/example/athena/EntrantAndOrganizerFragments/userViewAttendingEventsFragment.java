@@ -32,7 +32,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+*This fragment represents the user's view of the events they are invited to attend.
+*It handles displaying a list of events where the user has been invited,
+*allowing them to either accept or decline the invitation.
+ */
 public class userViewAttendingEventsFragment extends Fragment implements userViewNotisChose.acceptDeclineListener {
 
     private ListView invites;

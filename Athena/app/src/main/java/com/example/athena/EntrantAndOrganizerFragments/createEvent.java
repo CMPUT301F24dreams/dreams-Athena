@@ -1,3 +1,8 @@
+/**
+ * createEvent Fragment class handles the creation of a new event by the user.
+ * It allows the user to fill in event details, upload an event poster, and save
+ * the event information to Firebase, including an image upload to Firebase Storage.
+ */
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;

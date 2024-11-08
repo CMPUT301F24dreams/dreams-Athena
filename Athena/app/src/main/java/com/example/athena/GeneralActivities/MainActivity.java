@@ -25,7 +25,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+/**
+ * MainActivity is the entry point of the application.
+ * It determines whether the user is already registered or not by querying the Firestore database.
+ * Based on the result, it either displays the home screen (for registered users) or the sign-up screen (for new users).
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
