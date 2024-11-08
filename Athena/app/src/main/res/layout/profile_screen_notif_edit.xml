@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBackground">
+    android:background="@color/mainBackground"
+    tools:layout_editor_absoluteX="2dp"
+    tools:layout_editor_absoluteY="-34dp">
 
     <TextView
         android:id="@+id/textView"
@@ -24,37 +26,56 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Switch
-        android:id="@+id/notifs_from_others"
-        android:layout_width="352dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="20dp"
-        android:elevation="21dp"
-        android:text="Recieve notification from organizers and admin"
-        app:layout_constraintBottom_toTopOf="@+id/geolocation_warn"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.966"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/not_chosen_notif"
-        app:layout_constraintVertical_bias="0.625" />
-
-    <Switch
         android:id="@+id/not_chosen_notif"
         android:layout_width="352dp"
         android:layout_height="27dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="109dp"
         android:elevation="21dp"
         android:showText="false"
         android:text="Notify when not chosen"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chosen_notif"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintTop_toBottomOf="@+id/chosen_notif" />
+
+    <Switch
+        android:id="@+id/chosen_notif"
+        android:layout_width="352dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:elevation="21dp"
+        android:text="Notify when chosen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image2" />
+
+    <Switch
+        android:id="@+id/geolocation_warn"
+        android:layout_width="352dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="396dp"
+        android:elevation="21dp"
+        android:text="Warn event requires geolocation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/notifs_from_others"
+        android:layout_width="352dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="434dp"
+        android:elevation="21dp"
+        android:text="Recieve notification from others"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/profile_picture_button2"
@@ -127,28 +148,12 @@
         app:layout_constraintVertical_bias="0.043" />
 
     <Switch
-        android:id="@+id/chosen_notif"
-        android:layout_width="352dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
-        android:elevation="21dp"
-        android:text="Notify when chosen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image2" />
-
-    <Switch
-        android:id="@+id/geolocation_warn"
-        android:layout_width="352dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="364dp"
-        android:elevation="21dp"
-        android:text="Warn event requires geolocation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/switch1"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="578dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

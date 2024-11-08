@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.athena.Interfaces.displayFragments;
+
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenNotifEditBinding;
@@ -20,15 +20,13 @@ import com.example.athena.databinding.ProfileScreenNotifEditBinding;
  * This is the fragment responsible for handling the operations of the user when they want to edit their profile
  * notification settings
  */
-public class profileNotiEditFragment extends Fragment implements displayFragments{
+public class profileNotiEditFragment extends Fragment {
 
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
     public profileNotiEditFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,65 +35,66 @@ public class profileNotiEditFragment extends Fragment implements displayFragment
         ///Initializer the binding object
         binding = ProfileScreenNotifEditBinding.inflate(inflater, container, false);
 
-
         ///Inflates the layout for the fragment
         return binding.getRoot();
+
     }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //when ever the user clicks on the switch get if it is checked then update the user.
-        binding.chosenNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                binding.chosenNotif.isChecked();
-            }
-        });
-        binding.notChosenNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // TODO: Need to add the db stuff
 
-                binding.notChosenNotif.isChecked();
-            }
-        });
-        binding.notifsFromOthers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.chosenNotif.setChecked(getSwitchStateFromDb("chosenNotif"));
+        binding.notChosenNotif.setChecked(getSwitchStateFromDb("notChosenNotif"));
+        binding.geolocationWarn.setChecked(getSwitchStateFromDb("geolocationWarn"));
+        binding.notifsFromOthers.setChecked(getSwitchStateFromDb("notifsFromOthers"));
 
-                binding.notifsFromOthers.isChecked();
-            }
+        // Listeners for each switch
+        // Chosen notifications
+        binding.chosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("chosenNotif", isChecked);
         });
-        binding.geolocationWarn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                binding.geolocationWarn.isChecked();
-            }
+
+        // Not chosen notifications
+        binding.notChosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notChosenNotif", isChecked);
+        });
+
+        // Geolocation warning notifcations
+        binding.geolocationWarn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("geolocationWarn", isChecked);
+        });
+
+        // Notifications from organizers and admins
+        binding.notifsFromOthers.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifsFromOthers", isChecked);
         });
 
 
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToNewFragment(new viewProfileFragment());
+                FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.content_layout, new viewProfileFragment());
+                transaction.commit();
             }
         });
     }
 
-
-    @Override
-    public void displayChildFragment(Fragment fragment) {
+    /**
+     * Method for retrieving the switch state from the database
+     */
+    private boolean getSwitchStateFromDb(String key) {
+        // TODO: Take the switch state from db
+        return false; // Default value
     }
 
-    @Override
-    public void switchToNewFragment(Fragment fragment){
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content_layout, fragment);
-        transaction.commit();
-
+    /**
+     * Method for saving the switch state to the database
+     */
+    private void saveSwitchStateToDb(String key, boolean isChecked) {
+        // TODO: Save the switch stuff to db
     }
-
-
-
-
 }
