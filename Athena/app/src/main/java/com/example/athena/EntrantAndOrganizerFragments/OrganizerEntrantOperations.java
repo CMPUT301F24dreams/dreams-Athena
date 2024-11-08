@@ -171,14 +171,6 @@ public class OrganizerEntrantOperations extends Fragment implements OrgChooseNum
             }
         });
 
-        viewAccepted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bundle.putString("eventID", eventID);
-                bundle.putString("status", "accepted");
-                displayChildFragment(new ProfileBrowseOrg());
-            }
-        });
 
     }
 

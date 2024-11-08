@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerFragments.entrantAndOrganizerHomeFragment;
+import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
 
 import com.example.athena.R;
 import com.example.athena.RegistrationFragments.signUpFragment;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putString("deviceID", String.valueOf(getDeviceId()));
                     if (task.getResult().exists()) {
-                        entrantAndOrganizerHomeFragment homeScreen = new entrantAndOrganizerHomeFragment();
+                        homeScreen homeScreen = new homeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);
