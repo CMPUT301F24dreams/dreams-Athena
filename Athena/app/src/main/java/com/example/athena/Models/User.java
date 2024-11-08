@@ -16,6 +16,12 @@ public class User { // TO-DO Java-doc
         this.imageURL = imageURL;
     }
 
+    public User(String name, String email, String phone) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public String getName() {
         return name;
     }
