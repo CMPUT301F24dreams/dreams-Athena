@@ -21,7 +21,7 @@ import com.example.athena.R;
 
 @RunWith(AndroidJUnit4.class)
 public class HomeScreenTest {
-///tests derived from copilot: https://copilot.microsoft.com/chats/XkgPPffcGXrUadGYr6Wvi, 2024-11-08
+///some tests in this package are derived from copilot: https://copilot.microsoft.com/chats/XkgPPffcGXrUadGYr6Wvi, 2024-11-08
     @Before
     public void setup() {
         // Initialize fragment scenario

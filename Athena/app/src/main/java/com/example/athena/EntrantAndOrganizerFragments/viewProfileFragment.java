@@ -32,7 +32,7 @@ import com.google.firebase.storage.UploadTask;
  */
 public class viewProfileFragment extends Fragment {
 
-    static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
+    public static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
     private userDB usersDB;
     private imageDB imageDB;
     private String deviceID;

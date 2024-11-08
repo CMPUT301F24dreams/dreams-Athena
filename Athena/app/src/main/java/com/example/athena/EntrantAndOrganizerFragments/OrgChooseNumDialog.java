@@ -24,7 +24,7 @@ import com.example.athena.R;
         void choseEntrants(int num);
     }
 
-    private numOfEntListener listener;
+    public numOfEntListener listener;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -39,12 +39,12 @@ import java.util.Objects;
  */
 public class userViewAttendingEventsFragment extends Fragment implements userViewNotisChose.acceptDeclineListener {
 
-    private ListView invites;
+    public ListView invites;
     private UserInviteArrayAdapter adapter;
-    private ArrayList<Event> events;
-    private String deviceID;
-    private userDB userDB;
-    private eventsDB eventsDB;
+    public ArrayList<Event> events;
+    public String deviceID;
+    public userDB userDB;
+    public eventsDB eventsDB;
     @Override
 
     public void acceptInvite(int position) {
@@ -194,7 +194,7 @@ public class userViewAttendingEventsFragment extends Fragment implements userVie
 
 
     }
-    private void showDialog(Bundle bundle) {
+    public void showDialog(Bundle bundle) {
         FragmentManager fm = getParentFragmentManager();
         userViewNotisChose frag = new userViewNotisChose();
         frag.setArguments(bundle);

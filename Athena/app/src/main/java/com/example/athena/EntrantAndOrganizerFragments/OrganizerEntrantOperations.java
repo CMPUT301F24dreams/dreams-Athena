@@ -36,11 +36,11 @@ import java.util.Iterator;
 
 
     private String eventID;
-    private Event event;
+    public Event event;
     private String deviceID;
-    private eventsDB eventDB;
-    private userDB userDB;
-    private Bundle bundle;
+    public eventsDB eventDB;
+    public userDB userDB;
+    public Bundle bundle;
     @Override
 
     /**
@@ -185,7 +185,7 @@ import java.util.Iterator;
 
 
 
-    private void showDialog() {
+    public void showDialog() {
         FragmentManager fm = getParentFragmentManager();
         OrgChooseNumDialog frag = new OrgChooseNumDialog();
         frag.setTargetFragment(this,0);
