@@ -130,4 +130,27 @@ public class eventsDB {
 
 
 
+    public Task<Void> saveURLToEvent(UploadTask uploadTask, String eventID) {
+        TaskCompletionSource<Void> changeURLSource = new TaskCompletionSource<>();
+        Task<Void> changeTask = changeURLSource.getTask();
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference imageRef = storage.getReference().child("images/" + eventID);
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                return imageRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                Uri URL = task.getResult();
+                Map<String, Object> data = new HashMap<>();
+                data.put("imageURL", URL.toString());
+                eventsCollection.document(eventID).set(data, SetOptions.merge());
+                changeURLSource.setResult(null);
+            }
+        });
+        return changeTask;
+    }
 }
