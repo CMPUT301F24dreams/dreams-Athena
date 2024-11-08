@@ -28,6 +28,14 @@ public class userDB {
         return ueRef;
     }
 
+    public Task<QuerySnapshot> getUserList() {
+        return usersCollection.get();
+    }
+
+    public void updateOrgEvents(String deviceID, String eventID) {
+        db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
+    }
+  
     public void changeEventStatusInvited(String eventID, String deviceID){
         db.collection("Users/"+ deviceID +"/Events").document(eventID).update("status","invited");
     }
@@ -114,5 +122,7 @@ public class userDB {
             return false;
         });
     }
+
+
 }
 
