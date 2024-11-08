@@ -38,10 +38,10 @@ import java.util.List;
 
 public class adminProfileBrowse extends Fragment {
     private String deviceID;
-    private userDB userDB;
-    private ArrayList<User> users;
+    public userDB userDB;
+    public ArrayList<User> users;
     private ListView listView;
-    private ArrayList<String> usersID;
+    public ArrayList<String> usersID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -139,9 +139,9 @@ import java.util.Iterator;
 
         //this is temp
         ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
-        ImageButton viewInvited = view.findViewById(R.id.viewSelected);
-        Button viewCanclled = view.findViewById(R.id.viewCancelledEntrants);
-        Button viewAccepted = view.findViewById(R.id.viewSelected);
+        ImageButton viewInvited = view.findViewById(R.id.view_selected_entrants);
+        ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
+        ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +166,15 @@ import java.util.Iterator;
             public void onClick(View v) {
                 bundle.putString("eventID", eventID);
                 bundle.putString("status", "cancelled");
+                displayChildFragment(new ProfileBrowseOrg());
+            }
+        });
+
+        viewAccepted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putString("eventID", eventID);
+                bundle.putString("status", "accepted");
                 displayChildFragment(new ProfileBrowseOrg());
             }
         });

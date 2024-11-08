@@ -34,6 +34,11 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/create_event.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -206,7 +211,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/HomeScreenTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileBrowseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EntrantController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/EventController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/NotificationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/OrganizerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/athena/controllers/WaitlistController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/NotificationController.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/UserController.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/athena/controllers/WaitlistController.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/testHomeScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/OrganizerEntrantOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/OrganizerEntrantOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/adminProfileBrowse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/adminProfileBrowse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_entrant_operations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/organizer_entrant_operations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +252,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/Athena">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -239,10 +269,10 @@
       <list>
         <option value="resourceFile" />
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="navigationResourceFile" />
         <option value="layoutResourceFile" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -286,8 +316,14 @@
   "keyToString": {
     "Android App.Athena.app.executor": "Run",
     "Android Instrumented Tests.ExampleInstrumentedTest.executor": "Run",
+    "Android Instrumented Tests.HomeScreenTest.executor": "Run",
     "Android Instrumented Tests.Tests in 'com.example.athena'.executor": "Run",
+    "Android Instrumented Tests.testClickNotificationsButton().executor": "Run",
+    "Android Instrumented Tests.testNotificationsButtonIsDisplayed().executor": "Run",
     "Android Instrumented Tests.useAppContext().executor": "Run",
+    "Gradle.AdminProfileBrowseTest.executor": "Run",
+    "Gradle.AdminProfileBrowseTest.testFetchUserList.executor": "Run",
+    "Gradle.ExampleUnitTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -299,7 +335,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/CMPUT 301 Assignments/Assignment 1 Deliverables (build folder removed)/code/asshittu-MyBookWishlist",
+    "last_opened_file_path": "C:/Users/Ahmed/Desktop/CMPUT 301 (Software Engineering)/LABS/asshittuLab7",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.0",
@@ -327,7 +363,7 @@
       <recent name="com.example.athena.AdminFragments" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.Athena.app">
+  <component name="RunManager" selected="Gradle.ExampleUnitTest">
     <configuration name="Athena.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Athena.app.main" />
       <option name="DEPLOY" value="true" />
@@ -457,72 +493,11 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tests in 'com.example.athena'" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+    <configuration name="HomeScreenTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
       <module name="Athena.app.androidTest" />
-      <option name="TESTING_TYPE" value="1" />
+      <option name="TESTING_TYPE" value="2" />
       <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="com.example.athena" />
-      <option name="TEST_NAME_REGEX" value="" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="RETENTION_ENABLED" value="No" />
-      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
-      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Hybrid>
-      <Java>
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Java>
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
-        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
-        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
-      </Profilers>
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="useAppContext()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
-      <module name="Athena.app.androidTest" />
-      <option name="TESTING_TYPE" value="3" />
-      <option name="METHOD_NAME" value="useAppContext" />
-      <option name="CLASS_NAME" value="com.example.athena.ExampleInstrumentedTest" />
+      <option name="CLASS_NAME" value="com.example.athena.HomeScreenTest" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_NAME_REGEX" value="" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
@@ -579,11 +554,85 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AdminProfileBrowseTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Athena" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;com.example.athena.AdminProfileBrowseTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="AdminProfileBrowseTest.testFetchUserList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Athena" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;com.example.athena.AdminProfileBrowseTest.testFetchUserList&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ExampleUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Athena" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;com.example.athena.ExampleUnitTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ExampleUnitTest" />
         <item itemvalue="Android Instrumented Tests.ExampleInstrumentedTest" />
-        <item itemvalue="Android Instrumented Tests.useAppContext()" />
-        <item itemvalue="Android Instrumented Tests.Tests in 'com.example.athena'" />
+        <item itemvalue="Gradle.AdminProfileBrowseTest" />
+        <item itemvalue="Gradle.AdminProfileBrowseTest.testFetchUserList" />
+        <item itemvalue="Android Instrumented Tests.HomeScreenTest" />
       </list>
     </recent_temporary>
   </component>
@@ -604,5 +653,20 @@
       <updated>1729483863438</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/ExampleInstrumentedTest.java</url>
+          <line>20</line>
+          <properties class="com.example.athena.ExampleInstrumentedTest" method="useAppContext">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
