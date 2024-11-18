@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/organizer_events_title_non_edit"
-        android:layout_width="408dp"
-        android:layout_height="93dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="2dp"
         android:fontFamily="@font/bai_jamjuree_bold"
@@ -19,22 +19,20 @@
         android:textAlignment="center"
         android:textColor="@color/title_text_color"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002" />
 
     <ListView
         android:id="@+id/organizer_event_listview"
         android:layout_width="match_parent"
-        android:layout_height="742dp"
+        android:layout_height="613dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/organizer_events_title_non_edit"
         app:layout_constraintVertical_bias="1.0" />

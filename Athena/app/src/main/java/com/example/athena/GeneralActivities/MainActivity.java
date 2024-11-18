@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
     /**
-     * Calls the activity launcher in the current cotext
+     * Calls the activity launcher in the current context
      */
     private void requestNotificationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
