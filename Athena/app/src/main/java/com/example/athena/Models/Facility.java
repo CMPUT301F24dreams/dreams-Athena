@@ -1,6 +1,5 @@
 package com.example.athena.Models;
 
 public class Facility {
-    //public Facility(String name, String location)
-
+    public Facility(String name, String location, )
 }
