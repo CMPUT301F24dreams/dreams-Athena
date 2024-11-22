@@ -36,7 +36,6 @@ public class eventsDB {
     private CollectionReference eventsCollection;
 
     public eventsDB(){
-        // Initialize the Firestore connection and specify the collection
         this.db = FirebaseFirestore.getInstance();
         this.eventsCollection = db.collection("Events");
     }
@@ -55,6 +54,31 @@ public class eventsDB {
     public Task<DocumentSnapshot> getEvent(String eventID) {
         return eventsCollection.document(eventID).get();
     }
+
+    public void loadEventData(Event event, String eventID) {
+        Task getEventTask = this.getEvent(eventID);
+        getEventTask.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentSnapshot document = (DocumentSnapshot) task.getResult();
+                if (task.isSuccessful()) {
+                    event.setEventName(document.getString("eventName"));
+                    event.setImageURL(document.getString("imageURL"));
+                    event.setEventDescription(document.getString("eventDescription"));
+                    event.setOrganizer(document.getString("organizer"));
+                    event.setFacility(document.getString("Facility"));
+                    event.setMaxParticipants(Integer.parseInt(document.getString("maxParticipants")));
+                    event.setGeoRequire(document.getBoolean("geoRequire"));
+                    event.setEventID(document.getString("eventID"));
+
+                    event.notifyObservers();
+                } else {
+                    Exception exception = task.getException();
+                }
+            }
+        });
+    }
+
     /**
      * get the sub-collection of users from the event from the database
      * @param eventID the id of the event to grab
@@ -66,8 +90,6 @@ public class eventsDB {
     public Task<QuerySnapshot> getEventsList() {
         return eventsCollection.get();
     }
-
-
 
     public Task addEvent(Event event){
         return eventsCollection.add(event);
@@ -119,7 +141,7 @@ public class eventsDB {
         });
         return changeTask;
     }
-    public void moveUserID(String donor, String receiver, String userID,String eventID ){
+    public void moveUserID(String donor, String receiver, String userID, String eventID ){
 
         Map<String,Boolean> notifi = new HashMap<>();
         notifi.put("notified",Boolean.FALSE);

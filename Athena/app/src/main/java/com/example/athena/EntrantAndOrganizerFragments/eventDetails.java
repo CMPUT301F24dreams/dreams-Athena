@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.athena.ArrayAdapters.EventViewAdapter;
 import com.example.athena.Firebase.eventsDB;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +25,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
  * This fragment class represents the details of a specific event within the application.
  */
  public class eventDetails extends Fragment {
-    private eventsDB eventsDB;
+    private eventsDB EventsDB = new eventsDB();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,29 +35,20 @@ import com.google.firebase.firestore.DocumentSnapshot;
     }
 
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
-        TextView eventName = view.findViewById(R.id.eventName);
-        ImageView image = view.findViewById(R.id.event_poster);
-
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         String eventID = bundle.getString("eventID");
 
-        eventsDB = new eventsDB();
+        EventViewAdapter fragment = new EventViewAdapter(getContext());
+        fragment.setEventName(view.findViewById(R.id.eventName));
+        fragment.setImageView(view.findViewById(R.id.event_poster));
 
-        Task eventDetails = eventsDB.getEvent(eventID);
-        eventDetails.addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = (DocumentSnapshot) task.getResult();
-                    eventName.setText(document.getString("eventName"));
-                    Glide.with(getContext()).load(document.getString("imageURL")).into(image);
-                } else {
-                    Exception e = task.getException();
-                }
-            }
-        });
+        Event event = new Event();
+        event.addObserver(fragment);
+
+        EventsDB.loadEventData(event, eventID);
     }
+
     public void displayChildFragment(Fragment fragment, Bundle bundle){
         fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment).commit();

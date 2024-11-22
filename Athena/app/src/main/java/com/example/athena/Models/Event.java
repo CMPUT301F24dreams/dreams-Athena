@@ -1,4 +1,5 @@
 package com.example.athena.Models;
+import com.example.athena.Interfaces.Model;
 import com.example.athena.Interfaces.Observer;
 import com.example.athena.WaitList.WaitList;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * It follows the observer design pattern by interacting with a {@link WaitList} object to handle user management.
  *
  */
-public class Event {
+public class Event implements Model {
     private String eventName;
     private String imageURL;
     private String eventDescription;
@@ -22,30 +23,19 @@ public class Event {
     private Integer maxParticipants;
     private Boolean geoRequire;
     private String eventID;
+    private ArrayList<Observer> observers = new ArrayList<>();
     private WaitList waitList;
 
-    /**
-     * Constructor to initialize the event with all properties except for the waitlist.
-     *
-     * @param eventName        The name of the event.
-     * @param imageURL         The image URL associated with the event.
-     * @param eventDescription The description of the event.
-     * @param organizer        The organizer of the event.
-     * @param facility         The facility where the event takes place.
-     * @param maxParticipants  The maximum number of participants allowed for the event.
-     * @param georequire       Boolean flag to indicate if geographic requirements are enforced.
-     * @param eventID          The unique identifier of the event.
-     */
-
-    public Event(String eventName, String imageURL, String eventDescription, String organizer, String facility, Integer maxParticipants, Boolean georequire, String eventID) {
-        this.eventName = eventName;
-        this.imageURL = imageURL;
-        this.eventDescription = eventDescription;
-        this.organizer = organizer;
-        this.facility = facility;
-        this.maxParticipants = maxParticipants;
-        this.geoRequire = georequire;
-        this.eventID = eventID;
+    public Event() {
+        this.eventName = "NULL";
+        this.imageURL = "NULL";
+        this.eventDescription = "NULL";
+        this.organizer = "NULL";
+        this.facility = "NULL";
+        this.maxParticipants = 0;
+        this.geoRequire = Boolean.FALSE;
+        this.eventID = "NULL";
+        this.observers = new ArrayList<>();
     }
 
     /**
@@ -56,13 +46,13 @@ public class Event {
      * @param imageURL  The image URL associated with the event.
      * @param eventID   The unique identifier of the event.
      */
-
     public Event(String eventName, String imageURL, String eventID) {
         this.eventName = eventName;
         this.imageURL = imageURL;
         this.eventID = eventID;
         this.waitList = new WaitList(this);
     }
+
     /**
      * Adds a user to the waitlist for the event.
      *
@@ -221,5 +211,30 @@ public class Event {
      */
     public String getEventID() {
         return eventID;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public void setEventID(String eventID) {
+        this.eventID = eventID;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        this.observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
     }
 }
