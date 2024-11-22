@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * This class handles database operations for the users collection in Firestore.
  */
-public class userDB {
+public class  userDB {
     private FirebaseFirestore db;
     private CollectionReference usersCollection;
 
