@@ -61,6 +61,9 @@ public class homeScreen extends Fragment {
         ///Assigns the close drawer button
         ImageButton closeDrawerButton = view.findViewById(R.id.close_drawer_button);
 
+        ///Assigns the close drawer button
+        ImageButton manageFacilityButton = view.findViewById(R.id.manage_faciliity);
+
         ///Assigns the create event buttons
         ImageButton createEventButton = view.findViewById(R.id.create_event_button);
 
@@ -73,6 +76,13 @@ public class homeScreen extends Fragment {
         ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
         ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
 
+        manageFacilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new facilityDetails(), bundle);
+            }
+        });
 
         viewAppImages.setOnClickListener(new View.OnClickListener() {
             @Override

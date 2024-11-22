@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
-
+//TODO: make the homescreen navigate here when you click the manage facility button
 public class facilityDetails extends Fragment {
 
     @Override
@@ -46,19 +46,15 @@ public class facilityDetails extends Fragment {
         loadedUser.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //TODO: fix this so that it retrieves facility details
-                }
-                    DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
-
-                    binding.chosenNotif.setChecked(user.getBoolean("chosenNotif"));
-                    binding.notChosenNotif.setChecked(user.getBoolean("notChosenNotif"));
-                    binding.geolocationWarn.setChecked(user.getBoolean("geolocationWarn"));
-                    binding.notifsFromOthers.setChecked(user.getBoolean("notifsFromOthers"));
+                    //TODO: add the logic that makes the image load, sets the event title, and sets the image location
 
                 } else {
                     Exception e = task.getException();
                 }
             }
         });
+    }
+
 }
