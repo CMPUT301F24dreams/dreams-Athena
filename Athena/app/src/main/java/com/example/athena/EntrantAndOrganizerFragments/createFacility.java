@@ -1,5 +1,7 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.net.Uri;
 import android.os.Bundle;
 import com.example.athena.Firebase.FacilitiesDB;
@@ -7,6 +9,7 @@ import com.example.athena.Firebase.FacilitiesDB;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,19 +74,25 @@ public class createFacility extends Fragment {
 
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
-                // TODO: add facility ID logic
+
 
             facilityAdd.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
-                DocumentReference doc = (DocumentReference) task.getResult();
-                String facilityID = doc.getId();
+                if(task.isSuccessful()) {
+                    DocumentReference doc = (DocumentReference) task.getResult();
+                    String facilityID = doc.getId();
 
-                facilitiesDB.updateFacilityID(facilityID);
-                userDB.updateOrgFacilities(deviceID, facilityID);
-                bundle.putString("facilityID", facilityID);
+                    facilitiesDB.updateFacilityID(facilityID);
+                    userDB.updateOrgFacilities(deviceID, facilityID);
+                    bundle.putString("facilityID", facilityID);
 
-                displayChildFragment(new facilityDetails(), bundle);
+                    displayChildFragment(new facilityProfile(), bundle);
+                }else{
+                    Log.d(TAG, "Could Not Add Facility ", task.getException());
+                    Toast.makeText(requireContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

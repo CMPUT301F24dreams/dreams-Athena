@@ -88,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
+        android:backgroundTint="@color/drawer_background_color"
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="32dp"
         android:text="Submit"

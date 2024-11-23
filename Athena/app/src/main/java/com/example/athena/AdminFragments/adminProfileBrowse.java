@@ -37,7 +37,7 @@ public class adminProfileBrowse extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.event_view, container, false);
+        View view = inflater.inflate(R.layout.admin_browse_profiles, container, false);
         super.onCreate(savedInstanceState);
         return view;
     }
@@ -51,7 +51,7 @@ public class adminProfileBrowse extends Fragment {
         users = new ArrayList<>();
         usersID = new ArrayList<>();
 
-        listView = view.findViewById(R.id.myEventList);
+        listView = view.findViewById(R.id.user_profiles_listview);
 
         Task getUserList = userDB.getUserList();
         getUserList.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -65,6 +65,8 @@ public class adminProfileBrowse extends Fragment {
                         String email = documentSnapshot.getString("email");
                         String phone = documentSnapshot.getString("phone");
                         String imageURL = documentSnapshot.getString("imageURL");
+
+
                         User user = new User(name, email, phone, imageURL);
                         users.add(user);
                         usersID.add(documentSnapshot.getId());

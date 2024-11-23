@@ -29,13 +29,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.HashMap;
 
-public class facilityDetails extends Fragment {
+public class facilityProfile extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_facility_details, container, false);
+        return inflater.inflate(R.layout.facility_profile, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -188,7 +188,7 @@ public class facilityDetails extends Fragment {
             if (newFacilityLocation.matches(".*[a-zA-Z]+.*")) {
 
                 HashMap<String, Object> updatedData = new HashMap<>();
-                updatedData.put("facilityName", newFacilityLocation);
+                updatedData.put("facilityLocation", newFacilityLocation);
 
                 //Updates the facility location name in the db
                 Task<Void> updateTask = db.updateFacility(facilityDetailsBundle.getString("facilityID"), updatedData);

@@ -118,7 +118,7 @@ public class homeScreen extends Fragment {
                                 String facilityID = document.getId();
                                 Log.d(TAG, "Retrieved string: " + facilityID);
                                 bundle.putString("facilityID", facilityID);
-                                displayChildFragment(new facilityDetails(), bundle);
+                                displayChildFragment(new facilityProfile(), bundle);
                             }
 
 
@@ -131,7 +131,7 @@ public class homeScreen extends Fragment {
                             //the user will not be able to trigger the "create a facility" dialog
                             //instead, they'll just be reminded that they need a facility before creating an event
                             if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {
-                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
                                 createFacilityDialog(bundle);
 
                             }
@@ -139,7 +139,7 @@ public class homeScreen extends Fragment {
                             //this is the case that will remind the user instead of creating redundant pop-up
                             else {
 
-                                Toast.makeText(requireContext(), "No Facilities Found.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -220,15 +220,14 @@ public class homeScreen extends Fragment {
                             //the user will not be able to trigger the "create a facility" dialog
                             //instead, they'll just be reminded that they need a facility before creating an event
                             if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {
-                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
                                 createFacilityDialog(bundle);
 
                             }
 
                             //this is the case that will remind the user instead of creating redundant pop-up
                             else {
-
-                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
                             }
 
                         }
