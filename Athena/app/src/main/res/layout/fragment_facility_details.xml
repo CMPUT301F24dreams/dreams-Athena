@@ -49,7 +49,6 @@
             android:layout_width="match_parent"
             android:layout_height="107dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Facility Name"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -70,7 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Facility Location "
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />

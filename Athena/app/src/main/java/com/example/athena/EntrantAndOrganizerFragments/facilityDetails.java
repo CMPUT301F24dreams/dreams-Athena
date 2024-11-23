@@ -1,4 +1,7 @@
+//input validation logic partly derived from Copilot search "make [a requirement that each text field must] have at least one character that is a letter for both fields". 2024 - 11 -22
 package com.example.athena.EntrantAndOrganizerFragments;
+
+import static android.content.ContentValues.TAG;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -8,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +19,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.HashMap;
 
 //TODO: make the homescreen navigate here when you click the manage facility button
 public class facilityDetails extends Fragment {
@@ -37,20 +45,41 @@ public class facilityDetails extends Fragment {
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
         userDB usersDB = new userDB();
+        FacilitiesDB facilitiesDB = new FacilitiesDB();
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
 
+        //retrieves the facility ID
+        String facilityID = bundle.getString("facilityID");
+
         TextView facilityName = view.findViewById(R.id.facility_name_textview);
-        facilityName.setText((String) bundle.getString("facilityName"));
+
         TextView facilityLocation = view.findViewById(R.id.facility_location_textView);
-        facilityLocation.setText(bundle.getString("facilityLocation"));
+
+        Task getFacilityDetails = facilitiesDB.getFacility(facilityID);
+        Task facilityDetailsLoaded = Tasks.whenAll(getFacilityDetails);
+
+        getFacilityDetails.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot facilityDetails = (DocumentSnapshot) getFacilityDetails.getResult();
+                    facilityLocation.setText(facilityDetails.getString("facilityLocation"));
+                    facilityName.setText((String) facilityDetails.getString("facilityName"));
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
+
+
 
         ImageButton editFacilityName = view.findViewById(R.id.edit_facility_name_button);
 
         editFacilityName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editFacilityNameDialog(bundle);
+                editFacilityNameDialog(bundle, facilitiesDB);
             }
         });
 
@@ -59,7 +88,7 @@ public class facilityDetails extends Fragment {
         editFacilityLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editFacilityLocationDialog(bundle);
+                editFacilityLocationDialog(bundle, facilitiesDB);
             }
         });
 
@@ -67,14 +96,17 @@ public class facilityDetails extends Fragment {
     }
 
 
-    //TODO: MAKE THIS CONNECT TO DB, VALIDATE INPUT
+    //TODO: UPDATE INFO IN DB WHEN IT GETS EDITED
 
 
     /**
-     * method to edit facility Name
-     * calls a dialog box with edit texts that allow the user to enter a new facility name
+     * Updates the facility  name in the db
+     * if the facility name successfully updates in the db, it is also updated in the application
+     * if the facility name fails to update, the error is displayed in a toast message
+     * @param facilityDetailsBundle: this is the bundle containing all of the facility details
+     * @param db: this is the database connection
      */
-    private void editFacilityNameDialog(Bundle facilityDetailsBundle) {
+    private void editFacilityNameDialog(Bundle facilityDetailsBundle, FacilitiesDB db) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Facility Name");
 
@@ -97,15 +129,44 @@ public class facilityDetails extends Fragment {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             String newFacilityName = input.getText().toString();
             if (newFacilityName.matches(".*[a-zA-Z]+.*")) {
-                facilityName.setText(newFacilityName);
-                dialog.dismiss();
+
+                HashMap<String, Object> updatedData = new HashMap<>();
+                updatedData.put("facilityName", newFacilityName);
+
+                //Updates the facility name in the db
+                Task<Void> updateTask = db.updateFacility(facilityDetailsBundle.getString("facilityID"), updatedData);
+                updateTask.addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    //if the facility name successfully updates in the db, it is also updated in the application
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            facilityName.setText(newFacilityName);
+                            dialog.dismiss();
+
+                        }
+                        //if the facility name fails to update, the error is displayed in a toast message
+                        else{
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(requireContext(), "Could Not Update Facility Name" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
             } else {
                 Toast.makeText(requireContext(), "Invalid facility name entered, try again.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void editFacilityLocationDialog(Bundle facilityDetailsBundle) {
+    /**
+     * Updates the facility location name in the db
+     * if the facility location name successfully updates in the db, it is also updated in the application
+     * if the facility location name fails to update, the error is displayed in a toast message
+     * @param facilityDetailsBundle: this is the bundle containing all of the facility details
+     * @param db: this is the database connection
+     */
+    private void editFacilityLocationDialog(Bundle facilityDetailsBundle, FacilitiesDB db) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Facility Location");
 
@@ -126,10 +187,32 @@ public class facilityDetails extends Fragment {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             String newFacilityLocation = input.getText().toString();
             if (newFacilityLocation.matches(".*[a-zA-Z]+.*")) {
-                facilityLocation.setText(newFacilityLocation);
-                dialog.dismiss();
+
+                HashMap<String, Object> updatedData = new HashMap<>();
+                updatedData.put("facilityName", newFacilityLocation);
+
+                //Updates the facility location name in the db
+                Task<Void> updateTask = db.updateFacility(facilityDetailsBundle.getString("facilityID"), updatedData);
+                updateTask.addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    //if the facility location name successfully updates in the db, it is also updated in the application
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            facilityLocation.setText(newFacilityLocation);
+                            dialog.dismiss();
+
+                        }
+                        //if the facility location name fails to update, the error is displayed in a toast message
+                        else{
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(requireContext(), "Could Not Update Facility Name" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
             } else {
-                Toast.makeText(requireContext(), "Invalid facility location name entered, try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Invalid facility name entered, try again.", Toast.LENGTH_SHORT).show();
             }
         });
     }

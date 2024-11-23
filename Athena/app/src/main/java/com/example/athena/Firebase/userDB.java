@@ -40,7 +40,7 @@ public class  userDB {
         Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
         return ueRef;
     }
-    public Task<QuerySnapshot> getUserFacility(String deviceID) {
+    public Task<QuerySnapshot> getOrgFacility(String deviceID) {
         Task ueRef = db.collection("Users/" + deviceID + "/Facility").get();
         return ueRef;
     }
