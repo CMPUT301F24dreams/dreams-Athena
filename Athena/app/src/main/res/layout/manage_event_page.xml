@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackground"
-    tools:context=".EntrantAndOrganizerFragments.OrganizerEntrantOperations">
+    tools:context=".EntrantAndOrganizerFragments.ManageEvent">
 
     <ImageButton
         android:id="@+id/organizer_return_btn"
@@ -50,7 +50,7 @@
         android:layout_width="240dp"
         android:layout_height="46dp"
         android:fontFamily="@font/bai_jamjuree_bold"
-        android:text="Entrant Operations:"
+        android:text="Manage Event:"
         android:textAlignment="center"
         android:textColor="@color/title_text_color"
         android:textSize="24sp"

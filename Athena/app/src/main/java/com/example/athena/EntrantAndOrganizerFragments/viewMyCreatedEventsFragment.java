@@ -116,7 +116,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String eventID = eventAdapter.getItem(position).getEventID();
-                OrganizerEntrantOperations detailFrag = new OrganizerEntrantOperations();
+                ManageEvent detailFrag = new ManageEvent();
                 Bundle bundleSend = new Bundle();
                 bundleSend.putString("eventID",eventID);
                 detailFrag.setArguments(bundleSend);

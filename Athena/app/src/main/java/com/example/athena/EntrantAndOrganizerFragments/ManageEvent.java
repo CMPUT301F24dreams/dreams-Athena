@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.athena.Firebase.eventsDB;
@@ -32,7 +31,7 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
- public class OrganizerEntrantOperations extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
+ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
 
 
     private String eventID;
@@ -65,7 +64,7 @@ import java.util.Iterator;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.organizer_entrant_operations, container, false);
+        View view = inflater.inflate(R.layout.manage_event_page, container, false);
         bundle = getArguments();
         assert bundle != null;
         eventID = bundle.getString("eventID");

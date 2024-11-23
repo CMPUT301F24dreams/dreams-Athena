@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.example.athena.EntrantAndOrganizerFragments.ManageEvent;
 import com.example.athena.EntrantAndOrganizerFragments.OrgChooseNumDialog;
-import com.example.athena.EntrantAndOrganizerFragments.OrganizerEntrantOperations;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
-import com.example.athena.R;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @RunWith(AndroidJUnit4.class)
-public class OrganizerEntrantOperationsTest {
+public class ManageEventTest {
 
     @Mock
     private eventsDB mockEventDB;
@@ -37,12 +37,12 @@ public class OrganizerEntrantOperationsTest {
     @Mock
     private FragmentManager mockFragmentManager;
 
-    private OrganizerEntrantOperations fragment;
+    private ManageEvent fragment;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        fragment = new OrganizerEntrantOperations();
+        fragment = new ManageEvent();
         fragment.eventDB = mockEventDB;
         fragment.userDB = mockUserDB;
         fragment.event = mockEvent;

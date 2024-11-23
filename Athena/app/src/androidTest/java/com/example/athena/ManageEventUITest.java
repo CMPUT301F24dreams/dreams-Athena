@@ -6,16 +6,14 @@ import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.espresso.intent.Intents;
 
-import com.example.athena.EntrantAndOrganizerFragments.OrganizerEntrantOperations;
+import com.example.athena.EntrantAndOrganizerFragments.ManageEvent;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.R;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -26,13 +24,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.mockito.Mockito.mock;
 
 /**
- * UI tests for the OrganizerEntrantOperations fragment.
+ * UI tests for the ManageEvent fragment.
  * This class tests the user interface interactions and ensures they behave as expected.
  */
 @RunWith(AndroidJUnit4.class)
-public class OrganizerEntrantOperationsUITest {
+public class ManageEventUITest {
 
-    private OrganizerEntrantOperations fragment;
+    private ManageEvent fragment;
     private eventsDB mockEventDB;
     private userDB mockUserDB;
 
@@ -52,7 +50,7 @@ public class OrganizerEntrantOperationsUITest {
         args.putString("eventID", "testEventID");
 
         // Launch the fragment in a container
-        FragmentScenario<OrganizerEntrantOperations> scenario = FragmentScenario.launchInContainer(OrganizerEntrantOperations.class, args);
+        FragmentScenario<ManageEvent> scenario = FragmentScenario.launchInContainer(ManageEvent.class, args);
         scenario.onFragment(fragment -> {
             fragment.eventDB = mockEventDB;
             fragment.userDB = mockUserDB;
