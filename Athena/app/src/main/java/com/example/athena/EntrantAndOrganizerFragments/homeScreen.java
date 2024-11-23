@@ -39,6 +39,8 @@ public class homeScreen extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
 
+        String deviceID = bundle.getString("deviceID");
+
         /// Assigns button used for checking notifications
         ImageButton notificationsButton = view.findViewById(R.id.check_updates_button);
 
@@ -80,7 +82,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new facilityDetails(), bundle);
+                displayChildFragment(new createFacility(), bundle);
             }
         });
 
@@ -116,6 +118,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+
                 displayChildFragment(new createEvent(), bundle);
             }
         });

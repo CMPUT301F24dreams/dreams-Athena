@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackground"
-    tools:context=".EntrantAndOrganizerFragments.userViewNotisFragment">
+    tools:context=".EntrantAndOrganizerFragments.createEvent">
 
     <TextView
         android:id="@+id/UIBox"
@@ -28,13 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/drawer_background_color"
         android:text="Create Event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -56,20 +57,21 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="290dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="@+id/UIBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/eventName"
         app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
@@ -144,9 +146,9 @@
         android:text="Require Geolocation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/participants" />
+        app:layout_constraintTop_toBottomOf="@+id/participants"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/uploadPoster"
@@ -155,6 +157,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="99dp"
+        android:backgroundTint="@color/drawer_background_color"
         android:text="Upload Image"
         app:layout_constraintEnd_toEndOf="@+id/UIBox"
         app:layout_constraintStart_toStartOf="@+id/UIBox"
@@ -170,6 +173,7 @@
         android:src="@drawable/back_to_home_button"
         app:layout_constraintEnd_toEndOf="@+id/UIBox"
         app:layout_constraintStart_toStartOf="@+id/UIBox"
+        android:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintTop_toBottomOf="@+id/uploadPoster" />
 
 

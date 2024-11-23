@@ -24,7 +24,7 @@
         <TextView
             android:id="@+id/facility_details_title_non_edit"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="138dp"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Facility Details"
             android:textAlignment="center"
@@ -33,16 +33,10 @@
             android:textSize="34sp"
             android:textStyle="bold|italic" />
 
-        <ImageView
-            android:id="@+id/facility_image"
-            android:layout_width="match_parent"
-            android:layout_height="307dp"
-            app:srcCompat="@drawable/image_place_holder" />
-
         <TextView
             android:id="@+id/facility_name_textview"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="107dp"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Facility Name"
             android:textAlignment="center"
@@ -50,7 +44,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
-            android:id="@+id/facility_location_textview"
+            android:id="@+id/facility_location_editText"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:fontFamily="@font/bai_jamjuree_bold"
@@ -69,31 +63,62 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/edit_facility_details_button"
-                    android:layout_width="59dp"
-                    android:layout_height="47dp"
+                    android:id="@+id/edit_facility_location_button"
+                    android:layout_width="34dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="8dp"
                     android:backgroundTint="@color/mainBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.791"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/edit_fac_loc_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.024"
+                    app:layout_constraintVertical_bias="0.806"
+                    app:srcCompat="@android:drawable/ic_menu_edit" />
+
+                <ImageButton
+                    android:id="@+id/edit_facility_name_button"
+                    android:layout_width="34dp"
+                    android:layout_height="27dp"
+                    android:backgroundTint="@color/mainBackground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.965"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.926"
                     app:srcCompat="@android:drawable/ic_menu_edit" />
 
                 <TextView
-                    android:id="@+id/edit_fac_details_non_edit"
-                    android:layout_width="159dp"
+                    android:id="@+id/edit_facility_name_title"
+                    android:layout_width="125dp"
                     android:layout_height="26dp"
                     android:fontFamily="@font/bai_jamjuree_bold"
-                    android:text="Edit Facility Details"
+                    android:text="Edit Facility Name"
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/edit_facility_details_button"
-                    app:layout_constraintHorizontal_bias="0.923"
+                    app:layout_constraintEnd_toStartOf="@+id/edit_facility_name_button"
+                    app:layout_constraintHorizontal_bias="0.904"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.052" />
+                    app:layout_constraintVertical_bias="0.923" />
+
+                <TextView
+                    android:id="@+id/edit_fac_loc_title"
+                    android:layout_width="151dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="208dp"
+                    android:layout_marginTop="316dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginBottom="22dp"
+                    android:fontFamily="@font/bai_jamjuree_bold"
+                    android:text="Edit Facility Location"
+                    app:layout_constraintBottom_toTopOf="@+id/edit_facility_name_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
