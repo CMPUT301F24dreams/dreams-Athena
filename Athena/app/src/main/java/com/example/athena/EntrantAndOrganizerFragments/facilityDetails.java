@@ -39,33 +39,37 @@ public class facilityDetails extends Fragment {
         Task loadedUser = Tasks.whenAll(getUser);
 
         TextView facilityName = view.findViewById(R.id.facility_name_textview);
-        facilityName.setText("Facility Name:" + (String) bundle.getString("facilityName"));
-        TextView facilityLocation = view.findViewById(R.id.facility_location_editText);
-        facilityLocation.setText(bundle.getString("facilityLocation"));
+        facilityName.setText("Facility Name: " + (String) bundle.getString("facilityName"));
+        TextView facilityLocation = view.findViewById(R.id.facility_location_textView);
+        facilityLocation.setText("Facility Location: " + bundle.getString("facilityLocation"));
 
-        ImageButton editFacilityDetails = view.findViewById(R.id.edit_facility_name_button);
+        ImageButton editFacilityName = view.findViewById(R.id.edit_facility_name_button);
 
-        editFacilityDetails.setOnClickListener(new View.OnClickListener() {
+        editFacilityName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                editFacilityNameDialog(bundle);
             }
         });
-       /* loadedUser.addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()) {
-                    //TODO: fix this so that it retrieves facility details
-                    //TODO: add the logic that makes the image load, sets the event title, and sets the image location
 
-                } else {
-                    Exception e = task.getException();
-                }
+        ImageButton editFacilityLocation = view.findViewById(R.id.edit_facility_location_button);
+
+        editFacilityLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editFacilityLocationDialog(bundle);
             }
-        });*/
+        });
+
+
     }
+
+
+    //TODO: MAKE THIS CONNECT TO DB, VALIDATE INPUT
+
+
     /**
-     * Method for editing email
+     * method to edit facility
      */
     private void editFacilityNameDialog(Bundle facilityDetailsBundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
@@ -79,8 +83,26 @@ public class facilityDetails extends Fragment {
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newFacilityName = input.getText().toString();
             TextView facilityName = getView().findViewById(R.id.facility_name_textview);
-            facilityName.setText("Email: " + newEmail);
-            user.setEmail(newEmail);
+            facilityName.setText(input.getText());
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    private void editFacilityLocationDialog(Bundle facilityDetailsBundle) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Facility Location");
+
+        final EditText input = new EditText(requireContext());
+        input.setText(facilityDetailsBundle.getString("facilityLocation"));
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newFacilityLocation = input.getText().toString();
+            TextView facilityName = getView().findViewById(R.id.facility_location_textView);
+            facilityName.setText(input.getText());
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 

@@ -78,6 +78,12 @@ public class homeScreen extends Fragment {
         ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
         ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
 
+
+        //TODO: make this check if the user has any facilities, if they do:
+        //TODO (cont'd): take the user to the facility details page, if they do not, inform them that they do not have a facility with a dialogue box
+        //TODO the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons will say create facility and cancel, respectively)
+        //TODO if they say they do, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page
+        //TODO else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
         manageFacilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +118,7 @@ public class homeScreen extends Fragment {
 
             }
         });
-
+        //TODO: Make sure that this is able to check if a user has a facility inside of the DB and direct them to make one before creating any events if they do not have one
         //getChildFragmentManager().beginTransaction() .replace(R.id.content_frame, new viewMyCreatedEventsFragment()) .commit();
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override

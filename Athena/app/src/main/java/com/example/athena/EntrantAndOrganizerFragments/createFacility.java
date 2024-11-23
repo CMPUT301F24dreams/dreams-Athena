@@ -13,14 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Facility;
 import com.example.athena.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 
 public class createFacility extends Fragment {
     Uri imageURI;
@@ -43,7 +40,7 @@ public class createFacility extends Fragment {
         String deviceID = bundle.getString("deviceID");
 
         EditText facilityNameText = view.findViewById(R.id.facility_name_editText);
-        EditText facilityLocationText = view.findViewById(R.id.facility_location_editText);
+        EditText facilityLocationText = view.findViewById(R.id.facility_location_textView);
         Button createFacility = view.findViewById(R.id.createFacilityButton);
 
         createFacility.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +57,7 @@ public class createFacility extends Fragment {
 
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
-
+//TODO: add facility ID logic
 
                 /*facilityAdd.addOnCompleteListener(new OnCompleteListener() {
                     @Override
