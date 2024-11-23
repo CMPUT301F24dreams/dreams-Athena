@@ -40,6 +40,10 @@ public class  userDB {
         Task ueRef = db.collection("Users/" + deviceID + "/Events").get();
         return ueRef;
     }
+    public Task<QuerySnapshot> getUserFacility(String deviceID) {
+        Task ueRef = db.collection("Users/" + deviceID + "/facility").get();
+        return ueRef;
+    }
 
     public void saveNotifSetting (String userID, String setting, Boolean isChecked){
         db.collection("Users").document(userID).update(setting,isChecked);
@@ -57,6 +61,10 @@ public class  userDB {
 
     public void updateOrgEvents(String deviceID, String eventID) {
         db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
+    }
+
+    public void updateOrgFacilities(String deviceID, String eventID) {
+        db.collection("Users/" + deviceID + "/facility").document(eventID).set(new HashMap<>() {});
     }
 
     /**

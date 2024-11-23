@@ -88,10 +88,12 @@ public class eventsDB {
         return db.collection("Events").document(eventID).collection(list).get();
     }
     public Task<QuerySnapshot> getEventsList() {
+
         return eventsCollection.get();
     }
 
     public Task addEvent(Event event){
+
         return eventsCollection.add(event);
     }
 

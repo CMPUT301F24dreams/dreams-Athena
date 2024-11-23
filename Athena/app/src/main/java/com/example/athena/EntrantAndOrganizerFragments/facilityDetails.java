@@ -1,23 +1,24 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.athena.Firebase.userDB;
 import com.example.athena.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 //TODO: make the homescreen navigate here when you click the manage facility button
 public class facilityDetails extends Fragment {
 
@@ -34,27 +35,78 @@ public class facilityDetails extends Fragment {
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
         userDB usersDB = new userDB();
-        // TODO: Need to add the db stuff
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
 
-        ImageView facilityImage = view.findViewById(R.id.facility_image);
         TextView facilityName = view.findViewById(R.id.facility_name_textview);
-        TextView facilityLocation = view.findViewById(R.id.facility_location_textview);
-        ImageButton editFacilityDetails = view.findViewById(R.id.edit_facility_details_button);
+        facilityName.setText("Facility Name: " + (String) bundle.getString("facilityName"));
+        TextView facilityLocation = view.findViewById(R.id.facility_location_textView);
+        facilityLocation.setText("Facility Location: " + bundle.getString("facilityLocation"));
 
-        loadedUser.addOnCompleteListener(new OnCompleteListener() {
+        ImageButton editFacilityName = view.findViewById(R.id.edit_facility_name_button);
+
+        editFacilityName.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()) {
-                    //TODO: fix this so that it retrieves facility details
-                    //TODO: add the logic that makes the image load, sets the event title, and sets the image location
-
-                } else {
-                    Exception e = task.getException();
-                }
+            public void onClick(View v) {
+                editFacilityNameDialog(bundle);
             }
         });
+
+        ImageButton editFacilityLocation = view.findViewById(R.id.edit_facility_location_button);
+
+        editFacilityLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editFacilityLocationDialog(bundle);
+            }
+        });
+
+
+    }
+
+
+    //TODO: MAKE THIS CONNECT TO DB, VALIDATE INPUT
+
+
+    /**
+     * method to edit facility
+     */
+    private void editFacilityNameDialog(Bundle facilityDetailsBundle) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Facility Name");
+
+        final EditText input = new EditText(requireContext());
+        input.setText(facilityDetailsBundle.getString("facilityName"));
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newFacilityName = input.getText().toString();
+            TextView facilityName = getView().findViewById(R.id.facility_name_textview);
+            facilityName.setText(input.getText());
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    private void editFacilityLocationDialog(Bundle facilityDetailsBundle) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Edit Facility Location");
+
+        final EditText input = new EditText(requireContext());
+        input.setText(facilityDetailsBundle.getString("facilityLocation"));
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newFacilityLocation = input.getText().toString();
+            TextView facilityName = getView().findViewById(R.id.facility_location_textView);
+            facilityName.setText(input.getText());
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
     }
 
 }

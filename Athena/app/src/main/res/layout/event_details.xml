@@ -34,22 +34,25 @@
             android:orientation="horizontal" />
 
         <TextView
+            android:id="@+id/OrgViewEventName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="Event:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
             android:id="@+id/eventName"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event Name:"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/OrgViewEventName"
-            android:layout_width="match_parent"
-            android:layout_height="29dp"
-            android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Event Name Goes Here"
-            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/OrgViewEventDescriptionNonEdit"
@@ -58,6 +61,7 @@
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event Description:"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -67,7 +71,8 @@
             android:layout_height="166dp"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event Description In Here"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="12sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"

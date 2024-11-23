@@ -63,7 +63,7 @@ public class createEvent extends Fragment {
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
 
-        TextView eventNameText = view.findViewById(R.id.userName);
+        TextView eventNameText = view.findViewById(R.id.eventName);
         TextView eventDateText = view.findViewById(R.id.eventDate);
         TextView regStartText = view.findViewById(R.id.regDateStart);
         TextView regEndText = view.findViewById(R.id.regDateEnd);
