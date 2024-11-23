@@ -85,6 +85,7 @@ public class createEvent extends Fragment {
                 Integer maxParticipants = Integer.parseInt(participantsText.getText().toString());
                 Boolean georequire = georequireText.isChecked();
 
+
                 Event event = new Event();
 
                 Task eventAdd = eventsDB.addEvent(event);

@@ -55,29 +55,6 @@ public class FacilitiesDB {
         facilitiesCollection.document(facilityID).set(data, SetOptions.merge());
     }
 
-    public Task<Void> saveURLToFacility(UploadTask uploadTask, String facilityID) {
-        TaskCompletionSource<Void> changeURLSource = new TaskCompletionSource<>();
-        Task<Void> changeTask = changeURLSource.getTask();
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference imageRef = storage.getReference().child("images/" + facilityID);
-        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                return imageRef.getDownloadUrl();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                Uri URL = task.getResult();
-                Map<String, Object> data = new HashMap<>();
-                data.put("imageURL", URL.toString());
-                facilitiesCollection.document(facilityID).set(data, SetOptions.merge());
-                changeURLSource.setResult(null);
-            }
-        });
-        return changeTask;
-    }
     // Updates an existing facility with new data
     public Task<Void> updateFacility(String facilityId, HashMap<String, Object> updatedData) {
         return facilitiesCollection.document(facilityId).update(updatedData);

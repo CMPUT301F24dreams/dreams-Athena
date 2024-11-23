@@ -41,7 +41,7 @@ public class  userDB {
         return ueRef;
     }
     public Task<QuerySnapshot> getUserFacility(String deviceID) {
-        Task ueRef = db.collection("Users/" + deviceID + "/facility").get();
+        Task ueRef = db.collection("Users/" + deviceID + "/Facility").get();
         return ueRef;
     }
 
@@ -63,8 +63,8 @@ public class  userDB {
         db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
     }
 
-    public void updateOrgFacilities(String deviceID, String eventID) {
-        db.collection("Users/" + deviceID + "/facility").document(eventID).set(new HashMap<>() {});
+    public void updateOrgFacilities(String deviceID, String facilityID) {
+        db.collection("Users/" + deviceID + "/Facility").document(facilityID).set(new HashMap<>() {});
     }
 
     /**

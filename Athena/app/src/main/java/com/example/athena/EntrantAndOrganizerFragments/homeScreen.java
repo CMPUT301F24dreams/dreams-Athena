@@ -1,5 +1,7 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -9,17 +11,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.example.athena.Firebase.userDB;
 import com.example.athena.AdminFragments.adminProfileBrowse;
 import com.example.athena.AdminFragments.browseAppEvents;
 import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -79,11 +86,13 @@ public class homeScreen extends Fragment {
         ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
 
 
-        //TODO: make this check if the user has any facilities, if they do:
-        //TODO (cont'd): take the user to the facility details page, if they do not, inform them that they do not have a facility with a dialogue box
-        //TODO the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons will say create facility and cancel, respectively)
-        //TODO if they say they do, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page
-        //TODO else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
+        //TODO: make this check if the user has any facilities,
+        // if they do:
+        // take the user to the facility details page,
+        // if they do not: inform them that they do not have a facility with a dialogue box
+        // the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons will say create facility and cancel, respectively)
+        // if they say they do, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page
+        // else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
         manageFacilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,8 +133,28 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+                userDB userDB = new userDB();
 
-                displayChildFragment(new createEvent(), bundle);
+                Task<QuerySnapshot> getFacility = userDB.getUserFacility(deviceID);
+                getFacility.addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot != null) {
+                            for (QueryDocumentSnapshot document : querySnapshot) {
+                                String facilityID = document.getId();
+
+                                Log.d(TAG, "Retrieved string: " + facilityID);
+                                bundle.putString("facilityID", facilityID);
+                                displayChildFragment(new createEvent(), bundle);
+                            }
+                        } else {
+                            Log.d(TAG, "No matching documents.");
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                });
+
             }
         });
 

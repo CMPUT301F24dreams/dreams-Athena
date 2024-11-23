@@ -23,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="7dp"
         android:text="App Events Show here"
+        app:layout_constraintBottom_toTopOf="@+id/admin_events_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

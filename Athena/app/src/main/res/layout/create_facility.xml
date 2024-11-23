@@ -10,19 +10,20 @@
 
     <TextView
         android:id="@+id/UIBox"
-        android:layout_width="324dp"
-        android:layout_height="590dp"
+        android:layout_width="253dp"
+        android:layout_height="314dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="64dp"
         android:background="@drawable/border"
         android:paddingLeft="18dp"
         android:paddingTop="14dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <Button
         android:id="@+id/createFacilityButton"
@@ -38,35 +39,32 @@
 
     <EditText
         android:id="@+id/facility_name_editText"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
+        android:layout_width="204dp"
+        android:layout_height="44dp"
         android:layout_marginStart="57dp"
-        android:layout_marginTop="172dp"
         android:layout_marginEnd="57dp"
-        android:layout_marginBottom="373dp"
         android:ems="10"
         android:hint="Facility Name"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/UIBox"
         app:layout_constraintEnd_toEndOf="@+id/UIBox"
-        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="@+id/UIBox"
-        app:layout_constraintTop_toTopOf="@+id/UIBox"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575" />
 
     <EditText
         android:id="@+id/facility_location_textView"
-        android:layout_width="218dp"
+        android:layout_width="201dp"
         android:layout_height="41dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="260dp"
         android:ems="10"
         android:hint="Facility Location"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/createFacilityButton"
         app:layout_constraintEnd_toEndOf="@+id/UIBox"
-        app:layout_constraintStart_toStartOf="@+id/UIBox"
-        app:layout_constraintTop_toBottomOf="@+id/facility_name_editText"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/UIBox" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

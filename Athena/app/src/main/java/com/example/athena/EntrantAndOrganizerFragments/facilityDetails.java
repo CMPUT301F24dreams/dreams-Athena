@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.athena.Firebase.userDB;
 import com.example.athena.R;
@@ -39,9 +41,9 @@ public class facilityDetails extends Fragment {
         Task loadedUser = Tasks.whenAll(getUser);
 
         TextView facilityName = view.findViewById(R.id.facility_name_textview);
-        facilityName.setText("Facility Name: " + (String) bundle.getString("facilityName"));
+        facilityName.setText((String) bundle.getString("facilityName"));
         TextView facilityLocation = view.findViewById(R.id.facility_location_textView);
-        facilityLocation.setText("Facility Location: " + bundle.getString("facilityLocation"));
+        facilityLocation.setText(bundle.getString("facilityLocation"));
 
         ImageButton editFacilityName = view.findViewById(R.id.edit_facility_name_button);
 
@@ -69,25 +71,38 @@ public class facilityDetails extends Fragment {
 
 
     /**
-     * method to edit facility
+     * method to edit facility Name
+     * calls a dialog box with edit texts that allow the user to enter a new facility name
      */
     private void editFacilityNameDialog(Bundle facilityDetailsBundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Edit Facility Name");
 
         final EditText input = new EditText(requireContext());
-        input.setText(facilityDetailsBundle.getString("facilityName"));
-        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-        builder.setView(input);
+        //Sets the text of the edit text to whatever the current facility name text is
+        TextView facilityName = getView().findViewById(R.id.facility_name_textview);
+        input.setText(facilityName.getText());
 
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            String newFacilityName = input.getText().toString();
-            TextView facilityName = getView().findViewById(R.id.facility_name_textview);
-            facilityName.setText(input.getText());
-        });
+        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        //creates the input filter which will be used for text validation
+        input.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(50) });
+        builder.setView(input);
+        builder.setPositiveButton("Save", null); // Set to null to override the default behavior
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
-        builder.show();
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            String newFacilityName = input.getText().toString();
+            if (newFacilityName.matches(".*[a-zA-Z]+.*")) {
+                facilityName.setText(newFacilityName);
+                dialog.dismiss();
+            } else {
+                Toast.makeText(requireContext(), "Invalid facility name entered, try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void editFacilityLocationDialog(Bundle facilityDetailsBundle) {
@@ -95,18 +110,28 @@ public class facilityDetails extends Fragment {
         builder.setTitle("Edit Facility Location");
 
         final EditText input = new EditText(requireContext());
-        input.setText(facilityDetailsBundle.getString("facilityLocation"));
+
+        TextView facilityLocation = getView().findViewById(R.id.facility_location_textView);
+        input.setText(facilityLocation.getText());
         input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        input.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(50) });
         builder.setView(input);
 
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            String newFacilityLocation = input.getText().toString();
-            TextView facilityName = getView().findViewById(R.id.facility_location_textView);
-            facilityName.setText(input.getText());
-        });
+        builder.setPositiveButton("Save", null); // Set to null to override the default behavior
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
-        builder.show();
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            String newFacilityLocation = input.getText().toString();
+            if (newFacilityLocation.matches(".*[a-zA-Z]+.*")) {
+                facilityLocation.setText(newFacilityLocation);
+                dialog.dismiss();
+            } else {
+                Toast.makeText(requireContext(), "Invalid facility location name entered, try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

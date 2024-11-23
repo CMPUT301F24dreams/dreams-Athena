@@ -1,16 +1,11 @@
 package com.example.athena;
 
-import android.os.Bundle;
-import android.view.View;
-
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.athena.EntrantAndOrganizerFragments.ProfileBrowseOrg;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.Models.User;
-import com.example.athena.R;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -21,7 +16,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;

@@ -17,8 +17,6 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,11 +27,6 @@ import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
-import com.example.athena.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.storage.UploadTask;
 
 import org.junit.Before;
 import org.junit.Test;
