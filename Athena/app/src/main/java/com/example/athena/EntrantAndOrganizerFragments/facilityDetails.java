@@ -29,7 +29,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.HashMap;
 
-//TODO: make the homescreen navigate here when you click the manage facility button
 public class facilityDetails extends Fragment {
 
     @Override
