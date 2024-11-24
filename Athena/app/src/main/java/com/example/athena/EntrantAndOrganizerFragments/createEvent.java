@@ -29,20 +29,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.GeneralActivities.MainActivity;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -50,13 +46,10 @@ import com.google.firebase.storage.UploadTask;
 public class createEvent extends Fragment {
     Uri imageURI;
     public ImageView imageView;
-    public String userFacility;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_event, container, false);
         super.onCreate(savedInstanceState);
-
         ///Inflates the layout for the fragment
         return view;
     }
@@ -65,37 +58,16 @@ public class createEvent extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         eventsDB eventsDB = new eventsDB();
         userDB userDB = new userDB();
+
         Bundle bundle = getArguments();
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
-
-
-
-        //TODO (Roger): whenever you update your logic, update the event creation so that a facility is always initialized from the user database
-        // this is to make sure that events always have the same facilityID as their organizer (one-to-one association)
-        ///Retrieves the facility from the DB rather than having the user input it
-        ///made it this way because every event needs to have the same facilityID as the organizer that owns it
-        ///the user cannot have more than one facility, so once they make one that is the only facility that will be used for all of their events
-        Task <DocumentSnapshot> getUser = userDB.getUser(deviceID);
-        getUser.addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()){
-                    DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
-                    if(user.contains("facility")) {
-                        userFacility = user.getString("facility");
-                    }
-
-                } else {
-                    Exception e = task.getException();
-                }
-            }
-        });
 
         TextView eventNameText = view.findViewById(R.id.eventName);
         TextView eventDateText = view.findViewById(R.id.eventDate);
         TextView regStartText = view.findViewById(R.id.regDateStart);
         TextView regEndText = view.findViewById(R.id.regDateEnd);
+        TextView facilityText = view.findViewById(R.id.facilityID);
         TextView descriptionText = view.findViewById(R.id.description);
         TextView participantsText = view.findViewById(R.id.participants);
         CheckBox georequireText = view.findViewById(R.id.geoRequire);
@@ -109,8 +81,10 @@ public class createEvent extends Fragment {
                 String eventName = eventNameText.getText().toString();
                 String organizer = deviceID;
                 String eventDescription = descriptionText.getText().toString();
+                String facility = facilityText.getText().toString();
                 Integer maxParticipants = Integer.parseInt(participantsText.getText().toString());
                 Boolean georequire = georequireText.isChecked();
+
 
                 Event event = new Event();
 
