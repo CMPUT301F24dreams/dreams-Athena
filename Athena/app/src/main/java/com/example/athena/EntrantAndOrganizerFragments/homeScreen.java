@@ -116,8 +116,8 @@ public class homeScreen extends Fragment {
 
 
                         DocumentSnapshot documentSnapshot = task.getResult();
-                        if (documentSnapshot.exists() & documentSnapshot.contains("facility")) {
-                            String facilityID = documentSnapshot.getString("facility");
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
                             Log.d(TAG, "Retrieved string: " + facilityID);
                             bundle.putString("facilityID", facilityID);
                             displayChildFragment(new facilityDetails(), bundle);
@@ -213,8 +213,8 @@ public class homeScreen extends Fragment {
 
 
                         DocumentSnapshot documentSnapshot = task.getResult();
-                        if (documentSnapshot.exists() & documentSnapshot.contains("facility")) {
-                            String facilityID = documentSnapshot.getString("facility");
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
                             Log.d(TAG, "Retrieved string: " + facilityID);
                             bundle.putString("facilityID", facilityID);
                             displayChildFragment(new createEvent(), bundle);

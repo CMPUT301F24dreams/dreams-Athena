@@ -65,7 +65,7 @@ public class facilityDetails extends Fragment {
                 if(task.isSuccessful()){
                     DocumentSnapshot facilityDetails = (DocumentSnapshot) getFacilityDetails.getResult();
                     facilityLocation.setText(facilityDetails.getString("facilityLocation"));
-                    facilityName.setText(facilityDetails.getString("facilityName"));
+                    facilityName.setText((String) facilityDetails.getString("facilityName"));
                 } else {
                     Exception e = task.getException();
                 }

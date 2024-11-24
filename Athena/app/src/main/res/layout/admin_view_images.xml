@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/viewAppImagesLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminFragments.browseAppImages">
+    android:padding="8dp">
 
-    <ListView
-        android:id="@+id/appImagesList"
-        android:layout_width="match_parent"
-        android:layout_height="625dp"
-        android:layout_marginTop="108dp"
+    <!-- Toolbar or Header -->
+    <TextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Manage Images"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="?attr/colorPrimary"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView for displaying images -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/toolbarTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false"
+        android:padding="4dp"
+        android:overScrollMode="always" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

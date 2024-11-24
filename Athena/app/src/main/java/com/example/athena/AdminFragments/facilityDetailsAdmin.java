@@ -19,8 +19,6 @@ import android.widget.Toast;
 import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.GeneralActivities.MainActivity;
-import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -93,9 +91,7 @@ public class facilityDetailsAdmin extends Fragment {
     }
 
 
-    /**
-     * This method handles the deletion of all facilities
-     */
+
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("DELETE EVENT?");
@@ -105,33 +101,10 @@ public class facilityDetailsAdmin extends Fragment {
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
-
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
-
             Task getEvents = eventsDB.getEventsList();
-            getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task){
-                    if (task.isSuccessful()) {
-                        for(DocumentSnapshot event: task.getResult().getDocuments()) {
-                            String eventName = event.getId();
-                            if((event.contains("facility"))){
-                                String eventFacility = event.getString("facility");
-                                if (eventFacility.equals(facilityID)) {
-                                    eventsDB.deleteEvent(eventName);
-                                }
-
-                            }
-                        }
-
-                    }else{
-                        Exception e = task.getException();
-                    }
-
-                }
-            });
-
+            //TODO: make sure that when a facility is deleted, so are all of the events at the corresponding facility
             displayChildFragment(new adminBrowseFacilities(), bundle);
 
         });
