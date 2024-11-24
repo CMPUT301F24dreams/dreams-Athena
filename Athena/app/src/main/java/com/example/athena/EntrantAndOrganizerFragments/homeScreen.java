@@ -20,7 +20,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.athena.AdminFragments.adminFacilitiesBrowse;
+import com.example.athena.AdminFragments.adminBrowseFacilities;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.AdminFragments.adminProfileBrowse;
 import com.example.athena.AdminFragments.browseAppEvents;
@@ -28,8 +28,7 @@ import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -108,27 +107,25 @@ public class homeScreen extends Fragment {
                 appDrawer.setVisibility(View.GONE);
                 userDB userDB = new userDB();
 
-                Task<QuerySnapshot> getFacility = userDB.getOrgFacility(deviceID);
-                getFacility.addOnCompleteListener(task -> {
-
+                Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+                getUser.addOnCompleteListener(task -> {
 
 
                     //Upon a successful read of the facility details, the user will be led to the facility details page
                     if (task.isSuccessful()) {
-                        QuerySnapshot querySnapshot = task.getResult();
-                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                            for (QueryDocumentSnapshot document : querySnapshot) {
-                                // Retrieves the ID of the current facility owned by the organizer so that it can be used later for editing
-                                String facilityID = document.getId();
-                                Log.d(TAG, "Retrieved string: " + facilityID);
-                                bundle.putString("facilityID", facilityID);
-                                displayChildFragment(new facilityDetails(), bundle);
-                            }
 
 
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
+                            Log.d(TAG, "Retrieved string: " + facilityID);
+                            bundle.putString("facilityID", facilityID);
+                            displayChildFragment(new facilityDetails(), bundle);
+
+                        }
 
                         //If the read yields no documents, they will be prompted to create a new facility
-                        } else { FragmentManager fragmentManager = getChildFragmentManager();
+                         else { FragmentManager fragmentManager = getChildFragmentManager();
                             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
 
                             //These statements ensure that if a new facility is currently being created (if the user is currently on the create a facility fragment),
@@ -178,7 +175,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new adminFacilitiesBrowse(), bundle);
+                displayChildFragment(new adminBrowseFacilities(), bundle);
 
             }
         });
@@ -207,27 +204,26 @@ public class homeScreen extends Fragment {
                 appDrawer.setVisibility(View.GONE);
                 userDB userDB = new userDB();
 
-                Task<QuerySnapshot> getFacility = userDB.getOrgFacility(deviceID);
-                getFacility.addOnCompleteListener(task -> {
+                Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+                getUser.addOnCompleteListener(task -> {
 
 
                     //Upon a successful read of the facility details, the user will be led to the facility details page
                     if (task.isSuccessful()) {
-                        QuerySnapshot querySnapshot = task.getResult();
-                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                            for (QueryDocumentSnapshot document : querySnapshot) {
-                                // Retrieves the ID of the current facility owned by the organizer so that it can be used later for editing
-                                String facilityID = document.getId();
-                                Log.d(TAG, "Retrieved string: " + facilityID);
-                                bundle.putString("facilityID", facilityID);
-                                displayChildFragment(new createEvent(), bundle);
-                            }
 
 
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
+                            Log.d(TAG, "Retrieved string: " + facilityID);
+                            bundle.putString("facilityID", facilityID);
+                            displayChildFragment(new createEvent(), bundle);
 
-                            //If the read yields no documents, they will be prompted to create a new facility
-                        } else { FragmentManager fragmentManager = getChildFragmentManager();
+                            //If the read yields no facility, they will be prompted to create a new facility
+                        }else { FragmentManager fragmentManager = getChildFragmentManager();
                             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
+
+
 
                             //These statements ensure that if a new facility is currently being created (if the user is currently on the create a facility fragment),
                             //the user will not be able to trigger the "create a facility" dialog

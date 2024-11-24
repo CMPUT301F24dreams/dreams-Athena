@@ -14,7 +14,6 @@ import android.widget.ListView;
 import com.example.athena.ArrayAdapters.facilitiesArrayAdapter;
 import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.Models.Event;
 import com.example.athena.Models.Facility;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 /**
  *
  */
-public class adminFacilitiesBrowse extends Fragment {
+public class adminBrowseFacilities extends Fragment {
     private String deviceID;
     private com.example.athena.Firebase.userDB userDB;
     private com.example.athena.Firebase.FacilitiesDB facilitiesDB;
@@ -78,10 +77,15 @@ public class adminFacilitiesBrowse extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TO - DO
                 Facility facility = (Facility) parent.getAdapter().getItem(position);
+
                 String facilityID = facility.getFacilityID();
-                Bundle eventDetails = new Bundle();
-                eventDetails.putString("facilityID", facilityID);
-                displayChildFragment(new facilityDetailsAdmin(), eventDetails);
+                String facilityName = facility.getFacilityName();
+                String facilityLocation = facility.getFacilityLocation();
+
+                bundle.putString("facilityID", facilityID);
+                bundle.putString("facilityName", facilityName);
+                bundle.putString("facilityLocation", facilityLocation);
+                displayChildFragment(new facilityDetailsAdmin(), bundle);
             }
         });
 

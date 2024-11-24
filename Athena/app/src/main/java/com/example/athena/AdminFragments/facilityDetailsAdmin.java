@@ -1,66 +1,120 @@
 package com.example.athena.AdminFragments;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.athena.Firebase.FacilitiesDB;
+import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.userDB;
 import com.example.athena.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link facilityDetailsAdmin#newInstance} factory method to
- * create an instance of this fragment.
+ *
  */
 public class facilityDetailsAdmin extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public facilityDetailsAdmin() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment facilityDetailsAdmin.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static facilityDetailsAdmin newInstance(String param1, String param2) {
-        facilityDetailsAdmin fragment = new facilityDetailsAdmin();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private eventsDB eventsDB;
+    private FacilitiesDB facilitiesDB;
+    private userDB usersDB;
+    private String deviceID;
+    private String facilityID;
+    private Bundle bundle;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.facility_details_admin, container, false);
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.facility_details_admin, container, false);
+    public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
+        TextView facilityName = view.findViewById(R.id.facility_name_textview_admin);
+        Button back = view.findViewById(R.id.back_from_facility_details);
+        Button delete = view.findViewById(R.id.delete_facility_button);
+        TextView facilityLocation = view.findViewById(R.id.facility_location_textView_admin);
+
+        super.onViewCreated(view, savedInstanceState);
+        bundle = getArguments();
+        assert bundle!= null;
+        deviceID = bundle.getString("deviceID");
+        facilityID = bundle.getString("facilityID");
+        facilitiesDB = new FacilitiesDB();
+        usersDB = new userDB();
+        eventsDB = new eventsDB();
+
+        Task eventDetails = facilitiesDB.getFacility(facilityID);
+        eventDetails.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = (DocumentSnapshot) task.getResult();
+                    facilityName.setText(document.getString("facilityName"));
+                    facilityLocation.setText(document.getString("facilityLocation"));
+                } else {
+                    Exception e = task.getException();
+                }
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteDialog();
+
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayChildFragment(new adminBrowseFacilities(), bundle);
+
+            }
+        });
+
+    }
+
+
+
+    private void showDeleteDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("DELETE EVENT?");
+
+        final TextView text = new TextView(requireContext());
+        text.setText("Are you sure you want to delete this facility?");
+        builder.setView(text);
+
+        builder.setPositiveButton("Confirm", (dialog, which) -> {
+            facilitiesDB.deleteFacility(facilityID);
+            usersDB.deleteOrgFacility(deviceID);
+            Task getEvents = eventsDB.getEventsList();
+            //TODO: make sure that when a facility is deleted, so are all of the events at the corresponding facility
+            displayChildFragment(new adminBrowseFacilities(), bundle);
+
+        });
+        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    public void displayChildFragment(Fragment fragment, Bundle bundle){
+        fragment.setArguments(bundle);
+        getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment).commit();
     }
 }
