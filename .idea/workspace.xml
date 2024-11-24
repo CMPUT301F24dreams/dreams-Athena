@@ -14,12 +14,12 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_browse_user_profiles_page.xml">
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_events_view.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_events_view.xml">
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_facilities_browse.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -35,11 +35,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/create_event.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/create_facility.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -79,11 +74,6 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/fragment_facility_details.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_list_content.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -100,11 +90,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/loading_screen.xml">
-        <config>
-          <theme>@style/Theme.Athena</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/manage_event_page.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -221,28 +206,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/adminFacilitiesBrowse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/facilitiesArrayAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_facilities_browse.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/createEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/createEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/createFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/createFacility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/facilityDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/facilityDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/homeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/homeScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/FacilitiesDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/FacilitiesDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/userDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/userDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_events_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_events_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_view_images.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_view_images.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/create_facility.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/create_facility.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/fragment_facility_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/fragment_facility_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileBrowseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/AdminProfileDetailTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/ManageEventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/ManageEventTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/ProfileBrowseOrgTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/ProfileBrowseOrgTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/UserViewNotisChoseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/ViewMyCreatedEventsFragmentTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/createEventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/androidTest/java/com/example/athena/createEventTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/test/java/com/example/athena/userViewAttendingEventsFragmentTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/browseAppEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/browseAppEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/EventArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/eventArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/EventViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/eventViewAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/eventDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/eventDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/myEventsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/myEventsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/Facility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -681,9 +657,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Android Instrumented Tests.Tests in 'com.example.athena'" />
-        <item itemvalue="Gradle.Tests in 'com.example.athena'" />
         <item itemvalue="Gradle.ExampleUnitTest" />
+        <item itemvalue="Gradle.Tests in 'com.example.athena'" />
+        <item itemvalue="Android Instrumented Tests.Tests in 'com.example.athena'" />
         <item itemvalue="Android Instrumented Tests.testFragmentIsDisplayed()" />
         <item itemvalue="Android Instrumented Tests.testFragmentUIElements()" />
       </list>

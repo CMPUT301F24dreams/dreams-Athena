@@ -13,7 +13,7 @@ public class Facility {
     private String organizer;
 
     /**
-     *This is a constructor used to create a facility without an imageURL, but including all of the other respective fields
+     *This is a constructor used to create a facility
      *
      */
     public Facility(String Name, String Location, String organizer){
