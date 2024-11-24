@@ -23,7 +23,8 @@
             android:layout_marginTop="8dp"
             android:paddingStart="0dp"
             android:paddingTop="0dp"
-            app:srcCompat="@drawable/back_to_home_button" />
+            app:srcCompat="@drawable/back_to_home_button"
+            tools:srcCompat="@drawable/events_calendar_holo" />
 
         <TextView
             android:id="@+id/userName"

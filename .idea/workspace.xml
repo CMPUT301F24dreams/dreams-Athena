@@ -14,6 +14,11 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_browse_user_profiles_page.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_events_view.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -35,6 +40,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/create_event.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/create_facility.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -74,6 +84,16 @@
           <theme>@style/Theme.Athena</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/facility_list_layout.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/fragment_facility_details.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/invited_list_content.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
@@ -90,6 +110,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/loading_screen.xml">
+        <config>
+          <theme>@style/Theme.Athena</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Athena/app/src/main/res/layout/manage_event_page.xml">
         <config>
           <theme>@style/Theme.Athena</theme>
         </config>
@@ -206,19 +231,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/adminFacilitiesBrowse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/facilitiesArrayAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_facilities_browse.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/browseAppEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/AdminFragments/browseAppEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/EventArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/eventArrayAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/EventViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/ArrayAdapters/eventViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/eventDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/eventDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/myEventsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/myEventsList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/userViewAttendingEventsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/viewMyCreatedEventsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/Facility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/drawable/browse_event_facilities_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/facility_list_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_facilities_browse.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/admin_facilities_browse.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/ent_and_org_home_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_list_item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/res/layout/event_list_item_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,8 +273,8 @@
         <option value="valueResourceFile" />
         <option value="navigationResourceFile" />
         <option value="JUnit5 Test Class" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
