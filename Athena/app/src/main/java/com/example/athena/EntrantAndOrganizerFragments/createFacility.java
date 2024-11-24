@@ -23,9 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 
 public class createFacility extends Fragment {
-    Uri imageURI;
-    public ImageView imageView;
-    public Bundle bundle;
+    private Bundle bundle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_facility, container, false);

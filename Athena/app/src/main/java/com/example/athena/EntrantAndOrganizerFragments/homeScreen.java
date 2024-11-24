@@ -90,14 +90,17 @@ public class homeScreen extends Fragment {
         ///Assigns the create button for the admin to view all of the application images
         ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
 
+        ///Assigns the button to browse the application's facilities
+        ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
 
-        //TODO: make this check if the user has any facilities, (DONE)
-        // if they do:
-        // take the user to the facility details page, (DONE)
-        // if they do not: inform them that they do not have a facility with a dialogue box (DONE)
-        // the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons will say create facility and cancel, respectively) (DONE)
-        // if they say they do, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
-        // else (if they press cancel they will stay on the drawer, and will remain unable to create any events) (DONE)
+
+        ///checks if the user has a facilities
+        ///if the user does have a facility:
+        ///it takes the user to the facility details page
+        ///if they do not: it informs them that they do not have a facility with a dialogue box
+        ///the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively)
+        ///if they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
+        ///else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
         manageFacilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +165,15 @@ public class homeScreen extends Fragment {
         });
 
         viewAppImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new adminProfileBrowse(), bundle);
+
+            }
+        });
+
+        browseAppFacilities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
@@ -285,7 +297,6 @@ public class homeScreen extends Fragment {
         scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
 //                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
 //                FragmentManager fragmentManager = getParentFragmentManager();
 //                FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -294,14 +305,7 @@ public class homeScreen extends Fragment {
                 scanCode();
             }
         });
-
-//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-//            }
-//        });
-
+        
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
