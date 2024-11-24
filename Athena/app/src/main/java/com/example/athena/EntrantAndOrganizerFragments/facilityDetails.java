@@ -29,11 +29,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.HashMap;
 
-<<<<<<< HEAD:Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/facilityProfile.java
-public class facilityProfile extends Fragment {
-=======
 public class facilityDetails extends Fragment {
->>>>>>> Managing/deleting-facilities:Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/facilityDetails.java
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
