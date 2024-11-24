@@ -125,7 +125,7 @@ public class homeScreen extends Fragment {
                         }
 
                         //If the read yields no documents, they will be prompted to create a new facility
-                         else { FragmentManager fragmentManager = getChildFragmentManager();
+                        else { FragmentManager fragmentManager = getChildFragmentManager();
                             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
 
                             //These statements ensure that if a new facility is currently being created (if the user is currently on the create a facility fragment),
@@ -303,6 +303,12 @@ public class homeScreen extends Fragment {
             }
         });
 
+//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//            }
+//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -346,25 +352,25 @@ public class homeScreen extends Fragment {
         getChildFragmentManager().beginTransaction().replace(R.id.entrant_and_organizer_constraint_layout, fragment).commit();
     }
     private void scanCode() {
-    ScanOptions options = new ScanOptions();
-    options.setPrompt("Volume up to flash on");
-    options.setBeepEnabled(true);
-    options.setOrientationLocked(true);
-    options.setCaptureActivity(CaptureAct.class);
-    barLauncher.launch(options);
-}
-
-
-ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result-> {
-    if(result.getContents() != null) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(result.getContents());
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        }).show();
+        ScanOptions options = new ScanOptions();
+        options.setPrompt("Volume up to flash on");
+        options.setBeepEnabled(true);
+        options.setOrientationLocked(true);
+        options.setCaptureActivity(CaptureAct.class);
+        barLauncher.launch(options);
     }
-});
+
+
+    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result-> {
+        if(result.getContents() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(result.getContents());
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            }).show();
+        }
+    });
 }
