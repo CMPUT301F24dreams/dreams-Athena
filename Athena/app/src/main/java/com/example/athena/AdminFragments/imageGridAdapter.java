@@ -76,7 +76,7 @@ public class imageGridAdapter extends RecyclerView.Adapter<imageGridAdapter.View
 
     private void deleteImage(int position) {
         if (position < userImages.size()) { // Users and Events are split
-            // User image deletions
+            // User image deletion
             String documentId = userDocumentIds.get(position);
             FirebaseFirestore.getInstance().collection("Users")
                     .document(documentId)
@@ -88,7 +88,7 @@ public class imageGridAdapter extends RecyclerView.Adapter<imageGridAdapter.View
                         Toast.makeText(context, "User image removed successfully", Toast.LENGTH_SHORT).show();
                     });
         } else {
-            // Event image deletions
+            // Event image deletion
             int eventPosition = position - userImages.size();
             String documentId = eventDocumentIds.get(eventPosition);
             FirebaseFirestore.getInstance().collection("Events")
