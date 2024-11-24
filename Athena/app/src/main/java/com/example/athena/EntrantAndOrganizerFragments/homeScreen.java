@@ -132,7 +132,7 @@ public class homeScreen extends Fragment {
                             //the user will not be able to trigger the "create a facility" dialog
                             //instead, they'll just be reminded that they need a facility before creating an event
                             if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {
-                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found.", Toast.LENGTH_SHORT).show();
                                 createFacilityDialog(bundle);
 
                             }
