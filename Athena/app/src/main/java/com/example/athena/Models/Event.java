@@ -39,6 +39,22 @@ public class Event implements Model {
     }
 
     /**
+     * Contructor to initialize an event with a facilityID
+     * @param facility the facilityID
+     */
+    public Event(String facility) {
+        this.eventName = "NULL";
+        this.imageURL = "NULL";
+        this.eventDescription = "NULL";
+        this.organizer = "NULL";
+        this.facility = facility;
+        this.maxParticipants = 0;
+        this.geoRequire = Boolean.FALSE;
+        this.eventID = "NULL";
+        this.observers = new ArrayList<>();
+    }
+
+    /**
      * Constructor to initialize the event with a name, image, and eventID.
      * This constructor automatically initializes the waitlist for the event.
      *

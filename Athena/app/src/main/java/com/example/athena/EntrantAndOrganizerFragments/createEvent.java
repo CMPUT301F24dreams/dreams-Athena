@@ -69,23 +69,28 @@ public class createEvent extends Fragment {
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
 
+
+
+        //TODO (Roger): whenever you update your logic, update the event creation so that a facility is always initialized from the user database
+        // this is to make sure that events always have the same facilityID as their organizer (one-to-one association)
         ///Retrieves the facility from the DB rather than having the user input it
         ///made it this way because every event needs to have the same facilityID as the organizer that owns it
         ///the user cannot have more than one facility, so once they make one that is the only facility that will be used for all of their events
-        Task getUser = userDB.getUser(deviceID);
-        getUser.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        Task <DocumentSnapshot> getUser = userDB.getUser(deviceID);
+        getUser.addOnCompleteListener(new OnCompleteListener() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (DocumentSnapshot user : task.getResult().getDocuments()) {
-                        if (user.contains("facility")) {
-                            userFacility = user.getString("facility");
-                        }
+            public void onComplete(@NonNull Task task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
+                    if(user.contains("facility")) {
+                        userFacility = user.getString("facility");
                     }
+
+                } else {
+                    Exception e = task.getException();
                 }
             }
         });
-
 
         TextView eventNameText = view.findViewById(R.id.eventName);
         TextView eventDateText = view.findViewById(R.id.eventDate);

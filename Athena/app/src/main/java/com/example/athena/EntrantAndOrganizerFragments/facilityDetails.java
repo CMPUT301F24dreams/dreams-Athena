@@ -64,7 +64,7 @@ public class facilityDetails extends Fragment {
                 if(task.isSuccessful()){
                     DocumentSnapshot facilityDetails = (DocumentSnapshot) getFacilityDetails.getResult();
                     facilityLocation.setText(facilityDetails.getString("facilityLocation"));
-                    facilityName.setText((String) facilityDetails.getString("facilityName"));
+                    facilityName.setText(facilityDetails.getString("facilityName"));
                 } else {
                     Exception e = task.getException();
                 }
@@ -185,7 +185,7 @@ public class facilityDetails extends Fragment {
             if (newFacilityLocation.matches(".*[a-zA-Z]+.*")) {
 
                 HashMap<String, Object> updatedData = new HashMap<>();
-                updatedData.put("facilityName", newFacilityLocation);
+                updatedData.put("facilityLocation", newFacilityLocation);
 
                 //Updates the facility location name in the db
                 Task<Void> updateTask = db.updateFacility(facilityDetailsBundle.getString("facilityID"), updatedData);
