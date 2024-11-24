@@ -302,7 +302,14 @@ public class homeScreen extends Fragment {
                 scanCode();
             }
         });
-        
+
+//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
+//            }
+//        });
+
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -69,6 +69,7 @@ public class createFacility extends Fragment {
 
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
+                // TODO: add facility ID logic
 
             facilityAdd.addOnCompleteListener(new OnCompleteListener() {
             @Override
