@@ -9,7 +9,7 @@
 
 
     <ListView
-        android:id="@+id/facility_list"
+        android:id="@+id/admin_facility_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

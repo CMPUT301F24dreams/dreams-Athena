@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.athena.AdminFragments.adminFacilitiesBrowse;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.AdminFragments.adminProfileBrowse;
 import com.example.athena.AdminFragments.browseAppEvents;
@@ -168,7 +169,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new adminProfileBrowse(), bundle);
+                displayChildFragment(new browseAppImages(), bundle);
 
             }
         });
@@ -177,7 +178,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new browseAppImages(), bundle);
+                displayChildFragment(new adminFacilitiesBrowse(), bundle);
 
             }
         });
