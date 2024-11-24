@@ -132,7 +132,6 @@ public class facilityDetailsAdmin extends Fragment {
                 }
             });
 
-            //TODO: make sure that when a facility is deleted, so are all of the events at the corresponding facility
             displayChildFragment(new adminBrowseFacilities(), bundle);
 
         });
