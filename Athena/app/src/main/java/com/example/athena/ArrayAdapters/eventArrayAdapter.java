@@ -21,8 +21,8 @@ import com.example.athena.R;
 
 import java.util.ArrayList;
 
-public class EventArrayAdapter extends ArrayAdapter<Event> {
-    public EventArrayAdapter (Context context, ArrayList<Event> events){
+public class eventArrayAdapter extends ArrayAdapter<Event> {
+    public eventArrayAdapter(Context context, ArrayList<Event> events){
         super(context,0,events);
     }
     @NonNull

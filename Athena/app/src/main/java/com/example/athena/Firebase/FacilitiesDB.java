@@ -63,6 +63,7 @@ public class FacilitiesDB {
     // Deletes a specific facility by its ID
     public Task<Void> deleteFacility(String facilityId) {
         return facilitiesCollection.document(facilityId).delete();
+
     }
 
     // Retrieves all facilities, can be used to get a list of all facilities

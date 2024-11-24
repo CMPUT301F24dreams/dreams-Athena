@@ -16,13 +16,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
-import com.example.athena.ArrayAdapters.userArrayAdapter;
-import com.example.athena.EntrantAndOrganizerFragments.eventDetails;
+import com.example.athena.ArrayAdapters.eventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -62,7 +59,7 @@ public class browseAppEvents extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    EventArrayAdapter eventArrayAdapter = new EventArrayAdapter(getContext(), events);
+                    eventArrayAdapter eventArrayAdapter = new eventArrayAdapter(getContext(), events);
                     listView.setAdapter(eventArrayAdapter);
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String name = documentSnapshot.getString("eventName");

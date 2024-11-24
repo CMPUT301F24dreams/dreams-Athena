@@ -85,6 +85,7 @@
 
     <Button
         android:id="@+id/submitButton"
+        android:backgroundTint="@color/drawer_background_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"

@@ -71,9 +71,16 @@
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="67dp"
+        android:backgroundTint="@color/negative_button_color"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="561dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/profileName"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="@+id/profileName"
+        app:layout_constraintTop_toBottomOf="@+id/editNumberReg" />
 
     <EditText
         android:id="@+id/editNameReg"
@@ -91,8 +98,15 @@
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="67dp"
+        android:backgroundTint="@color/drawer_background_color"
         android:text="Submit"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="561dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/profileName"
+        app:layout_constraintEnd_toEndOf="@+id/profileName"
+        app:layout_constraintStart_toEndOf="@+id/cancelButton"
+        app:layout_constraintTop_toBottomOf="@+id/editNumberReg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
+import com.example.athena.ArrayAdapters.eventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
-import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,7 +60,7 @@ import java.util.List;
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
+                eventArrayAdapter eventAdapter = new eventArrayAdapter(getContext(), events);
                 listView.setAdapter(eventAdapter);
 
                 if (task.isSuccessful()) {

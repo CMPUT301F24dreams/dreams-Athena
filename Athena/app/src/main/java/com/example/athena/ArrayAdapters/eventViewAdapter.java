@@ -9,12 +9,12 @@ import com.example.athena.Interfaces.Model;
 import com.example.athena.Interfaces.Observer;
 import com.example.athena.Models.Event;
 
-public class EventViewAdapter implements Observer {
+public class eventViewAdapter implements Observer {
     private Context context;
     private TextView eventName;
     private ImageView imageView;
 
-    public EventViewAdapter(Context context) {
+    public eventViewAdapter(Context context) {
         this.context = context;
     }
 

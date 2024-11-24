@@ -8,18 +8,26 @@ package com.example.athena.Models;
  *
  */
 public class Facility {
-    private String Name;
-    private String Location;
+    private String name;
+    private String location;
     private String organizer;
-
+    private String facilityID;
     /**
-     *This is a constructor used to create a facility without an imageURL, but including all of the other respective fields
+     *This is a constructor used to create a facility
      *
      */
     public Facility(String Name, String Location, String organizer){
-        this.Name = Name;
-        this.Location = Location;
+        this.name = Name;
+        this.location = Location;
         this.organizer = organizer;
+
+    }
+
+    public Facility(String Name, String Location, String organizer, String ID){
+        this.name = Name;
+        this.location = Location;
+        this.organizer = organizer;
+        this.facilityID = ID;
 
     }
 
@@ -41,26 +49,34 @@ public class Facility {
      * @return the facility name
      */
     public String getFacilityName(){
-        return Name;
+        return name;
     }
     /**
      * setter for the facility organizer
      */
     public void setFacilityName(String facilityName){
-        this.Name = facilityName;
+        this.name = facilityName;
     }
     /**
      * getter for the facility location
      * @return the facility location
      */
     public String getFacilityLocation(){
-     return Location;
+     return location;
     }
     /**
      * setter for the facility location
      */
     public void setFacilityLocation(String location){
-        this.Location = location;
+        this.location = location;
+    }
+
+    /**
+     * getter for the facility ID
+     * @return the facility ID
+     */
+    public String getFacilityID(){
+        return facilityID;
     }
 
 

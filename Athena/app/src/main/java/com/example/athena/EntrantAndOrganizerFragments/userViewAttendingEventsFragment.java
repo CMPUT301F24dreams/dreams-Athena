@@ -13,11 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.example.athena.WaitList.UserInviteArrayAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;

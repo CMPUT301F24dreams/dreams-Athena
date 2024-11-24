@@ -27,8 +27,7 @@ import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -90,48 +89,49 @@ public class homeScreen extends Fragment {
         ///Assigns the create button for the admin to view all of the application images
         ImageButton viewAppEvents = view.findViewById(R.id.adminEventsBrowse);
 
+        ///Assigns the button to browse the application's facilities
+        ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
 
-        //TODO: make this check if the user has any facilities, (DONE)
-        // if they do:
-        // take the user to the facility details page, (DONE)
-        // if they do not: inform them that they do not have a facility with a dialogue box (DONE)
-        // the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons will say create facility and cancel, respectively) (DONE)
-        // if they say they do, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
-        // else (if they press cancel they will stay on the drawer, and will remain unable to create any events) (DONE)
+
+        ///checks if the user has a facilities
+        ///if the user does have a facility:
+        ///it takes the user to the facility details page
+        ///if they do not: it informs them that they do not have a facility with a dialogue box
+        ///the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively)
+        ///if they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
+        ///else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
         manageFacilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
                 userDB userDB = new userDB();
 
-                Task<QuerySnapshot> getFacility = userDB.getOrgFacility(deviceID);
-                getFacility.addOnCompleteListener(task -> {
-
+                Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+                getUser.addOnCompleteListener(task -> {
 
 
                     //Upon a successful read of the facility details, the user will be led to the facility details page
                     if (task.isSuccessful()) {
-                        QuerySnapshot querySnapshot = task.getResult();
-                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                            for (QueryDocumentSnapshot document : querySnapshot) {
-                                // Retrieves the ID of the current facility owned by the organizer so that it can be used later for editing
-                                String facilityID = document.getId();
-                                Log.d(TAG, "Retrieved string: " + facilityID);
-                                bundle.putString("facilityID", facilityID);
-                                displayChildFragment(new facilityProfile(), bundle);
-                            }
 
 
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
+                            Log.d(TAG, "Retrieved string: " + facilityID);
+                            bundle.putString("facilityID", facilityID);
+                            displayChildFragment(new facilityDetails(), bundle);
+
+                        }
 
                         //If the read yields no documents, they will be prompted to create a new facility
-                        } else { FragmentManager fragmentManager = getChildFragmentManager();
+                         else { FragmentManager fragmentManager = getChildFragmentManager();
                             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
 
                             //These statements ensure that if a new facility is currently being created (if the user is currently on the create a facility fragment),
                             //the user will not be able to trigger the "create a facility" dialog
                             //instead, they'll just be reminded that they need a facility before creating an event
                             if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {
-                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
                                 createFacilityDialog(bundle);
 
                             }
@@ -139,7 +139,7 @@ public class homeScreen extends Fragment {
                             //this is the case that will remind the user instead of creating redundant pop-up
                             else {
 
-                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No Facilities Found.", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -170,6 +170,15 @@ public class homeScreen extends Fragment {
             }
         });
 
+        browseAppFacilities.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appDrawer.setVisibility(View.GONE);
+                displayChildFragment(new adminBrowseFacilities(), bundle);
+
+            }
+        });
+
         viewAppEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,40 +203,40 @@ public class homeScreen extends Fragment {
                 appDrawer.setVisibility(View.GONE);
                 userDB userDB = new userDB();
 
-                Task<QuerySnapshot> getFacility = userDB.getOrgFacility(deviceID);
-                getFacility.addOnCompleteListener(task -> {
+                Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+                getUser.addOnCompleteListener(task -> {
 
 
                     //Upon a successful read of the facility details, the user will be led to the facility details page
                     if (task.isSuccessful()) {
-                        QuerySnapshot querySnapshot = task.getResult();
-                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                            for (QueryDocumentSnapshot document : querySnapshot) {
-                                // Retrieves the ID of the current facility owned by the organizer so that it can be used later for editing
-                                String facilityID = document.getId();
-                                Log.d(TAG, "Retrieved string: " + facilityID);
-                                bundle.putString("facilityID", facilityID);
-                                displayChildFragment(new createEvent(), bundle);
-                            }
 
 
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists() & documentSnapshot.contains("Facility")) {
+                            String facilityID = documentSnapshot.getString("Facility");
+                            Log.d(TAG, "Retrieved string: " + facilityID);
+                            bundle.putString("facilityID", facilityID);
+                            displayChildFragment(new createEvent(), bundle);
 
-                            //If the read yields no documents, they will be prompted to create a new facility
-                        } else { FragmentManager fragmentManager = getChildFragmentManager();
+                            //If the read yields no facility, they will be prompted to create a new facility
+                        }else { FragmentManager fragmentManager = getChildFragmentManager();
                             Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
+
+
 
                             //These statements ensure that if a new facility is currently being created (if the user is currently on the create a facility fragment),
                             //the user will not be able to trigger the "create a facility" dialog
                             //instead, they'll just be reminded that they need a facility before creating an event
                             if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {
-                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
                                 createFacilityDialog(bundle);
 
                             }
 
                             //this is the case that will remind the user instead of creating redundant pop-up
                             else {
-                                Toast.makeText(requireContext(), "No facility found, redirecting to event creation.", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(requireContext(), "No facility found, A facility is needed to create event.", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -284,7 +293,6 @@ public class homeScreen extends Fragment {
         scanQRCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
 //                Toast.makeText(getActivity(), "qr", Toast.LENGTH_SHORT).show();
 //                FragmentManager fragmentManager = getParentFragmentManager();
 //                FragmentTransaction transaction = fragmentManager.beginTransaction();

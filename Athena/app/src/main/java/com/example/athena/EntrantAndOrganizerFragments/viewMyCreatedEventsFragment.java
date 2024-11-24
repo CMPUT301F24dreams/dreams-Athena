@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.athena.ArrayAdapters.EventArrayAdapter;
+import com.example.athena.ArrayAdapters.eventArrayAdapter;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.example.athena.databinding.OrganizerMyEventsViewBinding;
@@ -36,7 +36,7 @@ import java.util.List;
 public class viewMyCreatedEventsFragment extends Fragment{
 
     private ListView eventList;
-    private EventArrayAdapter eventAdapter;
+    private eventArrayAdapter eventAdapter;
     private ArrayList<Event> events;
     private String deviceID;
     public userDB userDB;
@@ -77,7 +77,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
+                eventArrayAdapter eventAdapter = new eventArrayAdapter(getContext(), events);
                 eventList.setAdapter(eventAdapter);
 
                 if (task.isSuccessful()) {
@@ -107,7 +107,7 @@ public class viewMyCreatedEventsFragment extends Fragment{
             }
         });
 
-        eventAdapter = new EventArrayAdapter(getContext(), events);
+        eventAdapter = new eventArrayAdapter(getContext(), events);
         eventList.setAdapter(eventAdapter);
 
         eventList.setClickable(Boolean.TRUE);

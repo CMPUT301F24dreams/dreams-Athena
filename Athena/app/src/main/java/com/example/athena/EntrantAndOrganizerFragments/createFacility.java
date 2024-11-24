@@ -1,7 +1,5 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.net.Uri;
 import android.os.Bundle;
 import com.example.athena.Firebase.FacilitiesDB;
@@ -9,7 +7,6 @@ import com.example.athena.Firebase.FacilitiesDB;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 
 public class createFacility extends Fragment {
-    Uri imageURI;
-    public ImageView imageView;
-    public Bundle bundle;
+    private Bundle bundle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_facility, container, false);
@@ -74,25 +69,19 @@ public class createFacility extends Fragment {
 
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
-
+                // TODO: add facility ID logic
 
             facilityAdd.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
-                if(task.isSuccessful()) {
-                    DocumentReference doc = (DocumentReference) task.getResult();
-                    String facilityID = doc.getId();
+                DocumentReference doc = (DocumentReference) task.getResult();
+                String facilityID = doc.getId();
 
-                    facilitiesDB.updateFacilityID(facilityID);
-                    userDB.updateOrgFacilities(deviceID, facilityID);
-                    bundle.putString("facilityID", facilityID);
+                facilitiesDB.updateFacilityID(facilityID);
+                userDB.updateOrgFacilities(deviceID, facilityID);
+                bundle.putString("facilityID", facilityID);
 
-                    displayChildFragment(new facilityProfile(), bundle);
-                }else{
-                    Log.d(TAG, "Could Not Add Facility ", task.getException());
-                    Toast.makeText(requireContext(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-                }
+                displayChildFragment(new facilityDetails(), bundle);
             }
         });
 
