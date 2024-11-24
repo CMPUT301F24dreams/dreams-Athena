@@ -41,8 +41,9 @@ public class  userDB {
         return ueRef;
     }
 
+
     public void deleteOrgFacility(String deviceID) {
-         db.collection("Users").document(deviceID).update("Facility", FieldValue.delete());
+         db.collection("Users").document(deviceID).update("facility", FieldValue.delete());
 
     }
 
@@ -65,7 +66,7 @@ public class  userDB {
     }
 
     public void updateOrgFacilities(String deviceID, String facilityID) {
-        db.collection("Users").document(deviceID).update("Facility", facilityID);
+        db.collection("Users").document(deviceID).update("facility", facilityID);
     }
 
 
