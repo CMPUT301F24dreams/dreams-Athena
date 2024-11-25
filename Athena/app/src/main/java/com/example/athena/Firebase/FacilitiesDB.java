@@ -35,10 +35,7 @@ public class FacilitiesDB {
         this.facilitiesCollection = db.collection("Facilities");
     }
 
-    // Adds a new facility to the Facilities collection
-    public Task<DocumentReference> addFacility(HashMap<String, Object> facilityData) {
-        return facilitiesCollection.add(facilityData);
-    }
+
 
     public Task addFacility(Facility facility){
         return facilitiesCollection.add(facility);

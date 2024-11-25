@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewMyCreatedEventsFragment"
-        android:name="com.example.athena.EntrantAndOrganizerFragments.viewMyCreatedEventsFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.viewMyOrgEvents"
         android:label="organizer_my_events_page"
         tools:layout="@layout/organizer_my_events_page" />
 </navigation>

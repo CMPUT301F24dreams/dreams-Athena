@@ -1,13 +1,10 @@
 package com.example.athena;
 
-import android.os.Bundle;
-
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.espresso.intent.Intents;
 
-import com.example.athena.EntrantAndOrganizerFragments.viewMyCreatedEventsFragment;
-import com.example.athena.R;
+import com.example.athena.EntrantAndOrganizerFragments.viewMyOrgEvents;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +18,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.action.ViewActions.click;
 
 /**
- * UI tests for the viewMyCreatedEventsFragment fragment.
+ * UI tests for the viewMyOrgEvents fragment.
  * This class tests the user interface interactions and ensures they behave as expected.
  */
 @RunWith(AndroidJUnit4.class)
@@ -34,7 +31,7 @@ public class ViewMyCreatedEventsFragmentUITest {
     @Before
     public void setup() {
         Intents.init();
-        FragmentScenario<viewMyCreatedEventsFragment> scenario = FragmentScenario.launchInContainer(viewMyCreatedEventsFragment.class);
+        FragmentScenario<viewMyOrgEvents> scenario = FragmentScenario.launchInContainer(viewMyOrgEvents.class);
     }
 
     /**

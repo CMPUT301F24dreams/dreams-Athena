@@ -193,7 +193,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new viewMyCreatedEventsFragment(), bundle);
+                displayChildFragment(new viewMyOrgEvents(), bundle);
 
             }
         });

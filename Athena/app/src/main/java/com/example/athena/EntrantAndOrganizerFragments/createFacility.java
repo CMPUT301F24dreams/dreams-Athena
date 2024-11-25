@@ -69,7 +69,7 @@ public class createFacility extends Fragment {
 
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
-                // TODO: add facility ID logic
+
 
             facilityAdd.addOnCompleteListener(new OnCompleteListener() {
             @Override
@@ -77,6 +77,7 @@ public class createFacility extends Fragment {
                 DocumentReference doc = (DocumentReference) task.getResult();
                 String facilityID = doc.getId();
 
+                ///Adds the facility ID to the facility's fields
                 facilitiesDB.updateFacilityID(facilityID);
                 userDB.updateOrgFacilities(deviceID, facilityID);
                 bundle.putString("facilityID", facilityID);

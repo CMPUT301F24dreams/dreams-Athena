@@ -33,7 +33,7 @@ import java.util.List;
  * This fragment displays the list of events created by the organizer and allows navigation to event details.
  * It fetches events from Firestore and displays them using a custom adapter.
  */
-public class viewMyCreatedEventsFragment extends Fragment{
+public class viewMyOrgEvents extends Fragment{
 
     private ListView eventList;
     private eventArrayAdapter eventAdapter;
@@ -117,27 +117,15 @@ public class viewMyCreatedEventsFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String eventID = eventAdapter.getItem(position).getEventID();
                 ManageEvent detailFrag = new ManageEvent();
-                Bundle bundleSend = new Bundle();
-                bundleSend.putString("eventID",eventID);
-                detailFrag.setArguments(bundleSend);
+                bundle.putString("eventID",eventID);
+                detailFrag.setArguments(bundle);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.content_frame, detailFrag)
                         .commit();
 
             }
         });
-        //This may or not be useless depending on our decided implementation
-        /*
-        binding.returnHomeEntrantAndOrganizers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.content_layout, new homeScreen());
-                transaction.commit();
-            }
-        });
-        */
+
     }
 
 }
