@@ -1,6 +1,5 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import com.example.athena.Firebase.FacilitiesDB;
 
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.athena.Firebase.userDB;
@@ -82,7 +80,7 @@ public class createFacility extends Fragment {
                 userDB.updateOrgFacilities(deviceID, facilityID);
                 bundle.putString("facilityID", facilityID);
 
-                displayChildFragment(new facilityDetails(), bundle);
+                displayChildFragment(new orgFacilityDetails(), bundle);
             }
         });
 

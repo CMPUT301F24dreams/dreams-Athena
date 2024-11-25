@@ -98,13 +98,13 @@ public class facilityDetailsAdmin extends Fragment {
      */
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("DELETE EVENT?");
+        builder.setTitle("DELETE FACILITY?");
 
         final TextView text = new TextView(requireContext());
-        text.setText("Are you sure you want to delete this facility?");
+        text.setText("\nAre you sure you want to delete this facility?");
         builder.setView(text);
 
-        builder.setPositiveButton("Confirm", (dialog, which) -> {
+        builder.setPositiveButton("YES", (dialog, which) -> {
 
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
@@ -135,7 +135,7 @@ public class facilityDetailsAdmin extends Fragment {
             displayChildFragment(new adminBrowseFacilities(), bundle);
 
         });
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNeutralButton("CANCEL", (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

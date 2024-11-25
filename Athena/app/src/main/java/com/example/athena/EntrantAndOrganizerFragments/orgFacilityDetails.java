@@ -29,7 +29,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.HashMap;
 
-public class facilityDetails extends Fragment {
+public class orgFacilityDetails extends Fragment {
 
 
     @Override
