@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#D7F2EE"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/event_poster"
+            android:layout_width="411dp"
+            android:layout_height="310dp"
+            app:srcCompat="@drawable/image_place_holder" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="583dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/event_desc_non_edit_list"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="#D7F2EE"
+                android:backgroundTint="#D7F2EE"
+                android:text="Event Description:"
+                android:textAlignment="center"
+                android:textColor="#0D0C0C"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/event_description_textview_list"
+                android:layout_width="match_parent"
+                android:layout_height="149dp"
+                android:background="#D7F2EE"
+                android:backgroundTint="#D7F2EE"
+                android:text="Description" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#D7F2EE">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="159dp"
+                    android:layout_height="42dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.37"
+                    app:srcCompat="@drawable/leave_event_button" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

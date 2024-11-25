@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/entrantAndOrganizerHomeFragment">
+    <fragment
+        android:id="@+id/entrantAndOrganizerHomeFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.homeScreen"
+        android:label="ent_and_org_home_fragment"
+        tools:layout="@layout/ent_and_org_home_fragment" >
+        <action
+            android:id="@+id/action_entrantAndOrganizerHomeFragment_to_viewMyCreatedEventsFragment"
+            app:destination="@id/viewMyCreatedEventsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewMyCreatedEventsFragment"
+        android:name="com.example.athena.EntrantAndOrganizerFragments.viewMyOrgEvents"
+        android:label="organizer_my_events_page"
+        tools:layout="@layout/organizer_my_events_page" />
+</navigation>
