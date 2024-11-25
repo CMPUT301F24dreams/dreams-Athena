@@ -66,8 +66,8 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="336dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="text"
@@ -75,23 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facilityID"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/facilityID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:ems="10"
-        android:hint="Facility"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/createEventButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regDateEnd"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/regDateEnd" />
 
     <EditText
         android:id="@+id/regDateEnd"

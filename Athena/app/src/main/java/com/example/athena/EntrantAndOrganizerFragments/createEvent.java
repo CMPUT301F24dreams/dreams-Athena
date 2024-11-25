@@ -39,6 +39,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -46,6 +47,7 @@ import com.google.firebase.storage.UploadTask;
 public class createEvent extends Fragment {
     Uri imageURI;
     public ImageView imageView;
+    private String userFacility;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_event, container, false);
@@ -67,7 +69,6 @@ public class createEvent extends Fragment {
         TextView eventDateText = view.findViewById(R.id.eventDate);
         TextView regStartText = view.findViewById(R.id.regDateStart);
         TextView regEndText = view.findViewById(R.id.regDateEnd);
-        TextView facilityText = view.findViewById(R.id.facilityID);
         TextView descriptionText = view.findViewById(R.id.description);
         TextView participantsText = view.findViewById(R.id.participants);
         CheckBox georequireText = view.findViewById(R.id.geoRequire);
@@ -81,12 +82,33 @@ public class createEvent extends Fragment {
                 String eventName = eventNameText.getText().toString();
                 String organizer = deviceID;
                 String eventDescription = descriptionText.getText().toString();
-                String facility = facilityText.getText().toString();
                 Integer maxParticipants = Integer.parseInt(participantsText.getText().toString());
                 Boolean georequire = georequireText.isChecked();
 
 
-                Event event = new Event();
+                //TODO (Roger): whenever you update your logic, update the event creation so that a facility is always initialized from the user database
+                // this is to make sure that events always have the same facilityID as their organizer (one-to-one association)
+                ///Retrieves the facility from the DB rather than having the user input it
+                ///made it this way because every event needs to have the same facilityID as the organizer that owns it
+                ///the user cannot have more than one facility, so once they make one that is the only facility that will be used for all of their events
+                Task <DocumentSnapshot> getUser = userDB.getUser(deviceID);
+                getUser.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()){
+                            DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
+                            if(user.contains("facility")) {
+                                userFacility = user.getString("facility");
+                            }
+
+                        } else {
+                            Exception e = task.getException();
+                        }
+                    }
+                });
+
+
+                Event event = new Event(userFacility);
 
                 Task eventAdd = eventsDB.addEvent(event);
                 eventAdd.addOnCompleteListener(new OnCompleteListener() {
@@ -98,17 +120,19 @@ public class createEvent extends Fragment {
                         eventsDB.updateEventID(eventID);
                         userDB.updateOrgEvents(deviceID, eventID);
 
-                        imageDB imageDB = new imageDB();
+                        /*imageDB imageDB = new imageDB();
                         UploadTask upload = imageDB.addImage(eventID, imageURI);
                         Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
                         changeURL.addOnCompleteListener(new OnCompleteListener() {
                             @Override
                             public void onComplete(@NonNull Task task) {
-                                Bundle eventIDBundle = new Bundle();
-                                eventIDBundle.putString("eventID", eventID);
-                                displayChildFragment(new eventDetails(), eventIDBundle);
+                                if(task.isSuccessful()) {
+                                    Bundle eventIDBundle = new Bundle();
+                                    eventIDBundle.putString("eventID", eventID);
+                                    displayChildFragment(new eventDetails(), eventIDBundle);
+                                }
                             }
-                        });
+                        });*/
                     }
                 });
             }
