@@ -68,6 +68,11 @@ public class  userDB {
         db.collection("Users").document(deviceID).update("facility", facilityID);
     }
 
+    public void leaveEvent(String deviceID, String eventID){
+        db.collection("Users/" + deviceID +"/Events").document(eventID).delete();
+    }
+
+
 
     /**
      * updates the users status to invited on the users events sub-collection
