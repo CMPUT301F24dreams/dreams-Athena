@@ -99,6 +99,7 @@ import java.util.List;
 
                 Bundle eventDetails = new Bundle();
                 eventDetails.putString("eventID", eventID);
+                eventDetails.putString("deviceID", deviceID);
                 displayChildFragment(new eventDetails(), eventDetails);
             }
         });

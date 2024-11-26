@@ -3,6 +3,7 @@ package com.example.athena.EntrantAndOrganizerFragments;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,13 +53,13 @@ import com.example.athena.R;
         leaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLeaveDialog("2",eventID);
+                showLeaveDialog(deviceID,eventID, bundle);
             }
         });
     }
 
     // Code to display a dialog
-    private void showLeaveDialog(String deviceID, String eventID) {
+    private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Leave event?");
         builder.setMessage("Are you sure you want to leave this event?");
@@ -67,6 +68,7 @@ import com.example.athena.R;
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             EventsDB.removeUser(deviceID,eventID);
             UserDB.leaveEvent(deviceID,eventID);
+            displayChildFragment(new myEventsList(),bundle);
         });
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 
