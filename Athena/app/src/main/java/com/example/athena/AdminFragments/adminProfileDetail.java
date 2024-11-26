@@ -17,8 +17,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenAdminBinding;
@@ -26,12 +27,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class adminProfileDetail extends Fragment {
     private String userID;
     public userDB usersDB;
     private User user;
     private Bundle bundle;
+    private String facilityID;
+    private FacilitiesDB facilitiesDB;
+    private eventsDB eventDB;
+    private String deviceID;
     /// Binds the fragment to its elements
     ProfileScreenAdminBinding binding;
 
@@ -67,8 +73,13 @@ public class adminProfileDetail extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
         assert bundle != null;
+        deviceID = bundle.getString("deviceID");
         userID = bundle.getString("userID");
+        facilityID = bundle.getString("facilityID");
         usersDB = new userDB();
+        facilitiesDB = new FacilitiesDB();
+        eventDB = new eventsDB();
+
         Task getUser = usersDB.getUser(userID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -118,6 +129,36 @@ public class adminProfileDetail extends Fragment {
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
+
+            //TODO: check if the user has any facilities
+            // if they do: delete all of their facilities, THEN delete the user
+            // this is because deleting the facilities removes all of the user's events
+            Task getEvents = eventDB.getEventsList();
+            //UNTESTED, NEED TO MAKE SOME CHANGES
+            /*getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task){
+                    if (task.isSuccessful()) {
+                        for(DocumentSnapshot event: task.getResult().getDocuments()) {
+                            String eventName = event.getId();
+                            if((event.contains("facility"))){
+                                String eventFacility = event.getString("facility");
+                                if (eventFacility.equals(facilityID)) {
+                                    eventDB.deleteEvent(eventName);
+                                }
+
+                            }
+                        }
+
+                    }else{
+                        Exception e = task.getException();
+                    }
+
+                }
+            });*/
+
+            ///Delete the user's facility which in turn deletes all of the events they've made:
+            ///TODO: add an on compete listener that confirms the user has been deleted with a toast
             usersDB.deleteUser(userID);
             displayChildFragment(new adminProfileBrowse(), bundle);
         });

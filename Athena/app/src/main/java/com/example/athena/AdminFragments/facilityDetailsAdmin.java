@@ -110,6 +110,7 @@ public class facilityDetailsAdmin extends Fragment {
             usersDB.deleteOrgFacility(deviceID);
 
             Task getEvents = eventsDB.getEventsList();
+            /*
             getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task){
@@ -130,7 +131,7 @@ public class facilityDetailsAdmin extends Fragment {
                     }
 
                 }
-            });
+            });*/
 
             displayChildFragment(new adminBrowseFacilities(), bundle);
 
