@@ -20,7 +20,9 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,26 +34,23 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * This class handles database operations for events collection, interacting with the Firestore database.
  */
 public class eventsDB {
     private FirebaseFirestore db;
-    private CollectionReference eventsCollection;
+    private static CollectionReference eventsCollection;
 
     public eventsDB(){
         this.db = FirebaseFirestore.getInstance();
         this.eventsCollection = db.collection("Events");
     }
 
-    public void updateEventID(String eventID) {
+    public static Task updateEventID(String eventID) {
         Map<String, Object> data = new HashMap<>();
         data.put("eventID", eventID);
-        eventsCollection.document(eventID).set(data, SetOptions.merge());
+        return eventsCollection.document(eventID).set(data, SetOptions.merge());
     }
 
     /**
@@ -75,7 +74,7 @@ public class eventsDB {
                     event.setEventDescription(document.getString("eventDescription"));
                     event.setOrganizer(document.getString("organizer"));
                     event.setFacility(document.getString("Facility"));
-                    event.setMaxParticipants(Integer.parseInt(document.getString("maxParticipants")));
+                    event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
                     event.setGeoRequire(document.getBoolean("geoRequire"));
                     event.setEventID(document.getString("eventID"));
 
@@ -136,13 +135,34 @@ public class eventsDB {
         return db.collection("Events").document(eventID).collection(list).get();
     }
     public Task<QuerySnapshot> getEventsList() {
-
         return eventsCollection.get();
     }
 
-    public Task addEvent(Event event){
+    public Task addEvent(Event event, String userID, Uri imageURI){
+        TaskCompletionSource finishTaskSource = new TaskCompletionSource();
+        Task eventPrelim = db.collection("Events").add(event);
+        eventPrelim.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentReference doc = (DocumentReference) task.getResult();
+                String eventID = doc.getId();
 
-        return eventsCollection.add(event);
+                UploadTask upload = new imageDB().addImage(eventID, imageURI);
+                Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
+
+                Task updateID = eventsDB.updateEventID(eventID);
+                Task updateUserOrg = userDB.updateOrgEvents(userID, eventID);
+
+                Task finishTask = Tasks.whenAll(upload, changeURL, updateID, updateUserOrg);
+                finishTask.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        finishTaskSource.setResult(eventID);
+                    }
+                });
+            }
+        });
+        return finishTaskSource.getTask();
     }
 
     public void changeStatusInvited(String eventID, ArrayList<String> userIDs){
@@ -168,7 +188,7 @@ public class eventsDB {
         db.collection("Events").document(eventID).collection("UserList").document(userID).update("status","declined");
     }
 
-    public Task<Void> saveURLToEvent(UploadTask uploadTask, String eventID) {
+    public static Task<Void> saveURLToEvent(UploadTask uploadTask, String eventID) {
         TaskCompletionSource<Void> changeURLSource = new TaskCompletionSource<>();
         Task<Void> changeTask = changeURLSource.getTask();
 

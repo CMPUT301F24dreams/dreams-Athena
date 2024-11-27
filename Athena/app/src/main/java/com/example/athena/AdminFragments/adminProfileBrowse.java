@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -82,6 +83,7 @@ public class adminProfileBrowse extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TO - DO
                 bundle.putString("userID",usersID.get(position));
+                Toast.makeText(getContext(),"The userID is:" + usersID.get(position), Toast.LENGTH_SHORT).show();
                 displayChildFragment(new adminProfileDetail(),bundle);
             }
         });
