@@ -161,5 +161,13 @@ public class eventsDB {
         db.collection("Events").document(eventID).collection("declined").document(deviceID).delete();
         db.collection("Events").document(eventID).collection("invited").document(deviceID).delete();
         db.collection("Events").document(eventID).collection("UserList").document(deviceID).delete();
+        db.collection("Events").document(eventID).collection("pending").document(deviceID).delete();
     }
+
+    public void addUser(String deviceID, String eventID){
+        Map<String,String> status = new HashMap<>();
+        status.put("status", "pending");
+        eventsCollection.document(eventID).collection("pending").document(deviceID).set(status);
+    }
+
 }
