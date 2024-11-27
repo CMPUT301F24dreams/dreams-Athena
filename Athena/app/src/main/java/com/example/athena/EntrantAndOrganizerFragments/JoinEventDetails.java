@@ -3,6 +3,7 @@ package com.example.athena.EntrantAndOrganizerFragments;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class JoinEventDetails extends Fragment {
         Event event = new Event();
         event.addObserver(fragment);
 
-        EventsDB.loadEventData(event, eventID);
+        EventsDB.loadQRData(event, eventID,getParentFragmentManager(),bundle,getActivity());
 
         Button joinBtn = view.findViewById(R.id.leaveBtn);
         joinBtn.setText("Join Waitlist");

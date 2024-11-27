@@ -1,11 +1,21 @@
 package com.example.athena.Firebase;
 
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 
+import com.example.athena.EntrantAndOrganizerFragments.JoinEventDetails;
+import com.example.athena.EntrantAndOrganizerFragments.myEventsList;
 import com.example.athena.Models.Event;
+import com.example.athena.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,6 +79,46 @@ public class eventsDB {
                     event.setEventID(document.getString("eventID"));
 
                     event.notifyObservers();
+                } else {
+
+
+                    Exception exception = task.getException();
+                }
+            }
+        });
+    }
+
+    public void loadQRData(Event event, String eventID, FragmentManager fragment, Bundle bundle, Activity activity) {
+        Task getEventTask = this.getEvent(eventID);
+        getEventTask.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentSnapshot document = (DocumentSnapshot) task.getResult();
+                if (task.isSuccessful()) {
+                    if (document.exists()) {
+                        event.setEventName(document.getString("eventName"));
+                        event.setImageURL(document.getString("imageURL"));
+                        event.setEventDescription(document.getString("eventDescription"));
+                        event.setOrganizer(document.getString("organizer"));
+                        event.setFacility(document.getString("Facility"));
+                        event.setMaxParticipants(Integer.parseInt(document.getString("maxParticipants")));
+                        event.setGeoRequire(document.getBoolean("geoRequire"));
+                        event.setEventID(document.getString("eventID"));
+
+                        event.notifyObservers();
+
+                    } else {
+                        Fragment frag = new myEventsList();
+                        frag.setArguments(bundle);
+                        fragment.beginTransaction().replace(R.id.content_frame,frag).commit();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                        builder.setTitle("Invalid QR code");
+                        builder.setPositiveButton("OK", (dialog, which) -> {
+                        });
+                        builder.show();
+                    }
+
                 } else {
                     Exception exception = task.getException();
                 }
