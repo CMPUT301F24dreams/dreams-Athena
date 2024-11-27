@@ -18,23 +18,30 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.athena.EntrantAndOrganizerFragments.eventDetails;
 import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -42,13 +49,16 @@ import java.util.Objects;
 
 
 public class createEvent extends Fragment implements dateDialog.datePickerListener {
-    Uri imageURI;
-    public ImageView imageView;
+    private Event event;
     private String userFacility;
+
     dateDialog datePicker;
     private TextView eventDateText;
     private TextView regStartText;
     private TextView regEndText;
+
+    Uri imageURI;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_event, container, false);
@@ -76,17 +86,14 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
         CheckBox geoRequireBox = view.findViewById(R.id.geoRequire);
         TextView upload = view.findViewById(R.id.uploadPoster);
 
-        Event event = new Event();
+        event = new Event();
 
         Button createEvent = view.findViewById(R.id.createEventButton);
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String eventName = eventNameText.getText().toString();
-                String organizer = deviceID;
-                String eventDescription = descriptionText.getText().toString();
-                Integer maxParticipants = Integer.parseInt(participantsText.getText().toString());
-                Boolean georequire = geoRequireBox.isChecked();
+                User user = new User();
+                userDB.loadUserData(user, deviceID);
 
 
                 //TODO (Roger): whenever you update your logic, update the event creation so that a facility is always initialized from the user database
@@ -94,52 +101,82 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
                 ///Retrieves the facility from the DB rather than having the user input it
                 ///made it this way because every event needs to have the same facilityID as the organizer that owns it
                 ///the user cannot have more than one facility, so once they make one that is the only facility that will be used for all of their events
-                Task <DocumentSnapshot> getUser = userDB.getUser(deviceID);
-                getUser.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()){
-                            DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
-                            if(user.contains("facility")) {
-                                userFacility = user.getString("facility");
-                            }
-
-                        } else {
-                            Exception e = task.getException();
-                        }
-                    }
-                });
-
 
                 Event event = new Event(userFacility);
 
-                Task eventAdd = eventsDB.addEvent(event);
-                eventAdd.addOnCompleteListener(new OnCompleteListener() {
+                Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
+                eventAddTask.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
-                        DocumentReference doc = (DocumentReference) task.getResult();
-                        String eventID = doc.getId();
-
-                        eventsDB.updateEventID(eventID);
-                        userDB.updateOrgEvents(deviceID, eventID);
-
-                        /*imageDB imageDB = new imageDB();
-                        UploadTask upload = imageDB.addImage(eventID, imageURI);
-                        Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
-                        changeURL.addOnCompleteListener(new OnCompleteListener() {
-                            @Override
-                            public void onComplete(@NonNull Task task) {
-                                if(task.isSuccessful()) {
-                                    Bundle eventIDBundle = new Bundle();
-                                    eventIDBundle.putString("eventID", eventID);
-                                    displayChildFragment(new eventDetails(), eventIDBundle);
-                                }
-                            }
-                        });*/
+                        if (task.isSuccessful()) {
+                            DocumentReference doc = (DocumentReference) task.getResult();
+                            String eventID = doc.getId();
+                            Bundle eventIDBundle = new Bundle();
+                            eventIDBundle.putString("eventID", eventID);
+                            displayChildFragment(new eventDetails(), eventIDBundle);
+                        }
                     }
                 });
             }
         });
+
+    eventNameText.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            event.setEventName(s.toString());
+        }
+    });
+
+    descriptionText.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            event.setEventDescription(s.toString());
+        }
+    });
+
+    participantsText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                event.setMaxParticipants(Integer.valueOf(s.toString()));
+            }
+        });
+
+    geoRequireBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            event.setGeoRequire(isChecked);
+        }
+    });
 
     eventDateText.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -183,24 +220,26 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
         createEvent.super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             imageURI = data.getData();
-            imageView.setImageURI(imageURI); // delete
         }
-    }
-    public void displayChildFragment(Fragment fragment, Bundle bundle){
-        fragment.setArguments(bundle);
-        getParentFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
     @Override
     public void onDateSet(String textField, String date) {
-        if (textField == "eventDate") {
+        if (Objects.equals(textField, "eventDate")) {
+            event.setEventDate(date);
             eventDateText.setText(date);
-        } else if (textField == "regStart") {
+        } else if (Objects.equals(textField, "regStart")) {
+            event.setStartReg(date);
             regStartText.setText(date);
         } else {
+            event.setEndReg(date);
             regEndText.setText(date);
         }
+    }
 
+    public void displayChildFragment(Fragment fragment, Bundle bundle){
+        fragment.setArguments(bundle);
+        getParentFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 }
 
