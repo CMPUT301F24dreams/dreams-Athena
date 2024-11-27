@@ -109,8 +109,8 @@ public class facilityDetailsAdmin extends Fragment {
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
 
+            ///deletes all of the events at a given facility
             Task getEvents = eventsDB.getEventsList();
-            /*
             getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task){
@@ -131,7 +131,7 @@ public class facilityDetailsAdmin extends Fragment {
                     }
 
                 }
-            });*/
+            });
 
             displayChildFragment(new adminBrowseFacilities(), bundle);
 

@@ -34,7 +34,7 @@ public class adminProfileDetail extends Fragment {
     public userDB usersDB;
     private User user;
     private Bundle bundle;
-    private String facilityID;
+    private String selectedUserFacilityID;
     private FacilitiesDB facilitiesDB;
     private eventsDB eventDB;
     private String deviceID;
@@ -75,12 +75,12 @@ public class adminProfileDetail extends Fragment {
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
         userID = bundle.getString("userID");
-        facilityID = bundle.getString("facilityID");
         usersDB = new userDB();
         facilitiesDB = new FacilitiesDB();
         eventDB = new eventsDB();
 
         Task getUser = usersDB.getUser(userID);
+
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
             @Override
@@ -88,10 +88,15 @@ public class adminProfileDetail extends Fragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
                     if (userdoc.exists()) {
+                        if (userdoc.contains("facility")) {
+                            selectedUserFacilityID = userdoc.getString("facility");
+                        }
+
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
                         user = new User(name, email, phone, null);
+
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));
@@ -120,6 +125,13 @@ public class adminProfileDetail extends Fragment {
 
     }
 
+
+    /**
+     * Is responsible for all aspects related to deleting a user
+     * deletes the user's profile,
+     * deletes the user's events,
+     * deletes the user's facility.
+     */
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("DELETE PROFILE?");
@@ -130,12 +142,20 @@ public class adminProfileDetail extends Fragment {
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
 
-            //TODO: check if the user has any facilities
-            // if they do: delete all of their facilities, THEN delete the user
-            // this is because deleting the facilities removes all of the user's events
+            usersDB.deleteUser(userID);
+
+            ///ensures that the selected user owns a facility before trying to delete a facility with the given facility ID
+            if(selectedUserFacilityID != null){
+                ///if the user has a facility, their facility will
+                facilitiesDB.deleteFacility(selectedUserFacilityID);
+            }
+
+
+
             Task getEvents = eventDB.getEventsList();
-            //UNTESTED, NEED TO MAKE SOME CHANGES
-            /*getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            ///Deletes all of the user's event
+            getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task){
                     if (task.isSuccessful()) {
@@ -143,7 +163,7 @@ public class adminProfileDetail extends Fragment {
                             String eventName = event.getId();
                             if((event.contains("facility"))){
                                 String eventFacility = event.getString("facility");
-                                if (eventFacility.equals(facilityID)) {
+                                if (eventFacility.equals(selectedUserFacilityID)) {
                                     eventDB.deleteEvent(eventName);
                                 }
 
@@ -155,11 +175,11 @@ public class adminProfileDetail extends Fragment {
                     }
 
                 }
-            });*/
+            });
 
             ///Delete the user's facility which in turn deletes all of the events they've made:
             ///TODO: add an on compete listener that confirms the user has been deleted with a toast
-            usersDB.deleteUser(userID);
+
             displayChildFragment(new adminProfileBrowse(), bundle);
         });
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
