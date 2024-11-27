@@ -101,7 +101,7 @@ public class eventsDB {
                         event.setEventDescription(document.getString("eventDescription"));
                         event.setOrganizer(document.getString("organizer"));
                         event.setFacility(document.getString("Facility"));
-                        event.setMaxParticipants(Integer.parseInt(document.getString("maxParticipants")));
+                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));;
                         event.setGeoRequire(document.getBoolean("geoRequire"));
                         event.setEventID(document.getString("eventID"));
 
