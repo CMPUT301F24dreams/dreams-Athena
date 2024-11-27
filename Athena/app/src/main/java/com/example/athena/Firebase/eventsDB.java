@@ -165,9 +165,9 @@ public class eventsDB {
     }
 
     public void addUser(String deviceID, String eventID){
-        Map<String,String> status = new HashMap<>();
-        status.put("status", "pending");
-        eventsCollection.document(eventID).collection("pending").document(deviceID).set(status);
+        Map<String,Boolean> notif = new HashMap<>();
+        notif.put("notified",Boolean.FALSE);
+        eventsCollection.document(eventID).collection("pending").document(deviceID).set(notif);
     }
 
 }
