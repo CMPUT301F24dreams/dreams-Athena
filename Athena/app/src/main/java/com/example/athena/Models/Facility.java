@@ -31,6 +31,7 @@ public class Facility {
 
     }
 
+
     /**
      * getter for the facility organizer
      * @return the organizer who owns this facility
