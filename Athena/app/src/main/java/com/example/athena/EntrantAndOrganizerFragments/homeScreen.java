@@ -37,6 +37,8 @@ import com.journeyapps.barcodescanner.ScanOptions;
  * This is a fragment used as a home page for entrants and organizers
  */
 public class homeScreen extends Fragment {
+    private String eventID;
+    private Bundle bundle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
@@ -46,7 +48,7 @@ public class homeScreen extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         String deviceID = bundle.getString("deviceID");
 
         /// Assigns button used for checking notifications
@@ -199,7 +201,7 @@ public class homeScreen extends Fragment {
 //                FragmentTransaction transaction = fragmentManager.beginTransaction();
 //                transaction.replace(R.id.content_layout, new qrCodeFragment()); // Replace with your container ID
 //                transaction.commit();
-                scanCode();
+                scanCode(bundle);
             }
         });
 
@@ -260,12 +262,27 @@ public class homeScreen extends Fragment {
         Fragment childFragment = getChildFragmentManager().findFragmentById(R.id.content_frame);
         getChildFragmentManager().beginTransaction().remove(childFragment).commit();
     }
-    private void scanCode() {
+
+
+    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result-> {
+        if(result.getContents() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Scan Successful");
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                bundle.putString("eventID", result.getContents().toString());
+                displayChildFragment(new JoinEventDetails(), bundle);
+            });
+            builder.show();
+        }
+    });
+
+    private void scanCode(Bundle bundle) {
         ScanOptions options = new ScanOptions();
         options.setPrompt("Volume up to flash on");
         options.setBeepEnabled(true);
         options.setOrientationLocked(true);
         options.setCaptureActivity(CaptureAct.class);
+
         barLauncher.launch(options);
     }
 
@@ -367,17 +384,4 @@ public class homeScreen extends Fragment {
 
 
 
-
-    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result-> {
-        if(result.getContents() != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle(result.getContents());
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            }).show();
-        }
-    });
 }
