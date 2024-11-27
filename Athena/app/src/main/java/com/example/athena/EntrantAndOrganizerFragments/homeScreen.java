@@ -48,7 +48,6 @@ public class homeScreen extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
-
         String deviceID = bundle.getString("deviceID");
 
         /// Assigns button used for checking notifications

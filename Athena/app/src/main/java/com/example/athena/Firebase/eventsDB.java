@@ -173,5 +173,19 @@ public class eventsDB {
         db.collection("Events").document(eventID).delete();
     }
 
+    public void removeUser(String deviceID, String eventID){
+
+        db.collection("Events").document(eventID).collection("accepted").document(deviceID).delete();
+        db.collection("Events").document(eventID).collection("declined").document(deviceID).delete();
+        db.collection("Events").document(eventID).collection("invited").document(deviceID).delete();
+        db.collection("Events").document(eventID).collection("UserList").document(deviceID).delete();
+        db.collection("Events").document(eventID).collection("pending").document(deviceID).delete();
+    }
+
+    public void addUser(String deviceID, String eventID){
+        Map<String,Boolean> notif = new HashMap<>();
+        notif.put("notified",Boolean.FALSE);
+        eventsCollection.document(eventID).collection("pending").document(deviceID).set(notif);
+    }
 
 }

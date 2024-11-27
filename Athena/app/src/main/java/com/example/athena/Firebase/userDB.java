@@ -68,6 +68,17 @@ public class  userDB {
         db.collection("Users").document(deviceID).update("facility", facilityID);
     }
 
+    public void leaveEvent(String deviceID, String eventID){
+        db.collection("Users/" + deviceID +"/Events").document(eventID).delete();
+    }
+
+    public void joinEvent(String deviceID,String eventID){
+        Map<String,String> status = new HashMap<>();
+        status.put("status","pending");
+        usersCollection.document(deviceID).collection("Events").document(eventID).set(status);
+    }
+
+
 
     /**
      * updates the users status to invited on the users events sub-collection
