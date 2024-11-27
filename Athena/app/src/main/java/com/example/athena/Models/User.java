@@ -12,8 +12,20 @@ public class User {
     private String name;
     private String email;
     private String phone;
+    private String facility;
     private String imageURL;
     private ArrayList<Event> Events;
+
+    /**
+     * Constructor to initialize the user with basic information: name, email, phone, and image URL.
+     */
+    public User() {
+        this.name = "NULL";
+        this.email = "NULL";
+        this.phone = "NULL";
+        this.imageURL = "NULL";
+        this.facility = "NULL";
+    }
 
     /**
      * Constructor to initialize the user with basic information: name, email, phone, and image URL.
@@ -52,6 +64,24 @@ public class User {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Gets the name of the facility.
+     *
+     * @return The facility's name
+     */
+    public String getFacility() {
+        return facility;
+    }
+
+    /**
+     * Sets the name of the facility.
+     *
+     * @param facility The name of the facility.
+     */
+    public void setFacility(String facility) {
+        this.facility = facility;
     }
 
     /**
@@ -124,5 +154,9 @@ public class User {
      */
     public String getImageURL() {
         return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackground"
-    tools:context=".EntrantAndOrganizerFragments.createEvent">
+    tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
 
     <TextView
         android:id="@+id/UIBox"
@@ -85,6 +85,7 @@
         android:ems="10"
         android:hint="Registration End Date"
         android:inputType="date"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -97,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="448dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Registration Start Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,6 +115,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="324dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Event Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="@+id/UIBox"

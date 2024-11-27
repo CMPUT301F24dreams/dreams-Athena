@@ -20,6 +20,9 @@ public class Event implements Model {
     private String eventDescription;
     private String organizer;
     private String facility;
+    private String eventDate;
+    private String startReg;
+    private String endReg;
     private Integer maxParticipants;
     private Boolean geoRequire;
     private String eventID;
@@ -46,6 +49,9 @@ public class Event implements Model {
         this.eventName = "NULL";
         this.imageURL = "NULL";
         this.eventDescription = "NULL";
+        this.eventDate = "NULL";
+        this.startReg = "NULL";
+        this.endReg = "NULL";
         this.organizer = "NULL";
         this.facility = facility;
         this.maxParticipants = 0;
@@ -227,6 +233,30 @@ public class Event implements Model {
      */
     public String getEventID() {
         return eventID;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getStartReg() {
+        return startReg;
+    }
+
+    public void setStartReg(String startReg) {
+        this.startReg = startReg;
+    }
+
+    public String getEndReg() {
+        return endReg;
+    }
+
+    public void setEndReg(String endReg) {
+        this.endReg = endReg;
     }
 
     public void setImageURL(String imageURL) {

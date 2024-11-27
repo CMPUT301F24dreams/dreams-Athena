@@ -129,7 +129,6 @@ public class facilityDetailsAdmin extends Fragment {
                     }else{
                         Exception e = task.getException();
                     }
-
                 }
             });
 

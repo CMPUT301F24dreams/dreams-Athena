@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.athena.EntrantAndOrganizerFragments.createEvent;
+import com.example.athena.EntrantAndOrganizerFragments.eventCreation.createEvent;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
