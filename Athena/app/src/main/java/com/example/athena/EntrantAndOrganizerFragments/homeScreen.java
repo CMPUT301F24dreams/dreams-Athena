@@ -266,15 +266,22 @@ public class homeScreen extends Fragment {
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result-> {
         if(result.getContents() != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Scan Successful");
-            builder.setPositiveButton("OK", (dialog, which) -> {
-                bundle.putString("eventID", result.getContents().toString());
-                displayChildFragment(new JoinEventDetails(), bundle);
-            });
-            builder.show();
+            Log.d("scanQR", ": " + result.getContents().toString());
+            displayScan(bundle, result.getContents().toString());
+        } else {
+            Log.d("QRScan", "No result");
         }
     });
+
+    private void displayScan(Bundle bundle, String eventID){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Scan Successful");
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            bundle.putString("eventID", eventID);
+            displayChildFragment(new JoinEventDetails(), bundle);
+        });
+        builder.show();
+    }
 
     private void scanCode(Bundle bundle) {
         ScanOptions options = new ScanOptions();
