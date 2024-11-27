@@ -98,6 +98,7 @@ public class eventDetailsAdmin extends Fragment{
 
     }
 
+    //qr code delete
     private void showQrDeleteDialog(ImageView qrCodeView) {
         // Confirm deletion of QR Code
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
