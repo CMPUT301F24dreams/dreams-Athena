@@ -146,7 +146,7 @@ public class eventsDB {
             public void onComplete(@NonNull Task task) {
                 DocumentReference doc = (DocumentReference) task.getResult();
                 String eventID = doc.getId();
-
+                event.setEventID(eventID);
                 UploadTask upload = new imageDB().addImage(eventID, imageURI);
                 Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
 
@@ -236,6 +236,13 @@ public class eventsDB {
         Map<String,Boolean> notif = new HashMap<>();
         notif.put("notified",Boolean.FALSE);
         eventsCollection.document(eventID).collection("pending").document(deviceID).set(notif);
+    }
+
+    public void updateEventQRCode(String eventID, String qrCodeUrl) {
+                db.collection("Events")
+                .document(eventID)
+                .update("qrCode", qrCodeUrl);
+
     }
 
 }

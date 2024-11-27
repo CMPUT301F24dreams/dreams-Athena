@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,6 +36,7 @@ import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.QRCode;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,6 +44,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.UploadTask;
+import com.google.zxing.WriterException;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -107,6 +110,20 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
                             String eventID = (String) task.getResult();
                             Bundle eventIDBundle = new Bundle();
                             eventIDBundle.putString("eventID", eventID);
+
+                            // Generate QR Code
+                            QRCode qrCode = new QRCode();
+                            try {
+                                Bitmap qrBitmap = qrCode.createQR(eventID);
+                                String qrCodeUrl = qrCode.encodeBitmapToBase64(qrBitmap);
+
+                                // Update the event in Firestore with the QR code URL
+                                eventsDB.updateEventQRCode(eventID, qrCodeUrl);
+
+                            } catch (WriterException e) {
+                                e.printStackTrace();
+                            }
+
                             displayChildFragment(new eventDetails(), eventIDBundle);
                         }
                     }

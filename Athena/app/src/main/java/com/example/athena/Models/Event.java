@@ -28,6 +28,7 @@ public class Event implements Model {
     private String eventID;
     private ArrayList<Observer> observers = new ArrayList<>();
     private WaitList waitList;
+    private String qrCode;
 
     public Event() {
         this.eventName = "NULL";
@@ -38,6 +39,7 @@ public class Event implements Model {
         this.maxParticipants = 0;
         this.geoRequire = Boolean.FALSE;
         this.eventID = "NULL";
+        this.qrCode="NULL";
         this.observers = new ArrayList<>();
     }
 
@@ -57,6 +59,7 @@ public class Event implements Model {
         this.maxParticipants = 0;
         this.geoRequire = Boolean.FALSE;
         this.eventID = "NULL";
+        this.qrCode="NULL";
         this.observers = new ArrayList<>();
     }
 
@@ -235,6 +238,10 @@ public class Event implements Model {
         return eventID;
     }
 
+    public String getQRCode() {
+        return qrCode;
+    }
+
     public String getEventDate() {
         return eventDate;
     }
@@ -265,6 +272,10 @@ public class Event implements Model {
 
     public void setEventID(String eventID) {
         this.eventID = eventID;
+    }
+
+    public void setQRCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 
     @Override
