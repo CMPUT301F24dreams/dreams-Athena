@@ -72,6 +72,12 @@ public class  userDB {
         db.collection("Users/" + deviceID +"/Events").document(eventID).delete();
     }
 
+    public void joinEvent(String deviceID,String eventID){
+        Map<String,String> status = new HashMap<>();
+        status.put("status","pending");
+        usersCollection.document(deviceID).collection("Events").document(eventID).set(status);
+    }
+
 
 
     /**
