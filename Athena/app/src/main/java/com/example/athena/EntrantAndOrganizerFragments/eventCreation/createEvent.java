@@ -50,6 +50,7 @@ import java.util.Objects;
 
 public class createEvent extends Fragment implements dateDialog.datePickerListener {
     private Event event;
+    private User user;
     private String userFacility;
 
     dateDialog datePicker;
@@ -76,6 +77,9 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
         assert bundle != null;
         String deviceID = bundle.getString("deviceID");
 
+        user = new User();
+        userDB.loadUserData(user, deviceID);
+
         TextView eventNameText = view.findViewById(R.id.eventName);
         datePicker = dateDialog.newInstance(this);
         eventDateText = view.findViewById(R.id.eventDate);
@@ -92,25 +96,15 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User();
-                userDB.loadUserData(user, deviceID);
-
-
-                //TODO (Roger): whenever you update your logic, update the event creation so that a facility is always initialized from the user database
-                // this is to make sure that events always have the same facilityID as their organizer (one-to-one association)
-                ///Retrieves the facility from the DB rather than having the user input it
-                ///made it this way because every event needs to have the same facilityID as the organizer that owns it
-                ///the user cannot have more than one facility, so once they make one that is the only facility that will be used for all of their events
-
-                Event event = new Event(userFacility);
+                event.setFacility(user.getFacility());
+                event.setOrganizer(deviceID);
 
                 Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
                 eventAddTask.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            DocumentReference doc = (DocumentReference) task.getResult();
-                            String eventID = doc.getId();
+                            String eventID = (String) task.getResult();
                             Bundle eventIDBundle = new Bundle();
                             eventIDBundle.putString("eventID", eventID);
                             displayChildFragment(new eventDetails(), eventIDBundle);
