@@ -6,4 +6,5 @@
     <color name="title_text_color">#256B63</color>
     <color name="drawer_background_color">#90C5BD</color>
     <color name="negative_button_color">#B83246</color>
+    <color name="positive_button_color">#52978B</color>
 </resources>

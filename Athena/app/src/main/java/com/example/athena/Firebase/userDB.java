@@ -27,7 +27,7 @@ import java.util.Map;
  * This class handles database operations for the users collection in Firestore.
  */
 public class  userDB {
-    private FirebaseFirestore db;
+    private static FirebaseFirestore db;
     private CollectionReference usersCollection;
 
     public userDB() {
@@ -42,7 +42,7 @@ public class  userDB {
     }
 
     public void deleteOrgFacility(String deviceID) {
-         db.collection("Users").document(deviceID).update("Facility", FieldValue.delete());
+         db.collection("Users").document(deviceID).update("facility", FieldValue.delete());
 
     }
 
@@ -60,13 +60,24 @@ public class  userDB {
         return usersCollection.get();
     }
 
-    public void updateOrgEvents(String deviceID, String eventID) {
-        db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
+    public static Task updateOrgEvents(String deviceID, String eventID) {
+        return db.collection("Users/" + deviceID + "/OrgEvents").document(eventID).set(new HashMap<>() {});
     }
 
     public void updateOrgFacilities(String deviceID, String facilityID) {
-        db.collection("Users").document(deviceID).update("Facility", facilityID);
+        db.collection("Users").document(deviceID).update("facility", facilityID);
     }
+
+    public void leaveEvent(String deviceID, String eventID){
+        db.collection("Users/" + deviceID +"/Events").document(eventID).delete();
+    }
+
+    public void joinEvent(String deviceID,String eventID){
+        Map<String,String> status = new HashMap<>();
+        status.put("status","pending");
+        usersCollection.document(deviceID).collection("Events").document(eventID).set(status);
+    }
+
 
 
     /**
@@ -129,8 +140,27 @@ public class  userDB {
     }
 
     // Retrieves a specific user by their ID
-    public Task<DocumentSnapshot> getUser(String deviceId) {
-        return usersCollection.document(deviceId).get();
+    public Task<DocumentSnapshot> getUser(String userID) {
+        return usersCollection.document(userID).get();
+    }
+
+    public void loadUserData(User user, String userID) {
+        Task getUserTask = this.getUser(userID);
+        getUserTask.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentSnapshot document = (DocumentSnapshot) task.getResult();
+                if (task.isSuccessful()) {
+                    user.setName(document.getString("name"));
+                    user.setEmail(document.getString("email"));
+                    user.setPhone(document.getString("phone"));
+                    user.setFacility(document.getString("facility"));
+                    user.setImageURL(document.getString("imageURL"));
+                } else {
+                    Exception exception = task.getException();
+                }
+            }
+        });
     }
 
     // Updates an existing user's data

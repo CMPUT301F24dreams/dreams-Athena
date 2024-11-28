@@ -85,12 +85,12 @@
 
     <Button
         android:id="@+id/submitButton"
-        android:backgroundTint="@color/drawer_background_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/positive_button_color"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="@+id/profileName"
         app:layout_constraintEnd_toEndOf="@+id/profileName"

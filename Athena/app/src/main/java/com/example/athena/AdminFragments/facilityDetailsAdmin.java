@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
+import com.example.athena.GeneralActivities.MainActivity;
+import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -91,24 +93,49 @@ public class facilityDetailsAdmin extends Fragment {
     }
 
 
-
+    /**
+     * This method handles the deletion of all facilities
+     */
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("DELETE EVENT?");
+        builder.setTitle("DELETE FACILITY?");
 
         final TextView text = new TextView(requireContext());
-        text.setText("Are you sure you want to delete this facility?");
+        text.setText("\nAre you sure you want to delete this facility?");
         builder.setView(text);
 
-        builder.setPositiveButton("Confirm", (dialog, which) -> {
+        builder.setPositiveButton("YES", (dialog, which) -> {
+
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
+
+            ///deletes all of the events at a given facility
             Task getEvents = eventsDB.getEventsList();
-            //TODO: make sure that when a facility is deleted, so are all of the events at the corresponding facility
+            getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task){
+                    if (task.isSuccessful()) {
+                        for(DocumentSnapshot event: task.getResult().getDocuments()) {
+                            String eventName = event.getId();
+                            if((event.contains("facility"))){
+                                String eventFacility = event.getString("facility");
+                                if (eventFacility.equals(facilityID)) {
+                                    eventsDB.deleteEvent(eventName);
+                                }
+
+                            }
+                        }
+
+                    }else{
+                        Exception e = task.getException();
+                    }
+                }
+            });
+
             displayChildFragment(new adminBrowseFacilities(), bundle);
 
         });
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNeutralButton("CANCEL", (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

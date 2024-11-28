@@ -15,7 +15,9 @@
         android:id="@+id/imageLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:text="Label"
         android:textSize="14sp"
-        android:layout_marginTop="4dp" />
+        android:textStyle="bold" />
 </LinearLayout>

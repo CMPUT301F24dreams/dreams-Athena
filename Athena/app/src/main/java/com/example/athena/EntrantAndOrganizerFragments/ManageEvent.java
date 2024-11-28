@@ -141,12 +141,18 @@ import java.util.Iterator;
         ImageButton viewInvited = view.findViewById(R.id.view_selected_entrants);
         ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
         ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
+        ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayChildFragment(new viewMyOrgEvents());
+            }
+        });
 
         notifyEntrants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ///Change with your own logic, for now it will just go to the page that shows all of the sampling options
-
                 showDialog();
             }
         });
