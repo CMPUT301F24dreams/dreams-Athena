@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -39,10 +40,12 @@ public class eventDetailsAdmin extends Fragment{
         return view;
     }
 
-    public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
+    public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
         TextView eventName = view.findViewById(R.id.eventName);
         ImageView image = view.findViewById(R.id.event_poster);
+        ImageView qrCodeView = view.findViewById(R.id.qrCodeView);
         Button delete = view.findViewById(R.id.deleteEventAdmin);
+        Button deleteQrCodeButton = view.findViewById(R.id.deleteQrCodeButton);
 
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
@@ -59,27 +62,78 @@ public class eventDetailsAdmin extends Fragment{
                     DocumentSnapshot document = (DocumentSnapshot) task.getResult();
                     eventName.setText(document.getString("eventName"));
                     Glide.with(getContext()).load(document.getString("imageURL")).into(image);
+
+                    // QrCode
+                    String qrCode = document.getString("qrCode");
+                    if (qrCode != null && !qrCode.equals("NULL")) {
+                        Glide.with(getContext())
+                                .load(qrCode)
+                                .into(qrCodeView);
+                    } else {
+                        qrCodeView.setImageResource(android.R.color.transparent); // Clear the view
+                        qrCodeView.setContentDescription("No QR code available");
+                    }
                 } else {
                     Exception e = task.getException();
                 }
+
             }
         });
 
+        // Delete event functionality
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDeleteDialog();
-
             }
         });
+
+        deleteQrCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showQrDeleteDialog(qrCodeView);
+            }
+        });
+
+
     }
+
+    //qr code deletion
+    private void showQrDeleteDialog(ImageView qrCodeView) {
+        // Confirm deletion of QR Code
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("DELETE QR CODE?");
+        builder.setMessage("Are you sure you want to delete the QR code? This action cannot be undone.");
+
+        builder.setPositiveButton("Confirm", (dialog, which) -> {
+            // Update the QR Code field in Firestore to an empty string
+            eventsDB.updateEventField(eventID, "qrCode", "").addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Clear the QR code view in the UI
+                        qrCodeView.setImageResource(android.R.color.transparent); // Clear image
+                        qrCodeView.setContentDescription("No QR code available");
+                        Toast.makeText(getContext(), "QR Code deleted successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Exception e = task.getException();
+                        Toast.makeText(getContext(), "Failed to delete QR Code: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        });
+
+        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.show();
+    }
+
 
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("DELETE EVENT?");
 
         final TextView text = new TextView(requireContext());
-        text.setText("are you sure you want to delete this event?");
+        text.setText("Are you sure you want to delete this event?");
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
@@ -87,13 +141,16 @@ public class eventDetailsAdmin extends Fragment{
             eventsDB.deleteEvent(eventID);
             displayChildFragment(new browseAppEvents(), bundle);
         });
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 
+        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
-    public void displayChildFragment(Fragment fragment, Bundle bundle){
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
         fragment.setArguments(bundle);
-        getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment).commit();
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
     }
 }
