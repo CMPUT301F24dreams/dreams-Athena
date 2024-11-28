@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackground"
-    tools:context=".EntrantAndOrganizerFragments.createEvent">
+    tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
 
     <TextView
         android:id="@+id/UIBox"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/drawer_background_color"
+        android:backgroundTint="@color/positive_button_color"
         android:text="Create Event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +66,8 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="336dp"
         android:ems="10"
         android:hint="Description"
         android:inputType="text"
@@ -75,23 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facilityID"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/facilityID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:ems="10"
-        android:hint="Facility"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/createEventButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regDateEnd"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/regDateEnd" />
 
     <EditText
         android:id="@+id/regDateEnd"
@@ -101,6 +85,7 @@
         android:ems="10"
         android:hint="Registration End Date"
         android:inputType="date"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -113,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="448dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Registration Start Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,6 +115,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="324dp"
         android:ems="10"
+        android:focusable="false"
         android:hint="Event Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="@+id/UIBox"
@@ -157,7 +144,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="99dp"
-        android:backgroundTint="@color/drawer_background_color"
+        android:backgroundTint="@color/positive_button_color"
         android:text="Upload Image"
         app:layout_constraintEnd_toEndOf="@+id/UIBox"
         app:layout_constraintStart_toStartOf="@+id/UIBox"

@@ -98,7 +98,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/drawer_background_color"
+        android:backgroundTint="@color/positive_button_color"
         android:text="BACK"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"

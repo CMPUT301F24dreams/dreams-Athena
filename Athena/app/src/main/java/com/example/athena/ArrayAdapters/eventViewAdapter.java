@@ -14,6 +14,14 @@ public class eventViewAdapter implements Observer {
     private TextView eventName;
     private ImageView imageView;
 
+    @Override
+    public void update(Model model) {
+        Event event = (Event) model;
+
+        eventName.setText(event.getEventName());
+        Glide.with(context).load(event.getImageURL()).into(imageView);
+    }
+
     public eventViewAdapter(Context context) {
         this.context = context;
     }
@@ -24,13 +32,5 @@ public class eventViewAdapter implements Observer {
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
-    }
-
-    @Override
-    public void update(Model model) {
-        Event event = (Event) model;
-
-        eventName.setText(event.getEventName());
-        Glide.with(context).load(event.getImageURL()).into(imageView);
     }
 }

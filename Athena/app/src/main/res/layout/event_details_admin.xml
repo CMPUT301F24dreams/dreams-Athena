@@ -5,7 +5,7 @@
     android:id="@+id/registration_start_date_textview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EntrantAndOrganizerFragments.createEvent">
+    tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
 
     <LinearLayout
         android:id="@+id/event_card_layout_org_view"
@@ -103,10 +103,10 @@
                 android:id="@+id/deleteEventAdmin"
                 android:layout_width="329dp"
                 android:layout_height="127dp"
+                android:backgroundTint="@color/positive_button_color"
                 android:text="Delete"
                 android:textAllCaps="true"
                 android:textSize="60sp"
-                android:backgroundTint="@color/drawer_background_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"

@@ -11,16 +11,17 @@
         android:id="@+id/toolbarTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Manage Images"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:background="@color/positive_button_color"
+        android:fontFamily="@font/bai_jamjuree_bold"
         android:gravity="center"
         android:padding="16dp"
-        android:background="?attr/colorPrimary"
+        android:text="Manage Images"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- RecyclerView for displaying images -->
     <androidx.recyclerview.widget.RecyclerView

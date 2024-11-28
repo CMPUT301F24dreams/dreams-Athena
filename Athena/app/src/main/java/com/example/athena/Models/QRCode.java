@@ -6,6 +6,8 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.ByteArrayOutputStream;
+
 /**
  * The {@code QRCode} class provides functionality to generate a QR code bitmap
  * based on an event ID.
@@ -27,12 +29,22 @@ public class QRCode {
      * The QR code is encoded as a bitmap image.
      *
      * @param eventID The ID of the event that will be encoded into the QR code.
+     * @return
      * @throws WriterException If an error occurs during the QR code generation.
      */
-    public void createQR(String eventID) throws WriterException {
+    public Bitmap createQR(String eventID) throws WriterException {
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
         this.bitmap = barcodeEncoder.encodeBitmap(eventID, BarcodeFormat.QR_CODE, 400, 400);
+        return this.bitmap;
     }
+
+    public String encodeBitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return "data:image/png;base64," + android.util.Base64.encodeToString(byteArray, android.util.Base64.DEFAULT);
+    }
+
 
     /**
      * Retrieves the generated QR code bitmap.

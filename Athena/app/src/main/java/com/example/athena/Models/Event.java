@@ -20,11 +20,15 @@ public class Event implements Model {
     private String eventDescription;
     private String organizer;
     private String facility;
+    private String eventDate;
+    private String startReg;
+    private String endReg;
     private Integer maxParticipants;
     private Boolean geoRequire;
     private String eventID;
     private ArrayList<Observer> observers = new ArrayList<>();
     private WaitList waitList;
+    private String qrCode;
 
     public Event() {
         this.eventName = "NULL";
@@ -35,6 +39,27 @@ public class Event implements Model {
         this.maxParticipants = 0;
         this.geoRequire = Boolean.FALSE;
         this.eventID = "NULL";
+        this.qrCode="NULL";
+        this.observers = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with just a facility
+     * @param facility the facilityID
+     */
+    public Event(String facility) {
+        this.eventName = "NULL";
+        this.imageURL = "NULL";
+        this.eventDescription = "NULL";
+        this.eventDate = "NULL";
+        this.startReg = "NULL";
+        this.endReg = "NULL";
+        this.organizer = "NULL";
+        this.facility = facility;
+        this.maxParticipants = 0;
+        this.geoRequire = Boolean.FALSE;
+        this.eventID = "NULL";
+        this.qrCode="NULL";
         this.observers = new ArrayList<>();
     }
 
@@ -213,12 +238,44 @@ public class Event implements Model {
         return eventID;
     }
 
+    public String getQRCode() {
+        return qrCode;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getStartReg() {
+        return startReg;
+    }
+
+    public void setStartReg(String startReg) {
+        this.startReg = startReg;
+    }
+
+    public String getEndReg() {
+        return endReg;
+    }
+
+    public void setEndReg(String endReg) {
+        this.endReg = endReg;
+    }
+
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
 
     public void setEventID(String eventID) {
         this.eventID = eventID;
+    }
+
+    public void setQRCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 
     @Override

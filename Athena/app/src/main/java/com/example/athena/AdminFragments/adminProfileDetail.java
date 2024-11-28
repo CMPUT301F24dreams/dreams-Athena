@@ -17,8 +17,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenAdminBinding;
@@ -26,12 +27,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class adminProfileDetail extends Fragment {
     private String userID;
     public userDB usersDB;
     private User user;
     private Bundle bundle;
+    private String selectedUserFacilityID;
+    private FacilitiesDB facilitiesDB;
+    private eventsDB eventDB;
+    private String deviceID;
     /// Binds the fragment to its elements
     ProfileScreenAdminBinding binding;
 
@@ -67,9 +73,14 @@ public class adminProfileDetail extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
         assert bundle != null;
+        deviceID = bundle.getString("deviceID");
         userID = bundle.getString("userID");
         usersDB = new userDB();
+        facilitiesDB = new FacilitiesDB();
+        eventDB = new eventsDB();
+
         Task getUser = usersDB.getUser(userID);
+
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
             @Override
@@ -77,10 +88,15 @@ public class adminProfileDetail extends Fragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
                     if (userdoc.exists()) {
+                        if (userdoc.contains("facility")) {
+                            selectedUserFacilityID = userdoc.getString("facility");
+                        }
+
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
                         user = new User(name, email, phone, null);
+
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));
@@ -109,6 +125,13 @@ public class adminProfileDetail extends Fragment {
 
     }
 
+
+    /**
+     * Is responsible for all aspects related to deleting a user
+     * deletes the user's profile,
+     * deletes the user's events,
+     * deletes the user's facility.
+     */
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("DELETE PROFILE?");
@@ -118,7 +141,45 @@ public class adminProfileDetail extends Fragment {
         builder.setView(text);
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
+
             usersDB.deleteUser(userID);
+
+            ///ensures that the selected user owns a facility before trying to delete a facility with the given facility ID
+            if(selectedUserFacilityID != null){
+                ///if the user has a facility, their facility will
+                facilitiesDB.deleteFacility(selectedUserFacilityID);
+            }
+
+
+
+            Task getEvents = eventDB.getEventsList();
+
+            ///Deletes all of the user's event
+            getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task){
+                    if (task.isSuccessful()) {
+                        for(DocumentSnapshot event: task.getResult().getDocuments()) {
+                            String eventName = event.getId();
+                            if((event.contains("facility"))){
+                                String eventFacility = event.getString("facility");
+                                if (eventFacility.equals(selectedUserFacilityID)) {
+                                    eventDB.deleteEvent(eventName);
+                                }
+
+                            }
+                        }
+
+                    }else{
+                        Exception e = task.getException();
+                    }
+
+                }
+            });
+
+            ///Delete the user's facility which in turn deletes all of the events they've made:
+            ///TODO: add an on compete listener that confirms the user has been deleted with a toast
+
             displayChildFragment(new adminProfileBrowse(), bundle);
         });
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
