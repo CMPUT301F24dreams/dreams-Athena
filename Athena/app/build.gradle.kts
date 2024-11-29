@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-<<<<<<< HEAD
+
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation("androidx.appcompat:appcompat:1.3.1")
@@ -48,11 +48,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
     implementation("androidx.databinding:viewbinding:4.1.3")
 
-=======
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
->>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
