@@ -126,6 +126,14 @@ public class eventsDB {
         });
     }
 
+    // Used to update a field in the events db
+    public Task<Void> updateEventField(String eventID, String fieldName, Object value) {
+        return FirebaseFirestore.getInstance()
+                .collection("events") // Ensure this matches your Firestore collection name
+                .document(eventID)
+                .update(fieldName, value);
+    }
+
     /**
      * get the sub-collection of users from the event from the database
      * @param eventID the id of the event to grab

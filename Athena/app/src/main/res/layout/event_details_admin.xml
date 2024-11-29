@@ -81,6 +81,16 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/deleteQrCodeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/drawer_background_color"
+            android:text="Delete QR Code"
+            android:textColor="@color/white" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
