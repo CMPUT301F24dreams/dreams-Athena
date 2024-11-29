@@ -5,7 +5,11 @@
     android:id="@+id/registration_start_date_textview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD:Athena/app/src/main/res/layout/event_details_admin.xml
     tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
+=======
+    tools:context=".EntrantAndOrganizerFragments.createEvent">
+>>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75:Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/event_details_admin.xml
 
     <LinearLayout
         android:id="@+id/event_card_layout_org_view"

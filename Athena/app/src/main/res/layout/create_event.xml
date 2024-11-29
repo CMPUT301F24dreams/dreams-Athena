@@ -5,7 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackground"
+<<<<<<< HEAD:Athena/app/src/main/res/layout/create_event.xml
     tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
+=======
+    tools:context=".EntrantAndOrganizerFragments.createEvent">
+>>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75:Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_event.xml
 
     <TextView
         android:id="@+id/UIBox"
@@ -85,7 +89,10 @@
         android:ems="10"
         android:hint="Registration End Date"
         android:inputType="date"
+<<<<<<< HEAD:Athena/app/src/main/res/layout/create_event.xml
         android:focusable="false"
+=======
+>>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75:Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_event.xml
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -98,7 +105,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="448dp"
         android:ems="10"
+<<<<<<< HEAD:Athena/app/src/main/res/layout/create_event.xml
         android:focusable="false"
+=======
+>>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75:Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_event.xml
         android:hint="Registration Start Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +125,10 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="324dp"
         android:ems="10"
+<<<<<<< HEAD:Athena/app/src/main/res/layout/create_event.xml
         android:focusable="false"
+=======
+>>>>>>> 3822371086d7704adfff6079af2cfb4e2fea5d75:Athena/app/build/intermediates/packaged_res/debug/packageDebugResources/layout/create_event.xml
         android:hint="Event Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="@+id/UIBox"
