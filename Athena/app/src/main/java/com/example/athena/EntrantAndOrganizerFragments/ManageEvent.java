@@ -1,16 +1,24 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
@@ -22,6 +30,7 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -100,6 +109,13 @@ import java.util.Iterator;
 
                     String eventName = userEvents.getString("eventName");
                     String imageURL = userEvents.getString("imageURL");
+
+                    ImageView eventPicture = view.findViewById(R.id.EventPicture);
+                    if (imageURL != null && !imageURL.isEmpty()) {
+                        Glide.with(getContext())  // Use the fragment context
+                                .load(imageURL)  // Load the image URL from Firestore
+                                .into(eventPicture);  // Load image into the ImageView
+                    }
                     Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
                     event = currentEvent;
 
@@ -142,6 +158,8 @@ import java.util.Iterator;
         ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
         ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
         ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
+        ImageButton editEventPicture = view.findViewById(R.id.editEventPicture);
+        ImageButton deleteEventPicture = view.findViewById(R.id.deleteEventPicture);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,11 +202,21 @@ import java.util.Iterator;
             }
         });
 
+        deleteEventPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePicture(eventID);
+            }
+        });
+
+        editEventPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
 
     }
-
-
-
 
     public void showDialog() {
         FragmentManager fm = getParentFragmentManager();
@@ -209,6 +237,20 @@ import java.util.Iterator;
 
     @Override
     public void switchToNewFragment(Fragment fragment){
+    }
+
+
+    /**
+     * method to open android os gallery
+     */
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    private void deletePicture(String eventID) {
+        eventDB.deleteEventPicture(eventID);
     }
 
 }

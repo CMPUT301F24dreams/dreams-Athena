@@ -26,6 +26,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.UploadTask;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+
 /**
  * This fragment displays the user's profile, including their name, email, phone, and profile picture.
  * It also provides options to edit the profile, change the profile picture, or navigate to other profile-related sections.
@@ -70,26 +77,38 @@ public class viewProfileFragment extends Fragment {
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
-                    if (userdoc.exists()){
+                    if (userdoc.exists()) {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
                         String imageURL = userdoc.getString("imageURL");
-                        user = new User(name,email,phone, imageURL);
-                    }
+                        user = new User(name, email, phone, imageURL);
 
-                    binding.profileName.setText(String.format("Name: %s", user.getName()));
-                    binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
-                    binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
-                    Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
+                        // Update UI with user details
+                        binding.profileName.setText(String.format("Name: %s", user.getName()));
+                        binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
+                        binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
+
+                        // TODO: vvv WHY DOES IT ONLY WORK AFTER A BUTTON PRESS IM GONNA LOSE IT vvv
+                        // Check if an image URL exists
+                        if (imageURL != null && !imageURL.isEmpty()) {
+                            // Load the image using Glide
+                            Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
+                        } else {
+                            // Generate a default profile picture
+                            Bitmap defaultImage = generateProfilePicture(user.getName());
+                            binding.profileImage.setImageBitmap(defaultImage);
+                        }
+
+                    }
                 } else {
+                    // Handle task failure (e.g., show a toast or log the error)
                     Exception e = task.getException();
                 }
             }
         });
-
         // Navigate back to the main profile screen
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
@@ -145,14 +164,60 @@ public class viewProfileFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             binding.profileImage.setImageURI(imageUri);
+
+            // Upload the new image and save URL to the database
             UploadTask upload = imageDB.addImage(deviceID, imageUri);
             usersDB.saveURLToUser(upload, deviceID);
+        } else if (data == null) {
+            // Handle case where no image was selected
+            Bitmap generatedImage = generateProfilePicture(user.getName());
+            Glide.with(getContext()).load(generatedImage).into(binding.profileImage);
         }
     }
 
     private void deleteProfilePicture() {
         usersDB.resetImage(deviceID);
         imageDB.deleteImage(deviceID);
-        binding.profileImage.setImageResource(0);
+
+        // Generate a default profile picture
+        Bitmap generatedImage = generateProfilePicture(user.getName());
+        Glide.with(getContext()).load(generatedImage).into(binding.profileImage);
+    }
+
+
+    private Bitmap generateProfilePicture(String name) {
+        int size = 200; // size of the square bitmap
+        Bitmap bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+
+        // Draw gray circle
+        Paint circlePaint = new Paint();
+        circlePaint.setColor(Color.GRAY);
+        circlePaint.setAntiAlias(true);
+        canvas.drawCircle(size / 2, size / 2, size / 2, circlePaint);
+
+        // Draw the letter
+        Paint textPaint = new Paint();
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(size / 2);
+        textPaint.setTextAlign(Paint.Align.CENTER);
+        textPaint.setAntiAlias(true);
+
+        String letter = name != null && !name.isEmpty() ? String.valueOf(name.charAt(0)).toUpperCase() : "?";
+        Rect textBounds = new Rect();
+        textPaint.getTextBounds(letter, 0, letter.length(), textBounds);
+        float textX = size / 2;
+        float textY = size / 2 - textBounds.exactCenterY();
+        canvas.drawText(letter, textX, textY, textPaint);
+
+        return bitmap;
+    }
+
+    private void refreshFragment() {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.detach(this);  // Detach the current fragment
+        fragmentTransaction.attach(this);  // Attach it again to refresh
+        fragmentTransaction.commit();
     }
 }

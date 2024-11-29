@@ -245,4 +245,8 @@ public class eventsDB {
 
     }
 
+    public void deleteEventPicture(String eventID) {
+        db.collection("Events").document(eventID).update("imageURL", "");
+    }
+
 }
