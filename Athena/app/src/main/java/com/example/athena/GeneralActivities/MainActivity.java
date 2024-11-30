@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
+                    notificationIntent.putExtra("deviceId", String.valueOf(getDeviceId()));
 
                     startService(notificationIntent);
                 }
