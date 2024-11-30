@@ -59,7 +59,7 @@ public class JoinEventDetails extends Fragment {
     private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Join event?");
-        builder.setMessage("Are you sure you want to join this event?");
+        builder.setMessage("Are you sure you want to join this waitlist?");
 
         // Set up buttons
         builder.setPositiveButton("Confirm", (dialog, which) -> {

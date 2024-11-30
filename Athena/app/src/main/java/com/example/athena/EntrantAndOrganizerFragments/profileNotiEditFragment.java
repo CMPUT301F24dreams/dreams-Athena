@@ -58,7 +58,7 @@ public class profileNotiEditFragment extends Fragment {
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
         usersDB = new userDB();
-        // TODO: Need to add the db stuff
+
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
         loadedUser.addOnCompleteListener(new OnCompleteListener() {
@@ -115,20 +115,12 @@ public class profileNotiEditFragment extends Fragment {
         });
     }
 
-    /**
-     * Method for retrieving the switch state from the database
-     */
-    private boolean getSwitchStateFromDb(String key) {
-        // TODO: Take the switch state from db
-
-        return false; // Default value
-    }
 
     /**
      * Method for saving the switch state to the database
      */
     private void saveSwitchStateToDb(String key, boolean isChecked) {
-        // TODO: Save the switch stuff to db
+
         usersDB.saveNotifSetting(deviceID,key,isChecked);
     }
 }

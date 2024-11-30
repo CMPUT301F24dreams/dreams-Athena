@@ -82,6 +82,17 @@ public class homeScreen extends Fragment {
                             ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
                             browseAppProfiles.setVisibility(ViewGroup.GONE);
                         }
+                    }else{
+                        ///Disable admin privileges if the admin field has not been added for the user
+                        ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+                        viewAppImages.setVisibility(ViewGroup.GONE);
+
+                        ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
+                        browseAppFacilities.setVisibility(ViewGroup.GONE);
+
+                        ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
+                        browseAppProfiles.setVisibility(ViewGroup.GONE);
+
                     }
                 }
             }

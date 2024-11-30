@@ -2,6 +2,7 @@ package com.example.athena.Services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -32,7 +33,6 @@ public class NotificationService extends Service {
     private NotificationView notificationView;
     private NotificationController notificationController;
     private String deviceId;
-
     /**
      * Called at the beginning of the service's lifetime, begins the notification checker loop
      * @param intent - contains data needed by the service
