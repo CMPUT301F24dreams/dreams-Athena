@@ -32,6 +32,7 @@ public class eventDetailsAdmin extends Fragment{
     private String eventID;
     private Bundle bundle;
     private com.example.athena.Firebase.imageDB imageDB;
+    private String isAdmin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,9 +51,23 @@ public class eventDetailsAdmin extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
         eventID = bundle.getString("eventID");
-
         eventsDB = new eventsDB();
         imageDB = new imageDB();
+
+        Toast.makeText(getContext(), "isAdmin is currently set to: " + bundle.get("isAdmin"), Toast.LENGTH_SHORT).show();
+        if(bundle.containsKey("isAdmin")) {
+
+            isAdmin = bundle.getString("isAdmin");
+
+            ///Hide the deletion buttons from non-admin users
+            if (!isAdmin.equals("true")) {
+                delete = view.findViewById(R.id.deleteEventAdmin);
+                deleteQrCodeButton = view.findViewById(R.id.deleteQrCodeButton);
+                delete.setVisibility(View.INVISIBLE);
+                deleteQrCodeButton.setVisibility(View.INVISIBLE);
+
+            }
+        }
 
         Task eventDetails = eventsDB.getEvent(eventID);
         eventDetails.addOnCompleteListener(new OnCompleteListener() {

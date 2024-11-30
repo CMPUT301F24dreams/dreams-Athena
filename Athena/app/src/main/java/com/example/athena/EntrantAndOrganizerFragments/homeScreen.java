@@ -42,15 +42,20 @@ public class homeScreen extends Fragment {
     private String eventID;
     private Bundle bundle;
     private userDB userDB;
-    private String deviceID;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
         super.onCreate(savedInstanceState);
+        return view;
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
-        deviceID = bundle.getString("deviceID");
         userDB = new userDB();
+        String deviceID = bundle.getString("deviceID");
 
         Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
         getUser.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -60,28 +65,31 @@ public class homeScreen extends Fragment {
                     DocumentSnapshot user = (DocumentSnapshot) task.getResult();
 
                     if (user.contains("isAdmin")) {
-                    if (!user.get("isAdmin").equals(true)) {
-                        ///Disable admin privileges
-                        ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
-                        viewAppImages.setVisibility(ViewGroup.GONE);
 
-                        ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
-                        browseAppFacilities.setVisibility(ViewGroup.GONE);
+                        String isAdmin = user.getBoolean("isAdmin").toString();
 
-                        ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
-                        browseAppProfiles.setVisibility(ViewGroup.GONE);
+                        bundle.putString("isAdmin", isAdmin);
+
+
+                        if (!user.get("isAdmin").equals(true)) {
+                            ///Disable admin privileges
+                            ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+                            viewAppImages.setVisibility(ViewGroup.GONE);
+
+                            ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
+                            browseAppFacilities.setVisibility(ViewGroup.GONE);
+
+                            ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
+                            browseAppProfiles.setVisibility(ViewGroup.GONE);
+                        }
                     }
                 }
             }
-            }
         });
-        return view;
-    }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        bundle = getArguments();
-        String deviceID = bundle.getString("deviceID");
+
+        ///Assigns the button to check currently waitlisted events
+        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
         /// Assigns button used for checking notifications
         ImageButton notificationsButton = view.findViewById(R.id.check_updates_button);
@@ -159,6 +167,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "isAdmin is currently set to: " + bundle.get("isAdmin"), Toast.LENGTH_SHORT).show();
                 displayChildFragment(new browseAppEvents(), bundle);
 
             }
@@ -189,7 +198,7 @@ public class homeScreen extends Fragment {
             }
         });
 
-        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
 
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,12 +246,6 @@ public class homeScreen extends Fragment {
             }
         });
 
-//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-//            }
-//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
