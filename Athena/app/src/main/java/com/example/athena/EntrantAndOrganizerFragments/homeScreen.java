@@ -28,6 +28,7 @@ import com.example.athena.AdminFragments.browseAppEvents;
 import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -295,16 +296,16 @@ public class homeScreen extends Fragment {
     }
 
     /**
-     * This method checks the user currently has a facility before they try to create an event or manage a facility
-     * it is invoked whenever the create event or manage event buttons are clicked
-     * it is responsive to changes in the DB as it checks the for the User's facility field in the DB when either of the two buttons
-     * (create event button or manage facility button) are clicked
-     * steps of its logic are as follows:
-     * checks if the user has a facility
-     * if the user does have a facility: it takes the user to the facility details page
-     * if they do not: it informs them that they do not have a facility with a dialogue boxthe dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively)
-     * if they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
-     * else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
+     * This method checks the user currently has a facility before they try to create an event or manage a facility.
+     * It is invoked whenever the create event or manage event buttons are clicked.
+     * It is responsive to changes in the DB as it checks the for the User's facility field in the DB when either of the two buttons,
+     * (create event button or manage facility button) are clicked.
+     * Steps of its logic are as follows:
+     * Checks if the user has a facility.
+     * If the user does have a facility: it takes the user to the facility details page,
+     * If they do not: it informs them that they do not have a facility with a dialogue box the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively).
+     * If they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page.
+     * Else (if they press cancel they will stay on the drawer, and will remain unable to create any events).
      * @param deviceID the string value of the current user's deviceID
      * @param buttonClicked the string value of the button led the user to the invocation of this method
      * @param bundle the bundle containing all relevant information for moving between pages and displaying relevant information
