@@ -54,7 +54,8 @@ public class eventDetailsAdmin extends Fragment{
         eventsDB = new eventsDB();
         imageDB = new imageDB();
 
-        Toast.makeText(getContext(), "isAdmin is currently set to: " + bundle.get("isAdmin"), Toast.LENGTH_SHORT).show();
+
+        ///If the current user is an administrator:
         if(bundle.containsKey("isAdmin")) {
 
             isAdmin = bundle.getString("isAdmin");

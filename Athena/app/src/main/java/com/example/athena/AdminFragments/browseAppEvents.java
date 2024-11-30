@@ -81,7 +81,6 @@ public class browseAppEvents extends Fragment {
                 // TO - DO
                 Event event = (Event) parent.getAdapter().getItem(position);
                 String eventID = event.getEventID();
-                Toast.makeText(getContext(), "isAdmin is currently set to: " + bundle.get("isAdmin"), Toast.LENGTH_SHORT).show();
                bundle.putString("eventID", eventID);
                displayChildFragment(new eventDetailsAdmin(), bundle);
             }
