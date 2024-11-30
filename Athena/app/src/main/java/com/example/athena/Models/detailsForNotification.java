@@ -12,7 +12,7 @@ public class detailsForNotification {
     private userNotifDetails user;
     private String eventName;
     private String eventId;
-    private String notifType;
+    private String status;
 
     /**
      * Constructor to initialize the details of a notification.
@@ -26,8 +26,13 @@ public class detailsForNotification {
         this.user = user;
         this.eventName = eventName;
         this.eventId = eventId;
-        this.notifType = notifType;
+        this.status = notifType;
     }
+
+    /**
+     * Blank constructor
+     */
+    public detailsForNotification() {};
 
     /**
      * Gets the user details associated with the notification.
@@ -66,40 +71,20 @@ public class detailsForNotification {
     }
 
     /**
-     * Gets the unique identifier for the event.
-     *
-     * @return The event ID.
-     */
-    public String getEventId() {
-        return eventId;
-    }
-
-    /**
-     * Sets the event ID for the notification.
-     *
-     * @param eventId The event ID to set.
-     */
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-
-    /**
      * Gets the type of the notification (e.g., email, push).
      *
      * @return The notification type.
      */
-    public String getNotifType() {
-        return notifType;
+    public String getStatus() {
+        return status;
     }
 
     /**
      * Sets the notification type for the notification.
      *
-     * @param notifType The notification type to set.
+     * @param status The notification type to set.
      */
-    public void setNotifType(String notifType) {
-        this.notifType = notifType;
-    }
+    public void setStatus(String status) { this.status = status; }
 
     @Override
     public boolean equals(Object o) {
@@ -109,11 +94,11 @@ public class detailsForNotification {
         return Objects.equals(user, that.user) &&
                 Objects.equals(eventName, that.eventName) &&
                 Objects.equals(eventId, that.eventId) &&
-                Objects.equals(notifType, that.notifType);
+                Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, eventName, eventId, notifType);
+        return Objects.hash(user, eventName, eventId, status);
     }
 }

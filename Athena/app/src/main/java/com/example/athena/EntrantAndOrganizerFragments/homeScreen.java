@@ -28,6 +28,7 @@ import com.example.athena.AdminFragments.browseAppEvents;
 import com.example.athena.AdminFragments.browseAppImages;
 import com.example.athena.R;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -40,6 +41,9 @@ import com.journeyapps.barcodescanner.ScanOptions;
 public class homeScreen extends Fragment {
     private String eventID;
     private Bundle bundle;
+    private userDB userDB;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
@@ -50,7 +54,42 @@ public class homeScreen extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
+        userDB = new userDB();
         String deviceID = bundle.getString("deviceID");
+
+        Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+        getUser.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot user = (DocumentSnapshot) task.getResult();
+
+                    if (user.contains("isAdmin")) {
+
+                        String isAdmin = user.getBoolean("isAdmin").toString();
+
+                        bundle.putString("isAdmin", isAdmin);
+
+
+                        if (!user.get("isAdmin").equals(true)) {
+                            ///Disable admin privileges
+                            ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+                            viewAppImages.setVisibility(ViewGroup.GONE);
+
+                            ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
+                            browseAppFacilities.setVisibility(ViewGroup.GONE);
+
+                            ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
+                            browseAppProfiles.setVisibility(ViewGroup.GONE);
+                        }
+                    }
+                }
+            }
+        });
+
+
+        ///Assigns the button to check currently waitlisted events
+        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
 
         /// Assigns button used for checking notifications
         ImageButton notificationsButton = view.findViewById(R.id.check_updates_button);
@@ -128,6 +167,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "isAdmin is currently set to: " + bundle.get("isAdmin"), Toast.LENGTH_SHORT).show();
                 displayChildFragment(new browseAppEvents(), bundle);
 
             }
@@ -158,7 +198,7 @@ public class homeScreen extends Fragment {
             }
         });
 
-        ImageButton checkCurrentEventsButton = view.findViewById(R.id.check_events_button);
+
 
         checkCurrentEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,12 +246,6 @@ public class homeScreen extends Fragment {
             }
         });
 
-//        CreateEventButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ///WILL SWITCH TO THE DESIGNATED PAGE FOR THE USER'S SPECIFIC ROLE
-//            }
-//        });
 
         moreOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,22 +329,21 @@ public class homeScreen extends Fragment {
     }
 
     /**
-     * This method checks the user currently has a facility before they try to create an event or manage a facility
-     * it is invoked whenever the create event or manage event buttons are clicked
-     * it is responsive to changes in the DB as it checks the for the User's facility field in the DB when either of the two buttons
-     * (create event button or manage facility button) are clicked
-     * steps of its logic are as follows:
-     * checks if the user has a facility
-     * if the user does have a facility: it takes the user to the facility details page
-     * if they do not: it informs them that they do not have a facility with a dialogue boxthe dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively)
-     * if they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page (DONE)
-     * else (if they press cancel they will stay on the drawer, and will remain unable to create any events)
+     * This method checks the user currently has a facility before they try to create an event or manage a facility.
+     * It is invoked whenever the create event or manage event buttons are clicked.
+     * It is responsive to changes in the DB as it checks the for the User's facility field in the DB when either of the two buttons,
+     * (create event button or manage facility button) are clicked.
+     * Steps of its logic are as follows:
+     * Checks if the user has a facility.
+     * If the user does have a facility: it takes the user to the facility details page,
+     * If they do not: it informs them that they do not have a facility with a dialogue box the dialogue box will tell them they do not have any facilities, and will ask them if they want to create one (the buttons say Yes and cancel, respectively).
+     * If they say the user selects yes, then they will be led to the facility creation page, and if they successfully create one, they will be led to the facility details page.
+     * Else (if they press cancel they will stay on the drawer, and will remain unable to create any events).
      * @param deviceID the string value of the current user's deviceID
      * @param buttonClicked the string value of the button led the user to the invocation of this method
      * @param bundle the bundle containing all relevant information for moving between pages and displaying relevant information
      */
     public void checkForFacility(String deviceID, String buttonClicked, Bundle bundle){
-        userDB userDB = new userDB();
 
         Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
         getUser.addOnCompleteListener(task -> {

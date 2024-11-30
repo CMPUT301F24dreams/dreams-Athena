@@ -8,20 +8,20 @@ package com.example.athena.Models;
 public class userNotifDetails {
 
     private String userName;
-    private boolean chosenNotif;
-    private boolean notChosenNotif;
+    private boolean notifyIfChosen;
+    private boolean notifyIfNotChosen;
 
     /**
      * Constructor to initialize the notification preferences for a user.
      *
      * @param userName The name of the user.
-     * @param chosenNotif A flag indicating whether the user has chosen to receive notifications.
-     * @param notChosenNotif A flag indicating whether the user has opted not to receive notifications.
+     * @param notifyIfChosen A flag indicating whether the user has chosen to receive notifications.
+     * @param notifyIfNotChosen A flag indicating whether the user has opted not to receive notifications.
      */
-    public userNotifDetails(String userName, boolean chosenNotif, boolean notChosenNotif) {
+    public userNotifDetails(String userName, boolean notifyIfChosen, boolean notifyIfNotChosen) {
         this.userName = userName;
-        this.chosenNotif = chosenNotif;
-        this.notChosenNotif = notChosenNotif;
+        this.notifyIfChosen = notifyIfChosen;
+        this.notifyIfNotChosen = notifyIfNotChosen;
     }
 
     /**
@@ -53,17 +53,17 @@ public class userNotifDetails {
      *
      * @return True if the user has chosen to receive notifications, false otherwise.
      */
-    public boolean isChosenNotif() {
-        return chosenNotif;
+    public boolean isNotifyIfChosen() {
+        return notifyIfChosen;
     }
 
     /**
      * Sets the flag for whether the user has chosen to receive notifications.
      *
-     * @param chosenNotif True if the user has chosen to receive notifications, false otherwise.
+     * @param notifyIfChosen True if the user has chosen to receive notifications, false otherwise.
      */
-    public void setChosenNotif(boolean chosenNotif) {
-        this.chosenNotif = chosenNotif;
+    public void setNotifyIfChosen(boolean notifyIfChosen) {
+        this.notifyIfChosen = notifyIfChosen;
     }
 
     /**
@@ -71,17 +71,17 @@ public class userNotifDetails {
      *
      * @return True if the user has opted not to receive notifications, false otherwise.
      */
-    public boolean isNotChosenNotif() {
-        return notChosenNotif;
+    public boolean isNotifyIfNotChosen() {
+        return notifyIfNotChosen;
     }
 
     /**
      * Sets the flag for whether the user has opted not to receive notifications.
      *
-     * @param notChosenNotif True if the user has opted not to receive notifications, false otherwise.
+     * @param notifyIfNotChosen True if the user has opted not to receive notifications, false otherwise.
      */
-    public void setNotChosenNotif(boolean notChosenNotif) {
-        this.notChosenNotif = notChosenNotif;
+    public void setNotifyIfNotChosen(boolean notifyIfNotChosen) {
+        this.notifyIfNotChosen = notifyIfNotChosen;
     }
 }
 
