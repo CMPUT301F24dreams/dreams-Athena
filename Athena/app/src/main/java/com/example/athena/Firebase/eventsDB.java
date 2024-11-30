@@ -179,6 +179,7 @@ public class eventsDB {
             db.collection("Events").document(eventID).collection("UserList").document(userID).update("notified",Boolean.FALSE);
         }
     }
+
     /**
      * change the status of the user in the events collection to accepted
      * @param eventID the ID of the event
