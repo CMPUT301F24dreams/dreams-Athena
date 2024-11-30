@@ -41,10 +41,40 @@ import com.journeyapps.barcodescanner.ScanOptions;
 public class homeScreen extends Fragment {
     private String eventID;
     private Bundle bundle;
+    private userDB userDB;
+    private String deviceID;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ent_and_org_home_fragment, container, false);
         super.onCreate(savedInstanceState);
+        bundle = getArguments();
+        deviceID = bundle.getString("deviceID");
+        userDB = new userDB();
+
+        Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
+        getUser.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot user = (DocumentSnapshot) task.getResult();
+
+                    if (user.contains("isAdmin")) {
+                    if (!user.get("isAdmin").equals(true)) {
+                        ///Disable admin privileges
+                        ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
+                        viewAppImages.setVisibility(ViewGroup.GONE);
+
+                        ImageButton browseAppFacilities = view.findViewById(R.id.browse_app_facilities_button);
+                        browseAppFacilities.setVisibility(ViewGroup.GONE);
+
+                        ImageButton browseAppProfiles = view.findViewById(R.id.adminProfileBrowse);
+                        browseAppProfiles.setVisibility(ViewGroup.GONE);
+                    }
+                }
+            }
+            }
+        });
         return view;
     }
 
@@ -311,7 +341,6 @@ public class homeScreen extends Fragment {
      * @param bundle the bundle containing all relevant information for moving between pages and displaying relevant information
      */
     public void checkForFacility(String deviceID, String buttonClicked, Bundle bundle){
-        userDB userDB = new userDB();
 
         Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
         getUser.addOnCompleteListener(task -> {

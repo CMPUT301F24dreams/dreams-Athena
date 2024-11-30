@@ -70,7 +70,7 @@ public class NotificationService extends Service {
      */
     private void startNotificationListener() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String refPath = "Users/" + "0" + "/Events";
+        String refPath = "Users/" + deviceId + "/Events";
         CollectionReference userEventsRef = db.collection(refPath);
 
         userEventsRef.addSnapshotListener((snapshots, exception) -> {
