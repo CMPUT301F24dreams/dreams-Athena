@@ -40,6 +40,7 @@ public class Event implements Model {
         this.geoRequire = Boolean.FALSE;
         this.eventID = "NULL";
         this.qrCode="NULL";
+        this.waitList = new WaitList(this);
         this.observers = new ArrayList<>();
     }
 
@@ -60,6 +61,7 @@ public class Event implements Model {
         this.geoRequire = Boolean.FALSE;
         this.eventID = "NULL";
         this.qrCode="NULL";
+        this.waitList = new WaitList(this);
         this.observers = new ArrayList<>();
     }
 

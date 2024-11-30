@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -189,11 +190,20 @@ public class  userDB {
                     for(String eventID: userEventList){
                         //query for the events where the user is invited
                         Task getEvents = db.collection("Events").document(eventID).get();
-                        getEvents.addOnCompleteListener(new OnCompleteListener() {
+                        Task getInvited = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getPending = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getAccepted = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getDeclined = db.collection("Events").document(eventID).collection("invited").get();
+                        Task gotInfo = Tasks.whenAllComplete(getEvents,getDeclined,getAccepted,getPending,getInvited);
+                        gotInfo.addOnCompleteListener(new OnCompleteListener() {
                             @Override
                             //when found add it to the array adapter
                             public void onComplete(@NonNull Task task) {
-                                DocumentSnapshot document = (DocumentSnapshot) task.getResult();
+                                DocumentSnapshot document = (DocumentSnapshot) getEvents.getResult();
+                                QuerySnapshot invited = (QuerySnapshot) getInvited.getResult();
+                                QuerySnapshot pending = (QuerySnapshot) getPending.getResult();
+                                QuerySnapshot accept = (QuerySnapshot) getAccepted.getResult();
+                                QuerySnapshot decline = (QuerySnapshot) getDeclined.getResult();
                                 if (task.isSuccessful()){
                                     Event event = new Event();
                                     event.setEventName(document.getString("eventName"));
@@ -204,12 +214,38 @@ public class  userDB {
                                     event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
                                     event.setGeoRequire(document.getBoolean("geoRequire"));
                                     event.setEventID(document.getString("eventID"));
+
+
+                                    List<DocumentSnapshot> inviteList = invited.getDocuments();
+                                    for (DocumentSnapshot doc: inviteList) {
+                                        event.getWaitList().addInvited(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> acceptList = accept.getDocuments();
+                                    for (DocumentSnapshot doc: acceptList) {
+                                        event.getWaitList().addAccept(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> declineList = decline.getDocuments();
+                                    for (DocumentSnapshot doc: declineList) {
+                                        event.getWaitList().addDecline(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> pendingList = pending.getDocuments();
+                                    for (DocumentSnapshot doc: pendingList) {
+                                        event.getWaitList().addWaiting(doc.getId(),event.getEventID());
+                                    }
+
                                     list.add(event);
                                     list.notifyDataSetChanged();
+                                } else {
+                                    Exception exception = task.getException();
                                 }
                             }
                         });
                     }
+                } else {
+                    Exception exception = task.getException();
                 }
             }
         });

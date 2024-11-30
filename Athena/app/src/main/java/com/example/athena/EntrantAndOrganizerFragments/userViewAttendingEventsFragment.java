@@ -109,6 +109,7 @@ public class userViewAttendingEventsFragment extends Fragment{
         // Set up buttons
         builder.setPositiveButton("Accept", (dialog, which) -> {
             eventsDB.moveUserID("invited","accepted",deviceID, event.getEventID());
+            event.getWaitList().moveUserFromInvited(deviceID,"accepted");
             userDB.changeEventStatusAccepted(event.getEventID(), deviceID);
             adapter.remove(event);
             adapter.notifyDataSetChanged();
@@ -116,6 +117,7 @@ public class userViewAttendingEventsFragment extends Fragment{
         });
         builder.setNegativeButton("Decline",(dialog, which) ->{
             eventsDB.moveUserID("invited","declined",deviceID, event.getEventID());
+            event.getWaitList().moveUserFromInvited(deviceID,"declined");
             userDB.changeEventStatusDeclined(event.getEventID(), deviceID);
             adapter.remove(event);
             adapter.notifyDataSetChanged();
