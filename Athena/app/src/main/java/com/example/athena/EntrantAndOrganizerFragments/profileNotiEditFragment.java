@@ -67,8 +67,8 @@ public class profileNotiEditFragment extends Fragment {
                 if (task.isSuccessful()){
                     DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
 
-                    binding.chosenNotif.setChecked(user.getBoolean("chosenNotif"));
-                    binding.notChosenNotif.setChecked(user.getBoolean("notChosenNotif"));
+                    binding.notifyIfChosen.setChecked(user.getBoolean("notifyIfChosen"));
+                    binding.notifyIfNotChosen.setChecked(user.getBoolean("notifyIfNotChosen"));
                     binding.geolocationWarn.setChecked(user.getBoolean("geolocationWarn"));
                     binding.notifsFromOthers.setChecked(user.getBoolean("notifsFromOthers"));
 
@@ -81,13 +81,13 @@ public class profileNotiEditFragment extends Fragment {
 
         // Listeners for each switch
         // Chosen notifications
-        binding.chosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            saveSwitchStateToDb("chosenNotif", isChecked);
+        binding.notifyIfChosen.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifyIfChosen", isChecked);
         });
 
         // Not chosen notifications
-        binding.notChosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            saveSwitchStateToDb("notChosenNotif", isChecked);
+        binding.notifyIfNotChosen.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifyIfNotChosen", isChecked);
         });
 
         // Geolocation warning notifcations

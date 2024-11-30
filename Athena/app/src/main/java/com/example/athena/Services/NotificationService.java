@@ -6,11 +6,18 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 
 import com.example.athena.Controllers.NotificationController;
+import com.example.athena.Views.NotificationView;
 import com.example.athena.Models.Notification;
 import com.example.athena.Models.detailsForNotification;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.List;
 
@@ -21,11 +28,10 @@ import androidx.annotation.Nullable;
  * building notifications
  */
 public class NotificationService extends Service {
-    // Service to periodically check the database for new notifications
-    private Handler handler;
-    private String deviceId;
+    // Service to listen for changes in the database
+    private NotificationView notificationView;
     private NotificationController notificationController;
-    private final int Interval = 45000; // 45 seconds
+    private String deviceId;
 
     /**
      * Called at the beginning of the service's lifetime, begins the notification checker loop
@@ -36,14 +42,15 @@ public class NotificationService extends Service {
      */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // Pull deviceId from intent and initialize controller and db
-        String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        // initialize controller, view, and deviceId
+        this.deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        this.notificationView = new NotificationView();
         this.notificationController = new NotificationController(this, deviceId);
 
         // Start the periodic notification checker
-        this.handler = new Handler(Looper.getMainLooper());
-        startNotificationChecker();
+        startNotificationListener();
 
+        // Restarts the service if it is killed at any point
         return START_STICKY;
     }
 
@@ -55,69 +62,67 @@ public class NotificationService extends Service {
 
     @Override
     public void onDestroy() {
-        handler.removeCallbacksAndMessages(null);
         super.onDestroy();
     }
 
     /**
-     * Starts the service loop of checking for notifications and sending them
+     * Starts the service listener checking for notifications and sending them
      */
-    private void startNotificationChecker() {
-        // initial run before handler starts repetition
-        notificationController.getNotificationData(new NotificationController.NotificationDataCallback() {
-            @Override
-            public void onDataRetrieved(List<detailsForNotification> notifDetailList) {
-                for (detailsForNotification details : notifDetailList) {
-                    // check that the user allows notifications of this type
-                    if (notificationController.checkValidNotification(details)) {
-                        // convert notification details into a notification object
-                        Notification notification = notificationController.convertToNotification(details);
+    private void startNotificationListener() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String refPath = "Users/" + "0" + "/Events";
+        CollectionReference userEventsRef = db.collection(refPath);
 
-                        // show the notification object
-                        notificationController.showNotification(NotificationService.this, notification);
+        userEventsRef.addSnapshotListener((snapshots, exception) -> {
+            if (exception != null) {
+                Log.w("notificationListener", "Error in listener", exception);
+                return;
+            }
+            Log.w("notificationListener", "listener is working");
+            if (snapshots != null && !snapshots.isEmpty()) {
+                for (DocumentChange change : snapshots.getDocumentChanges()) {
+                    DocumentSnapshot userEvent = change.getDocument();
+                    Boolean isNotified = userEvent.getBoolean("isNotified");
 
-                        // update notified status in db
-                        notificationController.updateNotifiedStatus(details.getEventId());
+                    if (change.getType() == DocumentChange.Type.MODIFIED && Boolean.FALSE.equals(isNotified)) {
+                        // call notification function
+                        String status = userEvent.getString("status");
+                        String eventId = userEvent.getId();
+                        Log.w("notificationListener", "processing eventId: "+eventId);
+                        handleNotificationEvent(eventId, status, userEvent.getReference());
                     }
+                }
+            }
+        });
+    }
+
+    public void handleNotificationEvent(String eventId, String status, DocumentReference eventRef) {
+        notificationView.getNotificationData(eventId, status, new NotificationView.NotificationDataCallback() {
+            @Override
+            public void onDataRetrieved(detailsForNotification notifDetatils) {
+                boolean valid = notificationController.checkValidNotification(notifDetatils);
+                if (valid) {
+
+                    Notification notification = notificationController.convertToNotification(notifDetatils);
+                    serviceShowNotification(notification);
+
+                    // set isNotified back to true
+                    eventRef.update("isNotified", true)
+                            .addOnSuccessListener(aVoid -> Log.w("notificationListener", "isNotified reset to false"))
+                            .addOnFailureListener(err -> Log.w("notificationListener", "Failed to reset isNotified", err));
+                } else {
+                    Log.w("notificationListener", "invalid notification");
                 }
             }
 
             @Override
             public void onError(Exception e) {
-
+                Log.d("handleNotificationEvent","Error occurred:" + e);
             }
         });
+    }
 
-        this.handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                notificationController.getNotificationData(new NotificationController.NotificationDataCallback() {
-                    @Override
-                    public void onDataRetrieved(List<detailsForNotification> notifDetailList) {
-                        for (detailsForNotification details : notifDetailList) {
-                            // check that the user allows notifications of this type
-                            if (notificationController.checkValidNotification(details)) {
-                                // convert notification details into a notification object
-                                Notification notification = notificationController.convertToNotification(details);
-
-                                // show the notification object
-                                notificationController.showNotification(NotificationService.this, notification);
-
-                                // update notified status in db
-                                notificationController.updateNotifiedStatus(details.getEventId());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-
-                    }
-                });
-
-                // reschedules the task
-                handler.postDelayed(this, Interval);
-            }
-        }, Interval); // initial delay
+    public void serviceShowNotification(Notification notification) {
+        notificationController.showNotification(this, notification);
     }
 }
