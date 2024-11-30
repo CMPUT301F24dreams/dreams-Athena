@@ -28,6 +28,10 @@ public class NotificationView {
     private static final String channelID = "DEFAULT_CHANNEL";
     private String deviceId;
 
+    public NotificationView(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
     public static void createNotificationChannel(Context context) {
         // create the notification channel if build version requires it
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -62,7 +66,7 @@ public class NotificationView {
 
         // Get user details
         Task<DocumentSnapshot> userTask = db.collection("Users")
-                .document("0")
+                .document(this.deviceId)
                 .get();
 
         // Get event details

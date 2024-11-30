@@ -2,6 +2,7 @@ package com.example.athena.Services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -43,9 +44,14 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // initialize controller, view, and deviceId
-        this.deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        this.notificationView = new NotificationView();
-        this.notificationController = new NotificationController(this, deviceId);
+        if (intent != null && intent.hasExtra("deviceId")) {
+            this.deviceId = intent.getStringExtra("deviceId");
+        } else {
+            Log.w("notificationService", "DeviceId could not be retrieved");
+        }
+        Log.w("notificationService", this.deviceId);
+        this.notificationView = new NotificationView(this.deviceId);
+        this.notificationController = new NotificationController(this, this.deviceId);
 
         // Start the periodic notification checker
         startNotificationListener();
@@ -78,7 +84,7 @@ public class NotificationService extends Service {
                 Log.w("notificationListener", "Error in listener", exception);
                 return;
             }
-            Log.w("notificationListener", "listener is working");
+
             if (snapshots != null && !snapshots.isEmpty()) {
                 for (DocumentChange change : snapshots.getDocumentChanges()) {
                     DocumentSnapshot userEvent = change.getDocument();
