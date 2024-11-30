@@ -5,6 +5,7 @@ import com.example.athena.WaitList.WaitList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The {@code Event} class represents an event in the application.
@@ -31,15 +32,19 @@ public class Event implements Model {
     private String qrCode;
 
     public Event() {
-        this.eventName = "NULL";
-        this.imageURL = "NULL";
-        this.eventDescription = "NULL";
-        this.organizer = "NULL";
-        this.facility = "NULL";
+        this.eventName = "";
+        this.imageURL = "";
+        this.eventDescription = "";
+        this.organizer = "";
+        this.facility = "";
         this.maxParticipants = 0;
         this.geoRequire = Boolean.FALSE;
-        this.eventID = "NULL";
-        this.qrCode="NULL";
+        this.eventID = "";
+        this.eventDate = "";
+        this.startReg = "";
+        this.endReg = "";
+        this.eventID = "";
+        this.qrCode="";
         this.waitList = new WaitList(this);
         this.observers = new ArrayList<>();
     }
@@ -121,6 +126,25 @@ public class Event implements Model {
      *
      * @return The waitlist for the event.
      */
+
+    public boolean checkEvent() {
+        if (Objects.equals(this.eventName, "")) {
+            return false;
+        } else if (Objects.equals(this.eventDescription, "")) {
+            return false;
+        } else if (Objects.equals(this.facility, "")) {
+            return false;
+        } else if (Objects.equals(this.maxParticipants, 0)) {
+            return false;
+        } else if ((Objects.equals(this.eventDate, ""))) {
+            return false;
+        } else if ((Objects.equals(this.startReg, ""))) {
+            return false;
+        } else if ((Objects.equals(this.endReg, ""))) {
+            return false;
+        }
+        return true;
+    }
     public WaitList getWaitList() {
         return waitList;
     }
