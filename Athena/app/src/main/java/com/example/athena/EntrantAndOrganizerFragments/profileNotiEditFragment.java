@@ -58,7 +58,7 @@ public class profileNotiEditFragment extends Fragment {
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
         usersDB = new userDB();
-        // TODO: Need to add the db stuff
+
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
         loadedUser.addOnCompleteListener(new OnCompleteListener() {
@@ -67,8 +67,8 @@ public class profileNotiEditFragment extends Fragment {
                 if (task.isSuccessful()){
                     DocumentSnapshot user = (DocumentSnapshot) getUser.getResult();
 
-                    binding.chosenNotif.setChecked(user.getBoolean("chosenNotif"));
-                    binding.notChosenNotif.setChecked(user.getBoolean("notChosenNotif"));
+                    binding.notifyIfChosen.setChecked(user.getBoolean("notifyIfChosen"));
+                    binding.notifyIfNotChosen.setChecked(user.getBoolean("notifyIfNotChosen"));
                     binding.geolocationWarn.setChecked(user.getBoolean("geolocationWarn"));
                     binding.notifsFromOthers.setChecked(user.getBoolean("notifsFromOthers"));
 
@@ -81,13 +81,13 @@ public class profileNotiEditFragment extends Fragment {
 
         // Listeners for each switch
         // Chosen notifications
-        binding.chosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            saveSwitchStateToDb("chosenNotif", isChecked);
+        binding.notifyIfChosen.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifyIfChosen", isChecked);
         });
 
         // Not chosen notifications
-        binding.notChosenNotif.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            saveSwitchStateToDb("notChosenNotif", isChecked);
+        binding.notifyIfNotChosen.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveSwitchStateToDb("notifyIfNotChosen", isChecked);
         });
 
         // Geolocation warning notifcations
@@ -115,20 +115,12 @@ public class profileNotiEditFragment extends Fragment {
         });
     }
 
-    /**
-     * Method for retrieving the switch state from the database
-     */
-    private boolean getSwitchStateFromDb(String key) {
-        // TODO: Take the switch state from db
-
-        return false; // Default value
-    }
 
     /**
      * Method for saving the switch state to the database
      */
     private void saveSwitchStateToDb(String key, boolean isChecked) {
-        // TODO: Save the switch stuff to db
+
         usersDB.saveNotifSetting(deviceID,key,isChecked);
     }
 }

@@ -102,6 +102,29 @@ public class WaitList{
 
     }
 
+    public void addInvited(String userID, String eventID) {
+
+        this.invited.add(userID);
+
+
+    }
+
+    public void addAccept(String userID, String eventID) {
+
+        this.accepted.add(userID);
+
+
+    }
+
+    public void addDecline(String userID, String eventID) {
+
+        this.declined.add(userID);
+
+
+    }
+
+
+
     /**
      * remove a user from the waiting list
      * @param userID the deviceID/userID of the user to be added

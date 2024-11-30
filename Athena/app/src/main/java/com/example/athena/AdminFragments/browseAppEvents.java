@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.athena.ArrayAdapters.eventArrayAdapter;
 import com.example.athena.Firebase.eventsDB;
@@ -80,10 +81,8 @@ public class browseAppEvents extends Fragment {
                 // TO - DO
                 Event event = (Event) parent.getAdapter().getItem(position);
                 String eventID = event.getEventID();
-
-                Bundle eventDetails = new Bundle();
-                eventDetails.putString("eventID", eventID);
-                displayChildFragment(new eventDetailsAdmin(), eventDetails);
+               bundle.putString("eventID", eventID);
+               displayChildFragment(new eventDetailsAdmin(), bundle);
             }
         });
 

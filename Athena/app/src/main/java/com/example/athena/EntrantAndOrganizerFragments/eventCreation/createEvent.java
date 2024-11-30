@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -59,7 +60,7 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
     private TextView regStartText;
     private TextView regEndText;
 
-    Uri imageURI = null;
+    Uri imageURI;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,23 +101,18 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
                 event.setFacility(user.getFacility());
                 event.setOrganizer(deviceID);
 
-                boolean checkEvent = event.checkEvent();
-                boolean checkURI = (imageURI == null);
-
-                if (checkEvent & checkURI) {
-                    Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
-                    eventAddTask.addOnCompleteListener(new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (task.isSuccessful()) {
-                                String eventID = (String) task.getResult();
-                                Bundle eventIDBundle = new Bundle();
-                                eventIDBundle.putString("eventID", eventID);
-                                displayChildFragment(new eventDetails(), eventIDBundle);
-                            }
+                Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
+                eventAddTask.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            String eventID = (String) task.getResult();
+                            Bundle eventIDBundle = new Bundle();
+                            eventIDBundle.putString("eventID", eventID);
+                            displayChildFragment(new eventDetails(), eventIDBundle);
                         }
-                    });
-                }
+                    }
+                });
             }
         });
 

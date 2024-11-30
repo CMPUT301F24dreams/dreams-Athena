@@ -4,24 +4,31 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
+import com.example.athena.WaitList.UserInviteArrayAdapter;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class handles database operations for the users collection in Firestore.
@@ -156,6 +163,87 @@ public class  userDB {
                     user.setPhone(document.getString("phone"));
                     user.setFacility(document.getString("facility"));
                     user.setImageURL(document.getString("imageURL"));
+                } else {
+                    Exception exception = task.getException();
+                }
+            }
+        });
+    }
+
+    public void getUserInvitedEvents(String deviceID, UserInviteArrayAdapter list){
+        //query for the users Events
+        Task getInvited = this.getUserEvents(deviceID);
+        getInvited.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                List<String> userEventList = new ArrayList<>();
+
+                QuerySnapshot userEvents = (QuerySnapshot) task.getResult();
+                // when the query is finished add only the event where the user is invited
+                if(task.isSuccessful()){
+                    for (DocumentSnapshot event: userEvents.getDocuments()) {
+                        if(event.getString("status").equals("invited")){
+                            userEventList.add(event.getId());
+                        }
+                    }
+
+                    for(String eventID: userEventList){
+                        //query for the events where the user is invited
+                        Task getEvents = db.collection("Events").document(eventID).get();
+                        Task getInvited = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getPending = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getAccepted = db.collection("Events").document(eventID).collection("invited").get();
+                        Task getDeclined = db.collection("Events").document(eventID).collection("invited").get();
+                        Task gotInfo = Tasks.whenAllComplete(getEvents,getDeclined,getAccepted,getPending,getInvited);
+                        gotInfo.addOnCompleteListener(new OnCompleteListener() {
+                            @Override
+                            //when found add it to the array adapter
+                            public void onComplete(@NonNull Task task) {
+                                DocumentSnapshot document = (DocumentSnapshot) getEvents.getResult();
+                                QuerySnapshot invited = (QuerySnapshot) getInvited.getResult();
+                                QuerySnapshot pending = (QuerySnapshot) getPending.getResult();
+                                QuerySnapshot accept = (QuerySnapshot) getAccepted.getResult();
+                                QuerySnapshot decline = (QuerySnapshot) getDeclined.getResult();
+                                if (task.isSuccessful()){
+                                    Event event = new Event();
+                                    event.setEventName(document.getString("eventName"));
+                                    event.setImageURL(document.getString("imageURL"));
+                                    event.setEventDescription(document.getString("eventDescription"));
+                                    event.setOrganizer(document.getString("organizer"));
+                                    event.setFacility(document.getString("Facility"));
+                                    event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
+                                    event.setGeoRequire(document.getBoolean("geoRequire"));
+                                    event.setEventID(document.getString("eventID"));
+
+
+                                    List<DocumentSnapshot> inviteList = invited.getDocuments();
+                                    for (DocumentSnapshot doc: inviteList) {
+                                        event.getWaitList().addInvited(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> acceptList = accept.getDocuments();
+                                    for (DocumentSnapshot doc: acceptList) {
+                                        event.getWaitList().addAccept(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> declineList = decline.getDocuments();
+                                    for (DocumentSnapshot doc: declineList) {
+                                        event.getWaitList().addDecline(doc.getId(),event.getEventID());
+                                    }
+
+                                    List<DocumentSnapshot> pendingList = pending.getDocuments();
+                                    for (DocumentSnapshot doc: pendingList) {
+                                        event.getWaitList().addWaiting(doc.getId(),event.getEventID());
+                                    }
+
+                                    list.add(event);
+                                    list.notifyDataSetChanged();
+                                } else {
+                                    Exception exception = task.getException();
+                                }
+                            }
+                        });
+                    }
                 } else {
                     Exception exception = task.getException();
                 }

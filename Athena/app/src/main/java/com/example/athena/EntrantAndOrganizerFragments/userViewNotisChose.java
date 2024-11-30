@@ -15,6 +15,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.athena.Models.Event;
 import com.example.athena.R;
+/// Deprecated no longer used
+
 /**
  * DialogFragment that prompts the user to accept or decline an event invitation.
  * It communicates with the calling fragment to handle the user's response.

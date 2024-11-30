@@ -101,7 +101,7 @@ public class eventsDB {
                         event.setEventDescription(document.getString("eventDescription"));
                         event.setOrganizer(document.getString("organizer"));
                         event.setFacility(document.getString("Facility"));
-                        event.setMaxParticipants(Integer.parseInt(document.getString("maxParticipants")));
+                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));;
                         event.setGeoRequire(document.getBoolean("geoRequire"));
                         event.setEventID(document.getString("eventID"));
 
@@ -126,6 +126,14 @@ public class eventsDB {
         });
     }
 
+    // Used to update a field in the events db
+    public Task<Void> updateEventField(String eventID, String fieldName, Object value) {
+        return FirebaseFirestore.getInstance()
+                .collection("events") // Ensure this matches your Firestore collection name
+                .document(eventID)
+                .update(fieldName, value);
+    }
+
     /**
      * get the sub-collection of users from the event from the database
      * @param eventID the id of the event to grab
@@ -146,7 +154,7 @@ public class eventsDB {
             public void onComplete(@NonNull Task task) {
                 DocumentReference doc = (DocumentReference) task.getResult();
                 String eventID = doc.getId();
-
+                event.setEventID(eventID);
                 UploadTask upload = new imageDB().addImage(eventID, imageURI);
                 Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
 
@@ -220,6 +228,29 @@ public class eventsDB {
     }
 
     public void deleteEvent(String eventID){
+
+        Task getUserList = eventsCollection.document(eventID).collection("UserList").get();
+        getUserList.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                QuerySnapshot docs = (QuerySnapshot) task.getResult();
+                for (DocumentSnapshot doc: docs.getDocuments()
+                     ) {
+                     db.collection("Users").document(doc.getId()).collection("Events").document(eventID).delete();
+                }
+            }
+        });
+        Task getOrg = eventsCollection.document(eventID).get();
+        getUserList.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentSnapshot doc = (DocumentSnapshot) task.getResult();
+                if(task.isSuccessful()){
+                    db.collection("User").document(doc.getString("organizer")).collection("OrgEvents").document(eventID).delete();
+                }
+            }
+        });
+
         db.collection("Events").document(eventID).delete();
     }
 
@@ -236,6 +267,14 @@ public class eventsDB {
         Map<String,Boolean> notif = new HashMap<>();
         notif.put("notified",Boolean.FALSE);
         eventsCollection.document(eventID).collection("pending").document(deviceID).set(notif);
+        eventsCollection.document(eventID).collection("UserList").document(deviceID).set(notif);
+    }
+
+    public void updateEventQRCode(String eventID, String qrCodeUrl) {
+                db.collection("Events")
+                .document(eventID)
+                .update("qrCode", qrCodeUrl);
+
     }
 
 }
