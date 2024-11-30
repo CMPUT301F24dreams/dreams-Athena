@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,10 +19,15 @@ import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class JoinEventDetails extends Fragment {
     private eventsDB EventsDB = new eventsDB();
     private userDB UserDB = new userDB();
+    private boolean eventHasGeolocation;
+    private boolean warnAboutGeolocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class JoinEventDetails extends Fragment {
         Bundle bundle = getArguments();
         String eventID = bundle.getString("eventID");
         String deviceID = bundle.getString("deviceID");
+        warnAboutGeolocation = bundle.getBoolean("geolocationWarn");
         eventViewAdapter fragment = new eventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
         fragment.setImageView(view.findViewById(R.id.event_poster));
@@ -57,19 +64,68 @@ public class JoinEventDetails extends Fragment {
 
     // Code to display a dialog
     private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Join event?");
-        builder.setMessage("Are you sure you want to join this waitlist?");
 
-        // Set up buttons
-        builder.setPositiveButton("Confirm", (dialog, which) -> {
-            EventsDB.addUser(deviceID,eventID);
-            UserDB.joinEvent(deviceID,eventID);
-            displayChildFragment(new myEventsList(),bundle);
-        });
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 
-        builder.show();
+
+        Task getUserGeoWarnStatus = UserDB.getUser(deviceID);
+        getUserGeoWarnStatus.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+
+            ///This segment of code is responsible for fetching the user's current geolocation warning status
+            ///When it completes the task, it gets the event details and checks if the event requires geolocation.
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot user = (DocumentSnapshot) task.getResult();
+                    if (user.contains("geolocationWarn")) {
+                        warnAboutGeolocation = user.getBoolean("geolocationWarn");
+                            Toast.makeText(getContext(),"Your current geolocation warning status is: " + user.getBoolean("geolocationWarn").toString(), Toast.LENGTH_SHORT).show();
+                        }else{
+                        Toast.makeText(getContext(),"Error Fetching Documents: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    ///After getting the user's geolocation warning status, this task checks the event's geolocation requirement
+                    ///If the user currently has the geolocation warning set to true AND the event requires geolocation, they will be notified before they join the waitlist
+                    ///Otherwise they will simply asked to confirm that they want to join the waitlist
+
+                    Task getEventDetails = EventsDB.getEvent(eventID);
+                    getEventDetails.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            DocumentSnapshot event = (DocumentSnapshot) task.getResult();
+                            if (event.get("geoRequire").equals(true)) {
+                                eventHasGeolocation = true;
+
+                                ///create the alert dialog
+                                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                                ///inform the user that the event has geolocation before they join the waitlist
+                                if (eventHasGeolocation & warnAboutGeolocation) {
+                                    builder.setTitle("Join Waitlist?");
+                                    builder.setMessage("\n\nWARNING: THE FOLLOWING EVENT USES GEOLOCATION\n\nAre you sure you want to join this waitlist?");
+                                } else {
+                                    builder.setTitle("Join Waitlist?");
+                                    builder.setMessage("Are you sure you want to join this waitlist?");
+                                }
+
+                                // Set up buttons
+                                builder.setPositiveButton("Confirm", (dialog, which) -> {
+                                    EventsDB.addUser(deviceID,eventID);
+                                    UserDB.joinEvent(deviceID,eventID);
+                                    displayChildFragment(new myEventsList(),bundle);
+                                });
+                                builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+
+                                builder.show();
+                            }
+                        }
+                    });
+
+
+                }
+            }
+            });
+
+
     }
 
     public void displayChildFragment(Fragment fragment, Bundle bundle){

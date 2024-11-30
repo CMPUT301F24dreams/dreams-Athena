@@ -64,12 +64,17 @@ public class homeScreen extends Fragment {
                 if(task.isSuccessful()) {
                     DocumentSnapshot user = (DocumentSnapshot) task.getResult();
 
+                    ///checks if the user has the admin field, adds their admin status to the bundle if they do
                     if (user.contains("isAdmin")) {
 
                         String isAdmin = user.getBoolean("isAdmin").toString();
 
                         bundle.putString("isAdmin", isAdmin);
 
+                        if(user.contains("geolocationWarn")) {
+                            bundle.putBoolean("geolocationWarn", user.getBoolean("geolocationWarn"));
+                            Toast.makeText(getContext(),"Your current geolocation warning status is: " + user.getBoolean("geolocationWarn").toString(), Toast.LENGTH_SHORT).show();
+                        }
 
                         if (!user.get("isAdmin").equals(true)) {
                             ///Disable admin privileges
