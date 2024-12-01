@@ -11,9 +11,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.userArrayAdapter;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.ArrayAdapters.UserArrayAdapter;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +31,8 @@ import java.util.Iterator;
  * */
 public class ProfileBrowseOrg extends Fragment {
     private String deviceID;
-    public userDB userDB;
-    public eventsDB eventsDB;
+    public UserDB userDB;
+    public EventsDB eventsDB;
     private ArrayList<User> users;
     private ListView listView;
     private ArrayList<String> usersID;
@@ -55,10 +55,10 @@ public class ProfileBrowseOrg extends Fragment {
         this.deviceID = bundle.getString("deviceID");
         eventID = bundle.getString("eventID");
         status = bundle.getString("status");
-        userDB = new userDB();
+        userDB = new UserDB();
         users = new ArrayList<>();
         usersID = new ArrayList<>();
-        eventsDB = new eventsDB();
+        eventsDB = new EventsDB();
 
         listView = view.findViewById(R.id.myEventList);
 
@@ -69,7 +69,7 @@ public class ProfileBrowseOrg extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    userArrayAdapter userAdapter = new userArrayAdapter(getContext(), users);
+                    UserArrayAdapter userAdapter = new UserArrayAdapter(getContext(), users);
                     listView.setAdapter(userAdapter);
                     ArrayList<String> listOfUsersID = new ArrayList<>();
                     QuerySnapshot userList = (QuerySnapshot) getUserEventList.getResult();

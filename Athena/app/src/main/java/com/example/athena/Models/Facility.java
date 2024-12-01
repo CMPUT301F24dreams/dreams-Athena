@@ -12,6 +12,11 @@ public class Facility {
     private String location;
     private String organizer;
     private String facilityID;
+
+    public Facility(){
+
+    }
+
     /**
      *This is a constructor used to create a facility
      *
@@ -42,8 +47,12 @@ public class Facility {
     /**
      * setter for the facility organizer
      */
-    public void setOrganizer(String organizer){
-        this.organizer = organizer;
+    public void setOrganizer(String organizer) {
+        if (organizer == null || !(organizer instanceof String) || organizer.isEmpty()) {
+            throw new IllegalArgumentException("Value must be a non-null, non-empty string");
+        } else {
+            this.organizer = organizer;
+        }
     }
     /**
      * getter for the facility name
@@ -56,7 +65,11 @@ public class Facility {
      * setter for the facility organizer
      */
     public void setFacilityName(String facilityName){
-        this.name = facilityName;
+        if (facilityName == null || facilityName.isEmpty()) {
+            throw new IllegalArgumentException("Value must be a non-null, non-empty string");
+        }else {
+            this.name = facilityName;
+        }
     }
     /**
      * getter for the facility location
@@ -69,7 +82,12 @@ public class Facility {
      * setter for the facility location
      */
     public void setFacilityLocation(String location){
-        this.location = location;
+        if (location == null || location.isEmpty() || !(location instanceof String))  {
+            throw new IllegalArgumentException("Value must be a non-null, non-empty string");
+        }else {
+            this.location = location;
+        }
+
     }
 
     /**
@@ -78,6 +96,16 @@ public class Facility {
      */
     public String getFacilityID(){
         return facilityID;
+    }
+    /**
+     * setter for the facility ID
+     */
+    public void setFacilityID(String facilityID){
+        if (facilityID == null || facilityID.isEmpty())  {
+            throw new IllegalArgumentException("Value must be a non-null, non-empty string");
+        }else {
+            this.facilityID = facilityID;
+        }
     }
 
 
