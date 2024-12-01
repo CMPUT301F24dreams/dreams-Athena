@@ -49,7 +49,7 @@ public class NotificationService extends Service {
         } else {
             Log.w("notificationService", "DeviceId could not be retrieved");
         }
-        Log.w("notificationService", this.deviceId);
+//        Log.w("notificationService", this.deviceId);
         this.notificationView = new NotificationView(this.deviceId);
         this.notificationController = new NotificationController(this, this.deviceId);
 

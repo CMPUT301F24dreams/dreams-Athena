@@ -100,10 +100,11 @@ public class EventsDB {
                         event.setEventDescription(document.getString("eventDescription"));
                         event.setOrganizer(document.getString("organizer"));
                         event.setFacility(document.getString("Facility"));
-                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));;
+                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
                         event.setGeoRequire(document.getBoolean("geoRequire"));
                         event.setEventID(document.getString("eventID"));
-
+                        event.setStartReg(document.getString("startReg"));
+                        event.setEndReg(document.getString("endReg"));
                         event.notifyObservers();
 
                     } else {

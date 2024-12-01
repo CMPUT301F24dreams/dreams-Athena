@@ -111,23 +111,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/qrCodeView"
-                android:layout_width="match_parent"
-                android:layout_height="152dp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp" />
-
             <Button
                 android:id="@+id/leaveBtn"
                 android:layout_width="192dp"
                 android:layout_height="76dp"
-                android:layout_marginTop="10dp"
                 android:text="Leave waitlist"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/qrCodeView" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

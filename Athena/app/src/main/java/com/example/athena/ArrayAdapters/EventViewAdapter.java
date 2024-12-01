@@ -16,7 +16,6 @@ public class EventViewAdapter implements Observer {
     private ImageView imageView;
     private TextView regStart;
     private TextView regEnd;
-    private TextView eventDesc;
 
     @Override
     public void update(Model model) {
@@ -31,10 +30,6 @@ public class EventViewAdapter implements Observer {
 
     public EventViewAdapter(Context context) {
         this.context = context;
-    }
-
-    public void setEventDesc(TextView eventDesc){
-        this.eventDesc = eventDesc;
     }
 
     public void setEventName(TextView eventName) {
