@@ -37,7 +37,7 @@ public class facilityDetailsAdmin extends Fragment {
     private String deviceID;
     private String facilityID;
     private Bundle bundle;
-
+    private boolean isAdmin;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.facility_details_admin, container, false);
@@ -56,6 +56,7 @@ public class facilityDetailsAdmin extends Fragment {
         assert bundle!= null;
         deviceID = bundle.getString("deviceID");
         facilityID = bundle.getString("facilityID");
+        isAdmin = bundle.getBoolean("isAdmin");
         facilitiesDB = new FacilitiesDB();
         usersDB = new userDB();
         eventsDB = new eventsDB();

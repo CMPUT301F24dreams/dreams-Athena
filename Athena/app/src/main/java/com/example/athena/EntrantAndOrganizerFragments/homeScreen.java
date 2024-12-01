@@ -71,11 +71,6 @@ public class homeScreen extends Fragment {
 
                         bundle.putString("isAdmin", isAdmin);
 
-                        if(user.contains("geolocationWarn")) {
-                            bundle.putBoolean("geolocationWarn", user.getBoolean("geolocationWarn"));
-                            Toast.makeText(getContext(),"Your current geolocation warning status is: " + user.getBoolean("geolocationWarn").toString(), Toast.LENGTH_SHORT).show();
-                        }
-
                         if (!user.get("isAdmin").equals(true)) {
                             ///Disable admin privileges
                             ImageButton viewAppImages = view.findViewById(R.id.adminImageBrowse);
