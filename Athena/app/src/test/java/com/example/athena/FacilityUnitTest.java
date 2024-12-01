@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import com.example.athena.Models.Facility;
 
 
-public class FacilityTest {
+public class FacilityUnitTest {
     @Test
     public void testGetters() {
         String expectedOrgName = "New Organizer";
