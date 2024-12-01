@@ -245,8 +245,30 @@ public class eventsDB {
 
     }
 
+    // Update event image URL
+    public Task<Void> updateEventImageURL(String eventID, String imageURL) {
+        return eventsCollection.document(eventID).update("imageURL", imageURL);
+    }
+
+
     public void deleteEventPicture(String eventID) {
         db.collection("Events").document(eventID).update("imageURL", "");
     }
 
+    // Upload image to Firebase Storage
+    public Task<String> uploadEventImage(String eventID, Uri imageURI) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference imageRef = storage.getReference().child("images/" + eventID);
+        UploadTask uploadTask = imageRef.putFile(imageURI);
+
+        return uploadTask.continueWithTask(task -> {
+            if (!task.isSuccessful()) {
+                throw task.getException();
+            }
+            return imageRef.getDownloadUrl();
+        }).continueWithTask(task -> {
+            String imageUrl = task.getResult().toString();
+            return updateEventImageURL(eventID, imageUrl).continueWithTask(updateTask -> Tasks.forResult(imageUrl));
+        });
+    }
 }

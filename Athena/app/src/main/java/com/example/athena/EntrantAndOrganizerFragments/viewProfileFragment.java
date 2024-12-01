@@ -46,7 +46,6 @@ public class viewProfileFragment extends Fragment {
     private User user;
     public ProfileScreenBinding binding;
 
-
     public viewProfileFragment() {
         // Required empty public constructor
     }
@@ -54,7 +53,6 @@ public class viewProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Initialize the binding object
         binding = ProfileScreenBinding.inflate(inflater, container, false);
@@ -76,6 +74,7 @@ public class viewProfileFragment extends Fragment {
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
             @Override
+
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot userdoc = (DocumentSnapshot) getUser.getResult();
@@ -183,7 +182,6 @@ public class viewProfileFragment extends Fragment {
         Bitmap generatedImage = generateProfilePicture(user.getName());
         Glide.with(getContext()).load(generatedImage).into(binding.profileImage);
     }
-
 
     private Bitmap generateProfilePicture(String name) {
         int size = 200; // size of the square bitmap
