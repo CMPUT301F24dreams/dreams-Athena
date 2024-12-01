@@ -150,7 +150,7 @@ public class Event implements Model {
 
     @SuppressLint("NewApi")
     public boolean checkDate(String eventDate, String regStart, String regEnd) {
-        @SuppressLint({"NewApi", "LocalSuppress"}) DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/y", Locale.CANADA);
+        @SuppressLint({"NewApi", "LocalSuppress"}) DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/d/y", Locale.CANADA);
         @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate event = LocalDate.parse(eventDate, formatter);
         @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate start = LocalDate.parse(regStart, formatter);
         @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate end = LocalDate.parse(regEnd, formatter);
