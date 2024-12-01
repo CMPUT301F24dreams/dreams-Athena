@@ -9,7 +9,7 @@ public class EventsUnitTest {
     @Test
     public void eventCheckTest() {
         Event event = new Event();
-        this.loadMockEvent(event);
+        loadMockEvent(event);
         Assertions.assertTrue(event.checkEvent());
 
         this.loadMockEvent(event);
@@ -45,6 +45,35 @@ public class EventsUnitTest {
         this.loadMockEvent(event);
         Assertions.assertTrue(event.checkEvent());
         event.setEndReg("");
+        Assertions.assertFalse(event.checkEvent());
+    }
+
+    @Test
+    public void dateCheckTest() {
+        Event event = new Event();
+
+        this.loadMockEvent(event);
+        Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
+
+        this.loadMockEvent(event);
+        Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
+        event.setEventDate("11/23/24");
+        event.setStartReg("11/24/24");
+        event.setEndReg("11/25/24");
+        Assertions.assertFalse(event.checkEvent());
+
+        this.loadMockEvent(event);
+        Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
+        event.setEventDate("11/24/24");
+        event.setStartReg("11/23/24");
+        event.setEndReg("11/25/24");
+        Assertions.assertFalse(event.checkEvent());
+
+        this.loadMockEvent(event);
+        Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
+        event.setEventDate("11/31/24");
+        event.setStartReg("11/26/24");
+        event.setEndReg("11/25/24");
         Assertions.assertFalse(event.checkEvent());
     }
 
