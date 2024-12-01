@@ -36,11 +36,13 @@ public class FacilitiesArrayAdapter extends ArrayAdapter<Facility> {
         TextView facilityName = view.findViewById(R.id.facility_name_in_list);
         TextView facilityLocation = view.findViewById(R.id.facility_location_in_list);
         TextView facilityOrganizer = view.findViewById(R.id.organizer_id_in_list);
+        TextView facilityID = view.findViewById(R.id.facility_id_in_list);
 
         assert facility != null;
         facilityName.setText(facility.getFacilityName());
         facilityLocation.setText(facility.getFacilityLocation());
         facilityOrganizer.setText(facility.getOrganizer());
+        facilityID.setText(facility.getFacilityID());
 
         return view;
     }

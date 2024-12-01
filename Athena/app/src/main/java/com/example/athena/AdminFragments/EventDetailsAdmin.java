@@ -45,7 +45,12 @@ public class EventDetailsAdmin extends Fragment{
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
         TextView eventName = view.findViewById(R.id.eventName);
         ImageView image = view.findViewById(R.id.event_poster);
+
+        TextView eventRegStart = view.findViewById(R.id.regStartAdmin);
+        TextView eventRegEnd = view.findViewById(R.id.regEndAdmin);
+
         ImageView qrCodeView = view.findViewById(R.id.qrCodeView);
+        TextView eventDescription = view.findViewById(R.id.event_details_event_desc);
         Button delete = view.findViewById(R.id.deleteEventAdmin);
         Button deleteQrCodeButton = view.findViewById(R.id.deleteQrCodeButton);
 
@@ -78,6 +83,10 @@ public class EventDetailsAdmin extends Fragment{
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = (DocumentSnapshot) task.getResult();
                     eventName.setText(document.getString("eventName"));
+                    eventDescription.setText(document.getString("eventDescription"));
+                    eventRegStart.setText("Registration Starts: " + (document.getString("startReg")));
+                    eventRegEnd.setText("Registration Ends: " + (document.getString("endReg")));
+
                     Glide.with(getContext()).load(document.getString("imageURL")).into(image);
 
                     // QrCode

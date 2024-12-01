@@ -18,8 +18,8 @@ public class Facility {
     }
 
     /**
-     *This is a constructor used to create a facility
-     *
+     *This is a constructor used to create a facility.
+     *It is used when the ID is not necessary
      */
     public Facility(String Name, String Location, String organizer){
         this.name = Name;
@@ -27,7 +27,10 @@ public class Facility {
         this.organizer = organizer;
 
     }
-
+    /**
+     *This is a constructor used to create a facility with and ID
+     *
+     */
     public Facility(String Name, String Location, String organizer, String ID){
         this.name = Name;
         this.location = Location;
