@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Switch
-        android:id="@+id/not_chosen_notif"
+        android:id="@+id/notify_if_not_chosen"
         android:layout_width="352dp"
         android:layout_height="27dp"
         android:layout_marginTop="16dp"
@@ -37,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chosen_notif" />
+        app:layout_constraintTop_toBottomOf="@+id/notify_if_chosen" />
 
     <Switch
-        android:id="@+id/chosen_notif"
+        android:id="@+id/notify_if_chosen"
         android:layout_width="352dp"
         android:layout_height="27dp"
         android:layout_marginStart="28dp"

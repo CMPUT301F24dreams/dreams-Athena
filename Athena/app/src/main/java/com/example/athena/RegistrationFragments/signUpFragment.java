@@ -81,6 +81,10 @@ public class signUpFragment extends Fragment {
                 data.put("name", name);
                 data.put("email", email);
                 data.put("phone", number);
+                data.put("notifyIfChosen",true);
+                data.put("notifyIfNotChosen",true);
+                data.put("geolocationWarn", true);
+                data.put("notifsFromOthers",true);
 
                 assert mainActivity != null;
                 db.collection("Users").document(Objects.requireNonNull(mainActivity.getString("deviceID"))).set(data);

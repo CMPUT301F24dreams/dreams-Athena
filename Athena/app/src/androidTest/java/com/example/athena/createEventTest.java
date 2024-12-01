@@ -104,7 +104,7 @@ public class createEventTest {
         when(mockView.findViewById(R.id.eventDate)).thenReturn(mockEventDateText);
         when(mockView.findViewById(R.id.regDateStart)).thenReturn(mockRegStartText);
         when(mockView.findViewById(R.id.regDateEnd)).thenReturn(mockRegEndText);
-        //when(mockView.findViewById(R.id.facilityID)).thenReturn(mockFacilityText);
+
         when(mockView.findViewById(R.id.description)).thenReturn(mockDescriptionText);
         when(mockView.findViewById(R.id.participants)).thenReturn(mockParticipantsText);
         when(mockView.findViewById(R.id.geoRequire)).thenReturn(mockGeorequireText);

@@ -220,6 +220,29 @@ public class eventsDB {
     }
 
     public void deleteEvent(String eventID){
+
+        Task getUserList = eventsCollection.document(eventID).collection("UserList").get();
+        getUserList.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                QuerySnapshot docs = (QuerySnapshot) task.getResult();
+                for (DocumentSnapshot doc: docs.getDocuments()
+                     ) {
+                     db.collection("Users").document(doc.getId()).collection("Events").document(eventID).delete();
+                }
+            }
+        });
+        Task getOrg = eventsCollection.document(eventID).get();
+        getUserList.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                DocumentSnapshot doc = (DocumentSnapshot) task.getResult();
+                if(task.isSuccessful()){
+                    db.collection("User").document(doc.getString("organizer")).collection("OrgEvents").document(eventID).delete();
+                }
+            }
+        });
+
         db.collection("Events").document(eventID).delete();
     }
 
@@ -236,6 +259,7 @@ public class eventsDB {
         Map<String,Boolean> notif = new HashMap<>();
         notif.put("notified",Boolean.FALSE);
         eventsCollection.document(eventID).collection("pending").document(deviceID).set(notif);
+        eventsCollection.document(eventID).collection("UserList").document(deviceID).set(notif);
     }
 
     public void updateEventQRCode(String eventID, String qrCodeUrl) {

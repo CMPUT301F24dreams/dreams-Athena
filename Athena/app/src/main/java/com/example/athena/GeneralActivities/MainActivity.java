@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            db.collection("Users").document(String.valueOf(getDeviceId())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            db.collection("Users").document("5").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("deviceID", String.valueOf(getDeviceId()));
+                    bundle.putString("deviceID", "5");
                     if (task.getResult().exists()) {
                         homeScreen homeScreen = new homeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
+                    notificationIntent.putExtra("deviceId", String.valueOf(getDeviceId()));
 
                     startService(notificationIntent);
                 }
