@@ -38,7 +38,6 @@ import com.example.athena.R;
 
         EventViewAdapter fragment = new EventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
-        fragment.setEventDesc(view.findViewById(R.id.OrgViewEventDescription));
         fragment.setImageView(view.findViewById(R.id.event_poster));
         fragment.setRegStart(view.findViewById(R.id.event_details_reg_open));
         fragment.setRegEnd(view.findViewById(R.id.event_details_reg_close));

@@ -45,7 +45,6 @@ public class JoinEventDetails extends Fragment {
         warnAboutGeolocation = bundle.getBoolean("geolocationWarn");
         EventViewAdapter fragment = new EventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
-        fragment.setEventDesc(view.findViewById(R.id.OrgViewEventDescription));
         fragment.setImageView(view.findViewById(R.id.event_poster));
 
         Event event = new Event();
