@@ -48,11 +48,44 @@
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Event Name:"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="Registration Opens:"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/event_details_reg_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="Registration Closes:"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/event_details_reg_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/OrgViewEventDescriptionNonEdit"
@@ -66,11 +99,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/OrgViewEventDescription"
+            android:id="@+id/event_details_event_desc"
             android:layout_width="match_parent"
             android:layout_height="166dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Event Description In Here"
             android:textAlignment="center"
             android:textSize="12sp" />
 
