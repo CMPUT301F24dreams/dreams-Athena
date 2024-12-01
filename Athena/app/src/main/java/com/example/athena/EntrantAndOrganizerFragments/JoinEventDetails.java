@@ -64,7 +64,7 @@ public class JoinEventDetails extends Fragment {
     }
 
     // Code to display a dialog
-    private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
+    private void showLeaveDialog(String deviceID, String eventID, Bundle bundle) {
 
 
 

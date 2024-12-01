@@ -9,6 +9,7 @@ import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragmen
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -31,10 +32,12 @@ import com.example.athena.Firebase.EventsDB;
 import com.example.athena.Firebase.ImageDB;
 import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.QRCode;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.zxing.WriterException;
 
 import java.util.Objects;
 
@@ -99,6 +102,19 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                                 String eventID = (String) task.getResult();
                                 Bundle eventIDBundle = new Bundle();
                                 eventIDBundle.putString("eventID", eventID);
+
+                                QRCode qrCode = new QRCode();
+                                try {
+                                    Bitmap qrBitmap = qrCode.createQR(eventID);
+                                    String qrCodeUrl = qrCode.encodeBitmapToBase64(qrBitmap);
+
+                                    // Update the event in Firestore with the QR code URL
+                                    eventsDB.updateEventQRCode(eventID, qrCodeUrl);
+
+                                } catch (WriterException e) {
+                                    e.printStackTrace();
+                                }
+
                                 displayChildFragment(new EventDetails(), eventIDBundle);
                             }
                         }
