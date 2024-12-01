@@ -7,6 +7,7 @@ package com.example.athena.AdminFragments;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class eventDetailsAdmin extends Fragment{
     private com.example.athena.Firebase.eventsDB eventsDB;
@@ -111,36 +114,36 @@ public class eventDetailsAdmin extends Fragment{
             }
         });
 
-
     }
 
     //qr code deletion
     private void showQrDeleteDialog(ImageView qrCodeView) {
-        // Confirm deletion of QR Code
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("DELETE QR CODE?");
-        builder.setMessage("Are you sure you want to delete the QR code? This action cannot be undone.");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        builder.setPositiveButton("Confirm", (dialog, which) -> {
-            // Update the QR Code field in Firestore to an empty string
-            eventsDB.updateEventField(eventID, "qrCode", "").addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        // Clear the QR code view in the UI
-                        qrCodeView.setImageResource(android.R.color.transparent); // Clear image
-                        qrCodeView.setContentDescription("No QR code available");
-                        Toast.makeText(getContext(), "QR Code deleted successfully", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Exception e = task.getException();
-                        Toast.makeText(getContext(), "Failed to delete QR Code: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        });
+        new AlertDialog.Builder(requireContext())
+                .setTitle("DELETE QR CODE?")
+                .setMessage("Are you sure you want to delete the QR code? This action cannot be undone.")
+                .setPositiveButton("Confirm", (dialog, which) -> {
+                    // Delete the 'qrCode' field from Firestore
+                    db.collection("Events").document(eventID)
+                            .update("qrCode", FieldValue.delete()) // Use FieldValue.delete()
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    // Update the UI to reflect deletion
+                                    qrCodeView.setImageResource(android.R.color.transparent); // Clear image
+                                    qrCodeView.setContentDescription("No QR code available"); // Set contentDescription
 
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
-        builder.show();
+                                    Toast.makeText(requireContext(), "QR Code deleted successfully", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Handle failure
+                                    Exception e = task.getException();
+                                    Toast.makeText(requireContext(), "Failed to delete QR Code: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                    Log.e("FirestoreError", "Error deleting QR Code", e);
+                                }
+                            });
+                })
+                .setNeutralButton("Cancel", (dialog, which) -> dialog.cancel())
+                .show();
     }
 
 

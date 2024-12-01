@@ -1,17 +1,28 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import static android.app.Activity.RESULT_OK;
+import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.eventsDB;
+import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
 import com.example.athena.Models.Event;
 import com.example.athena.Interfaces.displayFragments;
@@ -22,6 +33,7 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,6 +52,7 @@ import java.util.Iterator;
     public eventsDB eventDB;
     public userDB userDB;
     public Bundle bundle;
+    public imageDB imageDB;
     @Override
 
     /**
@@ -59,7 +72,6 @@ import java.util.Iterator;
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,22 +83,22 @@ import java.util.Iterator;
         super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
         return view;
-
-
     }
+
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         userDB = new userDB();
         eventDB = new eventsDB();
-        ///get the event here
+        imageDB = new imageDB();
 
-//        Task getUser = userDB.getUser(deviceID);
+        //get the event here
         Task getEvent = eventDB.getEvent(eventID);
         Task getAccept = eventDB.getEventUserList(eventID,"accepted");
         Task getDecline = eventDB.getEventUserList(eventID,"declined");
         Task getPen = eventDB.getEventUserList(eventID,"pending");
         Task getInvite = eventDB.getEventUserList(eventID,"invited");
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
+
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -100,6 +112,13 @@ import java.util.Iterator;
 
                     String eventName = userEvents.getString("eventName");
                     String imageURL = userEvents.getString("imageURL");
+
+                    ImageView eventPicture = view.findViewById(R.id.EventPicture);
+                    if (imageURL != null && !imageURL.isEmpty()) {
+                        Glide.with(getContext())  // Use the fragment context
+                                .load(imageURL)  // Load the image URL from Firestore
+                                .into(eventPicture);  // Load image into the ImageView
+                    }
                     Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
                     event = currentEvent;
 
@@ -142,6 +161,7 @@ import java.util.Iterator;
         ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
         ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
         ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
+        ImageButton editEventPicture = view.findViewById(R.id.editEventPicture);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,10 +205,14 @@ import java.util.Iterator;
         });
 
 
+        editEventPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
     }
-
-
-
 
     public void showDialog() {
         FragmentManager fm = getParentFragmentManager();
@@ -206,9 +230,31 @@ import java.util.Iterator;
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
     }
 
-
     @Override
     public void switchToNewFragment(Fragment fragment){
+    }
+
+    /**
+     * method to open android os gallery
+     */
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+            eventDB.uploadEventImage(eventID, imageUri).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String newImageUrl = task.getResult();
+                    ImageView eventPicture = getView().findViewById(R.id.EventPicture);
+                    Glide.with(getContext()).load(newImageUrl).into(eventPicture);
+                }
+            });
+        }
     }
 
 }

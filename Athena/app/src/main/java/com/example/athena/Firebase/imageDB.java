@@ -28,4 +28,25 @@ public class imageDB {
         StorageReference imageRef = storageRef.child("images/" + imageID);
         imageRef.delete();
     }
+
+    public UploadTask addEventImage(String eventID, Uri imageUri) {
+        // Reference to the event's folder in Firebase Storage
+        StorageReference storageRef = FirebaseStorage.getInstance()
+                .getReference("events/" + eventID + "/eventPicture.jpg");
+        return storageRef.putFile(imageUri);
+    }
+
+    public Task<String> getEventImageURL(String eventID) {
+        // Reference to the event's image in Firebase Storage
+        StorageReference storageRef = FirebaseStorage.getInstance()
+                .getReference("events/" + eventID + "/eventPicture.jpg");
+
+        // Return the task that retrieves the download URL
+        return storageRef.getDownloadUrl().continueWith(task -> {
+            if (!task.isSuccessful()) {
+                throw task.getException(); // Handle any errors
+            }
+            return task.getResult().toString(); // Return the URL as a string
+        });
+    }
 }

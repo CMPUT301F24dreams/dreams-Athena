@@ -126,14 +126,6 @@ public class eventsDB {
         });
     }
 
-    // Used to update a field in the events db
-    public Task<Void> updateEventField(String eventID, String fieldName, Object value) {
-        return FirebaseFirestore.getInstance()
-                .collection("events") // Ensure this matches your Firestore collection name
-                .document(eventID)
-                .update(fieldName, value);
-    }
-
     /**
      * get the sub-collection of users from the event from the database
      * @param eventID the id of the event to grab
@@ -277,4 +269,30 @@ public class eventsDB {
 
     }
 
+    // Update event image URL
+    public Task<Void> updateEventImageURL(String eventID, String imageURL) {
+        return eventsCollection.document(eventID).update("imageURL", imageURL);
+    }
+
+
+    public void deleteEventPicture(String eventID) {
+        db.collection("Events").document(eventID).update("imageURL", "");
+    }
+
+    // Upload image to Firebase Storage
+    public Task<String> uploadEventImage(String eventID, Uri imageURI) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference imageRef = storage.getReference().child("images/" + eventID);
+        UploadTask uploadTask = imageRef.putFile(imageURI);
+
+        return uploadTask.continueWithTask(task -> {
+            if (!task.isSuccessful()) {
+                throw task.getException();
+            }
+            return imageRef.getDownloadUrl();
+        }).continueWithTask(task -> {
+            String imageUrl = task.getResult().toString();
+            return updateEventImageURL(eventID, imageUrl).continueWithTask(updateTask -> Tasks.forResult(imageUrl));
+        });
+    }
 }
