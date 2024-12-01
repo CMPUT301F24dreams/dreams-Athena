@@ -1,5 +1,7 @@
 package com.example.athena;
 
+import android.util.Log;
+
 import com.example.athena.Models.Event;
 
 import org.junit.jupiter.api.Assertions;
@@ -86,7 +88,46 @@ public class WaitlistUnitTest {
 
 
     @Test
-    public void waitlistCheck
+    public void waitlistCheckMove(){
+        Event event = new Event();
+        ArrayList<String> list = new ArrayList<>();
+        this.loadMockEvent(event);
+        list.add("1231");
+
+        //checks it moves a user to accepted
+        event.getWaitList().addInvited("1231", event.getEventID());
+        event.getWaitList().moveUserFromInvited("1231","accepted");
+        Assertions.assertArrayEquals(list.toArray(),event.getWaitList().getAccepted().toArray());
+
+        //checks it moves a user to declined
+        event.getWaitList().addInvited("1231", event.getEventID());
+        event.getWaitList().moveUserFromInvited("1231","declined");
+        Assertions.assertArrayEquals(list.toArray(),event.getWaitList().getDeclined().toArray());
+    }
+
+    @Test
+    public void waitlistCheckSelectUser(){
+        Event event = new Event();
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> expect = new ArrayList<>();
+        this.loadMockEvent(event);
+        this.loadMockList(list);
+        this.loadMockList(expect);
+
+        //selects only three users
+        loadMockList(event.getWaitList().getWaiting());
+        event.chooseUsers(3,event.getEventID());
+
+        Assertions.assertEquals(3,event.getWaitList().getInvited().size());
+        event.getWaitList().getInvited().clear();
+        event.getWaitList().getWaiting().clear();
+
+
+        //selects all users
+        loadMockList(event.getWaitList().getWaiting());
+        event.chooseUsers(20,event.getEventID());
+        Assertions.assertEquals(expect.size(),event.getWaitList().getInvited().size());
+    }
 
 
     public void loadMockEvent(Event event) {

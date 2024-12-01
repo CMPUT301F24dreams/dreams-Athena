@@ -12,31 +12,9 @@ public class userNotifDetails {
     private boolean notifyIfNotChosen;
 
     /**
-     * Constructor to initialize the notification preferences for a user.
-     *
-     * @param userName The name of the user.
-     * @param notifyIfChosen A flag indicating whether the user has chosen to receive notifications.
-     * @param notifyIfNotChosen A flag indicating whether the user has opted not to receive notifications.
-     */
-    public userNotifDetails(String userName, boolean notifyIfChosen, boolean notifyIfNotChosen) {
-        this.userName = userName;
-        this.notifyIfChosen = notifyIfChosen;
-        this.notifyIfNotChosen = notifyIfNotChosen;
-    }
-
-    /**
      * Default constructor for creating an instance without setting any fields.
      */
     public userNotifDetails() {
-    }
-
-    /**
-     * Gets the name of the user.
-     *
-     * @return The user's name.
-     */
-    public String getUserName() {
-        return userName;
     }
 
     /**
