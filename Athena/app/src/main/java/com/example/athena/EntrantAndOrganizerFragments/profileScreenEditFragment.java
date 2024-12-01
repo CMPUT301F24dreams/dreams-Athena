@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
@@ -33,7 +33,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class profileScreenEditFragment extends Fragment {
 
     private String deviceID;
-    private userDB usersDB;
+    private UserDB usersDB;
     private User user;
     ///Binds the fragment to its elements
     ProfileScreenEditBinding binding;
@@ -78,7 +78,7 @@ public class profileScreenEditFragment extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
-        usersDB = new userDB();
+        usersDB = new UserDB();
         Task getUser = usersDB.getUser(deviceID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -110,7 +110,7 @@ public class profileScreenEditFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                viewProfileFragment frag = new viewProfileFragment();
+                ViewProfileFragment frag = new ViewProfileFragment();
                 frag.setArguments(bundle);
                 transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
                 transaction.commit();

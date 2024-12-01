@@ -38,15 +38,6 @@ public class Notification {
     }
 
     /**
-     * Sets the body text for the notification.
-     *
-     * @param bodyText The body text to set.
-     */
-    public void setBodyText(String bodyText) {
-        this.bodyText = bodyText;
-    }
-
-    /**
      * Gets the title of the notification.
      *
      * @return The title of the notification.
@@ -64,39 +55,4 @@ public class Notification {
         this.title = title;
     }
 
-    /**
-     * Gets the icon ID of the notification, which can be used to set the notification icon.
-     *
-     * @return The icon ID for the notification.
-     */
-    public String getIconID() {
-        return iconID;
-    }
-
-    /**
-     * Sets the icon ID for the notification.
-     *
-     * @param iconID The icon ID to set.
-     */
-    public void setIconID(String iconID) {
-        this.iconID = iconID;
-    }
-
-    /**
-     * Gets the activity link associated with the notification.
-     *
-     * @return The link to the activity or page triggered by the notification.
-     */
-    public String getActivityLink() {
-        return activityLink;
-    }
-
-    /**
-     * Sets the activity link for the notification.
-     *
-     * @param activityLink The activity link to set.
-     */
-    public void setActivityLink(String activityLink) {
-        this.activityLink = activityLink;
-    }
 }

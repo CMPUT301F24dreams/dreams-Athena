@@ -33,9 +33,11 @@ public class UserInviteArrayAdapter extends ArrayAdapter<Event> {
         }
         Event event = getItem(position);
         TextView eventTitle = view.findViewById(R.id.accept_event_title);
+        TextView eventDescription = view.findViewById(R.id.accept_discription);
         String eventName = event.getEventName();
-        String eventDescription = "";
+        String eventDesc = event.getEventDescription();
         eventTitle.setText(eventName);
+        eventDescription.setText(eventDesc);
 
         return view;
     }
