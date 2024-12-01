@@ -1,10 +1,16 @@
 package com.example.athena.Models;
+import android.annotation.SuppressLint;
+
 import com.example.athena.Interfaces.Model;
 import com.example.athena.Interfaces.Observer;
 import com.example.athena.WaitList.WaitList;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 /**
  * The {@code Event} class represents an event in the application.
@@ -31,15 +37,19 @@ public class Event implements Model {
     private String qrCode;
 
     public Event() {
-        this.eventName = "NULL";
-        this.imageURL = "NULL";
-        this.eventDescription = "NULL";
-        this.organizer = "NULL";
-        this.facility = "NULL";
+        this.eventName = "";
+        this.imageURL = "";
+        this.eventDescription = "";
+        this.organizer = "";
+        this.facility = "";
         this.maxParticipants = 0;
         this.geoRequire = Boolean.FALSE;
-        this.eventID = "NULL";
-        this.qrCode="NULL";
+        this.eventID = "";
+        this.eventDate = "";
+        this.startReg = "";
+        this.endReg = "";
+        this.eventID = "";
+        this.qrCode="";
         this.waitList = new WaitList(this);
         this.observers = new ArrayList<>();
     }
@@ -107,15 +117,51 @@ public class Event implements Model {
     public void removeUser(String userId, String eventID){
         waitList.removeUser(userId, eventID);
     }
+
     /**
      * Moves a user from the invited list based on their current status.
-     *
      * @param userID The ID of the user to be moved.
      * @param status The new status of the user (e.g., from invited to confirmed).
      */
     public void moveUser(String userID,String status){
         waitList.moveUserFromInvited(userID,status);
     }
+
+    public boolean checkEvent() {
+        if (Objects.equals(this.eventName, "")) {
+            return false;
+        } else if (Objects.equals(this.eventDescription, "")) {
+            return false;
+        } else if (Objects.equals(this.facility, "")) {
+            return false;
+        } else if (Objects.equals(this.maxParticipants, 0)) {
+            return false;
+        } else if ((Objects.equals(this.eventDate, ""))) {
+            return false;
+        } else if ((Objects.equals(this.startReg, ""))) {
+            return false;
+        } else if ((Objects.equals(this.endReg, ""))) {
+            return false;
+        } else if (!this.checkDate(this.eventDate, this.startReg, this.endReg)) {
+            return false;
+        }
+        return true;
+    }
+
+    @SuppressLint("NewApi")
+    public boolean checkDate(String eventDate, String regStart, String regEnd) {
+        @SuppressLint({"NewApi", "LocalSuppress"}) DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/y", Locale.CANADA);
+        @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate event = LocalDate.parse(eventDate, formatter);
+        @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate start = LocalDate.parse(regStart, formatter);
+        @SuppressLint({"NewApi", "LocalSuppress"}) LocalDate end = LocalDate.parse(regEnd, formatter);
+
+        if (event.isAfter(end) & start.isBefore(end)) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Gets the waitlist associated with the event.
      *

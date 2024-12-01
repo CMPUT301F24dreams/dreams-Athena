@@ -15,6 +15,7 @@ public class User {
     private String facility;
     private String imageURL;
     private ArrayList<Event> Events;
+    private boolean isAdmin;
 
     /**
      * Constructor to initialize the user with basic information: name, email, phone, and image URL.

@@ -8,6 +8,20 @@
     tools:context=".EntrantAndOrganizerFragments.ManageEvent">
 
     <ImageButton
+        android:id="@+id/editEventPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@color/black" />
+
+    <ImageButton
         android:id="@+id/organizer_return_btn"
         android:layout_width="58dp"
         android:layout_height="56dp"
@@ -18,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert"
         app:tint="@color/black" />
+
 
     <ImageButton
         android:id="@+id/notify_entrants_button"
@@ -98,5 +113,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.411" />
+
+    <ImageView
+        android:id="@+id/EventPicture"
+        android:layout_width="198dp"
+        android:layout_height="216dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
