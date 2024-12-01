@@ -60,21 +60,21 @@ public class EventsUnitTest {
         event.setEventDate("11/23/24");
         event.setStartReg("11/24/24");
         event.setEndReg("11/25/24");
-        Assertions.assertFalse(event.checkEvent());
+        Assertions.assertFalse(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
 
         this.loadMockEvent(event);
         Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
         event.setEventDate("11/24/24");
         event.setStartReg("11/23/24");
         event.setEndReg("11/25/24");
-        Assertions.assertFalse(event.checkEvent());
+        Assertions.assertFalse(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
 
         this.loadMockEvent(event);
         Assertions.assertTrue(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
         event.setEventDate("11/31/24");
         event.setStartReg("11/26/24");
         event.setEndReg("11/25/24");
-        Assertions.assertFalse(event.checkEvent());
+        Assertions.assertFalse(event.checkDate(event.getEventDate(), event.getStartReg(), event.getEndReg()));
     }
 
     public void loadMockEvent(Event event) {

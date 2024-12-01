@@ -49,7 +49,7 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
     private TextView regStartText;
     private TextView regEndText;
 
-    Uri imageURI;
+    Uri imageURI = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -90,18 +90,20 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                 event.setFacility(user.getFacility());
                 event.setOrganizer(deviceID);
 
-                Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
-                eventAddTask.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            String eventID = (String) task.getResult();
-                            Bundle eventIDBundle = new Bundle();
-                            eventIDBundle.putString("eventID", eventID);
-                            displayChildFragment(new EventDetails(), eventIDBundle);
+                if (event.checkEvent() & imageURI != null) {
+                    Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
+                    eventAddTask.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()) {
+                                String eventID = (String) task.getResult();
+                                Bundle eventIDBundle = new Bundle();
+                                eventIDBundle.putString("eventID", eventID);
+                                displayChildFragment(new EventDetails(), eventIDBundle);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 

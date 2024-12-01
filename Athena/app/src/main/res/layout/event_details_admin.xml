@@ -68,7 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Event Description In Here"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/black"
