@@ -1,8 +1,8 @@
 package com.example.athena;
 
 import com.example.athena.Models.User;
-import com.example.athena.Models.detailsForNotification;
-import com.example.athena.Models.userNotifDetails;
+import com.example.athena.Models.DetailsForNotification;
+import com.example.athena.Models.UserNotifDetails;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 public class DetailsForNotificationUnitTest {
     @Test
     public void detailsForNotiCheckEquals(){
-        userNotifDetails user = new userNotifDetails();
+        UserNotifDetails user = new UserNotifDetails();
         user.setUserName("roger");
-        detailsForNotification mockModel = new detailsForNotification(user,"wewe","213","invite");
-        detailsForNotification mockModel1 = new detailsForNotification(user,"wewe","213","invite");
-        detailsForNotification mockModel2 = new detailsForNotification(user,"wawa","313","pe");
+        DetailsForNotification mockModel = new DetailsForNotification(user,"wewe","213","invite");
+        DetailsForNotification mockModel1 = new DetailsForNotification(user,"wewe","213","invite");
+        DetailsForNotification mockModel2 = new DetailsForNotification(user,"wawa","313","pe");
         //check that it equals itself
         Assertions.assertTrue(mockModel.equals(mockModel));
         //Check that it does not equal another class or type
