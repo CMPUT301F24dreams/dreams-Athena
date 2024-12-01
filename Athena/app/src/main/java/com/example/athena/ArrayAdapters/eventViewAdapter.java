@@ -12,6 +12,7 @@ import com.example.athena.Models.Event;
 public class eventViewAdapter implements Observer {
     private Context context;
     private TextView eventName;
+    private TextView eventDesc;
     private ImageView imageView;
 
     @Override
@@ -19,11 +20,16 @@ public class eventViewAdapter implements Observer {
         Event event = (Event) model;
 
         eventName.setText(event.getEventName());
+        eventDesc.setText(event.getEventDescription());
         Glide.with(context).load(event.getImageURL()).into(imageView);
     }
 
     public eventViewAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setEventDesc(TextView eventDesc){
+        this.eventDesc = eventDesc;
     }
 
     public void setEventName(TextView eventName) {

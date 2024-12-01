@@ -37,6 +37,7 @@ public class JoinEventDetails extends Fragment {
         String deviceID = bundle.getString("deviceID");
         eventViewAdapter fragment = new eventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
+        fragment.setEventDesc(view.findViewById(R.id.OrgViewEventDescription));
         fragment.setImageView(view.findViewById(R.id.event_poster));
 
         Event event = new Event();
