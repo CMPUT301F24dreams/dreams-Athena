@@ -62,7 +62,7 @@ public class ViewProfileFragmentTest {
         verify(mockImageDB).deleteImage(anyString());
 
         // check to see if url value is ""
-        verify(mockUserDB).resetImage("");  // Check if the URL is cleared in the mock userDB
+        verify(mockUserDB).resetImage("");  // Check if the URL is cleared in the mock UserDB
     }
 
     @Test

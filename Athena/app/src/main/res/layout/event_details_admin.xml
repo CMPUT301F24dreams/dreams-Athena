@@ -5,7 +5,7 @@
     android:id="@+id/registration_start_date_textview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EntrantAndOrganizerFragments.eventCreation.createEvent">
+    tools:context=".EntrantAndOrganizerFragments.eventCreation.CreateEvent">
 
     <LinearLayout
         android:id="@+id/event_card_layout_org_view"

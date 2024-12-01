@@ -1,10 +1,9 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragment.PICK_IMAGE_REQUEST;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,11 +20,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.imageDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.ImageDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.displayFragments;
+import com.example.athena.Interfaces.DisplayFragments;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +32,6 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,16 +41,16 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
- public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
+ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, DisplayFragments {
 
 
     private String eventID;
     public Event event;
     private String deviceID;
-    public eventsDB eventDB;
-    public userDB userDB;
+    public EventsDB eventDB;
+    public UserDB userDB;
     public Bundle bundle;
-    public imageDB imageDB;
+    public ImageDB imageDB;
     @Override
 
     /**
@@ -87,9 +85,9 @@ import java.util.Iterator;
 
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        userDB = new userDB();
-        eventDB = new eventsDB();
-        imageDB = new imageDB();
+        userDB = new UserDB();
+        eventDB = new EventsDB();
+        imageDB = new ImageDB();
 
         //get the event here
         Task getEvent = eventDB.getEvent(eventID);
@@ -166,7 +164,7 @@ import java.util.Iterator;
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayChildFragment(new viewMyOrgEvents());
+                displayChildFragment(new ViewMyOrgEvents());
             }
         });
 

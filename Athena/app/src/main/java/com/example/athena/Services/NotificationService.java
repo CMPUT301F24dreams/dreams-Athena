@@ -12,7 +12,7 @@ import android.util.Log;
 import com.example.athena.Controllers.NotificationController;
 import com.example.athena.Views.NotificationView;
 import com.example.athena.Models.Notification;
-import com.example.athena.Models.detailsForNotification;
+import com.example.athena.Models.DetailsForNotification;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -105,7 +105,7 @@ public class NotificationService extends Service {
     public void handleNotificationEvent(String eventId, String status, DocumentReference eventRef) {
         notificationView.getNotificationData(eventId, status, new NotificationView.NotificationDataCallback() {
             @Override
-            public void onDataRetrieved(detailsForNotification notifDetatils) {
+            public void onDataRetrieved(DetailsForNotification notifDetatils) {
                 boolean valid = notificationController.checkValidNotification(notifDetatils);
                 if (valid) {
 
