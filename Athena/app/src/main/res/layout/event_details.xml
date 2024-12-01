@@ -40,7 +40,7 @@
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Event:"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/label_color"
             android:textSize="20sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Registration Opens:"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/label_color" />
 
         <TextView
             android:id="@+id/event_details_reg_open"
@@ -77,7 +77,7 @@
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Registration Closes:"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/label_color" />
 
         <TextView
             android:id="@+id/event_details_reg_close"
@@ -92,9 +92,9 @@
             android:layout_width="match_parent"
             android:layout_height="39dp"
             android:fontFamily="@font/bai_jamjuree_bold"
-            android:text="Event Description:"
+            android:text="Description:"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/label_color"
             android:textSize="16sp"
             android:textStyle="bold" />
 
