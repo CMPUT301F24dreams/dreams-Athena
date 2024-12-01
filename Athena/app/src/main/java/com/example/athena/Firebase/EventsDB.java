@@ -75,7 +75,8 @@ public class EventsDB {
                     event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
                     event.setGeoRequire(document.getBoolean("geoRequire"));
                     event.setEventID(document.getString("eventID"));
-
+                    event.setStartReg(document.getString("startReg"));
+                    event.setEndReg(document.getString("endReg"));
                     event.notifyObservers();
                 } else {
 

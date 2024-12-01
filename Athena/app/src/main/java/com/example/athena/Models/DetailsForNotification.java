@@ -29,10 +29,7 @@ public class DetailsForNotification {
         this.status = notifType;
     }
 
-    /**
-     * Blank constructor
-     */
-    public DetailsForNotification() {};
+    ;
 
     /**
      * Gets the user details associated with the notification.
