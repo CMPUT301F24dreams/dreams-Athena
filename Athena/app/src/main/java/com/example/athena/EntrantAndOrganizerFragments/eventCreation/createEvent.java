@@ -1,16 +1,13 @@
 /**
- * createEvent Fragment class handles the creation of a new event by the user.
+ * CreateEvent Fragment class handles the creation of a new event by the user.
  * It allows the user to fill in event details, upload an event poster, and save
  * the event information to Firebase, including an image upload to Firebase Storage.
  */
 package com.example.athena.EntrantAndOrganizerFragments.eventCreation;
 
-import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragment.PICK_IMAGE_REQUEST;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.DialogFragment;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -22,45 +19,42 @@ import androidx.fragment.app.Fragment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.athena.EntrantAndOrganizerFragments.eventDetails;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.imageDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.EntrantAndOrganizerFragments.EventDetails;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.ImageDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.QRCode;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.storage.UploadTask;
+import com.google.zxing.WriterException;
 
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Objects;
 
 
-public class createEvent extends Fragment implements dateDialog.datePickerListener {
+public class CreateEvent extends Fragment implements DateDialog.datePickerListener {
     private Event event;
     private User user;
     private String userFacility;
 
-    dateDialog datePicker;
+    DateDialog datePicker;
     private TextView eventDateText;
     private TextView regStartText;
     private TextView regEndText;
 
-    Uri imageURI;
+    Uri imageURI = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,8 +66,8 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
 
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        eventsDB eventsDB = new eventsDB();
-        userDB userDB = new userDB();
+        EventsDB eventsDB = new EventsDB();
+        UserDB userDB = new UserDB();
 
         Bundle bundle = getArguments();
         assert bundle != null;
@@ -83,7 +77,7 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
         userDB.loadUserData(user, deviceID);
 
         TextView eventNameText = view.findViewById(R.id.eventName);
-        datePicker = dateDialog.newInstance(this);
+        datePicker = DateDialog.newInstance(this);
         eventDateText = view.findViewById(R.id.eventDate);
         regStartText = view.findViewById(R.id.regDateStart);
         regEndText = view.findViewById(R.id.regDateEnd);
@@ -101,18 +95,38 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
                 event.setFacility(user.getFacility());
                 event.setOrganizer(deviceID);
 
-                Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
-                eventAddTask.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            String eventID = (String) task.getResult();
-                            Bundle eventIDBundle = new Bundle();
-                            eventIDBundle.putString("eventID", eventID);
-                            displayChildFragment(new eventDetails(), eventIDBundle);
+                if (event.checkEvent() & imageURI != null) {
+                    Task eventAddTask = eventsDB.addEvent(event, deviceID, imageURI);
+                    eventAddTask.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()) {
+                                String eventID = (String) task.getResult();
+                                Bundle eventIDBundle = new Bundle();
+                                eventIDBundle.putString("eventID", eventID);
+
+                                QRCode qrCode = new QRCode();
+                                try {
+                                    Bitmap qrBitmap = qrCode.createQR(eventID);
+                                    String qrCodeUrl = qrCode.encodeBitmapToBase64(qrBitmap);
+                                    Log.d("DATA", qrCodeUrl);
+                                    // Update the event in Firestore with the QR code URL
+                                    eventsDB.updateEventQRCode(eventID, qrCodeUrl);
+
+                                } catch (WriterException e) {
+                                    e.printStackTrace();
+                                }
+                                boolean fromCreateEvent = true;
+                                eventIDBundle.putBoolean("fromCreateEvent", true);
+                                displayChildFragment(new EventDetails(), eventIDBundle);
+                            }
                         }
-                    }
-                });
+                    });
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "One or more fields are invalid.", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
             }
         });
 
@@ -213,7 +227,7 @@ public class createEvent extends Fragment implements dateDialog.datePickerListen
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        createEvent.super.onActivityResult(requestCode, resultCode, data);
+        CreateEvent.super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             imageURI = data.getData();
         }

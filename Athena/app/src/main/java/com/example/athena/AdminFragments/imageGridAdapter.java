@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class imageGridAdapter extends RecyclerView.Adapter<imageGridAdapter.ViewHolder> {
+public class ImageGridAdapter extends RecyclerView.Adapter<ImageGridAdapter.ViewHolder> {
 
     // lists to store urls and IDs
     private final Context context;
@@ -27,7 +27,7 @@ public class imageGridAdapter extends RecyclerView.Adapter<imageGridAdapter.View
     private final List<String> eventDocumentIds;
 
     
-    public imageGridAdapter(Context context, List<String> userImages, List<String> eventImages,
+    public ImageGridAdapter(Context context, List<String> userImages, List<String> eventImages,
                             List<String> userDocumentIds, List<String> eventDocumentIds) {
         this.context = context;
         this.userImages = userImages;

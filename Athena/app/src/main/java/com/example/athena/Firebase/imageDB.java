@@ -2,10 +2,6 @@ package com.example.athena.Firebase;
 
 import android.net.Uri;
 
-import androidx.annotation.NonNull;
-import androidx.documentfile.provider.DocumentFile;
-
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -13,10 +9,10 @@ import com.google.firebase.storage.UploadTask;
 /**
  * Class for interacting with Firebase Storage to upload and delete images.
  */
-public class imageDB {
+public class ImageDB {
     FirebaseStorage storage;
     private StorageReference storageRef;
-    public imageDB() {
+    public ImageDB() {
         this.storage = FirebaseStorage.getInstance();
         this.storageRef = storage.getReference();
     }

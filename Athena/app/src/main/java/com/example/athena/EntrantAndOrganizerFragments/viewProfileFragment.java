@@ -11,13 +11,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.athena.Firebase.imageDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.ImageDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
@@ -33,20 +34,22 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import java.util.Objects;
+
 /**
  * This fragment displays the user's profile, including their name, email, phone, and profile picture.
  * It also provides options to edit the profile, change the profile picture, or navigate to other profile-related sections.
  */
-public class viewProfileFragment extends Fragment {
+public class ViewProfileFragment extends Fragment {
 
     public static final int PICK_IMAGE_REQUEST = 1; // You can now remove this as we're using the ActivityResultLauncher
-    public userDB usersDB;
-    public imageDB imageDB;
+    public UserDB usersDB;
+    public ImageDB imageDB;
     private String deviceID;
     private User user;
     public ProfileScreenBinding binding;
 
-    public viewProfileFragment() {
+    public ViewProfileFragment() {
         // Required empty public constructor
     }
 
@@ -67,8 +70,9 @@ public class viewProfileFragment extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
-        usersDB = new userDB();
-        imageDB = new imageDB();
+        usersDB = new UserDB();
+        imageDB = new ImageDB();
+
 
         Task getUser = usersDB.getUser(deviceID);
         Task userLoaded = Tasks.whenAll(getUser);
@@ -90,17 +94,16 @@ public class viewProfileFragment extends Fragment {
                         binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
                         binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
 
-                        // TODO: vvv WHY DOES IT ONLY WORK AFTER A BUTTON PRESS IM GONNA LOSE IT vvv
+                      
                         // Check if an image URL exists
-                        if (imageURL != null && !imageURL.isEmpty()) {
+                        if (!Objects.equals(imageURL, "NULL") & !Objects.equals(imageURL, "")) {
                             // Load the image using Glide
                             Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
                         } else {
                             // Generate a default profile picture
                             Bitmap defaultImage = generateProfilePicture(user.getName());
-                            binding.profileImage.setImageBitmap(defaultImage);
+                            Glide.with(getContext()).load(defaultImage).into(binding.profileImage);
                         }
-
                     }
                 } else {
                     // Handle task failure (e.g., show a toast or log the error)
@@ -112,7 +115,7 @@ public class viewProfileFragment extends Fragment {
         binding.BackButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            homeScreen frag = new homeScreen();
+            HomeScreen frag = new HomeScreen();
             frag.setArguments(bundle);
             transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
@@ -122,7 +125,7 @@ public class viewProfileFragment extends Fragment {
         binding.EditNotfis.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            profileNotiEditFragment frag = new profileNotiEditFragment();
+            ProfileNotiEditFragment frag = new ProfileNotiEditFragment();
             frag.setArguments(bundle);
             transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
             transaction.commit();
@@ -211,11 +214,4 @@ public class viewProfileFragment extends Fragment {
         return bitmap;
     }
 
-    private void refreshFragment() {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.detach(this);  // Detach the current fragment
-        fragmentTransaction.attach(this);  // Attach it again to refresh
-        fragmentTransaction.commit();
-    }
 }

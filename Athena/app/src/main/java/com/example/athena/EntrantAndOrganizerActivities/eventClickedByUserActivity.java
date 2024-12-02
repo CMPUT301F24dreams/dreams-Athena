@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.athena.R;
 
 // Activity that handles the display of the event details when clicked by the user.
-public class eventClickedByUserActivity extends AppCompatActivity {
+public class EventClickedByUserActivity extends AppCompatActivity {
 
 
     @Override

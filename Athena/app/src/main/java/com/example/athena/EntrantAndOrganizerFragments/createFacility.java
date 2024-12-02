@@ -13,14 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Facility;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 
-public class createFacility extends Fragment {
+public class CreateFacility extends Fragment {
     private Bundle bundle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class createFacility extends Fragment {
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         FacilitiesDB facilitiesDB = new FacilitiesDB();
-        userDB userDB = new userDB();
+        UserDB userDB = new UserDB();
 
         bundle = getArguments();
         assert bundle != null;
@@ -80,7 +80,7 @@ public class createFacility extends Fragment {
                 userDB.updateOrgFacilities(deviceID, facilityID);
                 bundle.putString("facilityID", facilityID);
 
-                displayChildFragment(new orgFacilityDetails(), bundle);
+                displayChildFragment(new OrgFacilityDetails(), bundle);
             }
         });
 

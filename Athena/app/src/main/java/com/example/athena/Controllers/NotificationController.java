@@ -11,8 +11,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.athena.Models.Event;
 import com.example.athena.Models.Notification;
-import com.example.athena.Models.detailsForNotification;
-import com.example.athena.Models.userNotifDetails;
+import com.example.athena.Models.DetailsForNotification;
+import com.example.athena.Models.UserNotifDetails;
 import com.example.athena.Views.NotificationView;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -55,7 +55,7 @@ public class NotificationController {
      * @param details - an object containing details and user preferences for a notification
      * @return true if notification is valid, false if invalid
      */
-    public boolean checkValidNotification(detailsForNotification details) {
+    public boolean checkValidNotification(DetailsForNotification details) {
         boolean invalid1 = !details.getUser().isNotifyIfChosen() && Objects.equals(details.getStatus(), "invited");
         boolean invalid2 = !details.getUser().isNotifyIfNotChosen() && Objects.equals(details.getStatus(), "waiting");
         Log.w("notification", "1: " + invalid1 + " 2: " + invalid2);
@@ -67,7 +67,7 @@ public class NotificationController {
      * @param details - object containing notification details needed to create a notification object
      * @return the created notification object
      */
-    public Notification convertToNotification(detailsForNotification details) {
+    public Notification convertToNotification(DetailsForNotification details) {
         String title = "BLANK";
         String bodyText = "BLANK";
         String notifType = details.getStatus();

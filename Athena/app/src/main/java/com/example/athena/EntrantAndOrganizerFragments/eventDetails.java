@@ -2,29 +2,26 @@ package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
-import com.example.athena.ArrayAdapters.eventViewAdapter;
-import com.example.athena.Firebase.eventsDB;
+import com.example.athena.ArrayAdapters.EventViewAdapter;
+import com.example.athena.Firebase.EventsDB;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 
 /**
  * This fragment class represents the details of a specific event within the application.
  */
- public class eventDetails extends Fragment {
-    private eventsDB EventsDB = new eventsDB();
-    private userDB UserDB = new userDB();
+ public class EventDetails extends Fragment {
+    private EventsDB eventsDB = new EventsDB();
+    private UserDB userDB = new UserDB();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,14 +36,28 @@ import com.example.athena.R;
         String eventID = bundle.getString("eventID");
         String deviceID = bundle.getString("deviceID");
 
-        eventViewAdapter fragment = new eventViewAdapter(getContext());
+        EventViewAdapter fragment = new EventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
+        fragment.setEventDesc(view.findViewById(R.id.event_details_event_desc));
         fragment.setImageView(view.findViewById(R.id.event_poster));
+        fragment.setRegStart(view.findViewById(R.id.event_details_reg_open));
+        fragment.setRegEnd(view.findViewById(R.id.event_details_reg_close));
+        fragment.setEventDesc(view.findViewById(R.id.event_details_event_desc));
+
 
         Event event = new Event();
         event.addObserver(fragment);
 
-        EventsDB.loadEventData(event, eventID);
+        eventsDB.loadEventData(event, eventID);
+
+
+        ///removes the leave waitlist button from event details if coming from the event creation page
+        boolean fromCreateEvent = bundle.getBoolean("fromCreateEvent");
+        if(fromCreateEvent){
+            Button leaveBtn = view.findViewById(R.id.leaveBtn);
+            leaveBtn.setVisibility(View.GONE);
+            bundle.remove("fromCreateEvent");
+        }
 
         Button leaveBtn = view.findViewById(R.id.leaveBtn);
 
@@ -66,8 +77,8 @@ import com.example.athena.R;
 
         // Set up buttons
         builder.setPositiveButton("Confirm", (dialog, which) -> {
-            EventsDB.removeUser(deviceID,eventID);
-            UserDB.leaveEvent(deviceID,eventID);
+            eventsDB.removeUser(deviceID,eventID);
+            userDB.leaveEvent(deviceID,eventID);
             displayChildFragment(new myEventsList(),bundle);
         });
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());

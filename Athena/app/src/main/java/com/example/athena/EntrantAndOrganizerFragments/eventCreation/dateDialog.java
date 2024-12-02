@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class dateDialog extends DialogFragment
+public class DateDialog extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     private String textField;
@@ -19,8 +19,8 @@ public class dateDialog extends DialogFragment
         public void onDateSet(String textfield, String date);
     }
 
-    public static dateDialog newInstance(datePickerListener listener) {
-        dateDialog dialog = new dateDialog();
+    public static DateDialog newInstance(datePickerListener listener) {
+        DateDialog dialog = new DateDialog();
         dialog.setDatePickerListener(listener);
         return dialog;
     }

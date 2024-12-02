@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
@@ -29,14 +29,14 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class adminProfileDetail extends Fragment {
+public class AdminProfileDetail extends Fragment {
     private String userID;
-    public userDB usersDB;
+    public UserDB usersDB;
     private User user;
     private Bundle bundle;
     private String selectedUserFacilityID;
     private FacilitiesDB facilitiesDB;
-    private eventsDB eventDB;
+    private EventsDB eventDB;
     private String deviceID;
     /// Binds the fragment to its elements
     ProfileScreenAdminBinding binding;
@@ -75,9 +75,9 @@ public class adminProfileDetail extends Fragment {
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
         userID = bundle.getString("userID");
-        usersDB = new userDB();
+        usersDB = new UserDB();
         facilitiesDB = new FacilitiesDB();
-        eventDB = new eventsDB();
+        eventDB = new EventsDB();
 
         Task getUser = usersDB.getUser(userID);
 
@@ -111,7 +111,7 @@ public class adminProfileDetail extends Fragment {
         binding.backBtnProfileAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayChildFragment(new adminProfileBrowse(), bundle);
+                displayChildFragment(new AdminProfileBrowse(), bundle);
             }
         });
 
@@ -177,10 +177,7 @@ public class adminProfileDetail extends Fragment {
                 }
             });
 
-            ///Delete the user's facility which in turn deletes all of the events they've made:
-            ///TODO: add an on compete listener that confirms the user has been deleted with a toast
-
-            displayChildFragment(new adminProfileBrowse(), bundle);
+            displayChildFragment(new AdminProfileBrowse(), bundle);
         });
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 

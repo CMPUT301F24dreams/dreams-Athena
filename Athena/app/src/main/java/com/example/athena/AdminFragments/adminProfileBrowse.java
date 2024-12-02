@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.userArrayAdapter;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.ArrayAdapters.UserArrayAdapter;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,9 +28,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 
-public class adminProfileBrowse extends Fragment {
+public class AdminProfileBrowse extends Fragment {
     private String deviceID;
-    public userDB userDB;
+    public UserDB userDB;
     public ArrayList<User> users;
     private ListView listView;
     public ArrayList<String> usersID;
@@ -48,7 +47,7 @@ public class adminProfileBrowse extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
+        userDB = new UserDB();
         users = new ArrayList<>();
         usersID = new ArrayList<>();
 
@@ -59,7 +58,7 @@ public class adminProfileBrowse extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    userArrayAdapter userAdapter = new userArrayAdapter(getContext(), users);
+                    UserArrayAdapter userAdapter = new UserArrayAdapter(getContext(), users);
                     listView.setAdapter(userAdapter);
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String name = documentSnapshot.getString("name");
@@ -83,7 +82,7 @@ public class adminProfileBrowse extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TO - DO
                 bundle.putString("userID",usersID.get(position));
-                displayChildFragment(new adminProfileDetail(),bundle);
+                displayChildFragment(new AdminProfileDetail(),bundle);
             }
         });
 

@@ -6,13 +6,11 @@ package com.example.athena.AdminFragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.imageDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.ImageDB;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,11 +28,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class eventDetailsAdmin extends Fragment{
-    private com.example.athena.Firebase.eventsDB eventsDB;
+public class EventDetailsAdmin extends Fragment{
+    private com.example.athena.Firebase.EventsDB eventsDB;
     private String eventID;
     private Bundle bundle;
-    private com.example.athena.Firebase.imageDB imageDB;
+    private com.example.athena.Firebase.ImageDB imageDB;
     private String isAdmin;
 
     @Override
@@ -47,15 +45,20 @@ public class eventDetailsAdmin extends Fragment{
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
         TextView eventName = view.findViewById(R.id.eventName);
         ImageView image = view.findViewById(R.id.event_poster);
+
+        TextView eventRegStart = view.findViewById(R.id.regStartAdmin);
+        TextView eventRegEnd = view.findViewById(R.id.regEndAdmin);
+
         ImageView qrCodeView = view.findViewById(R.id.qrCodeView);
+        TextView eventDescription = view.findViewById(R.id.event_details_event_desc);
         Button delete = view.findViewById(R.id.deleteEventAdmin);
         Button deleteQrCodeButton = view.findViewById(R.id.deleteQrCodeButton);
 
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
         eventID = bundle.getString("eventID");
-        eventsDB = new eventsDB();
-        imageDB = new imageDB();
+        eventsDB = new EventsDB();
+        imageDB = new ImageDB();
 
 
         ///If the current user is an administrator:
@@ -80,6 +83,10 @@ public class eventDetailsAdmin extends Fragment{
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = (DocumentSnapshot) task.getResult();
                     eventName.setText(document.getString("eventName"));
+                    eventDescription.setText(document.getString("eventDescription"));
+                    eventRegStart.setText("Registration Starts: " + (document.getString("startReg")));
+                    eventRegEnd.setText("Registration Ends: " + (document.getString("endReg")));
+
                     Glide.with(getContext()).load(document.getString("imageURL")).into(image);
 
                     // QrCode
@@ -158,7 +165,7 @@ public class eventDetailsAdmin extends Fragment{
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             imageDB.deleteImage(eventID);
             eventsDB.deleteEvent(eventID);
-            displayChildFragment(new browseAppEvents(), bundle);
+            displayChildFragment(new BrowseAppEvents(), bundle);
         });
 
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());

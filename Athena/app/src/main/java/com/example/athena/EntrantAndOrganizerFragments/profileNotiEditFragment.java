@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
 import com.example.athena.databinding.ProfileScreenNotifEditBinding;
@@ -19,24 +19,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 
 /**
  * This is the fragment responsible for handling the operations of the user when they want to edit their profile
  * notification settings
  */
-public class profileNotiEditFragment extends Fragment {
-    private userDB usersDB;
+public class ProfileNotiEditFragment extends Fragment {
+    private UserDB usersDB;
     private String deviceID;
     ///Binding for the edit profile notifications page
     ProfileScreenNotifEditBinding binding;
-    public profileNotiEditFragment() {
+    public ProfileNotiEditFragment() {
         // Required empty public constructor
     }
 
@@ -57,7 +51,7 @@ public class profileNotiEditFragment extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
-        usersDB = new userDB();
+        usersDB = new UserDB();
 
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
@@ -107,7 +101,7 @@ public class profileNotiEditFragment extends Fragment {
 
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                viewProfileFragment frag = new viewProfileFragment();
+                ViewProfileFragment frag = new ViewProfileFragment();
                 frag.setArguments(bundle);
                 transaction.replace(R.id.entrant_and_organizer_constraint_layout, frag);
                 transaction.commit();

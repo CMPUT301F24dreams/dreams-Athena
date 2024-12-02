@@ -35,11 +35,13 @@
 
         <TextView
             android:id="@+id/textView9"
+            android:paddingLeft="14dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Name:"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="italic" />
@@ -47,19 +49,26 @@
         <TextView
             android:id="@+id/facility_name_textview"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="58dp"
+            android:background="@drawable/border"
+            android:elevation="20dp"
             android:fontFamily="@font/bai_jamjuree_bold"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:text="Name"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView10"
+            android:paddingLeft="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bai_jamjuree_bold"
             android:text="Location:"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="italic" />
@@ -67,9 +76,14 @@
         <TextView
             android:id="@+id/facility_location_textView"
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="56dp"
+            android:background="@drawable/border"
             android:fontFamily="@font/bai_jamjuree_bold"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:text="Location"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -137,6 +151,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/edit_facility_name_title"
                     app:layout_constraintVertical_bias="0.047" />
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="127dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="184dp"
+                    android:fontFamily="@font/bai_jamjuree_bold"
+                    android:text="Delete Facility"
+                    android:textAllCaps="true"
+                    android:textColor="#D52121"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/delete_facility_org_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/delete_facility_org_button"
+                    android:layout_width="27dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="184dp"
+                    android:backgroundTint="@color/mainBackground"
+                    android:src="@drawable/delete_facilities_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView12"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.076" />
+
+<<<<<<< HEAD
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
+=======
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 

@@ -6,26 +6,23 @@
 package com.example.athena.ArrayAdapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
 import com.example.athena.Models.Event;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 
 import java.util.ArrayList;
 
-public class userArrayAdapter extends ArrayAdapter<User> {
-    public userArrayAdapter(Context context, ArrayList<User> users){
+public class UserArrayAdapter extends ArrayAdapter<User> {
+    public UserArrayAdapter(Context context, ArrayList<User> users){
         super(context,0, users);
     }
     @NonNull

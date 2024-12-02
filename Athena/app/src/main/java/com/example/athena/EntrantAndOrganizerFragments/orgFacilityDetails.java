@@ -20,17 +20,27 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.athena.Firebase.FacilitiesDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 
-public class orgFacilityDetails extends Fragment {
-
+/**
+ * This class is responsible for handling all organizer duties pertaining to their facility
+ */
+public class OrgFacilityDetails extends Fragment {
+    private String facilityID;
+    private String deviceID;
+    private FacilitiesDB facilitiesDB;
+    private UserDB usersDB;
+    private EventsDB eventsDB;
+    private Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,18 +51,20 @@ public class orgFacilityDetails extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         assert bundle != null;
-        String deviceID = bundle.getString("deviceID");
-        userDB usersDB = new userDB();
-        FacilitiesDB facilitiesDB = new FacilitiesDB();
+        deviceID = bundle.getString("deviceID");
+        usersDB = new UserDB();
+        facilitiesDB = new FacilitiesDB();
+        eventsDB = new EventsDB();
         Task getUser = usersDB.getUser(deviceID);
         Task loadedUser = Tasks.whenAll(getUser);
 
         //retrieves the facility ID
-        String facilityID = bundle.getString("facilityID");
+        facilityID = bundle.getString("facilityID");
 
         TextView facilityName = view.findViewById(R.id.facility_name_textview);
+
 
         TextView facilityLocation = view.findViewById(R.id.facility_location_textView);
 
@@ -65,7 +77,7 @@ public class orgFacilityDetails extends Fragment {
                 if(task.isSuccessful()){
                     DocumentSnapshot facilityDetails = (DocumentSnapshot) getFacilityDetails.getResult();
                     facilityLocation.setText(facilityDetails.getString("facilityLocation"));
-                    facilityName.setText((String) facilityDetails.getString("facilityName"));
+                    facilityName.setText(facilityDetails.getString("facilityName"));
                 } else {
                     Exception e = task.getException();
                 }
@@ -89,6 +101,16 @@ public class orgFacilityDetails extends Fragment {
             @Override
             public void onClick(View v) {
                 editFacilityLocationDialog(bundle, facilitiesDB);
+            }
+        });
+
+
+        ImageButton deleteFacility = view.findViewById(R.id.delete_facility_org_button);
+
+        deleteFacility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteDialog();
             }
         });
 
@@ -202,7 +224,7 @@ public class orgFacilityDetails extends Fragment {
                         //if the facility location name fails to update, the error is displayed in a toast message
                         else{
                             Log.d(TAG, "Error getting documents: ", task.getException());
-                            Toast.makeText(requireContext(), "Could Not Update Facility Name" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Could Not Update Facility Location Name" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -214,4 +236,60 @@ public class orgFacilityDetails extends Fragment {
         });
     }
 
+    /**
+     * This method handles the deletion of all facilities
+     */
+    private void showDeleteDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("ARE YOU SURE YOU WANT DELETE THIS FACILITY?");
+
+        final TextView text = new TextView(requireContext());
+        text.setText("\n          All of your events will be permanently deleted.\n                                 click 'YES' to confirm");
+        builder.setView(text);
+
+        builder.setPositiveButton("YES", (dialog, which) -> {
+
+
+
+            ///Delete the ID from the user, and the facility object from the DB
+            facilitiesDB.deleteFacility(facilityID);
+            usersDB.deleteOrgFacility(deviceID);
+            Toast.makeText(getContext(), "Facility Deleted", Toast.LENGTH_SHORT).show();
+
+            ///deletes all of the events at a given facility
+            Task getEvents = eventsDB.getEventsList();
+            getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task){
+                    if (task.isSuccessful()) {
+                        for(DocumentSnapshot event: task.getResult().getDocuments()) {
+                            String eventName = event.getId();
+                            String eventFacility = event.getString("facility");
+
+
+                            if((event.contains("facility")) & eventFacility.equals(facilityID)) {
+                                    eventsDB.deleteSingularEvent(eventName);
+                                }
+                            }
+
+
+                        } else{
+                                Exception e = task.getException();
+                    }
+
+                }
+
+            });
+        });
+        builder.setNeutralButton("CANCEL", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
+        fragment.setArguments(bundle);
+        getParentFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+    }
 }

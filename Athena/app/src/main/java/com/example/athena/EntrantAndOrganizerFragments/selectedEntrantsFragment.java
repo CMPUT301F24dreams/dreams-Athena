@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.athena.Interfaces.displayFragments;
+import com.example.athena.Interfaces.DisplayFragments;
 import com.example.athena.R;
 
 /**
@@ -18,7 +18,7 @@ import com.example.athena.R;
  *   for interacting with the list, or integrating event handling.
 
  */
-public class selectedEntrantsFragment extends Fragment {
+public class SelectedEntrantsFragment extends Fragment {
 
 
     @Override

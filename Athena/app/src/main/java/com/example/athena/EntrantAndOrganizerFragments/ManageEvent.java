@@ -1,10 +1,9 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragment.PICK_IMAGE_REQUEST;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,18 +13,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.imageDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.ImageDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.displayFragments;
+import com.example.athena.Interfaces.DisplayFragments;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +34,6 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,16 +43,24 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
  public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
+     
+=======
+=======
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
+ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, DisplayFragments {
 
 
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
     private String eventID;
     public Event event;
     private String deviceID;
-    public eventsDB eventDB;
-    public userDB userDB;
+    public EventsDB eventDB;
+    public UserDB userDB;
     public Bundle bundle;
-    public imageDB imageDB;
+    public ImageDB imageDB;
     @Override
 
     /**
@@ -60,16 +68,34 @@ import java.util.Iterator;
      * and then updates the db
      */
     public void choseEntrants(int num) {
-        event.chooseUsers(num,eventID);
-        //update the dataBase:
-        ArrayList<String> userIDs;
+        ArrayList<String> invitedUserIDs = event.getWaitList().getInvited();
 
-        userIDs = event.getWaitList().getInvited();
-        for(String deviceID: userIDs){
-            eventDB.moveUserID("pending","invited",deviceID, eventID);
-            userDB.changeEventStatusInvited(eventID,deviceID);
+        int numInvited = invitedUserIDs.size();
+
+        int maxParticipants = event.getMaxParticipants();
+
+        if (num <= maxParticipants - numInvited) {
+            event.chooseUsers(num,eventID);
+            //update the dataBase:
+
+            invitedUserIDs = event.getWaitList().getInvited();
+            ArrayList<String> waitingUserIDs = event.getWaitList().getWaiting();
+            // update user's status to invited and notify
+            for(String deviceID: invitedUserIDs){
+                eventDB.moveUserID("pending","invited",deviceID, eventID);
+                userDB.changeEventStatusInvited(eventID,deviceID);
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+
+            // notify waiting users that the lottery happened
+            for (String deviceID: waitingUserIDs) {
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+        } else {
+            Toast.makeText(getActivity(),
+                    "Cannot add more than " + (maxParticipants - numInvited) + " participants",
+                    Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -87,9 +113,9 @@ import java.util.Iterator;
 
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        userDB = new userDB();
-        eventDB = new eventsDB();
-        imageDB = new imageDB();
+        userDB = new UserDB();
+        eventDB = new EventsDB();
+        imageDB = new ImageDB();
 
         //get the event here
         Task getEvent = eventDB.getEvent(eventID);
@@ -100,6 +126,7 @@ import java.util.Iterator;
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
 
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<String> accepted = new ArrayList<>();
@@ -112,6 +139,7 @@ import java.util.Iterator;
 
                     String eventName = userEvents.getString("eventName");
                     String imageURL = userEvents.getString("imageURL");
+                    int maxParticipants = Math.toIntExact((Long) userEvents.get("maxParticipants"));
 
                     ImageView eventPicture = view.findViewById(R.id.EventPicture);
                     if (imageURL != null && !imageURL.isEmpty()) {
@@ -119,7 +147,16 @@ import java.util.Iterator;
                                 .load(imageURL)  // Load the image URL from Firestore
                                 .into(eventPicture);  // Load image into the ImageView
                     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
                     Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
+=======
+                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
+=======
+                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
+>>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
                     event = currentEvent;
 
                     QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
@@ -127,16 +164,19 @@ import java.util.Iterator;
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                             accepted.add(document.getId());
                     }
+
                     QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
                     for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                         declined.add(document.getId());
                     }
+
                     QuerySnapshot pendList = (QuerySnapshot) getPen.getResult();
                     for (Iterator<DocumentSnapshot> it = pendList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                         pending.add(document.getId());
                     }
+
                     QuerySnapshot inviteList = (QuerySnapshot) getInvite.getResult();
                     for (Iterator<DocumentSnapshot> it = inviteList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
@@ -166,7 +206,7 @@ import java.util.Iterator;
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayChildFragment(new viewMyOrgEvents());
+                displayChildFragment(new ViewMyOrgEvents());
             }
         });
 

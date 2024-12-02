@@ -2,11 +2,9 @@ package com.example.athena.EntrantAndOrganizerFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +19,7 @@ import com.example.athena.R;
  * DialogFragment that prompts the user to accept or decline an event invitation.
  * It communicates with the calling fragment to handle the user's response.
  */
-public class userViewNotisChose extends DialogFragment {
+public class UserViewNotisChose extends DialogFragment {
     public interface acceptDeclineListener{
         /**
          * declines the invite

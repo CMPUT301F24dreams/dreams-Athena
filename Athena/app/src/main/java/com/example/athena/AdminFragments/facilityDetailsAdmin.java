@@ -1,24 +1,20 @@
 package com.example.athena.AdminFragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.athena.Firebase.FacilitiesDB;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.GeneralActivities.MainActivity;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
@@ -30,14 +26,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 /**
  *
  */
-public class facilityDetailsAdmin extends Fragment {
-    private eventsDB eventsDB;
+public class FacilityDetailsAdmin extends Fragment {
+    private EventsDB eventsDB;
     private FacilitiesDB facilitiesDB;
-    private userDB usersDB;
+    private UserDB usersDB;
     private String deviceID;
     private String facilityID;
     private Bundle bundle;
-
+    private boolean isAdmin;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.facility_details_admin, container, false);
@@ -56,9 +52,10 @@ public class facilityDetailsAdmin extends Fragment {
         assert bundle!= null;
         deviceID = bundle.getString("deviceID");
         facilityID = bundle.getString("facilityID");
+        isAdmin = bundle.getBoolean("isAdmin");
         facilitiesDB = new FacilitiesDB();
-        usersDB = new userDB();
-        eventsDB = new eventsDB();
+        usersDB = new UserDB();
+        eventsDB = new EventsDB();
 
         Task eventDetails = facilitiesDB.getFacility(facilityID);
         eventDetails.addOnCompleteListener(new OnCompleteListener() {
@@ -85,7 +82,7 @@ public class facilityDetailsAdmin extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayChildFragment(new adminBrowseFacilities(), bundle);
+                displayChildFragment(new AdminBrowseFacilities(), bundle);
 
             }
         });
@@ -132,7 +129,7 @@ public class facilityDetailsAdmin extends Fragment {
                 }
             });
 
-            displayChildFragment(new adminBrowseFacilities(), bundle);
+            displayChildFragment(new AdminBrowseFacilities(), bundle);
 
         });
         builder.setNeutralButton("CANCEL", (dialog, which) -> dialog.cancel());

@@ -5,9 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,38 +13,28 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.example.athena.WaitList.UserInviteArrayAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
 *This fragment represents the user's view of the events they are invited to attend.
 *It handles displaying a list of events where the user has been invited,
 *allowing them to either accept or decline the invitation.
  */
-public class userViewAttendingEventsFragment extends Fragment{
+public class UserViewAttendingEventsFragment extends Fragment{
 
     public ListView invites;
     private UserInviteArrayAdapter adapter;
     public ArrayList<Event> events;
     public String deviceID;
-    public userDB userDB;
-    public eventsDB eventsDB;
+    public UserDB userDB;
+    public EventsDB eventsDB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,8 +54,8 @@ public class userViewAttendingEventsFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         ///These are representative of database connections used for the respective entities (Users, events, and events)
-        userDB = new userDB();
-        eventsDB = new eventsDB();
+        userDB = new UserDB();
+        eventsDB = new EventsDB();
         events = new ArrayList<>();
 
         Task getUserEvents = userDB.getUserEvents(deviceID);

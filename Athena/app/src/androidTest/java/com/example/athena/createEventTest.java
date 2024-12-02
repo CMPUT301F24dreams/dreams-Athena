@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.athena.EntrantAndOrganizerFragments.eventCreation.createEvent;
+import com.example.athena.EntrantAndOrganizerFragments.eventCreation.CreateEvent;
 import com.example.athena.Firebase.eventsDB;
 import com.example.athena.Firebase.imageDB;
 import com.example.athena.Firebase.userDB;
@@ -36,7 +36,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 @RunWith(AndroidJUnit4.class)
-public class createEventTest {
+public class CreateEventTest {
 
     @Mock
     private eventsDB mockEventsDB;
@@ -55,12 +55,12 @@ public class createEventTest {
     @Mock
     private ImageView mockImageView;
 
-    private createEvent fragment;
+    private CreateEvent fragment;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        fragment = new createEvent();
+        fragment = new CreateEvent();
         //fragment.imageView = mockImageView;
     }
 

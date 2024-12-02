@@ -15,11 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.athena.ArrayAdapters.eventArrayAdapter;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.ArrayAdapters.EventArrayAdapter;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,10 +29,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 
-public class browseAppEvents extends Fragment {
+public class BrowseAppEvents extends Fragment {
     private String deviceID;
-    private com.example.athena.Firebase.userDB userDB;
-    private com.example.athena.Firebase.eventsDB eventsDB;
+    private com.example.athena.Firebase.UserDB userDB;
+    private com.example.athena.Firebase.EventsDB eventsDB;
     private ArrayList<Event> events;
     private ListView listView;
 
@@ -49,8 +48,8 @@ public class browseAppEvents extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
-        eventsDB = new eventsDB();
+        userDB = new UserDB();
+        eventsDB = new EventsDB();
         events = new ArrayList<>();
 
         listView = view.findViewById(R.id.admin_events_list);
@@ -60,8 +59,8 @@ public class browseAppEvents extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    eventArrayAdapter eventArrayAdapter = new eventArrayAdapter(getContext(), events);
-                    listView.setAdapter(eventArrayAdapter);
+                    EventArrayAdapter EventArrayAdapter = new EventArrayAdapter(getContext(), events);
+                    listView.setAdapter(EventArrayAdapter);
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String name = documentSnapshot.getString("eventName");
                         String img = documentSnapshot.getString("imageURL");
@@ -69,7 +68,7 @@ public class browseAppEvents extends Fragment {
                         Event event = new Event(name,img,ID);
                         events.add(event);
                     }
-                    eventArrayAdapter.notifyDataSetChanged();
+                    EventArrayAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -82,7 +81,7 @@ public class browseAppEvents extends Fragment {
                 Event event = (Event) parent.getAdapter().getItem(position);
                 String eventID = event.getEventID();
                bundle.putString("eventID", eventID);
-               displayChildFragment(new eventDetailsAdmin(), bundle);
+               displayChildFragment(new EventDetailsAdmin(), bundle);
             }
         });
 

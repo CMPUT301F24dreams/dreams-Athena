@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 //import com.example.athena.EntrantAndOrganizerActivities.entrantAndOrganizerHomeActivity;
-import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
+import com.example.athena.EntrantAndOrganizerFragments.HomeScreen;
 import com.example.athena.R;
 import com.example.athena.databinding.SignUpFragmentBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,14 +23,25 @@ import java.util.Objects;
 /**
  * Fragment for the user sign-up screen where the user can input their details and register.
  */
-public class signUpFragment extends Fragment {
+public class SignUpFragment extends Fragment {
     private SignUpFragmentBinding binding;
 
-    public signUpFragment() {
+    public SignUpFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,12 +56,19 @@ public class signUpFragment extends Fragment {
 
     }
 
-
+    /**
+     * This is where all of the input validation and database information transfer takes place while the user signs up for the application
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-
+        ///Validates user entries. Once the user has entered valid information in  all of the fields:
+        ///The information is inputted in the the database
+        ///The user is sent the home screen
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +91,22 @@ public class signUpFragment extends Fragment {
                     return;
                 }
 
+                //Check if the fields match the correct formats
+                if (!email.matches("^[a-zA-Z]+@[a-zA-Z]+\\.com$")){
+                    binding.editEmailReg.setError("Please enter a valid email");
+                    binding.editEmailReg.requestFocus();
+                    return;
+                }
+
+                //Check if the fields match the correct formats
+                if (!name.matches("^[a-zA-Z ]*[a-zA-Z][a-zA-Z ]*$")){
+                    binding.editNameReg.setError("Your name can only contain letters");
+                    binding.editNameReg.requestFocus();
+                    return;
+                }
+
+
+
                 Bundle mainActivity = getArguments();
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -89,7 +123,7 @@ public class signUpFragment extends Fragment {
                 assert mainActivity != null;
                 db.collection("Users").document(Objects.requireNonNull(mainActivity.getString("deviceID"))).set(data);
 
-                homeScreen homeScreen = new homeScreen();
+                HomeScreen homeScreen = new HomeScreen();
 
                 // If all fields are filled, proceed with action
                 FragmentManager fragmentManager = getParentFragmentManager();

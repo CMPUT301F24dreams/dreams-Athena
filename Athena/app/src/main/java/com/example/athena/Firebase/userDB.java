@@ -16,7 +16,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,19 +24,17 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * This class handles database operations for the users collection in Firestore.
  */
-public class  userDB {
+public class UserDB {
     private static FirebaseFirestore db;
     private CollectionReference usersCollection;
 
-    public userDB() {
+    public UserDB() {
         // Initialize Firestore and set the users collection
         this.db = FirebaseFirestore.getInstance();
         this.usersCollection = db.collection("Users");
@@ -80,12 +77,15 @@ public class  userDB {
     }
 
     public void joinEvent(String deviceID,String eventID){
-        Map<String,String> status = new HashMap<>();
+        Map<String,Object> status = new HashMap<>();
         status.put("status","pending");
+        status.put("isNotified", true);
         usersCollection.document(deviceID).collection("Events").document(eventID).set(status);
     }
 
-
+    public void resetEventNotifiedStatus(String deviceID,String eventID) {
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("isNotified",false);
+    }
 
     /**
      * updates the users status to invited on the users events sub-collection

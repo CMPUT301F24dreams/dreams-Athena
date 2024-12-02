@@ -14,18 +14,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.eventViewAdapter;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.ArrayAdapters.EventViewAdapter;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+
 public class JoinEventDetails extends Fragment {
-    private eventsDB EventsDB = new eventsDB();
-    private userDB UserDB = new userDB();
+    private EventsDB eventsDB = new EventsDB();
+    private UserDB userDB = new UserDB();
     private boolean eventHasGeolocation;
     private boolean warnAboutGeolocation;
 
@@ -42,14 +43,19 @@ public class JoinEventDetails extends Fragment {
         String eventID = bundle.getString("eventID");
         String deviceID = bundle.getString("deviceID");
         warnAboutGeolocation = bundle.getBoolean("geolocationWarn");
-        eventViewAdapter fragment = new eventViewAdapter(getContext());
+        EventViewAdapter fragment = new EventViewAdapter(getContext());
         fragment.setEventName(view.findViewById(R.id.eventName));
+        fragment.setEventDesc(view.findViewById(R.id.event_details_event_desc));
         fragment.setImageView(view.findViewById(R.id.event_poster));
+        fragment.setRegStart(view.findViewById(R.id.event_details_reg_open));
+        fragment.setRegEnd(view.findViewById(R.id.event_details_reg_close));
+        fragment.setEventDesc(view.findViewById(R.id.event_details_event_desc));
+
 
         Event event = new Event();
         event.addObserver(fragment);
 
-        EventsDB.loadQRData(event, eventID,getParentFragmentManager(),bundle,getActivity());
+        eventsDB.loadQRData(event, eventID,getParentFragmentManager(),bundle,getActivity());
 
         Button joinBtn = view.findViewById(R.id.leaveBtn);
         joinBtn.setText("Join Waitlist");
@@ -63,11 +69,11 @@ public class JoinEventDetails extends Fragment {
     }
 
     // Code to display a dialog
-    private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
+    private void showLeaveDialog(String deviceID, String eventID, Bundle bundle) {
 
 
 
-        Task getUserGeoWarnStatus = UserDB.getUser(deviceID);
+        Task getUserGeoWarnStatus = userDB.getUser(deviceID);
         getUserGeoWarnStatus.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
 
@@ -88,7 +94,7 @@ public class JoinEventDetails extends Fragment {
                     ///If the user currently has the geolocation warning set to true AND the event requires geolocation, they will be notified before they join the waitlist
                     ///Otherwise they will simply asked to confirm that they want to join the waitlist
 
-                    Task getEventDetails = EventsDB.getEvent(eventID);
+                    Task getEventDetails = eventsDB.getEvent(eventID);
                     getEventDetails.addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -109,8 +115,8 @@ public class JoinEventDetails extends Fragment {
 
                                 // Set up buttons
                                 builder.setPositiveButton("Confirm", (dialog, which) -> {
-                                    EventsDB.addUser(deviceID,eventID);
-                                    UserDB.joinEvent(deviceID,eventID);
+                                    eventsDB.addUser(deviceID,eventID);
+                                    userDB.joinEvent(deviceID,eventID);
                                     displayChildFragment(new myEventsList(),bundle);
                                 });
                                 builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());

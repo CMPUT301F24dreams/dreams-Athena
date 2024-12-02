@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -38,11 +37,11 @@ import java.util.Map;
 /**
  * This class handles database operations for events collection, interacting with the Firestore database.
  */
-public class eventsDB {
+public class EventsDB {
     private FirebaseFirestore db;
     private static CollectionReference eventsCollection;
 
-    public eventsDB(){
+    public EventsDB(){
         this.db = FirebaseFirestore.getInstance();
         this.eventsCollection = db.collection("Events");
     }
@@ -74,14 +73,15 @@ public class eventsDB {
                     event.setEventDescription(document.getString("eventDescription"));
                     event.setOrganizer(document.getString("organizer"));
                     event.setFacility(document.getString("Facility"));
+                    Log.w("loadEventData", String.valueOf(Math.toIntExact((Long) document.get("maxParticipants"))));
                     event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
+                    Log.w("loadEventData", String.valueOf(event.getMaxParticipants()));
                     event.setGeoRequire(document.getBoolean("geoRequire"));
                     event.setEventID(document.getString("eventID"));
-
+                    event.setStartReg(document.getString("startReg"));
+                    event.setEndReg(document.getString("endReg"));
                     event.notifyObservers();
                 } else {
-
-
                     Exception exception = task.getException();
                 }
             }
@@ -101,10 +101,11 @@ public class eventsDB {
                         event.setEventDescription(document.getString("eventDescription"));
                         event.setOrganizer(document.getString("organizer"));
                         event.setFacility(document.getString("Facility"));
-                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));;
+                        event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
                         event.setGeoRequire(document.getBoolean("geoRequire"));
                         event.setEventID(document.getString("eventID"));
-
+                        event.setStartReg(document.getString("startReg"));
+                        event.setEndReg(document.getString("endReg"));
                         event.notifyObservers();
 
                     } else {
@@ -147,11 +148,11 @@ public class eventsDB {
                 DocumentReference doc = (DocumentReference) task.getResult();
                 String eventID = doc.getId();
                 event.setEventID(eventID);
-                UploadTask upload = new imageDB().addImage(eventID, imageURI);
-                Task changeURL = eventsDB.saveURLToEvent(upload, eventID);
+                UploadTask upload = new ImageDB().addImage(eventID, imageURI);
+                Task changeURL = EventsDB.saveURLToEvent(upload, eventID);
 
-                Task updateID = eventsDB.updateEventID(eventID);
-                Task updateUserOrg = userDB.updateOrgEvents(userID, eventID);
+                Task updateID = EventsDB.updateEventID(eventID);
+                Task updateUserOrg = UserDB.updateOrgEvents(userID, eventID);
 
                 Task finishTask = Tasks.whenAll(upload, changeURL, updateID, updateUserOrg);
                 finishTask.addOnCompleteListener(new OnCompleteListener() {
@@ -219,6 +220,9 @@ public class eventsDB {
         db.collection("Events").document(eventID).collection(donor).document(userID).delete();
     }
 
+    public void deleteSingularEvent(String eventID){
+        db.collection("Events").document(eventID).delete();
+    }
     public void deleteEvent(String eventID){
 
         Task getUserList = eventsCollection.document(eventID).collection("UserList").get();

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.athena.ArrayAdapters.eventArrayAdapter;
+import com.example.athena.ArrayAdapters.EventArrayAdapter;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.example.athena.databinding.OrganizerMyEventsViewBinding;
@@ -33,14 +33,14 @@ import java.util.List;
  * This fragment displays the list of events created by the organizer and allows navigation to event details.
  * It fetches events from Firestore and displays them using a custom adapter.
  */
-public class viewMyOrgEvents extends Fragment{
+public class ViewMyOrgEvents extends Fragment{
 
     private ListView eventList;
-    private eventArrayAdapter eventAdapter;
+    private EventArrayAdapter eventAdapter;
     private ArrayList<Event> events;
     private String deviceID;
-    public userDB userDB;
-    public eventsDB eventsDB;
+    public UserDB userDB;
+    public EventsDB eventsDB;
     OrganizerMyEventsViewBinding binding;
 
     @Override
@@ -64,8 +64,8 @@ public class viewMyOrgEvents extends Fragment{
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
-        eventsDB = new eventsDB();
+        userDB = new UserDB();
+        eventsDB = new EventsDB();
         events = new ArrayList<>();
 
 
@@ -77,7 +77,7 @@ public class viewMyOrgEvents extends Fragment{
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                eventArrayAdapter eventAdapter = new eventArrayAdapter(getContext(), events);
+                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
                 eventList.setAdapter(eventAdapter);
 
                 if (task.isSuccessful()) {
@@ -95,7 +95,8 @@ public class viewMyOrgEvents extends Fragment{
                         if (userEventList.contains(document.getId())) {
                             String eventName = document.getString("eventName");
                             String imageURL = document.getString("imageURL");
-                            Event currentEvent = new Event(eventName, imageURL, document.getId());
+                            int maxParticipants = Math.toIntExact((Long) document.get("maxParticipants"));
+                            Event currentEvent = new Event(eventName, imageURL, document.getId(), maxParticipants);
                             events.add(currentEvent);
                         }
                     }
@@ -107,7 +108,7 @@ public class viewMyOrgEvents extends Fragment{
             }
         });
 
-        eventAdapter = new eventArrayAdapter(getContext(), events);
+        eventAdapter = new EventArrayAdapter(getContext(), events);
         eventList.setAdapter(eventAdapter);
 
         eventList.setClickable(Boolean.TRUE);

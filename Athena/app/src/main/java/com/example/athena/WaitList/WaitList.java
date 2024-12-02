@@ -146,8 +146,8 @@ public class WaitList{
         if (numSelect > waiting.size()){
 
             //if number to select is greater than amount signed up send all to invited
-            for(String userID: waiting){
-                moveUsers(userID,invited,waiting);
+            while (!waiting.isEmpty()){
+                moveUsers(waiting.get(0),invited,waiting);
             }
         }else {
             //get random from list and move it

@@ -1,4 +1,4 @@
-/*
+/**
  * This class is a custom ArrayAdapter designed to bind event data to a ListView. It displays a list of Event objects by inflating a custom layout for each item, which includes the event name and image.
  * The event name is displayed in a TextView, while the event image is loaded into an ImageView using the Glide library.
  */
@@ -21,8 +21,8 @@ import com.example.athena.R;
 
 import java.util.ArrayList;
 
-public class eventArrayAdapter extends ArrayAdapter<Event> {
-    public eventArrayAdapter(Context context, ArrayList<Event> events){
+public class EventArrayAdapter extends ArrayAdapter<Event> {
+    public EventArrayAdapter(Context context, ArrayList<Event> events){
         super(context,0,events);
     }
     @NonNull
@@ -39,6 +39,7 @@ public class eventArrayAdapter extends ArrayAdapter<Event> {
         TextView eventName = view.findViewById(R.id.userName);
         assert event != null;
         eventName.setText(event.getEventName());
+
 
         ImageView image = view.findViewById(R.id.userImage);
         Glide.with(getContext()).load(event.getImageURL()).into(image);

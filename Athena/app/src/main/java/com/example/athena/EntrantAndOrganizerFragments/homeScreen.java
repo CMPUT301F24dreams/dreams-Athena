@@ -2,7 +2,6 @@ package com.example.athena.EntrantAndOrganizerFragments;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,12 +19,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.athena.AdminFragments.adminBrowseFacilities;
-import com.example.athena.EntrantAndOrganizerFragments.eventCreation.createEvent;
-import com.example.athena.Firebase.userDB;
-import com.example.athena.AdminFragments.adminProfileBrowse;
-import com.example.athena.AdminFragments.browseAppEvents;
-import com.example.athena.AdminFragments.browseAppImages;
+import com.example.athena.AdminFragments.AdminBrowseFacilities;
+import com.example.athena.EntrantAndOrganizerFragments.eventCreation.CreateEvent;
+import com.example.athena.Firebase.UserDB;
+import com.example.athena.AdminFragments.AdminProfileBrowse;
+import com.example.athena.AdminFragments.BrowseAppEvents;
+import com.example.athena.AdminFragments.BrowseAppImages;
 import com.example.athena.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,10 +37,10 @@ import com.journeyapps.barcodescanner.ScanOptions;
 /**
  * This is a fragment used as a home page for entrants and organizers
  */
-public class homeScreen extends Fragment {
+public class HomeScreen extends Fragment {
     private String eventID;
     private Bundle bundle;
-    private userDB userDB;
+    private UserDB userDB;
 
 
     @Override
@@ -54,7 +53,7 @@ public class homeScreen extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
-        userDB = new userDB();
+        userDB = new UserDB();
         String deviceID = bundle.getString("deviceID");
 
         Task<DocumentSnapshot> getUser = userDB.getUser(deviceID);
@@ -70,11 +69,6 @@ public class homeScreen extends Fragment {
                         String isAdmin = user.getBoolean("isAdmin").toString();
 
                         bundle.putString("isAdmin", isAdmin);
-
-                        if(user.contains("geolocationWarn")) {
-                            bundle.putBoolean("geolocationWarn", user.getBoolean("geolocationWarn"));
-                            Toast.makeText(getContext(),"Your current geolocation warning status is: " + user.getBoolean("geolocationWarn").toString(), Toast.LENGTH_SHORT).show();
-                        }
 
                         if (!user.get("isAdmin").equals(true)) {
                             ///Disable admin privileges
@@ -165,7 +159,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new browseAppImages(), bundle);
+                displayChildFragment(new BrowseAppImages(), bundle);
 
             }
         });
@@ -174,7 +168,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new adminBrowseFacilities(), bundle);
+                displayChildFragment(new AdminBrowseFacilities(), bundle);
 
             }
         });
@@ -183,7 +177,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new browseAppEvents(), bundle);
+                displayChildFragment(new BrowseAppEvents(), bundle);
 
             }
         });
@@ -192,7 +186,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new viewMyOrgEvents(), bundle);
+                displayChildFragment(new ViewMyOrgEvents(), bundle);
 
             }
         });
@@ -228,7 +222,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View v) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new adminProfileBrowse(), bundle);
+                displayChildFragment(new AdminProfileBrowse(), bundle);
             }
         });
 
@@ -236,7 +230,7 @@ public class homeScreen extends Fragment {
             @Override
             public void onClick(View view) {
                 appDrawer.setVisibility(View.GONE);
-                displayChildFragment(new userViewAttendingEventsFragment(), bundle);
+                displayChildFragment(new UserViewAttendingEventsFragment(), bundle);
             }
         });
 
@@ -245,7 +239,7 @@ public class homeScreen extends Fragment {
             public void onClick(View view) {
                 ///Removes the child fragment so that you cannot click any of the buttons that were on the previous page
                 removeChildFragment();
-                displayNewFrag(new viewProfileFragment(), bundle);
+                displayNewFrag(new ViewProfileFragment(), bundle);
             }
         });
 
@@ -290,7 +284,7 @@ public class homeScreen extends Fragment {
         dialog.show();
 
         dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            displayChildFragment(new createFacility(), bundle);
+            displayChildFragment(new CreateFacility(), bundle);
             dialog.dismiss();
         });
 
@@ -376,10 +370,10 @@ public class homeScreen extends Fragment {
 
                     ///checks which button was clicked by the user, sends them to the respective page they requested
                     if(buttonClicked.equals("manageFacilityButton")) {
-                        displayChildFragment(new orgFacilityDetails(), bundle);
+                        displayChildFragment(new OrgFacilityDetails(), bundle);
 
                     }else{
-                        displayChildFragment(new createEvent(), bundle);
+                        displayChildFragment(new CreateEvent(), bundle);
 
                     }
 
@@ -399,7 +393,7 @@ public class homeScreen extends Fragment {
                     //the user will not be able to trigger the "create a facility" dialog
                     //instead, they'll just be reminded that they need a facility before creating an event
 
-                    if (!currentFragment.getClass().getSimpleName().equals("createFacility")) {//checks for the current fragment's name
+                    if (!currentFragment.getClass().getSimpleName().equals("CreateFacility")) {//checks for the current fragment's name
 
 
                         if(buttonClicked.equals("manageFacilityButton")) {

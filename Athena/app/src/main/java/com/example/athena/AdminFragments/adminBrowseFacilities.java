@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.athena.ArrayAdapters.facilitiesArrayAdapter;
+import com.example.athena.ArrayAdapters.FacilitiesArrayAdapter;
 import com.example.athena.Firebase.FacilitiesDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Facility;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,9 +26,9 @@ import java.util.ArrayList;
 /**
  *
  */
-public class adminBrowseFacilities extends Fragment {
+public class AdminBrowseFacilities extends Fragment {
     private String deviceID;
-    private com.example.athena.Firebase.userDB userDB;
+    private com.example.athena.Firebase.UserDB userDB;
     private com.example.athena.Firebase.FacilitiesDB facilitiesDB;
     private ArrayList<Facility> facilities;
     private ListView listView;
@@ -46,7 +46,7 @@ public class adminBrowseFacilities extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
+        userDB = new UserDB();
         facilitiesDB = new FacilitiesDB();
         facilities = new ArrayList<>();
         listView = view.findViewById(R.id.admin_facility_list);
@@ -56,7 +56,7 @@ public class adminBrowseFacilities extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                facilitiesArrayAdapter facilitiesArrayAdapter = new facilitiesArrayAdapter(getContext(), facilities);
+                FacilitiesArrayAdapter facilitiesArrayAdapter = new FacilitiesArrayAdapter(getContext(), facilities);
                     listView.setAdapter(facilitiesArrayAdapter);
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()){
                         String name = documentSnapshot.getString("facilityName");
@@ -85,7 +85,7 @@ public class adminBrowseFacilities extends Fragment {
                 bundle.putString("facilityID", facilityID);
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
-                displayChildFragment(new facilityDetailsAdmin(), bundle);
+                displayChildFragment(new FacilityDetailsAdmin(), bundle);
             }
         });
 
