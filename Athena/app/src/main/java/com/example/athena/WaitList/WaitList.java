@@ -102,6 +102,11 @@ public class WaitList{
 
     }
 
+    /**
+     * add a deviceID to the invited list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
     public void addInvited(String userID, String eventID) {
 
         this.invited.add(userID);
@@ -109,6 +114,11 @@ public class WaitList{
 
     }
 
+    /**
+     * add a deviceID to the accepted list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
     public void addAccept(String userID, String eventID) {
 
         this.accepted.add(userID);
@@ -116,6 +126,11 @@ public class WaitList{
 
     }
 
+    /**
+     * add a deviceID to the declined list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
     public void addDecline(String userID, String eventID) {
 
         this.declined.add(userID);

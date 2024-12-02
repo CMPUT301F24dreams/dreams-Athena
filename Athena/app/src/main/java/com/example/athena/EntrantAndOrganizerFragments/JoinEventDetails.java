@@ -23,7 +23,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-
+/**
+ * Fragment that handles users joining a waitlist for a event and displays event details
+ */
 public class JoinEventDetails extends Fragment {
     private EventsDB eventsDB = new EventsDB();
     private UserDB userDB = new UserDB();
@@ -63,13 +65,20 @@ public class JoinEventDetails extends Fragment {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLeaveDialog(deviceID,eventID, bundle);
+                showJoinDialog(deviceID,eventID, bundle);
             }
         });
     }
 
     // Code to display a dialog
-    private void showLeaveDialog(String deviceID, String eventID,Bundle bundle) {
+
+    /**
+     * displays a popup dialog for the user to confirm to join the event
+     * @param deviceID the users deviceID
+     * @param eventID the ID of the event the user is joining
+     * @param bundle bundle with information need to send to another fragment
+     */
+    private void showJoinDialog(String deviceID, String eventID,Bundle bundle) {
 
 
 

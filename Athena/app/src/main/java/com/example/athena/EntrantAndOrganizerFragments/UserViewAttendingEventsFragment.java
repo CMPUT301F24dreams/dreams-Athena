@@ -86,6 +86,11 @@ public class UserViewAttendingEventsFragment extends Fragment{
 
     }
 
+
+    /**
+     * show a popup dialog allowing the user to accept or decline invites
+     * @param event the event the user is accepting or declining
+     */
     public void showAcceptDialog(Event event){
         // display popup
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
