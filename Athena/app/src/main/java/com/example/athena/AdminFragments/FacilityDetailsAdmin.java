@@ -113,11 +113,11 @@ public class FacilityDetailsAdmin extends Fragment {
                 public void onComplete(@NonNull Task<QuerySnapshot> task){
                     if (task.isSuccessful()) {
                         for(DocumentSnapshot event: task.getResult().getDocuments()) {
-                            String eventName = event.getId();
+                            String eventID = event.getId();
                             if((event.contains("facility"))){
                                 String eventFacility = event.getString("facility");
                                 if (eventFacility.equals(facilityID)) {
-                                    eventsDB.deleteEvent(eventName);
+                                    eventsDB.deleteSingularEvent(eventID);
                                 }
 
                             }

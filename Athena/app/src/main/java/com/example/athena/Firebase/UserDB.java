@@ -279,50 +279,9 @@ public class UserDB {
         return usersCollection.get();
     }
 
-    // Adds a role to a user's roles array (e.g., entrant, admin, organizer)
-    public Task<Void> addRoleToUser(String userId, String newRole) {
-        return usersCollection.document(userId).update("roles", FieldValue.arrayUnion(newRole));
-    }
 
-    // Removes a role from a user's roles array
-    public Task<Void> removeRoleFromUser(String userId, String roleToRemove) {
-        return usersCollection.document(userId).update("roles", FieldValue.arrayRemove(roleToRemove));
-    }
-    // Checks if the user has the admin role
-    public Task<Boolean> isAdmin(String userId) {
-        return getUser(userId).continueWith(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot userDocument = task.getResult();
-                List<String> roles = (List<String>) userDocument.get("roles");
-                return roles != null && roles.contains("admin");
-            }
-            return false;
-        });
-    }
 
-    // Checks if the user has the entrant role
-    public Task<Boolean> isEntrant(String userId) {
-        return getUser(userId).continueWith(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot userDocument = task.getResult();
-                List<String> roles = (List<String>) userDocument.get("roles");
-                return roles != null && roles.contains("entrant");
-            }
-            return false;
-        });
-    }
 
-    // Checks if the user has the organizer role
-    public Task<Boolean> isOrganizer(String userId) {
-        return getUser(userId).continueWith(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot userDocument = task.getResult();
-                List<String> roles = (List<String>) userDocument.get("roles");
-                return roles != null && roles.contains("organizer");
-            }
-            return false;
-        });
-    }
 
 
 }

@@ -164,7 +164,7 @@ public class EventDetailsAdmin extends Fragment{
 
         builder.setPositiveButton("Confirm", (dialog, which) -> {
             imageDB.deleteImage(eventID);
-            eventsDB.deleteEvent(eventID);
+            eventsDB.deleteSingularEvent(eventID);
             displayChildFragment(new BrowseAppEvents(), bundle);
         });
 

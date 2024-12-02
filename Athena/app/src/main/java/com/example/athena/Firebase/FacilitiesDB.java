@@ -36,33 +36,56 @@ public class FacilitiesDB {
     }
 
 
-
+    /**
+     * Adds a facility to the database
+     * @param facility
+     * @return
+     */
     public Task addFacility(Facility facility){
         return facilitiesCollection.add(facility);
     }
 
-    // Retrieves a specific facility by its ID
+    /**
+     *  Retrieves a specific facility by its ID
+     * @return a task reference
+     */
     public Task<DocumentSnapshot> getFacility(String facilityId) {
         return facilitiesCollection.document(facilityId).get();
     }
 
+    /**
+     * updates a facility's facility ID
+     * @param facilityID the facility ID of the facility being updated
+     * @return a task reference
+     */
     public void updateFacilityID(String facilityID) {
         Map<String, Object> data = new HashMap<>();
         data.put("facilityID", facilityID);
         facilitiesCollection.document(facilityID).set(data, SetOptions.merge());
     }
-
-    // Updates an existing facility with new data
+    /**
+     * Updates an existing facility with new data
+     * @return a task reference
+     */
+    //
     public Task<Void> updateFacility(String facilityId, HashMap<String, Object> updatedData) {
         return facilitiesCollection.document(facilityId).update(updatedData);
     }
 
-    // Deletes a specific facility by its ID
+    /**
+     * Deletes a specific facility by its ID
+     * @param facilityId the facility ID of the facilty being deleted
+     * @return a task reference
+     */
     public Task<Void> deleteFacility(String facilityId) {
         return facilitiesCollection.document(facilityId).delete();
 
     }
 
+    /**
+     * Retrieves all of the facilities in the database
+     * @return a query snapshot of the result
+     */
     // Retrieves all facilities, can be used to get a list of all facilities
     public Task<QuerySnapshot> getAllFacilities() {
         return facilitiesCollection.get();
