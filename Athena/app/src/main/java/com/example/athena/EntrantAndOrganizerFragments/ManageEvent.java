@@ -114,6 +114,9 @@ import java.util.Iterator;
         Task getPen = eventDB.getEventUserList(eventID,"pending");
         Task getInvite = eventDB.getEventUserList(eventID,"invited");
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
+        Task eventDetails = eventDB.getEvent(eventID);
+
+        ImageView qrCodeView = view.findViewById(R.id.qrCodeView2);
 
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -122,6 +125,22 @@ import java.util.Iterator;
                 ArrayList<String> declined = new ArrayList<>();
                 ArrayList<String> pending = new ArrayList<>();
                 ArrayList<String> invited = new ArrayList<>();
+
+                if (eventDetails.isSuccessful()) {
+                    DocumentSnapshot document = (DocumentSnapshot) eventDetails.getResult();
+
+                    // QrCode
+                    String qrCode = document.getString("qrCode");
+                    if (qrCode != null && !qrCode.equals("NULL")) {
+                        Glide.with(getContext())
+                                .load(qrCode)
+                                .into(qrCodeView);
+                    } else {
+                        qrCodeView.setImageResource(android.R.color.transparent); // Clear the view
+                        qrCodeView.setContentDescription("No QR code available");
+                    }
+                }
+
                 if (task.isSuccessful()) {
 
                     DocumentSnapshot userEvents = (DocumentSnapshot) getEvent.getResult();

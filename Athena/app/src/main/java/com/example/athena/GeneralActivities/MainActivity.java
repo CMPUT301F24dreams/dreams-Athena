@@ -41,25 +41,25 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-           String deviceID = String.valueOf(getDeviceId());
-            db.collection("Users").document(deviceID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            //DEFAULT ADMIN DEVICE ID: String.valueOf(getDeviceId())
+            db.collection("Users").document("0").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("deviceID", deviceID);
+                    bundle.putString("deviceID", "0");
                     if (task.getResult().exists()) {
                         HomeScreen homeScreen = new HomeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
+                        transaction.replace(R.id.content_layout, homeScreen);
                         transaction.commit();
                     } else {
                         SignUpFragment signUp = new SignUpFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         signUp.setArguments(bundle);
-                        transaction.replace(R.id.content_layout, signUp); // Replace with your container ID
+                        transaction.replace(R.id.content_layout, signUp);
                         transaction.commit();
                     }
                     
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
-                    notificationIntent.putExtra("deviceId", deviceID);
+                    notificationIntent.putExtra("deviceId", String.valueOf(getDeviceId()));
 
                     startService(notificationIntent);
                 }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
     /**
-     * Calls the activity launcher in the current context
+     * Calls the activity launcher in the current cotext
      */
     private void requestNotificationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
