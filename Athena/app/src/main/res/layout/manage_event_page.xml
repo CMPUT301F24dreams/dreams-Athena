@@ -14,10 +14,10 @@
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintHorizontal_bias="0.831"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906"
+        app:layout_constraintVertical_bias="0.885"
         app:srcCompat="@android:drawable/ic_menu_edit"
         app:tint="@color/black" />
 
@@ -119,7 +119,6 @@
         android:layout_width="198dp"
         android:layout_height="216dp"
         android:layout_marginBottom="80dp"
-        android:src="@drawable/profilepicturebutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"

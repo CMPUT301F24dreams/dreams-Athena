@@ -14,8 +14,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.athena.Controllers.NotificationController;
 import com.example.athena.Models.Notification;
-import com.example.athena.Models.detailsForNotification;
-import com.example.athena.Models.userNotifDetails;
+import com.example.athena.Models.DetailsForNotification;
+import com.example.athena.Models.UserNotifDetails;
 import com.example.athena.R;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -51,7 +51,7 @@ public class NotificationView {
      * Callback for getNotificationData method, needed in order to return data
      */
     public interface NotificationDataCallback {
-        void onDataRetrieved(detailsForNotification notifDetatils);
+        void onDataRetrieved(DetailsForNotification notifDetatils);
         void onError(Exception e);
     }
 
@@ -79,7 +79,7 @@ public class NotificationView {
             if (task.isSuccessful()) {
 
                 // Process user data
-                userNotifDetails userDetails = new userNotifDetails();
+                UserNotifDetails userDetails = new UserNotifDetails();
                 if (userTask.getResult() != null && userTask.getResult().exists()) {
                     DocumentSnapshot userDoc = userTask.getResult();
                     userDetails.setUserName(userDoc.getString("name"));
@@ -93,7 +93,7 @@ public class NotificationView {
                     String eventName = eventDoc.getString("eventName");
 
                     // Create the notification details object
-                    detailsForNotification notifDetails = new detailsForNotification(
+                    DetailsForNotification notifDetails = new DetailsForNotification(
                             userDetails,
                             eventName,
                             eventId,
