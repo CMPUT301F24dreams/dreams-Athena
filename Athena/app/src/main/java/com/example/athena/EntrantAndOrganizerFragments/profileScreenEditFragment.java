@@ -159,8 +159,13 @@ public class profileScreenEditFragment extends Fragment {
         // Set up buttons
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newName = input.getText().toString();
-            binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
-            user.setName(newName);
+            if (!newName.matches("^[a-zA-Z ]*[a-zA-Z][a-zA-Z ]*$")){
+                Toast.makeText(getContext(),"Invalid name entered, names can only have letters and spaces.", Toast.LENGTH_SHORT).show();
+            }else{
+                binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
+                user.setName(newName);
+            }
+
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -180,8 +185,13 @@ public class profileScreenEditFragment extends Fragment {
 
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newEmail = input.getText().toString();
-            binding.profileEmail2.setText("Email: " + newEmail);
-            user.setEmail(newEmail);
+            if (!newEmail.matches("^[a-zA-Z]+@[a-zA-Z]+\\.com$")){
+                Toast.makeText(getContext(),"Invalid name entered, names can only have letters and spaces.", Toast.LENGTH_SHORT).show();
+            }else{
+                binding.profileEmail2.setText("Email: " + newEmail);
+                user.setEmail(newEmail);
+            }
+
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -201,8 +211,12 @@ public class profileScreenEditFragment extends Fragment {
 
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newNumber = input.getText().toString();
-            binding.profileNumber2.setText("Number: " + newNumber);
-            user.setPhone(newNumber);
+            if(!newNumber.isEmpty() & !newNumber.matches("^\\d{10}$")){
+                Toast.makeText(getContext(),"Invalid phone number entered. Please enter a 10 digit phone number.", Toast.LENGTH_SHORT).show();
+            }else {
+                binding.profileNumber2.setText("Number: " + newNumber);
+                user.setPhone(newNumber);
+            }
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -210,7 +224,6 @@ public class profileScreenEditFragment extends Fragment {
     }
 
     private void saveProfileChanges() {
-        // TODO: database stuffs
         usersDB.saveUserDetail(user,deviceID);
     }
 }
