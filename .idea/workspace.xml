@@ -225,11 +225,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="converted interval based checker to a listener, and fixed heads up notifications">
+    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="fixed lottery logic and properly notify users">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/ManageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/ManageEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/UserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/UserDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/DetailsForNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Models/DetailsForNotification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +308,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Android App.Athena.app.executor": "Debug",
+    "Android App.Athena.app.executor": "Run",
     "Android Instrumented Tests.ExampleInstrumentedTest.executor": "Run",
     "Android Instrumented Tests.HomeScreenTest.executor": "Run",
     "Android Instrumented Tests.Tests in 'com.example.athena'.executor": "Run",
@@ -365,6 +363,9 @@
     </key>
     <key name="android.template.-1459623746">
       <recent name="com.example.athena.EntrantAndOrganizerActivities" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.athena.Models" />
     </key>
     <key name="android.template.1287714571">
       <recent name="com.example.athena.AdminFragments" />
@@ -604,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733095898485</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed lottery logic and properly notify users">
+      <option name="closed" value="true" />
+      <created>1733099612652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733099612652</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -621,7 +630,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="converted interval based checker to a listener, and fixed heads up notifications" />
     <MESSAGE value="changed class names" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed class names" />
+    <MESSAGE value="fixed lottery logic and properly notify users" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed lottery logic and properly notify users" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

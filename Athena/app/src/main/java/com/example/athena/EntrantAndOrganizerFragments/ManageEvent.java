@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.EventsDB;
@@ -80,6 +81,10 @@ import java.util.Iterator;
             for (String deviceID: waitingUserIDs) {
                 userDB.resetEventNotifiedStatus(deviceID, eventID);
             }
+        } else {
+            Toast.makeText(getActivity(),
+                    "Cannot add more than " + (maxParticipants - numInvited) + " participants",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
