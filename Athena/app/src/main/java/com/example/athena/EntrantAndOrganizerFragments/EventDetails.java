@@ -50,6 +50,15 @@ import com.example.athena.R;
 
         eventsDB.loadEventData(event, eventID);
 
+
+        ///removes the leave waitlist button from event details if coming from the event creation page
+        boolean fromCreateEvent = bundle.getBoolean("fromCreateEvent");
+        if(fromCreateEvent){
+            Button leaveBtn = view.findViewById(R.id.leaveBtn);
+            leaveBtn.setVisibility(View.GONE);
+            bundle.remove("fromCreateEvent");
+        }
+
         Button leaveBtn = view.findViewById(R.id.leaveBtn);
 
         leaveBtn.setOnClickListener(new View.OnClickListener() {

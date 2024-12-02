@@ -116,7 +116,8 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                                 } catch (WriterException e) {
                                     e.printStackTrace();
                                 }
-
+                                boolean fromCreateEvent = true;
+                                eventIDBundle.putBoolean("fromCreateEvent", true);
                                 displayChildFragment(new EventDetails(), eventIDBundle);
                             }
                         }
