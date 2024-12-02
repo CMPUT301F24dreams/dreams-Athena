@@ -21,7 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-// View class responsible for creating and building notifications in the app.
+
+/**
+ * class responsible for creating and building notifications in the app.
+  */
+
 
 public class NotificationView {
 

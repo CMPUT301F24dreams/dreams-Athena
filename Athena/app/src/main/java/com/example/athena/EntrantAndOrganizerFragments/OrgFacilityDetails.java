@@ -256,7 +256,6 @@ public class OrgFacilityDetails extends Fragment {
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
             Toast.makeText(getContext(), "Facility Deleted", Toast.LENGTH_SHORT).show();
-
             ///deletes all of the events at a given facility
             Task getEvents = eventsDB.getEventsList();
             getEvents.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -281,6 +280,8 @@ public class OrgFacilityDetails extends Fragment {
                 }
 
             });
+
+            displayChildFragment(new myEventsList(), bundle);
         });
         builder.setNeutralButton("CANCEL", (dialog, which) -> dialog.cancel());
 
