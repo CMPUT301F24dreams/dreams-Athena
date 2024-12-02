@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ import java.util.Iterator;
         ArrayList<String> invitedUserIDs = event.getWaitList().getInvited();
 
         int numInvited = invitedUserIDs.size();
+
         int maxParticipants = event.getMaxParticipants();
 
         if (num <= maxParticipants - numInvited) {
@@ -128,6 +130,7 @@ import java.util.Iterator;
 
                     String eventName = userEvents.getString("eventName");
                     String imageURL = userEvents.getString("imageURL");
+                    int maxParticipants = Math.toIntExact((Long) userEvents.get("maxParticipants"));
 
                     ImageView eventPicture = view.findViewById(R.id.EventPicture);
                     if (imageURL != null && !imageURL.isEmpty()) {
@@ -135,7 +138,7 @@ import java.util.Iterator;
                                 .load(imageURL)  // Load the image URL from Firestore
                                 .into(eventPicture);  // Load image into the ImageView
                     }
-                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
+                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
                     event = currentEvent;
 
                     QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
