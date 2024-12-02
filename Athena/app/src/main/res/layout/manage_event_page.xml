@@ -16,13 +16,12 @@
             android:id="@+id/editEventPicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.775"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EventPicture"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.786"
+            app:layout_constraintVertical_bias="0.583"
             app:srcCompat="@android:drawable/ic_menu_edit"
             app:tint="@color/black" />
 
@@ -118,27 +117,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.401" />
 
+        <!-- Add map image at the bottom -->
         <ImageView
             android:id="@+id/EventPicture"
             android:layout_width="198dp"
             android:layout_height="216dp"
-            android:layout_marginBottom="168dp"
-            app:layout_constraintTop_toBottomOf="@id/viewAcceptedBtn"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.451"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewAcceptedBtn" />
 
-        <!-- Add map image at the bottom -->
         <ImageView
             android:id="@+id/mapImage"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_width="409dp"
+            android:layout_height="325dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/map_image"
             android:contentDescription="Map"
-            app:layout_constraintTop_toBottomOf="@id/EventPicture"
+            android:src="@drawable/map_image"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/EventPicture" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
