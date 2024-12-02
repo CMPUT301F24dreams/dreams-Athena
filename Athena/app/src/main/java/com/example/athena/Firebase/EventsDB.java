@@ -3,6 +3,7 @@ package com.example.athena.Firebase;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -72,15 +73,15 @@ public class EventsDB {
                     event.setEventDescription(document.getString("eventDescription"));
                     event.setOrganizer(document.getString("organizer"));
                     event.setFacility(document.getString("Facility"));
+                    Log.w("loadEventData", String.valueOf(Math.toIntExact((Long) document.get("maxParticipants"))));
                     event.setMaxParticipants(Math.toIntExact((Long) document.get("maxParticipants")));
+                    Log.w("loadEventData", String.valueOf(event.getMaxParticipants()));
                     event.setGeoRequire(document.getBoolean("geoRequire"));
                     event.setEventID(document.getString("eventID"));
                     event.setStartReg(document.getString("startReg"));
                     event.setEndReg(document.getString("endReg"));
                     event.notifyObservers();
                 } else {
-
-
                     Exception exception = task.getException();
                 }
             }
@@ -219,6 +220,9 @@ public class EventsDB {
         db.collection("Events").document(eventID).collection(donor).document(userID).delete();
     }
 
+    public void deleteSingularEvent(String eventID){
+        db.collection("Events").document(eventID).delete();
+    }
     public void deleteEvent(String eventID){
 
         Task getUserList = eventsCollection.document(eventID).collection("UserList").get();

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
+import java.util.Objects;
 
 /**
  * This fragment displays the user's profile, including their name, email, phone, and profile picture.
@@ -70,6 +73,7 @@ public class ViewProfileFragment extends Fragment {
         usersDB = new UserDB();
         imageDB = new ImageDB();
 
+
         Task getUser = usersDB.getUser(deviceID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -90,17 +94,16 @@ public class ViewProfileFragment extends Fragment {
                         binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
                         binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
 
-                        // TODO: vvv WHY DOES IT ONLY WORK AFTER A BUTTON PRESS IM GONNA LOSE IT vvv
+                      
                         // Check if an image URL exists
-                        if (imageURL != null && !imageURL.isEmpty()) {
+                        if (!Objects.equals(imageURL, "NULL") & !Objects.equals(imageURL, "")) {
                             // Load the image using Glide
                             Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
                         } else {
                             // Generate a default profile picture
                             Bitmap defaultImage = generateProfilePicture(user.getName());
-                            binding.profileImage.setImageBitmap(defaultImage);
+                            Glide.with(getContext()).load(defaultImage).into(binding.profileImage);
                         }
-
                     }
                 } else {
                     // Handle task failure (e.g., show a toast or log the error)

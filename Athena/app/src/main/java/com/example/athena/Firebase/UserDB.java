@@ -87,12 +87,15 @@ public class UserDB {
      * @param eventID eventID to add to the users sub collection
      */
     public void joinEvent(String deviceID,String eventID){
-        Map<String,String> status = new HashMap<>();
+        Map<String,Object> status = new HashMap<>();
         status.put("status","pending");
+        status.put("isNotified", true);
         usersCollection.document(deviceID).collection("Events").document(eventID).set(status);
     }
 
-
+    public void resetEventNotifiedStatus(String deviceID,String eventID) {
+        db.collection("Users/"+ deviceID +"/Events").document(eventID).update("isNotified",false);
+    }
 
     /**
      * updates the users status to invited on the users events sub-collection

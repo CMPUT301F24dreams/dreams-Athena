@@ -9,6 +9,7 @@ import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragmen
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,16 +27,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.athena.EntrantAndOrganizerFragments.EventDetails;
 import com.example.athena.Firebase.EventsDB;
 import com.example.athena.Firebase.ImageDB;
 import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
+import com.example.athena.Models.QRCode;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.zxing.WriterException;
 
 import java.util.Objects;
 
@@ -99,10 +104,28 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                                 String eventID = (String) task.getResult();
                                 Bundle eventIDBundle = new Bundle();
                                 eventIDBundle.putString("eventID", eventID);
+
+                                QRCode qrCode = new QRCode();
+                                try {
+                                    Bitmap qrBitmap = qrCode.createQR(eventID);
+                                    String qrCodeUrl = qrCode.encodeBitmapToBase64(qrBitmap);
+                                    Log.d("DATA", qrCodeUrl);
+                                    // Update the event in Firestore with the QR code URL
+                                    eventsDB.updateEventQRCode(eventID, qrCodeUrl);
+
+                                } catch (WriterException e) {
+                                    e.printStackTrace();
+                                }
+                                boolean fromCreateEvent = true;
+                                eventIDBundle.putBoolean("fromCreateEvent", true);
                                 displayChildFragment(new EventDetails(), eventIDBundle);
                             }
                         }
                     });
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "One or more fields are invalid.", Toast.LENGTH_SHORT);
+                    toast.show();
+
                 }
             }
         });

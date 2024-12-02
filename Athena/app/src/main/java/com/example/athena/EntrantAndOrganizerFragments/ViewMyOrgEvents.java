@@ -95,7 +95,8 @@ public class ViewMyOrgEvents extends Fragment{
                         if (userEventList.contains(document.getId())) {
                             String eventName = document.getString("eventName");
                             String imageURL = document.getString("imageURL");
-                            Event currentEvent = new Event(eventName, imageURL, document.getId());
+                            int maxParticipants = Math.toIntExact((Long) document.get("maxParticipants"));
+                            Event currentEvent = new Event(eventName, imageURL, document.getId(), maxParticipants);
                             events.add(currentEvent);
                         }
                     }

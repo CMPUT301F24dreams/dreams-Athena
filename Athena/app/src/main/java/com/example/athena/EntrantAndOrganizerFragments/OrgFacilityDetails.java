@@ -241,9 +241,6 @@ public class OrgFacilityDetails extends Fragment {
      */
     private void showDeleteDialog() {
 
-
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("ARE YOU SURE YOU WANT DELETE THIS FACILITY?");
 
@@ -258,6 +255,7 @@ public class OrgFacilityDetails extends Fragment {
             ///Delete the ID from the user, and the facility object from the DB
             facilitiesDB.deleteFacility(facilityID);
             usersDB.deleteOrgFacility(deviceID);
+            Toast.makeText(getContext(), "Facility Deleted", Toast.LENGTH_SHORT).show();
 
             ///deletes all of the events at a given facility
             Task getEvents = eventsDB.getEventsList();
@@ -271,13 +269,10 @@ public class OrgFacilityDetails extends Fragment {
 
 
                             if((event.contains("facility")) & eventFacility.equals(facilityID)) {
-                                    eventsDB.deleteEvent(eventName);
-
-
+                                    eventsDB.deleteSingularEvent(eventName);
                                 }
                             }
-                            Toast.makeText(getContext(), "The events you have created will be deleted.", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getContext(), "Facility Deleted", Toast.LENGTH_SHORT).show();
+
 
                         } else{
                                 Exception e = task.getException();
