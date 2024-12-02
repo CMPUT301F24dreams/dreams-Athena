@@ -54,7 +54,6 @@ public class FacilityDetailsAdmin extends Fragment {
         organizer = bundle.getString("facilityOrganizer");
         assert bundle!= null;
         deviceID = bundle.getString("deviceID");
-        Toast.makeText(getContext(),"DEVICE ID IS: " + deviceID, Toast.LENGTH_SHORT).show();
         facilityID = bundle.getString("facilityID");
         isAdmin = bundle.getBoolean("isAdmin");
         facilitiesDB = new FacilitiesDB();
