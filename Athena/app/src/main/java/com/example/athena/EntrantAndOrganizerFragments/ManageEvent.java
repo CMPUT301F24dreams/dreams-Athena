@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +42,7 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
- public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener{
-
+public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener {
 
     private String eventID;
     public Event event;
@@ -114,6 +114,9 @@ import java.util.Iterator;
         Task getPen = eventDB.getEventUserList(eventID,"pending");
         Task getInvite = eventDB.getEventUserList(eventID,"invited");
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
+        Task eventDetails = eventDB.getEvent(eventID);
+
+        ImageView qrCodeView = view.findViewById(R.id.qrCodeView2);
 
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -122,6 +125,22 @@ import java.util.Iterator;
                 ArrayList<String> declined = new ArrayList<>();
                 ArrayList<String> pending = new ArrayList<>();
                 ArrayList<String> invited = new ArrayList<>();
+
+                if (eventDetails.isSuccessful()) {
+                    DocumentSnapshot document = (DocumentSnapshot) eventDetails.getResult();
+
+                    // QrCode
+                    String qrCode = document.getString("qrCode");
+                    if (qrCode != null && !qrCode.equals("NULL")) {
+                        Glide.with(getContext())
+                                .load(qrCode)
+                                .into(qrCodeView);
+                    } else {
+                        qrCodeView.setImageResource(android.R.color.transparent); // Clear the view
+                        qrCodeView.setContentDescription("No QR code available");
+                    }
+                }
+
                 if (task.isSuccessful()) {
 
                     DocumentSnapshot userEvents = (DocumentSnapshot) getEvent.getResult();
@@ -142,7 +161,7 @@ import java.util.Iterator;
                     QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
                     for (Iterator<DocumentSnapshot> it = acceptList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                            accepted.add(document.getId());
+                        accepted.add(document.getId());
                     }
                     QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
                     for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
