@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +108,7 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                                 try {
                                     Bitmap qrBitmap = qrCode.createQR(eventID);
                                     String qrCodeUrl = qrCode.encodeBitmapToBase64(qrBitmap);
-
+                                    Log.d("DATA", qrCodeUrl);
                                     // Update the event in Firestore with the QR code URL
                                     eventsDB.updateEventQRCode(eventID, qrCodeUrl);
 
