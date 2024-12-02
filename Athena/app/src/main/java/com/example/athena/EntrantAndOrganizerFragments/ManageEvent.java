@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.EventsDB;
@@ -58,16 +59,33 @@ import java.util.Iterator;
      * and then updates the db
      */
     public void choseEntrants(int num) {
-        event.chooseUsers(num,eventID);
-        //update the dataBase:
-        ArrayList<String> userIDs;
+        ArrayList<String> invitedUserIDs = event.getWaitList().getInvited();
 
-        userIDs = event.getWaitList().getInvited();
-        for(String deviceID: userIDs){
-            eventDB.moveUserID("pending","invited",deviceID, eventID);
-            userDB.changeEventStatusInvited(eventID,deviceID);
+        int numInvited = invitedUserIDs.size();
+        int maxParticipants = event.getMaxParticipants();
+
+        if (num <= maxParticipants - numInvited) {
+            event.chooseUsers(num,eventID);
+            //update the dataBase:
+
+            invitedUserIDs = event.getWaitList().getInvited();
+            ArrayList<String> waitingUserIDs = event.getWaitList().getWaiting();
+            // update user's status to invited and notify
+            for(String deviceID: invitedUserIDs){
+                eventDB.moveUserID("pending","invited",deviceID, eventID);
+                userDB.changeEventStatusInvited(eventID,deviceID);
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+
+            // notify waiting users that the lottery happened
+            for (String deviceID: waitingUserIDs) {
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+        } else {
+            Toast.makeText(getActivity(),
+                    "Cannot add more than " + (maxParticipants - numInvited) + " participants",
+                    Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
