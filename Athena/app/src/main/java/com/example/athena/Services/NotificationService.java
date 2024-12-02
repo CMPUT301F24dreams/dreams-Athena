@@ -18,7 +18,7 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
@@ -76,8 +76,10 @@ public class NotificationService extends Service {
      */
     private void startNotificationListener() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String refPath = "Users/" + deviceId + "/Events";
-        CollectionReference userEventsRef = db.collection(refPath);
+        String path = "Users/" + this.deviceId + "/Events";
+        CollectionReference userEventsRef = db.collection(path);
+
+        getNotificationsOnStart();
 
         userEventsRef.addSnapshotListener((snapshots, exception) -> {
             if (exception != null) {
@@ -87,19 +89,39 @@ public class NotificationService extends Service {
 
             if (snapshots != null && !snapshots.isEmpty()) {
                 for (DocumentChange change : snapshots.getDocumentChanges()) {
-                    DocumentSnapshot userEvent = change.getDocument();
-                    Boolean isNotified = userEvent.getBoolean("isNotified");
+                    if (change.getType() == DocumentChange.Type.MODIFIED) {
+                        DocumentSnapshot userEvent = change.getDocument();
+                        Boolean isNotified = userEvent.getBoolean("isNotified");
 
-                    if (change.getType() == DocumentChange.Type.MODIFIED && Boolean.FALSE.equals(isNotified)) {
-                        // call notification function
-                        String status = userEvent.getString("status");
-                        String eventId = userEvent.getId();
-                        Log.w("notificationListener", "processing eventId: "+eventId);
-                        handleNotificationEvent(eventId, status, userEvent.getReference());
+                        if (Boolean.FALSE.equals(isNotified)) {
+                            // call notification function
+                            String status = userEvent.getString("status");
+                            String eventId = userEvent.getId();
+                            Log.w("notificationListener", "processing eventId: "+eventId);
+                            handleNotificationEvent(eventId, status, userEvent.getReference());
+                        }
                     }
+
                 }
             }
         });
+    }
+
+    public void getNotificationsOnStart() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String path = "Users/" + this.deviceId + "/Events";
+        CollectionReference userEventsRef = db.collection(path);
+
+        userEventsRef.whereEqualTo("isNotified", false).get()
+                .addOnSuccessListener(QuerySnapshot -> {
+                    if (!QuerySnapshot.isEmpty()) {
+                        for (DocumentSnapshot userEvent : QuerySnapshot.getDocuments()) {
+                            String status = userEvent.getString("status");
+                            String eventId = userEvent.getId();
+                            handleNotificationEvent(eventId, status, userEvent.getReference());
+                        }
+                    }
+                }).addOnFailureListener(e -> Log.w("notifiationListener", "error getting notification data"));
     }
 
     public void handleNotificationEvent(String eventId, String status, DocumentReference eventRef) {
