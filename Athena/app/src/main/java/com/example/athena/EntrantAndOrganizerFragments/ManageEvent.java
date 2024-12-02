@@ -129,6 +129,15 @@ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEnt
                 if (eventDetails.isSuccessful()) {
                     DocumentSnapshot document = (DocumentSnapshot) eventDetails.getResult();
 
+                    if(document.contains("geoRequire")) {
+                        boolean hasGeoRequire = document.getBoolean("geoRequire");
+                        if(hasGeoRequire){
+                            ImageView eventMap = view.findViewById(R.id.mapImage);
+                            eventMap.setVisibility(view.VISIBLE);
+                        }
+                    }
+
+
                     // QrCode
                     String qrCode = document.getString("qrCode");
                     if (qrCode != null && !qrCode.equals("NULL")) {
@@ -198,6 +207,7 @@ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEnt
         ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
         ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
         ImageButton editEventPicture = view.findViewById(R.id.editEventPicture);
+        ImageView eventMap = view.findViewById(R.id.mapImage);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,9 +267,6 @@ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEnt
         frag.show(fm,"ChoseNumEnt");
     }
 
-    private void displayFragment(Fragment fragment){
-
-    }
 
     public void displayChildFragment(Fragment fragment){
         fragment.setArguments(bundle);

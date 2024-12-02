@@ -144,6 +144,7 @@
             android:layout_marginTop="408dp"
             android:contentDescription="Map"
             android:src="@drawable/map_image"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
