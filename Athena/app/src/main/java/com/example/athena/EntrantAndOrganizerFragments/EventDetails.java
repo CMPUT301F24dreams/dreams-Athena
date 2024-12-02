@@ -90,8 +90,8 @@ public class EventDetails extends Fragment {
      */
     private void showLeaveDialog(String deviceID, String eventID, Bundle bundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Leave event?");
-        builder.setMessage("Are you sure you want to leave this event?");
+        builder.setTitle("Leave waitlist?");
+        builder.setMessage("Are you sure you want to leave this waitlist?");
 
         // Set up buttons
         builder.setPositiveButton("Confirm", (dialog, which) -> {

@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            //DEFAULT ADMIN DEVICE ID: String.valueOf(getDeviceId())
-            db.collection("Users").document("9").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+           String deviceID = String.valueOf(getDeviceId());
+            db.collection("Users").document(deviceID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("deviceID", "9");
+                    bundle.putString("deviceID", deviceID);
                     if (task.getResult().exists()) {
                         HomeScreen homeScreen = new HomeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
-                    notificationIntent.putExtra("deviceId", String.valueOf(getDeviceId()));
+                    notificationIntent.putExtra("deviceId", deviceID);
 
                     startService(notificationIntent);
                 }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
     /**
-     * Calls the activity launcher in the current cotext
+     * Calls the activity launcher in the current context
      */
     private void requestNotificationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)

@@ -93,7 +93,6 @@ public class JoinEventDetails extends Fragment {
                     DocumentSnapshot user = (DocumentSnapshot) task.getResult();
                     if (user.contains("geolocationWarn")) {
                         warnAboutGeolocation = user.getBoolean("geolocationWarn");
-                            Toast.makeText(getContext(),"Your current geolocation warning status is: " + user.getBoolean("geolocationWarn").toString(), Toast.LENGTH_SHORT).show();
                         }else{
                         Toast.makeText(getContext(),"Error Fetching Documents: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

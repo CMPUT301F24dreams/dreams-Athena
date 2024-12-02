@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,6 @@ import com.example.athena.Firebase.EventsDB;
 import com.example.athena.Firebase.ImageDB;
 import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.DisplayFragments;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,7 +41,7 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
- public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, DisplayFragments {
+ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener{
 
 
     private String eventID;
@@ -247,10 +245,6 @@ import java.util.Iterator;
     public void displayChildFragment(Fragment fragment){
         fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
-    }
-
-    @Override
-    public void switchToNewFragment(Fragment fragment){
     }
 
     /**
