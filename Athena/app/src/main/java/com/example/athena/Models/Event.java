@@ -91,6 +91,22 @@ public class Event implements Model {
     }
 
     /**
+     * Constructor to initialize the event with a name, image, eventID, and maxParticipants.
+     * This constructor automatically initializes the waitlist for the event.
+     *
+     * @param eventName The name of the event.
+     * @param imageURL  The image URL associated with the event.
+     * @param eventID   The unique identifier of the event.
+     */
+    public Event(String eventName, String imageURL, String eventID, int maxParticipants) {
+        this.eventName = eventName;
+        this.imageURL = imageURL;
+        this.eventID = eventID;
+        this.maxParticipants = maxParticipants;
+        this.waitList = new WaitList(this);
+    }
+
+    /**
      * Adds a user to the waitlist for the event.
      *
      * @param userId  The ID of the user to be added.
