@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.athena.EntrantAndOrganizerFragments.EventDetails;
 import com.example.athena.Firebase.EventsDB;
@@ -120,6 +121,10 @@ public class CreateEvent extends Fragment implements DateDialog.datePickerListen
                             }
                         }
                     });
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "One or more fields are invalid.", Toast.LENGTH_SHORT);
+                    toast.show();
+
                 }
             }
         });
