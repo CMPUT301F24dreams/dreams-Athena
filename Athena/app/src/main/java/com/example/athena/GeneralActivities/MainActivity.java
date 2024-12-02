@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             //DEFAULT ADMIN DEVICE ID: String.valueOf(getDeviceId())
-            db.collection("Users").document("8").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            db.collection("Users").document(String.valueOf(getDeviceId())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("deviceID","8");
+                    bundle.putString("deviceID", String.valueOf(getDeviceId()));
                     if (task.getResult().exists()) {
                         HomeScreen homeScreen = new HomeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -153,6 +153,7 @@ public class profileScreenEditFragment extends Fragment {
 
         // Set up the input
         final EditText input = new EditText(requireContext());
+        input.setText(user.getName());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
@@ -181,6 +182,7 @@ public class profileScreenEditFragment extends Fragment {
 
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        input.setText(user.getEmail());
         builder.setView(input);
 
         builder.setPositiveButton("Save", (dialog, which) -> {

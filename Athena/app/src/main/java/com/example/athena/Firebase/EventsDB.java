@@ -217,6 +217,9 @@ public class EventsDB {
         db.collection("Events").document(eventID).collection(donor).document(userID).delete();
     }
 
+    public void deleteSingularEvent(String eventID){
+        db.collection("Events").document(eventID).delete();
+    }
     public void deleteEvent(String eventID){
 
         Task getUserList = eventsCollection.document(eventID).collection("UserList").get();
