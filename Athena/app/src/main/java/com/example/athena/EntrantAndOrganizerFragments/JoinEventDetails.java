@@ -65,7 +65,13 @@ public class JoinEventDetails extends Fragment {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showJoinDialog(deviceID,eventID, bundle);
+                boolean validDate = eventsDB.checkEventDateValid(eventID);
+                if (validDate) {
+                    showJoinDialog(deviceID,eventID, bundle);
+                } else {
+                    // show message that registration deadline has passed
+                    Toast.makeText(getActivity(), "Registration deadline has passed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

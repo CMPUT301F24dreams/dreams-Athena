@@ -2,6 +2,7 @@ package com.example.athena.Firebase;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -30,7 +31,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -298,5 +302,33 @@ public class EventsDB {
             String imageUrl = task.getResult().toString();
             return updateEventImageURL(eventID, imageUrl).continueWithTask(updateTask -> Tasks.forResult(imageUrl));
         });
+    }
+
+    public boolean checkEventDateValid(String eventId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Event event = new Event();
+            Task<DocumentSnapshot> eventTask = getEvent(eventId);
+            eventTask.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    String eventRegEndDateString = eventTask.getResult().getString("endReg");
+                    event.setEndReg(eventRegEndDateString);
+                }
+            });
+
+            LocalDate eventRegEndDate = convertStringToDate(event.getEndReg());
+
+            return LocalDate.now().isBefore(eventRegEndDate);
+        }
+        return false;
+    }
+
+    public LocalDate convertStringToDate(String stringDate) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy");
+            LocalDate date = LocalDate.parse(stringDate, formatter);
+            return date;
+        }
+        return null;
     }
 }
