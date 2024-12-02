@@ -5,7 +5,7 @@ package com.example.athena.Models;
  * along with their choices for receiving or not receiving notifications. It is used to manage
  * individual notification settings for users within the application.
  */
-public class userNotifDetails {
+public class UserNotifDetails {
 
     private String userName;
     private boolean notifyIfChosen;
@@ -18,7 +18,7 @@ public class userNotifDetails {
      * @param notifyIfChosen A flag indicating whether the user has chosen to receive notifications.
      * @param notifyIfNotChosen A flag indicating whether the user has opted not to receive notifications.
      */
-    public userNotifDetails(String userName, boolean notifyIfChosen, boolean notifyIfNotChosen) {
+    public UserNotifDetails(String userName, boolean notifyIfChosen, boolean notifyIfNotChosen) {
         this.userName = userName;
         this.notifyIfChosen = notifyIfChosen;
         this.notifyIfNotChosen = notifyIfNotChosen;
@@ -27,7 +27,7 @@ public class userNotifDetails {
     /**
      * Default constructor for creating an instance without setting any fields.
      */
-    public userNotifDetails() {
+    public UserNotifDetails() {
     }
 
     /**
@@ -84,4 +84,3 @@ public class userNotifDetails {
         this.notifyIfNotChosen = notifyIfNotChosen;
     }
 }
-
