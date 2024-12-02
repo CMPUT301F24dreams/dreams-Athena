@@ -81,10 +81,12 @@ public class AdminBrowseFacilities extends Fragment {
                 String facilityID = facility.getFacilityID();
                 String facilityName = facility.getFacilityName();
                 String facilityLocation = facility.getFacilityLocation();
+                String facilityOrganizer = facility.getOrganizer();
 
                 bundle.putString("facilityID", facilityID);
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
+                bundle.putString("facilityOrganizer", facilityOrganizer);
                 displayChildFragment(new FacilityDetailsAdmin(), bundle);
             }
         });

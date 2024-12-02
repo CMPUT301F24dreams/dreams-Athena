@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.athena.Firebase.FacilitiesDB;
 import com.example.athena.Firebase.EventsDB;
@@ -34,6 +35,7 @@ public class FacilityDetailsAdmin extends Fragment {
     private String facilityID;
     private Bundle bundle;
     private boolean isAdmin;
+    private String organizer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.facility_details_admin, container, false);
@@ -49,16 +51,18 @@ public class FacilityDetailsAdmin extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         bundle = getArguments();
+        organizer = bundle.getString("facilityOrganizer");
         assert bundle!= null;
         deviceID = bundle.getString("deviceID");
+        Toast.makeText(getContext(),"DEVICE ID IS: " + deviceID, Toast.LENGTH_SHORT).show();
         facilityID = bundle.getString("facilityID");
         isAdmin = bundle.getBoolean("isAdmin");
         facilitiesDB = new FacilitiesDB();
         usersDB = new UserDB();
         eventsDB = new EventsDB();
 
-        Task eventDetails = facilitiesDB.getFacility(facilityID);
-        eventDetails.addOnCompleteListener(new OnCompleteListener() {
+        Task facilityDetails = facilitiesDB.getFacility(facilityID);
+        facilityDetails.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
@@ -104,7 +108,7 @@ public class FacilityDetailsAdmin extends Fragment {
         builder.setPositiveButton("YES", (dialog, which) -> {
 
             facilitiesDB.deleteFacility(facilityID);
-            usersDB.deleteOrgFacility(deviceID);
+            usersDB.deleteOrgFacility(organizer);
 
             ///deletes all of the events at a given facility
             Task getEvents = eventsDB.getEventsList();
