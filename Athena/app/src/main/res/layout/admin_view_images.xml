@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
-    <!-- Toolbar or Header -->
     <TextView
         android:id="@+id/toolbarTitle"
         android:layout_width="0dp"
@@ -23,7 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- RecyclerView for displaying images -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"

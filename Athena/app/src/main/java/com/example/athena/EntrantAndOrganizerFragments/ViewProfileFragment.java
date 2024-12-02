@@ -214,11 +214,4 @@ public class ViewProfileFragment extends Fragment {
         return bitmap;
     }
 
-    private void refreshFragment() {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.detach(this);  // Detach the current fragment
-        fragmentTransaction.attach(this);  // Attach it again to refresh
-        fragmentTransaction.commit();
-    }
 }
