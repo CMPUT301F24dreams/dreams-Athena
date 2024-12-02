@@ -157,8 +157,8 @@
 
             <ImageButton
                 android:id="@+id/scan_qr_code_button"
-                android:layout_width="120dp"
-                android:layout_height="80dp"
+                android:layout_width="117dp"
+                android:layout_height="78dp"
                 android:backgroundTint="#93BDB6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +166,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/scanqrcodebutton" />
+                app:srcCompat="@drawable/final_qr_code_button" />
 
             <LinearLayout
                 android:id="@+id/more_options_drawer"
