@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.athena.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-23T04:36:08" hostname="AHMEDS-UOFA" time="0.01">
-  <properties/>
-  <testcase name="addition_isCorrect()" classname="com.example.athena.ExampleUnitTest" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
