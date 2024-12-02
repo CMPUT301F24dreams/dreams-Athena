@@ -20,17 +20,34 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 
+/**
+ * Fragment for creating a new facility.
+ */
 public class CreateFacility extends Fragment {
     private Bundle bundle;
+
+    /**
+     * Inflates the layout for the fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_facility, container, false);
         super.onCreate(savedInstanceState);
-        ///Inflates the layout for the fragment
         return view;
     }
 
-    public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
+    /**
+     * Called immediately after onCreateView has returned, but before any saved state has been restored in to the view.
+     *
+     * @param view The View returned by onCreateView.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     */
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FacilitiesDB facilitiesDB = new FacilitiesDB();
         UserDB userDB = new UserDB();
@@ -52,12 +69,12 @@ public class CreateFacility extends Fragment {
 
                 // Input validation
                 if (!facilityName.matches(".*[a-zA-Z]+.*") || facilityName.length() > 50) {
-                    Toast.makeText(requireContext(), "valid facility names contain at least one letter, and are under 50 characters.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Valid facility names contain at least one letter, and are under 50 characters.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!facilityLocation.matches(".*[a-zA-Z]+.*") || facilityLocation.length() > 50) {
-                    Toast.makeText(requireContext(), "Facility location must contain at least letter, and be less than 50 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Facility location must contain at least one letter, and be less than 50 characters.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -68,31 +85,32 @@ public class CreateFacility extends Fragment {
                 bundle.putString("facilityName", facilityName);
                 bundle.putString("facilityLocation", facilityLocation);
 
+                facilityAdd.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        DocumentReference doc = (DocumentReference) task.getResult();
+                        String facilityID = doc.getId();
 
-            facilityAdd.addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                DocumentReference doc = (DocumentReference) task.getResult();
-                String facilityID = doc.getId();
+                        // Adds the facility ID to the facility's fields
+                        facilitiesDB.updateFacilityID(facilityID);
+                        userDB.updateOrgFacilities(deviceID, facilityID);
+                        bundle.putString("facilityID", facilityID);
 
-                ///Adds the facility ID to the facility's fields
-                facilitiesDB.updateFacilityID(facilityID);
-                userDB.updateOrgFacilities(deviceID, facilityID);
-                bundle.putString("facilityID", facilityID);
-
-                displayChildFragment(new OrgFacilityDetails(), bundle);
+                        displayChildFragment(new OrgFacilityDetails(), bundle);
+                    }
+                });
             }
         });
-
-            }
-        });
-
     }
 
-
-    public void displayChildFragment(Fragment fragment, Bundle bundle){
+    /**
+     * Displays a child fragment.
+     *
+     * @param fragment The fragment to display.
+     * @param bundle The bundle containing the fragment's arguments.
+     */
+    public void displayChildFragment(Fragment fragment, Bundle bundle) {
         fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 }
-

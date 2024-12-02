@@ -9,6 +9,11 @@
 package com.example.athena.AdminFragments;
 
 import android.app.AlertDialog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +22,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 import com.example.athena.Firebase.EventsDB;
 import com.example.athena.Firebase.UserDB;
 import com.example.athena.Firebase.FacilitiesDB;
@@ -29,6 +36,8 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Objects;
+
 public class AdminProfileDetail extends Fragment {
     private String userID;
     public UserDB usersDB;
@@ -38,6 +47,7 @@ public class AdminProfileDetail extends Fragment {
     private FacilitiesDB facilitiesDB;
     private EventsDB eventDB;
     private String deviceID;
+    private String imageURL;
     /// Binds the fragment to its elements
     ProfileScreenAdminBinding binding;
 
@@ -95,13 +105,25 @@ public class AdminProfileDetail extends Fragment {
                         String name = userdoc.getString("name");
                         String email = userdoc.getString("email");
                         String phone = userdoc.getString("phone");
-                        user = new User(name, email, phone, null);
+                        imageURL = userdoc.getString("imageURL");
+                        user = new User(name, email, phone, imageURL);
 
+                    }
+                    // Check if an image URL exists
+                    if (!Objects.equals(imageURL, "NULL") & !Objects.equals(imageURL, "")) {
+                        // Load the image using Glide
+                        Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
+
+                    } else {
+                        // Generate a default profile picture
+                        Bitmap defaultImage = generateProfilePicture(user.getName());
+                        Glide.with(getContext()).load(defaultImage).into(binding.profileImage);
                     }
 
                     binding.profileName.setText(String.format("Name: %s", user.getName()));
                     binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
                     binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
+
                 } else {
                     Exception e = task.getException();
                 }
@@ -182,6 +204,34 @@ public class AdminProfileDetail extends Fragment {
         builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 
         builder.show();
+    }
+
+    private Bitmap generateProfilePicture(String name) {
+        int size = 200; // size of the square bitmap
+        Bitmap bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+
+        // Draw gray circle
+        Paint circlePaint = new Paint();
+        circlePaint.setColor(Color.GRAY);
+        circlePaint.setAntiAlias(true);
+        canvas.drawCircle(size / 2, size / 2, size / 2, circlePaint);
+
+        // Draw the letter
+        Paint textPaint = new Paint();
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(size / 2);
+        textPaint.setTextAlign(Paint.Align.CENTER);
+        textPaint.setAntiAlias(true);
+
+        String letter = name != null && !name.isEmpty() ? String.valueOf(name.charAt(0)).toUpperCase() : "?";
+        Rect textBounds = new Rect();
+        textPaint.getTextBounds(letter, 0, letter.length(), textBounds);
+        float textX = size / 2;
+        float textY = size / 2 - textBounds.exactCenterY();
+        canvas.drawText(letter, textX, textY, textPaint);
+
+        return bitmap;
     }
 
     public void displayChildFragment(Fragment fragment, Bundle bundle) {

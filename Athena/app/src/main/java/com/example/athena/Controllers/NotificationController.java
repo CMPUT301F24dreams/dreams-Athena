@@ -74,7 +74,7 @@ public class NotificationController {
         if (Objects.equals(notifType, "invited")) {
             bodyText = "Congratulations, you have been invited to " + details.getEventName() + ".";
             title = "Selected for event";
-        } else if (Objects.equals(notifType, "waiting")) {
+        } else if (Objects.equals(notifType, "pending")) {
             bodyText = details.getEventName() + " held a lottery, but you were not selected. Please wait for another lottery";
             title = "Not selected for event";
         }
