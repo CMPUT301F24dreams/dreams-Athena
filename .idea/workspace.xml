@@ -220,9 +220,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="notifiation service now grabs new notifications on app start">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/JoinEventDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/EntrantAndOrganizerFragments/JoinEventDetails.java" afterDir="false" />
+    <list default="true" id="d4ab5dda-57b0-426c-a0f8-f381a12beb0c" name="Changes" comment="added date validity checker">
       <change beforePath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/EventsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Athena/app/src/main/java/com/example/athena/Firebase/EventsDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -618,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733108541259</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added date validity checker">
+      <option name="closed" value="true" />
+      <created>1733178696033</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733178696033</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -637,7 +643,8 @@
     <MESSAGE value="changed class names" />
     <MESSAGE value="fixed lottery logic and properly notify users" />
     <MESSAGE value="notifiation service now grabs new notifications on app start" />
-    <option name="LAST_COMMIT_MESSAGE" value="notifiation service now grabs new notifications on app start" />
+    <MESSAGE value="added date validity checker" />
+    <option name="LAST_COMMIT_MESSAGE" value="added date validity checker" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
