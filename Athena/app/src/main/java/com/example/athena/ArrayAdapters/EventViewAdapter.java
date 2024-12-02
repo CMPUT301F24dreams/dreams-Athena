@@ -12,10 +12,10 @@ import com.example.athena.Models.Event;
 public class EventViewAdapter implements Observer {
     private Context context;
     private TextView eventName;
+    private TextView eventDesc;
     private ImageView imageView;
     private TextView regStart;
     private TextView regEnd;
-    private TextView eventDesc;
 
     @Override
     public void update(Model model) {
@@ -24,6 +24,7 @@ public class EventViewAdapter implements Observer {
         regStart.setText(event.getStartReg());
         regEnd.setText(event.getEndReg());
         eventName.setText(event.getEventName());
+        eventDesc.setText(event.getEventDescription());
         Glide.with(context).load(event.getImageURL()).into(imageView);
     }
 
