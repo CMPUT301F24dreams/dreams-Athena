@@ -94,9 +94,9 @@ public class ViewProfileFragment extends Fragment {
                         binding.ProfileEmail.setText(String.format("Email: %s", user.getEmail()));
                         binding.ProfileNumber.setText(String.format("Number: %s", user.getPhone()));
 
-                        // TODO: vvv WHY DOES IT ONLY WORK AFTER A BUTTON PRESS IM GONNA LOSE IT vvv
+                      
                         // Check if an image URL exists
-                        if (!Objects.equals(imageURL, "NULL")) {
+                        if (!Objects.equals(imageURL, "NULL") & !Objects.equals(imageURL, "")) {
                             // Load the image using Glide
                             Glide.with(getContext()).load(user.getImageURL()).into(binding.profileImage);
                         } else {
