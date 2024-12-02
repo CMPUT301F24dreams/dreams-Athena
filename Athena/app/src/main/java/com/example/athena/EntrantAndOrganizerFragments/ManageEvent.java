@@ -63,8 +63,7 @@ import java.util.Iterator;
         ArrayList<String> invitedUserIDs = event.getWaitList().getInvited();
 
         int numInvited = invitedUserIDs.size();
-        Log.w("notificationListener", String.valueOf(event.getEventID()));
-        Log.w("notificationListener", String.valueOf(event.getMaxParticipants()));
+
         int maxParticipants = event.getMaxParticipants();
 
         if (num <= maxParticipants - numInvited) {
