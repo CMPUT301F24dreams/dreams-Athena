@@ -119,7 +119,8 @@ public class SignUpFragment extends Fragment {
                 data.put("notifyIfNotChosen",true);
                 data.put("geolocationWarn", true);
                 data.put("notifsFromOthers",true);
-
+                data.put("imageURL","");
+                data.put("isAdmin", false);
                 assert mainActivity != null;
                 db.collection("Users").document(Objects.requireNonNull(mainActivity.getString("deviceID"))).set(data);
 
