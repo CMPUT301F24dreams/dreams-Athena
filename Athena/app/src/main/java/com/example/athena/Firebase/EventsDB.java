@@ -79,8 +79,6 @@ public class EventsDB {
                     event.setEndReg(document.getString("endReg"));
                     event.notifyObservers();
                 } else {
-
-
                     Exception exception = task.getException();
                 }
             }
