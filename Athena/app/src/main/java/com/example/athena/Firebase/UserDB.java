@@ -72,10 +72,20 @@ public class UserDB {
         db.collection("Users").document(deviceID).update("facility", facilityID);
     }
 
+    /**
+     * removes a event from the users events subcollection
+     * @param deviceID user id to look at
+     * @param eventID the eventID to remove
+     */
     public void leaveEvent(String deviceID, String eventID){
         db.collection("Users/" + deviceID +"/Events").document(eventID).delete();
     }
 
+    /**
+     * this function adds the eventID to users collection and sets its status to pending
+     * @param deviceID userID of the where to look in the database
+     * @param eventID eventID to add to the users sub collection
+     */
     public void joinEvent(String deviceID,String eventID){
         Map<String,Object> status = new HashMap<>();
         status.put("status","pending");
@@ -170,6 +180,12 @@ public class UserDB {
         });
     }
 
+    /**
+     * this function loads event data from the database and creates a new event object to populates a list
+     * the events load are events the user is invited to
+     * @param deviceID user's deviceID
+     * @param list arrayAdapter for list of event that the user is invited to
+     */
     public void getUserInvitedEvents(String deviceID, UserInviteArrayAdapter list){
         //query for the users Events
         Task getInvited = this.getUserEvents(deviceID);
