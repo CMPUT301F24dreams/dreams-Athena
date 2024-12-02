@@ -46,16 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    bundle.putString("deviceID", "5");
-
-=======
                     bundle.putString("deviceID", String.valueOf(getDeviceId()));
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
-=======
-                    bundle.putString("deviceID", String.valueOf(getDeviceId()));
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
                     if (task.getResult().exists()) {
                         HomeScreen homeScreen = new HomeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -63,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                         homeScreen.setArguments(bundle);
                         transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
                         transaction.commit();
-
                     } else {
                         SignUpFragment signUp = new SignUpFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();

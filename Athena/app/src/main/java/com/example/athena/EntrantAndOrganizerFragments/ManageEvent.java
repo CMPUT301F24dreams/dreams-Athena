@@ -43,17 +43,9 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
- public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
-     
-=======
-=======
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
  public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, DisplayFragments {
 
 
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
     private String eventID;
     public Event event;
     private String deviceID;
@@ -126,7 +118,6 @@ import java.util.Iterator;
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
 
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<String> accepted = new ArrayList<>();
@@ -147,16 +138,7 @@ import java.util.Iterator;
                                 .load(imageURL)  // Load the image URL from Firestore
                                 .into(eventPicture);  // Load image into the ImageView
                     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
-=======
                     Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
-=======
-                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
->>>>>>> b06ab67fda6a13dd31a641b5db04edc1f1b0de56
                     event = currentEvent;
 
                     QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
@@ -164,19 +146,16 @@ import java.util.Iterator;
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                             accepted.add(document.getId());
                     }
-
                     QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
                     for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                         declined.add(document.getId());
                     }
-
                     QuerySnapshot pendList = (QuerySnapshot) getPen.getResult();
                     for (Iterator<DocumentSnapshot> it = pendList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
                         pending.add(document.getId());
                     }
-
                     QuerySnapshot inviteList = (QuerySnapshot) getInvite.getResult();
                     for (Iterator<DocumentSnapshot> it = inviteList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
