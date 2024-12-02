@@ -103,6 +103,44 @@ public class WaitList{
     }
 
     /**
+     * add a deviceID to the invited list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
+    public void addInvited(String userID, String eventID) {
+
+        this.invited.add(userID);
+
+
+    }
+
+    /**
+     * add a deviceID to the accepted list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
+    public void addAccept(String userID, String eventID) {
+
+        this.accepted.add(userID);
+
+
+    }
+
+    /**
+     * add a deviceID to the declined list
+     * @param userID the deviceID/userID of the user to be added
+     * @param eventID the eventID for which event
+     */
+    public void addDecline(String userID, String eventID) {
+
+        this.declined.add(userID);
+
+
+    }
+
+
+
+    /**
      * remove a user from the waiting list
      * @param userID the deviceID/userID of the user to be added
      * @param eventID the eventID for which event
@@ -123,8 +161,8 @@ public class WaitList{
         if (numSelect > waiting.size()){
 
             //if number to select is greater than amount signed up send all to invited
-            for(String userID: waiting){
-                moveUsers(userID,invited,waiting);
+            while (!waiting.isEmpty()){
+                moveUsers(waiting.get(0),invited,waiting);
             }
         }else {
             //get random from list and move it

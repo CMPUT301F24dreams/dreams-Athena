@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,96 +7,137 @@
     android:background="@color/mainBackground"
     tools:context=".EntrantAndOrganizerFragments.ManageEvent">
 
-    <ImageButton
-        android:id="@+id/organizer_return_btn"
-        android:layout_width="58dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert"
-        app:tint="@color/black" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-    <ImageButton
-        android:id="@+id/notify_entrants_button"
-        android:layout_width="173dp"
-        android:layout_height="42dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/notify_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        <ImageButton
+            android:id="@+id/editEventPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EventPicture"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.583"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:tint="@color/black" />
 
-    <ImageButton
-        android:id="@+id/view_selected_entrants"
-        android:layout_width="173dp"
-        android:layout_height="42dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_selected_entrants_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        <ImageButton
+            android:id="@+id/organizer_return_btn"
+            android:layout_width="58dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_revert"
+            app:tint="@color/black" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="240dp"
-        android:layout_height="46dp"
-        android:fontFamily="@font/bai_jamjuree_bold"
-        android:text="Manage Event:"
-        android:textAlignment="center"
-        android:textColor="@color/title_text_color"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        <ImageButton
+            android:id="@+id/notify_entrants_button"
+            android:layout_width="173dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/mainBackground"
+            android:src="@drawable/notify_entrants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.135" />
 
-    <ImageButton
-        android:id="@+id/viewCanclledBtn"
-        android:layout_width="202dp"
-        android:layout_height="46dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_cancelled_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.995"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        <ImageButton
+            android:id="@+id/view_selected_entrants"
+            android:layout_width="173dp"
+            android:layout_height="42dp"
+            android:backgroundTint="@color/mainBackground"
+            android:src="@drawable/view_selected_entrants_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.873"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.135" />
 
-    <ImageButton
-        android:id="@+id/imageButton15"
-        android:layout_width="179dp"
-        android:layout_height="45dp"
-        android:src="@drawable/cancelled_unregistered_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="Manage Event:"
+            android:textAlignment="center"
+            android:textColor="@color/title_text_color"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.018" />
 
-    <ImageButton
-        android:id="@+id/viewAcceptedBtn"
-        android:layout_width="194dp"
-        android:layout_height="43dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_accepted"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        <ImageButton
+            android:id="@+id/viewCanclledBtn"
+            android:layout_width="202dp"
+            android:layout_height="46dp"
+            android:backgroundTint="@color/mainBackground"
+            android:src="@drawable/view_cancelled_entrants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.995"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.261" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/imageButton15"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:src="@drawable/cancelled_unregistered_entrants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.261" />
+
+        <ImageButton
+            android:id="@+id/viewAcceptedBtn"
+            android:layout_width="194dp"
+            android:layout_height="43dp"
+            android:backgroundTint="@color/mainBackground"
+            android:src="@drawable/view_accepted"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.401" />
+
+        <!-- Add map image at the bottom -->
+        <ImageView
+            android:id="@+id/EventPicture"
+            android:layout_width="198dp"
+            android:layout_height="216dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.451"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewAcceptedBtn" />
+
+        <ImageView
+            android:id="@+id/mapImage"
+            android:layout_width="409dp"
+            android:layout_height="325dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Map"
+            android:src="@drawable/map_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EventPicture" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
