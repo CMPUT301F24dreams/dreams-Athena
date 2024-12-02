@@ -1,6 +1,6 @@
 package com.example.athena;
 
-import static com.example.athena.EntrantAndOrganizerFragments.viewProfileFragment.PICK_IMAGE_REQUEST;
+import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragment.PICK_IMAGE_REQUEST;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
