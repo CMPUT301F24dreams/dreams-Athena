@@ -17,7 +17,7 @@
             android:layout_width="146dp"
             android:layout_height="111dp"
             android:layout_marginTop="272dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,12 +25,12 @@
             android:id="@+id/editEventPicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="156dp"
             android:background="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.56"
+            app:layout_constraintVertical_bias="0.563"
             app:srcCompat="@android:drawable/ic_menu_edit"
             app:tint="@color/black" />
 
@@ -46,31 +46,31 @@
             app:srcCompat="@android:drawable/ic_menu_revert"
             app:tint="@color/black" />
 
-        <ImageButton
+        <Button
             android:id="@+id/notify_entrants_button"
-            android:layout_width="173dp"
-            android:layout_height="42dp"
-            android:backgroundTint="@color/mainBackground"
-            android:src="@drawable/notify_entrants"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="Notify Entrants"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.112" />
+            app:layout_constraintVertical_bias="0.106" />
 
-        <ImageButton
+        <Button
             android:id="@+id/view_selected_entrants"
-            android:layout_width="173dp"
-            android:layout_height="42dp"
-            android:backgroundTint="@color/mainBackground"
-            android:src="@drawable/view_selected_entrants_button"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Selected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.917"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.112" />
+            app:layout_constraintVertical_bias="0.106" />
 
         <TextView
             android:id="@+id/textView6"
@@ -90,42 +90,42 @@
 
         <!-- Add map image at the bottom -->
 
-        <ImageButton
+        <Button
             android:id="@+id/viewCanclledBtn"
-            android:layout_width="194dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="192dp"
-            android:backgroundTint="@color/mainBackground"
-            android:src="@drawable/view_cancelled_entrants"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="200dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Cancelled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.172" />
+            app:layout_constraintVertical_bias="0.171" />
 
-        <ImageButton
+        <Button
             android:id="@+id/imageButton15"
             android:layout_width="179dp"
             android:layout_height="45dp"
-            android:src="@drawable/cancelled_unregistered_entrants"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="Cancel Unregistered"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.015"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.172" />
+            app:layout_constraintVertical_bias="0.171" />
 
-        <ImageButton
+        <Button
             android:id="@+id/viewAcceptedBtn"
-            android:layout_width="194dp"
-            android:layout_height="43dp"
-            android:backgroundTint="@color/mainBackground"
-            android:src="@drawable/view_accepted"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Accepted"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.235" />
+            app:layout_constraintVertical_bias="0.236" />
 
         <ImageView
             android:id="@+id/EventPicture"

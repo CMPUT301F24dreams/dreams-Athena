@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -201,10 +202,10 @@ public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEnt
 
 
         //this is temp
-        ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
-        ImageButton viewInvited = view.findViewById(R.id.view_selected_entrants);
-        ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
-        ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
+        Button notifyEntrants = view.findViewById(R.id.notify_entrants_button);
+        Button viewInvited = view.findViewById(R.id.view_selected_entrants);
+        Button viewCanclled = view.findViewById(R.id.viewCanclledBtn);
+        Button viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
         ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
         ImageButton editEventPicture = view.findViewById(R.id.editEventPicture);
         ImageView eventMap = view.findViewById(R.id.mapImage);
