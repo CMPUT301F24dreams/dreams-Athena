@@ -50,8 +50,6 @@ public class SignUpFragment extends Fragment {
         ///Inflates the layout for the fragment
         View signUpScreenLayout = binding.getRoot();
 
-        ImageButton regButton = signUpScreenLayout.findViewById(R.id.register_button);
-
         return signUpScreenLayout;
 
     }

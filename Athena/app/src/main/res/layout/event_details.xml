@@ -116,6 +116,7 @@
                 android:layout_width="192dp"
                 android:layout_height="76dp"
                 android:text="Leave waitlist"
+                android:backgroundTint="@color/positive_button_color"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
