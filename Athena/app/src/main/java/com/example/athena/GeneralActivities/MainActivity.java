@@ -17,10 +17,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.athena.EntrantAndOrganizerFragments.homeScreen;
+import com.example.athena.EntrantAndOrganizerFragments.HomeScreen;
 
 import com.example.athena.R;
-import com.example.athena.RegistrationFragments.signUpFragment;
+import com.example.athena.RegistrationFragments.SignUpFragment;
 import com.example.athena.Services.NotificationService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,20 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve user data after checking build version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            db.collection("Users").document(String.valueOf(getDeviceId())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+           String deviceID = String.valueOf(getDeviceId());
+            db.collection("Users").document(deviceID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("deviceID", String.valueOf(getDeviceId()));
+                    bundle.putString("deviceID", deviceID);
                     if (task.getResult().exists()) {
-                        homeScreen homeScreen = new homeScreen();
+                        HomeScreen homeScreen = new HomeScreen();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         homeScreen.setArguments(bundle);
                         transaction.replace(R.id.content_layout, homeScreen); // Replace with your container ID
                         transaction.commit();
                     } else {
-                        signUpFragment signUp = new signUpFragment();
+                        SignUpFragment signUp = new SignUpFragment();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         signUp.setArguments(bundle);
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     requestNotificationPermission();
 
                     Intent notificationIntent = new Intent(MainActivity.this, NotificationService.class);
+                    notificationIntent.putExtra("deviceId", deviceID);
 
                     startService(notificationIntent);
                 }
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
     /**
-     * Calls the activity launcher in the current cotext
+     * Calls the activity launcher in the current context
      */
     private void requestNotificationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)

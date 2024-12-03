@@ -1,20 +1,32 @@
 package com.example.athena.EntrantAndOrganizerFragments;
 
+import static android.app.Activity.RESULT_OK;
+import static com.example.athena.EntrantAndOrganizerFragments.ViewProfileFragment.PICK_IMAGE_REQUEST;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.bumptech.glide.Glide;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.ImageDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
-import com.example.athena.Interfaces.displayFragments;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,15 +43,15 @@ import java.util.Iterator;
  * It provides functionality to choose the number of entrants to send invitations to and view
  * different lists of entrants, such as accepted, declined, pending, and invited.
  */
- public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener, displayFragments {
-
+public class ManageEvent extends Fragment implements OrgChooseNumDialog.numOfEntListener {
 
     private String eventID;
     public Event event;
     private String deviceID;
-    public eventsDB eventDB;
-    public userDB userDB;
+    public EventsDB eventDB;
+    public UserDB userDB;
     public Bundle bundle;
+    public ImageDB imageDB;
     @Override
 
     /**
@@ -47,18 +59,35 @@ import java.util.Iterator;
      * and then updates the db
      */
     public void choseEntrants(int num) {
-        event.chooseUsers(num,eventID);
-        //update the dataBase:
-        ArrayList<String> userIDs;
+        ArrayList<String> invitedUserIDs = event.getWaitList().getInvited();
 
-        userIDs = event.getWaitList().getInvited();
-        for(String deviceID: userIDs){
-            eventDB.moveUserID("pending","invited",deviceID, eventID);
-            userDB.changeEventStatusInvited(eventID,deviceID);
+        int numInvited = invitedUserIDs.size();
+
+        int maxParticipants = event.getMaxParticipants();
+
+        if (num <= maxParticipants - numInvited) {
+            event.chooseUsers(num,eventID);
+            //update the dataBase:
+
+            invitedUserIDs = event.getWaitList().getInvited();
+            ArrayList<String> waitingUserIDs = event.getWaitList().getWaiting();
+            // update user's status to invited and notify
+            for(String deviceID: invitedUserIDs){
+                eventDB.moveUserID("pending","invited",deviceID, eventID);
+                userDB.changeEventStatusInvited(eventID,deviceID);
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+
+            // notify waiting users that the lottery happened
+            for (String deviceID: waitingUserIDs) {
+                userDB.resetEventNotifiedStatus(deviceID, eventID);
+            }
+        } else {
+            Toast.makeText(getActivity(),
+                    "Cannot add more than " + (maxParticipants - numInvited) + " participants",
+                    Toast.LENGTH_SHORT).show();
         }
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,22 +100,25 @@ import java.util.Iterator;
         super.onCreate(savedInstanceState);
         ///Inflates the layout for the fragment
         return view;
-
-
     }
+
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        userDB = new userDB();
-        eventDB = new eventsDB();
-        ///get the event here
+        userDB = new UserDB();
+        eventDB = new EventsDB();
+        imageDB = new ImageDB();
 
-//        Task getUser = userDB.getUser(deviceID);
+        //get the event here
         Task getEvent = eventDB.getEvent(eventID);
         Task getAccept = eventDB.getEventUserList(eventID,"accepted");
         Task getDecline = eventDB.getEventUserList(eventID,"declined");
         Task getPen = eventDB.getEventUserList(eventID,"pending");
         Task getInvite = eventDB.getEventUserList(eventID,"invited");
         Task eventsLoaded = Tasks.whenAll( getEvent, getAccept,getDecline,getPen,getInvite);
+        Task eventDetails = eventDB.getEvent(eventID);
+
+        ImageView qrCodeView = view.findViewById(R.id.qrCodeView2);
+
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -94,19 +126,52 @@ import java.util.Iterator;
                 ArrayList<String> declined = new ArrayList<>();
                 ArrayList<String> pending = new ArrayList<>();
                 ArrayList<String> invited = new ArrayList<>();
+
+                if (eventDetails.isSuccessful()) {
+                    DocumentSnapshot document = (DocumentSnapshot) eventDetails.getResult();
+
+                    if(document.contains("geoRequire")) {
+                        boolean hasGeoRequire = document.getBoolean("geoRequire");
+                        if(hasGeoRequire){
+                            ImageView eventMap = view.findViewById(R.id.mapImage);
+                            eventMap.setVisibility(view.VISIBLE);
+                        }
+                    }
+
+
+                    // QrCode
+                    String qrCode = document.getString("qrCode");
+                    if (qrCode != null && !qrCode.equals("NULL")) {
+                        Glide.with(getContext())
+                                .load(qrCode)
+                                .into(qrCodeView);
+                    } else {
+                        qrCodeView.setImageResource(android.R.color.transparent); // Clear the view
+                        qrCodeView.setContentDescription("No QR code available");
+                    }
+                }
+
                 if (task.isSuccessful()) {
 
                     DocumentSnapshot userEvents = (DocumentSnapshot) getEvent.getResult();
 
                     String eventName = userEvents.getString("eventName");
                     String imageURL = userEvents.getString("imageURL");
-                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId());
+                    int maxParticipants = Math.toIntExact((Long) userEvents.get("maxParticipants"));
+
+                    ImageView eventPicture = view.findViewById(R.id.EventPicture);
+                    if (imageURL != null && !imageURL.isEmpty()) {
+                        Glide.with(getContext())  // Use the fragment context
+                                .load(imageURL)  // Load the image URL from Firestore
+                                .into(eventPicture);  // Load image into the ImageView
+                    }
+                    Event currentEvent = new Event(eventName, imageURL, userEvents.getId(), maxParticipants);
                     event = currentEvent;
 
                     QuerySnapshot acceptList = (QuerySnapshot) getAccept.getResult();
                     for (Iterator<DocumentSnapshot> it = acceptList.getDocuments().iterator(); it.hasNext(); ) {
                         QueryDocumentSnapshot document = (QueryDocumentSnapshot) it.next();
-                            accepted.add(document.getId());
+                        accepted.add(document.getId());
                     }
                     QuerySnapshot declineList = (QuerySnapshot) getDecline.getResult();
                     for (Iterator<DocumentSnapshot> it = declineList.getDocuments().iterator(); it.hasNext(); ) {
@@ -137,16 +202,18 @@ import java.util.Iterator;
 
 
         //this is temp
-        ImageButton notifyEntrants = view.findViewById(R.id.notify_entrants_button);
-        ImageButton viewInvited = view.findViewById(R.id.view_selected_entrants);
-        ImageButton viewCanclled = view.findViewById(R.id.viewCanclledBtn);
-        ImageButton viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
+        Button notifyEntrants = view.findViewById(R.id.notify_entrants_button);
+        Button viewInvited = view.findViewById(R.id.view_selected_entrants);
+        Button viewCanclled = view.findViewById(R.id.viewCanclledBtn);
+        Button viewAccepted = view.findViewById(R.id.viewAcceptedBtn);
         ImageButton backButton = view.findViewById(R.id.organizer_return_btn);
+        ImageButton editEventPicture = view.findViewById(R.id.editEventPicture);
+        ImageView eventMap = view.findViewById(R.id.mapImage);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayChildFragment(new viewMyOrgEvents());
+                displayChildFragment(new ViewMyOrgEvents());
             }
         });
 
@@ -185,10 +252,14 @@ import java.util.Iterator;
         });
 
 
+        editEventPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
     }
-
-
-
 
     public void showDialog() {
         FragmentManager fm = getParentFragmentManager();
@@ -197,18 +268,33 @@ import java.util.Iterator;
         frag.show(fm,"ChoseNumEnt");
     }
 
-    private void displayFragment(Fragment fragment){
-
-    }
 
     public void displayChildFragment(Fragment fragment){
         fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction() .replace(R.id.content_frame, fragment) .commit();
     }
 
+    /**
+     * method to open android os gallery
+     */
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
 
     @Override
-    public void switchToNewFragment(Fragment fragment){
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+            eventDB.uploadEventImage(eventID, imageUri).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String newImageUrl = task.getResult();
+                    ImageView eventPicture = getView().findViewById(R.id.EventPicture);
+                    Glide.with(getContext()).load(newImageUrl).into(eventPicture);
+                }
+            });
+        }
     }
 
 }

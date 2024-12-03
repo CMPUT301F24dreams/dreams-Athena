@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.athena.Firebase.userDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.User;
 import com.example.athena.R;
 import com.example.athena.databinding.ProfileScreenBinding;
@@ -33,7 +33,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class profileScreenEditFragment extends Fragment {
 
     private String deviceID;
-    private userDB usersDB;
+    private UserDB usersDB;
     private User user;
     ///Binds the fragment to its elements
     ProfileScreenEditBinding binding;
@@ -78,7 +78,7 @@ public class profileScreenEditFragment extends Fragment {
         Bundle bundle = getArguments();
         assert bundle != null;
         deviceID = bundle.getString("deviceID");
-        usersDB = new userDB();
+        usersDB = new UserDB();
         Task getUser = usersDB.getUser(deviceID);
         Task userLoaded = Tasks.whenAll(getUser);
         userLoaded.addOnCompleteListener(new OnCompleteListener() {
@@ -110,7 +110,7 @@ public class profileScreenEditFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getParentFragmentManager(); // or getSupportFragmentManager() if in Activity
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                viewProfileFragment frag = new viewProfileFragment();
+                ViewProfileFragment frag = new ViewProfileFragment();
                 frag.setArguments(bundle);
                 transaction.replace(R.id.entrant_and_organizer_constraint_layout,frag);
                 transaction.commit();
@@ -153,14 +153,20 @@ public class profileScreenEditFragment extends Fragment {
 
         // Set up the input
         final EditText input = new EditText(requireContext());
+        input.setText(user.getName());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
         // Set up buttons
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newName = input.getText().toString();
-            binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
-            user.setName(newName);
+            if (!newName.matches("^[a-zA-Z ]*[a-zA-Z][a-zA-Z ]*$")){
+                Toast.makeText(getContext(),"Invalid name entered, names can only have letters and spaces.", Toast.LENGTH_SHORT).show();
+            }else{
+                binding.profileName3.setText("Name: " + newName); // Update the TextView with the new name
+                user.setName(newName);
+            }
+
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -176,12 +182,18 @@ public class profileScreenEditFragment extends Fragment {
 
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        input.setText(user.getEmail());
         builder.setView(input);
 
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newEmail = input.getText().toString();
-            binding.profileEmail2.setText("Email: " + newEmail);
-            user.setEmail(newEmail);
+            if (!newEmail.matches("^[a-zA-Z]+@[a-zA-Z]+\\.com$")){
+                Toast.makeText(getContext(),"Invalid name entered, names can only have letters and spaces.", Toast.LENGTH_SHORT).show();
+            }else{
+                binding.profileEmail2.setText("Email: " + newEmail);
+                user.setEmail(newEmail);
+            }
+
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -201,8 +213,12 @@ public class profileScreenEditFragment extends Fragment {
 
         builder.setPositiveButton("Save", (dialog, which) -> {
             String newNumber = input.getText().toString();
-            binding.profileNumber2.setText("Number: " + newNumber);
-            user.setPhone(newNumber);
+            if(!newNumber.isEmpty() & !newNumber.matches("^\\d{10}$")){
+                Toast.makeText(getContext(),"Invalid phone number entered. Please enter a 10 digit phone number.", Toast.LENGTH_SHORT).show();
+            }else {
+                binding.profileNumber2.setText("Number: " + newNumber);
+                user.setPhone(newNumber);
+            }
         });
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
@@ -210,7 +226,6 @@ public class profileScreenEditFragment extends Fragment {
     }
 
     private void saveProfileChanges() {
-        // TODO: database stuffs
         usersDB.saveUserDetail(user,deviceID);
     }
 }

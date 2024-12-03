@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,96 +7,169 @@
     android:background="@color/mainBackground"
     tools:context=".EntrantAndOrganizerFragments.ManageEvent">
 
-    <ImageButton
-        android:id="@+id/organizer_return_btn"
-        android:layout_width="58dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert"
-        app:tint="@color/black" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-    <ImageButton
-        android:id="@+id/notify_entrants_button"
-        android:layout_width="173dp"
-        android:layout_height="42dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/notify_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        <ImageView
+            android:id="@+id/qrCodeView2"
+            android:layout_width="146dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="272dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/view_selected_entrants"
-        android:layout_width="173dp"
-        android:layout_height="42dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_selected_entrants_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        <ImageButton
+            android:id="@+id/editEventPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="156dp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.563"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:tint="@color/black" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="240dp"
-        android:layout_height="46dp"
-        android:fontFamily="@font/bai_jamjuree_bold"
-        android:text="Manage Event:"
-        android:textAlignment="center"
-        android:textColor="@color/title_text_color"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        <ImageButton
+            android:id="@+id/organizer_return_btn"
+            android:layout_width="58dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_revert"
+            app:tint="@color/black" />
 
-    <ImageButton
-        android:id="@+id/viewCanclledBtn"
-        android:layout_width="202dp"
-        android:layout_height="46dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_cancelled_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.995"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        <Button
+            android:id="@+id/notify_entrants_button"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="Notify Entrants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.106" />
 
-    <ImageButton
-        android:id="@+id/imageButton15"
-        android:layout_width="179dp"
-        android:layout_height="45dp"
-        android:src="@drawable/cancelled_unregistered_entrants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        <Button
+            android:id="@+id/view_selected_entrants"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Selected"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.106" />
 
-    <ImageButton
-        android:id="@+id/viewAcceptedBtn"
-        android:layout_width="194dp"
-        android:layout_height="43dp"
-        android:backgroundTint="@color/mainBackground"
-        android:src="@drawable/view_accepted"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="Manage Event:"
+            android:textAlignment="center"
+            android:textColor="@color/title_text_color"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.018" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Add map image at the bottom -->
+
+        <Button
+            android:id="@+id/viewCanclledBtn"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="200dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Cancelled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.171" />
+
+        <Button
+            android:id="@+id/imageButton15"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="Cancel Unregistered"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.171" />
+
+        <Button
+            android:id="@+id/viewAcceptedBtn"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/positive_button_color"
+            android:text="View Accepted"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.236" />
+
+        <ImageView
+            android:id="@+id/EventPicture"
+            android:layout_width="189dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewAcceptedBtn" />
+
+        <ImageView
+            android:id="@+id/mapImage"
+            android:layout_width="409dp"
+            android:layout_height="325dp"
+            android:layout_marginTop="408dp"
+            android:contentDescription="Map"
+            android:src="@drawable/map_image"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Event QR Code"
+            app:layout_constraintBottom_toTopOf="@+id/qrCodeView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.849"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Event Poster"
+            app:layout_constraintBottom_toTopOf="@+id/EventPicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.163"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

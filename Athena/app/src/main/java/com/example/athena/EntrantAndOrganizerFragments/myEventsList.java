@@ -10,9 +10,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.athena.ArrayAdapters.eventArrayAdapter;
-import com.example.athena.Firebase.eventsDB;
-import com.example.athena.Firebase.userDB;
+import com.example.athena.ArrayAdapters.EventArrayAdapter;
+import com.example.athena.Firebase.EventsDB;
+import com.example.athena.Firebase.UserDB;
 import com.example.athena.Models.Event;
 import com.example.athena.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +31,8 @@ import java.util.List;
  */
  public class myEventsList extends Fragment {
     private String deviceID;
-    private userDB userDB;
-    private eventsDB eventsDB;
+    private UserDB userDB;
+    private EventsDB eventsDB;
     private ArrayList<Event> events;
     private ListView listView;
 
@@ -48,8 +48,8 @@ import java.util.List;
         Bundle bundle = getArguments();
         assert bundle != null;
         this.deviceID = bundle.getString("deviceID");
-        userDB = new userDB();
-        eventsDB = new eventsDB();
+        userDB = new UserDB();
+        eventsDB = new EventsDB();
         events = new ArrayList<>();
 
         listView = view.findViewById(R.id.myEventList);
@@ -60,7 +60,7 @@ import java.util.List;
         eventsLoaded.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                eventArrayAdapter eventAdapter = new eventArrayAdapter(getContext(), events);
+                EventArrayAdapter eventAdapter = new EventArrayAdapter(getContext(), events);
                 listView.setAdapter(eventAdapter);
 
                 if (task.isSuccessful()) {
@@ -100,7 +100,7 @@ import java.util.List;
                 Bundle eventDetails = new Bundle();
                 eventDetails.putString("eventID", eventID);
                 eventDetails.putString("deviceID", deviceID);
-                displayChildFragment(new eventDetails(), eventDetails);
+                displayChildFragment(new EventDetails(), eventDetails);
             }
         });
 
