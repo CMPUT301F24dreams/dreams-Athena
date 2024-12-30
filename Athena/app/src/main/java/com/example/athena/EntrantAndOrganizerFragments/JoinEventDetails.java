@@ -130,6 +130,26 @@ public class JoinEventDetails extends Fragment {
                                 builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
 
                                 builder.show();
+                            } else{
+
+                                ///create the alert dialog
+                                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                                ///inform the user that the event has geolocation before they join the waitlist
+
+                                builder.setTitle("Join Waitlist?");
+                                builder.setMessage("Are you sure you want to join this waitlist?");
+
+
+                                // Set up buttons
+                                builder.setPositiveButton("Confirm", (dialog, which) -> {
+                                    eventsDB.addUser(deviceID, eventID);
+                                    userDB.joinEvent(deviceID, eventID);
+                                    displayChildFragment(new myEventsList(), bundle);
+                                });
+                                builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+
+                                builder.show();
+
                             }
                         }
                     });
